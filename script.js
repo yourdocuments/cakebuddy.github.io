@@ -1,1208 +1,599 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cakes Buddy - Fresh homemade cakes made with love.">
-    <title>Cakes Buddy | Homemade Cakes</title>
+/* =====================================================
+   CAKES BUDDY - FULL SCRIPT.JS
+===================================================== */
 
-    <link rel="stylesheet" href="style.css">
-</head>
+document.addEventListener("DOMContentLoaded", () => {
 
-<body>
+    /* =================================================
+       MOBILE MENU
+    ================================================= */
 
-<!-- ================= HEADER ================= -->
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-<header class="site-header">
+    if (menuButton && mobileMenu) {
 
-    <div class="header-inner">
+        menuButton.addEventListener("click", (e) => {
+            e.stopPropagation();
 
-        <a href="#home" class="logo-area">
+            mobileMenu.classList.toggle("show");
 
-            <div class="logo">
-                <img
-                    src="https://raw.githubusercontent.com/yourdocuments/products/main/cakeFrame%201%20(1).svg"
-                    alt="Cakes Buddy Logo"
-                >
-            </div>
+            menuButton.textContent =
+                mobileMenu.classList.contains("show")
+                    ? "✕"
+                    : "☰";
+        });
 
-            <span class="logo-name">Cakes Buddy</span>
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("show");
+                menuButton.textContent = "☰";
+            });
+        });
+    }
 
-        </a>
 
+    /* =================================================
+       SEARCH
+    ================================================= */
 
-        <!-- SEARCH -->
+    const searchButton = document.getElementById("searchButton");
+    const searchDropdown = document.getElementById("searchDropdown");
+    const searchInput = document.getElementById("cakeSearchInput");
+    const searchItems = document.querySelectorAll(".search-item");
+    const noResult = document.getElementById("noResult");
 
-        <div class="search-wrapper">
+    if (searchButton && searchDropdown) {
 
-            <button
-                class="search"
-                id="searchButton"
-                type="button"
-            >
-                <span>⌕</span>
-                <b>Search</b>
-            </button>
+        searchButton.addEventListener("click", (e) => {
+            e.stopPropagation();
 
+            searchDropdown.classList.toggle("show");
 
-            <div
-                class="search-dropdown"
-                id="searchDropdown"
-            >
+            if (searchDropdown.classList.contains("show") && searchInput) {
+                setTimeout(() => searchInput.focus(), 100);
+            }
+        });
 
-                <div class="search-input">
+        searchDropdown.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+    }
 
-                    <span>⌕</span>
 
-                    <input
-                        type="text"
-                        id="cakeSearchInput"
-                        placeholder="Search cakes..."
-                    >
+    document.addEventListener("click", () => {
 
-                </div>
+        if (searchDropdown) {
+            searchDropdown.classList.remove("show");
+        }
 
+        if (mobileMenu) {
+            mobileMenu.classList.remove("show");
+        }
 
-                <div class="search-list">
+        if (menuButton) {
+            menuButton.textContent = "☰";
+        }
+    });
 
-                    <a href="#cakes" class="search-item">
-                        🎂 Chocolate Cake
-                    </a>
 
-                    <a href="#cakes" class="search-item">
-                        🍓 Strawberry Cake
-                    </a>
+    /* Search filtering */
 
-                    <a href="#cakes" class="search-item">
-                        🍰 Vanilla Cake
-                    </a>
+    if (searchInput) {
 
-                    <a href="#cakes" class="search-item">
-                        ❤️ Red Velvet Cake
-                    </a>
+        searchInput.addEventListener("input", () => {
 
-                    <a href="#cakes" class="search-item">
-                        🎉 Birthday Cake
-                    </a>
+            const value =
+                searchInput.value
+                .toLowerCase()
+                .trim();
 
-                    <a href="#cakes" class="search-item">
-                        ✨ Customized Cake
-                    </a>
+            let found = false;
 
-                    <div
-                        class="no-result"
-                        id="noResult"
-                    >
-                        No cake found.
-                    </div>
+            searchItems.forEach(item => {
 
-                </div>
+                const text =
+                    item.textContent
+                    .toLowerCase();
 
-            </div>
+                if (
+                    value === "" ||
+                    text.includes(value)
+                ) {
+                    item.style.display = "block";
+                    found = true;
+                } else {
+                    item.style.display = "none";
+                }
 
-        </div>
+            });
 
+            if (noResult) {
+                noResult.style.display =
+                    found ? "none" : "block";
+            }
+        });
+    }
 
-        <!-- DESKTOP NAV -->
 
-        <nav class="desktop-nav">
+    /* =================================================
+       5 SLIDE BANNER
+       AUTO RIGHT → LEFT
+===================================================== */
 
-            <a href="#home">Home</a>
+    const slides = document.getElementById("slides");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const dotsContainer = document.getElementById("sliderDots");
 
-            <a href="#cakes">Our Cakes</a>
+    const totalSlides = 5;
 
-            <a href="#about">About</a>
+    let currentSlide = 0;
+    let sliderTimer = null;
 
-            <a href="#why">Why Us</a>
 
-            <a href="#contact">Contact</a>
+    /* Create dots */
 
-            <a href="#cakes">Shop</a>
+    if (dotsContainer) {
 
-        </nav>
+        dotsContainer.innerHTML = "";
 
+        for (let i = 0; i < totalSlides; i++) {
 
-        <a href="#order" class="order-btn">
-            Order Now
-        </a>
+            const dot = document.createElement("button");
 
+            dot.type = "button";
+            dot.className = "slider-dot";
 
-        <!-- MOBILE -->
+            dot.setAttribute(
+                "aria-label",
+                `Go to slide ${i + 1}`
+            );
 
-        <button
-            class="menu-btn"
-            id="menuButton"
-            type="button"
-            aria-label="Open menu"
-        >
-            ☰
-        </button>
+            dot.addEventListener("click", () => {
 
-    </div>
+                currentSlide = i;
 
+                updateSlider();
+                restartSlider();
 
-    <!-- MOBILE NAV -->
+            });
 
-    <div
-        class="mobile-menu"
-        id="mobileMenu"
-    >
+            dotsContainer.appendChild(dot);
+        }
+    }
 
-        <a href="#home">Home</a>
-        <a href="#cakes">Our Cakes</a>
-        <a href="#about">About</a>
-        <a href="#why">Why Us</a>
-        <a href="#contact">Contact</a>
-        <a href="#cakes">Shop</a>
 
-        <a
-            href="#order"
-            class="mobile-order"
-        >
-            Order Now
-        </a>
+    function updateSlider() {
 
-    </div>
+        if (!slides) return;
 
-</header>
+        /*
+           5 slides = 20% each
+           0 → 0%
+           1 → -20%
+           2 → -40%
+           3 → -60%
+           4 → -80%
+        */
 
+        slides.style.transform =
+            `translateX(-${currentSlide * 20}%)`;
 
 
-<main id="home">
+        const dots =
+            document.querySelectorAll(".slider-dot");
 
+        dots.forEach((dot, index) => {
 
-<!-- =====================================================
-     COMPACT 5 SLIDE AD BANNER
-===================================================== -->
+            dot.classList.toggle(
+                "active",
+                index === currentSlide
+            );
 
-<section class="banner-slider">
+        });
+    }
 
-    <div
-        class="slides"
-        id="slides"
-    >
 
-        <!-- SLIDE 1 -->
+    function nextSlide() {
 
-        <div class="slide">
+        currentSlide++;
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
-                alt="Cakes Buddy Ad"
-            >
+        if (currentSlide >= totalSlides) {
+            currentSlide = 0;
+        }
 
-        </div>
+        updateSlider();
+    }
 
 
-        <!-- SLIDE 2 -->
+    function previousSlide() {
 
-        <div class="slide">
+        currentSlide--;
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adsnFrame%202%20(1).svg"
-                alt="Cakes Buddy Ad"
-            >
+        if (currentSlide < 0) {
+            currentSlide = totalSlides - 1;
+        }
 
-        </div>
+        updateSlider();
+    }
 
 
-        <!-- SLIDE 3 -->
+    if (nextBtn) {
 
-        <div class="slide">
+        nextBtn.addEventListener("click", () => {
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
-                alt="Cakes Buddy Ad"
-            >
+            nextSlide();
+            restartSlider();
 
-        </div>
+        });
+    }
 
 
-        <!-- SLIDE 4 -->
+    if (prevBtn) {
 
-        <div class="slide">
+        prevBtn.addEventListener("click", () => {
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adsnFrame%202%20(1).svg"
-                alt="Cakes Buddy Ad"
-            >
+            previousSlide();
+            restartSlider();
 
-        </div>
+        });
+    }
 
 
-        <!-- SLIDE 5 -->
+    function startSlider() {
 
-        <div class="slide">
+        clearInterval(sliderTimer);
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
-                alt="Cakes Buddy Ad"
-            >
+        /*
+           5 seconds per slide
+        */
 
-        </div>
+        sliderTimer = setInterval(() => {
 
-    </div>
+            nextSlide();
 
+        }, 5000);
+    }
 
-    <button
-        class="slider-btn prev"
-        id="prevBtn"
-        type="button"
-        aria-label="Previous slide"
-    >
-        ‹
-    </button>
 
+    function restartSlider() {
 
-    <button
-        class="slider-btn next"
-        id="nextBtn"
-        type="button"
-        aria-label="Next slide"
-    >
-        ›
-    </button>
+        clearInterval(sliderTimer);
 
+        startSlider();
+    }
 
-    <div
-        class="slider-dots"
-        id="sliderDots"
-    ></div>
 
-</section>
+    /* Pause banner while mouse is over it */
 
+    const bannerSlider =
+        document.querySelector(".banner-slider");
 
+    if (bannerSlider) {
 
-<!-- =====================================================
-     PREMIUM HERO
-===================================================== -->
+        bannerSlider.addEventListener(
+            "mouseenter",
+            () => clearInterval(sliderTimer)
+        );
 
-<section class="premium-hero">
+        bannerSlider.addEventListener(
+            "mouseleave",
+            () => startSlider()
+        );
+    }
 
-    <div class="premium-hero-inner">
 
+    /* =================================================
+       MOBILE TOUCH SWIPE
+    ================================================= */
 
-        <!-- LEFT CONTENT -->
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-        <div class="hero-copy">
+    if (bannerSlider) {
 
-            <div class="hero-tag">
-                🍰 HOMEMADE • FRESH • LOVELY
-            </div>
+        bannerSlider.addEventListener(
+            "touchstart",
+            (event) => {
 
+                touchStartX =
+                    event.changedTouches[0].screenX;
 
-            <h1>
-                Sweet cakes,
-                <span>made for your</span>
-                special moments.
-            </h1>
+            },
+            { passive: true }
+        );
 
 
-            <p>
-                Freshly baked homemade cakes crafted
-                with love, beautiful designs and delicious
-                flavours for every celebration.
-            </p>
+        bannerSlider.addEventListener(
+            "touchend",
+            (event) => {
 
+                touchEndX =
+                    event.changedTouches[0].screenX;
 
-            <div class="hero-actions">
+                const distance =
+                    touchStartX - touchEndX;
 
-                <a
-                    href="#order"
-                    class="hero-main-btn"
-                >
-                    Order Your Cake
-                    <span>→</span>
-                </a>
 
+                /* Swipe left */
 
-                <a
-                    href="#cakes"
-                    class="hero-outline-btn"
-                >
-                    Explore Cakes
-                </a>
+                if (distance > 50) {
 
-            </div>
+                    nextSlide();
+                    restartSlider();
 
+                }
 
-            <!-- TRUST -->
 
-            <div class="hero-trust">
+                /* Swipe right */
 
-                <div class="trust-item">
+                else if (distance < -50) {
 
-                    <strong>100%</strong>
+                    previousSlide();
+                    restartSlider();
 
-                    <span>Homemade</span>
+                }
 
-                </div>
+            },
+            { passive: true }
+        );
+    }
 
 
-                <div class="trust-line"></div>
+    /* Start slider */
 
+    updateSlider();
+    startSlider();
 
-                <div class="trust-item">
 
-                    <strong>Fresh</strong>
 
-                    <span>Every Order</span>
+    /* =================================================
+       WHATSAPP ORDER FORM
+    ================================================= */
 
-                </div>
+    const orderForm =
+        document.getElementById("orderForm");
 
 
-                <div class="trust-line"></div>
+    if (orderForm) {
 
+        orderForm.addEventListener(
+            "submit",
+            (event) => {
 
-                <div class="trust-item">
+                event.preventDefault();
 
-                    <strong>Custom</strong>
 
-                    <span>Designs</span>
+                const name =
+                    document
+                    .getElementById("name")
+                    ?.value
+                    .trim();
 
-                </div>
 
-            </div>
+                const phone =
+                    document
+                    .getElementById("phone")
+                    ?.value
+                    .trim();
 
-        </div>
 
+                const cake =
+                    document
+                    .getElementById("cake")
+                    ?.value;
 
 
-        <!-- RIGHT VISUAL -->
+                const size =
+                    document
+                    .getElementById("size")
+                    ?.value;
 
-        <div class="hero-visual">
 
-            <div class="visual-glow"></div>
+                const details =
+                    document
+                    .getElementById("details")
+                    ?.value
+                    .trim();
 
 
-            <div class="floating-card card-one">
+                /* Validation */
 
-                <span>⭐</span>
+                if (!name) {
 
-                <div>
+                    alert("Please enter your name.");
 
-                    <strong>Freshly Baked</strong>
+                    document
+                        .getElementById("name")
+                        ?.focus();
 
-                    <small>Made with love</small>
+                    return;
+                }
 
-                </div>
 
-            </div>
+                if (!phone) {
 
+                    alert("Please enter your phone number.");
 
-            <div class="cake-display">
+                    document
+                        .getElementById("phone")
+                        ?.focus();
 
-                <div class="cake-circle">
+                    return;
+                }
 
-                    <span class="cake-sparkle s1">✦</span>
 
-                    <span class="cake-sparkle s2">✦</span>
+                if (!cake) {
 
-                    <span class="cake-sparkle s3">•</span>
+                    alert("Please select a cake.");
 
+                    document
+                        .getElementById("cake")
+                        ?.focus();
 
-                    <img
-                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=90"
-                        alt="Chocolate Cake"
-                    >
+                    return;
+                }
 
-                </div>
 
-            </div>
+                /* WhatsApp message */
 
+                let message =
+                    `Hello Cakes Buddy! 🍰
 
-            <div class="floating-card card-two">
+New Cake Order
 
-                <span>❤️</span>
+👤 Name: ${name}
+📱 Phone: ${phone}
+🎂 Cake: ${cake}
+⚖️ Size: ${size}`;
 
-                <div>
 
-                    <strong>Made For You</strong>
+                if (details) {
 
-                    <small>Custom cake available</small>
+                    message +=
+                        `
 
-                </div>
+📝 Details: ${details}`;
 
-            </div>
+                }
 
-        </div>
 
-    </div>
+                message +=
+                    `
 
-</section>
+Thank you! ❤️`;
 
 
+                /*
+                   Cakes Buddy WhatsApp
+                   +880 1717-503093
+                */
 
-<!-- =====================================================
-     FEATURE STRIP
-===================================================== -->
+                const whatsappNumber =
+                    "8801717503093";
 
-<section class="feature-strip">
 
-    <div class="feature">
+                const whatsappURL =
+                    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-        <div class="feature-icon">🎂</div>
 
-        <div>
+                window.open(
+                    whatsappURL,
+                    "_blank",
+                    "noopener"
+                );
 
-            <strong>Freshly Baked</strong>
+            }
+        );
+    }
 
-            <span>Prepared fresh for you</span>
 
-        </div>
 
-    </div>
+    /* =================================================
+       SMOOTH SCROLL
+    ================================================= */
 
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(anchor => {
 
-    <div class="feature">
+            anchor.addEventListener("click", (event) => {
 
-        <div class="feature-icon">❤️</div>
+                const id =
+                    anchor.getAttribute("href");
 
-        <div>
+                if (!id || id === "#") return;
 
-            <strong>Made With Love</strong>
+                const target =
+                    document.querySelector(id);
 
-            <span>Homemade with care</span>
+                if (!target) return;
 
-        </div>
+                event.preventDefault();
 
-    </div>
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
+            });
 
-    <div class="feature">
+        });
 
-        <div class="feature-icon">✨</div>
 
-        <div>
 
-            <strong>Custom Design</strong>
+    /* =================================================
+       HEADER SCROLL EFFECT
+    ================================================= */
 
-            <span>Your idea, our creation</span>
+    const header =
+        document.querySelector(".site-header");
 
-        </div>
 
-    </div>
+    window.addEventListener(
+        "scroll",
+        () => {
 
+            if (!header) return;
 
-    <div class="feature">
+            if (window.scrollY > 20) {
 
-        <div class="feature-icon">🚚</div>
+                header.style.boxShadow =
+                    "0 5px 25px rgba(60,30,20,.08)";
 
-        <div>
+            } else {
 
-            <strong>Easy Ordering</strong>
+                header.style.boxShadow =
+                    "none";
 
-            <span>Order through WhatsApp</span>
+            }
 
-        </div>
+        },
+        { passive: true }
+    );
 
-    </div>
 
-</section>
 
+    /* =================================================
+       IMAGE FALLBACK
+    ================================================= */
 
+    document
+        .querySelectorAll("img")
+        .forEach(img => {
 
-<!-- =====================================================
-     OUR CAKES
-===================================================== -->
+            img.addEventListener("error", () => {
 
-<section
-    class="cakes"
-    id="cakes"
->
+                img.style.opacity = "0.3";
 
-    <div class="container">
+            });
 
-        <div class="heading">
+        });
 
-            <small>OUR SPECIAL CAKES</small>
 
-            <h2>Pick Your Favourite</h2>
 
-            <p>
-                Delicious homemade cakes made specially
-                for your happiest moments.
-            </p>
+    /* =================================================
+       ESC KEY
+    ================================================= */
 
-        </div>
+    document.addEventListener("keydown", (event) => {
 
+        if (event.key === "Escape") {
 
-        <div class="cake-grid">
+            if (searchDropdown) {
+                searchDropdown.classList.remove("show");
+            }
 
+            if (mobileMenu) {
+                mobileMenu.classList.remove("show");
+            }
 
-            <!-- CHOCOLATE -->
+            if (menuButton) {
+                menuButton.textContent = "☰";
+            }
+        }
 
-            <article class="cake-card">
+    });
 
-                <div class="cake-img">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85"
-                        alt="Chocolate Cake"
-                        loading="lazy"
-                    >
-
-                    <span class="cake-label">
-                        Popular
-                    </span>
-
-                </div>
-
-
-                <div class="cake-content">
-
-                    <h3>Chocolate Cake</h3>
-
-                    <p>
-                        Rich chocolate sponge with
-                        creamy chocolate frosting.
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <strong>৳850+</strong>
-
-                        <a href="#order">
-                            Order →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- STRAWBERRY -->
-
-            <article class="cake-card">
-
-                <div class="cake-img">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=85"
-                        alt="Strawberry Cake"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="cake-content">
-
-                    <h3>Strawberry Cake</h3>
-
-                    <p>
-                        Soft sponge with delicious
-                        strawberry cream.
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <strong>৳900+</strong>
-
-                        <a href="#order">
-                            Order →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- VANILLA -->
-
-            <article class="cake-card">
-
-                <div class="cake-img">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=700&q=85"
-                        alt="Vanilla Cake"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="cake-content">
-
-                    <h3>Vanilla Cake</h3>
-
-                    <p>
-                        Light vanilla sponge with
-                        smooth creamy frosting.
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <strong>৳750+</strong>
-
-                        <a href="#order">
-                            Order →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- RED VELVET -->
-
-            <article class="cake-card">
-
-                <div class="cake-img">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1614707267537-2b9f6b8e9e5f?auto=format&fit=crop&w=700&q=85"
-                        alt="Red Velvet Cake"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="cake-content">
-
-                    <h3>Red Velvet</h3>
-
-                    <p>
-                        Soft red velvet with
-                        creamy cheese frosting.
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <strong>৳950+</strong>
-
-                        <a href="#order">
-                            Order →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- BIRTHDAY -->
-
-            <article class="cake-card">
-
-                <div class="cake-img">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=700&q=85"
-                        alt="Birthday Cake"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="cake-content">
-
-                    <h3>Birthday Cake</h3>
-
-                    <p>
-                        Beautiful cakes for
-                        birthday celebrations.
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <strong>৳850+</strong>
-
-                        <a href="#order">
-                            Order →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- CUSTOM -->
-
-            <article class="cake-card">
-
-                <div class="cake-img">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=700&q=85"
-                        alt="Customized Cake"
-                        loading="lazy"
-                    >
-
-                    <span class="cake-label custom">
-                        Custom
-                    </span>
-
-                </div>
-
-
-                <div class="cake-content">
-
-                    <h3>Customized Cake</h3>
-
-                    <p>
-                        Your idea, your design,
-                        your special cake.
-                    </p>
-
-
-                    <div class="card-bottom">
-
-                        <strong>Custom</strong>
-
-                        <a href="#order">
-                            Order →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section
-    class="about"
-    id="about"
->
-
-    <div class="container">
-
-        <div class="about-grid">
-
-
-            <div class="about-img">
-
-                <img
-                    src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=85"
-                    alt="Homemade Cake"
-                    loading="lazy"
-                >
-
-            </div>
-
-
-            <div class="about-content">
-
-                <small>ABOUT CAKES BUDDY</small>
-
-                <h2>
-                    Homemade taste.
-                    <span>Beautiful memories.</span>
-                </h2>
-
-
-                <p>
-                    Cakes Buddy creates fresh homemade
-                    cakes with quality ingredients,
-                    beautiful designs and lots of love.
-                </p>
-
-
-                <p>
-                    From birthdays to small celebrations,
-                    we make every moment a little sweeter.
-                </p>
-
-
-                <a
-                    href="#order"
-                    class="btn btn-primary"
-                >
-                    Order Your Cake
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     WHY US
-===================================================== -->
-
-<section
-    class="why"
-    id="why"
->
-
-    <div class="container">
-
-        <div class="heading">
-
-            <small>WHY CAKES BUDDY</small>
-
-            <h2>Why Choose Us?</h2>
-
-        </div>
-
-
-        <div class="why-grid">
-
-
-            <div class="why-card">
-
-                <div class="why-icon">🎂</div>
-
-                <h3>Freshly Baked</h3>
-
-                <p>
-                    Every cake is prepared fresh
-                    for your order.
-                </p>
-
-            </div>
-
-
-            <div class="why-card">
-
-                <div class="why-icon">❤️</div>
-
-                <h3>Homemade Love</h3>
-
-                <p>
-                    Made carefully with
-                    homemade goodness.
-                </p>
-
-            </div>
-
-
-            <div class="why-card">
-
-                <div class="why-icon">✨</div>
-
-                <h3>Custom Cakes</h3>
-
-                <p>
-                    Tell us your idea and
-                    make it yours.
-                </p>
-
-            </div>
-
-
-            <div class="why-card">
-
-                <div class="why-icon">💰</div>
-
-                <h3>Friendly Price</h3>
-
-                <p>
-                    Beautiful cakes at
-                    affordable prices.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ORDER
-===================================================== -->
-
-<section
-    class="order"
-    id="order"
->
-
-    <div class="container">
-
-        <div class="heading">
-
-            <small>READY TO ORDER?</small>
-
-            <h2>Let's Make Your Cake</h2>
-
-            <p>
-                Fill in your details and send
-                your order directly to WhatsApp.
-            </p>
-
-        </div>
-
-
-        <div class="order-box">
-
-            <form
-                class="order-form"
-                id="orderForm"
-            >
-
-
-                <div class="form-group">
-
-                    <label for="name">
-                        Your Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="phone">
-                        Phone Number
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        placeholder="01XXXXXXXXX"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="cake">
-                        Select Cake
-                    </label>
-
-                    <select
-                        id="cake"
-                        required
-                    >
-
-                        <option value="">
-                            Select a cake
-                        </option>
-
-                        <option value="Chocolate Cake">
-                            Chocolate Cake
-                        </option>
-
-                        <option value="Strawberry Cake">
-                            Strawberry Cake
-                        </option>
-
-                        <option value="Vanilla Cake">
-                            Vanilla Cake
-                        </option>
-
-                        <option value="Red Velvet Cake">
-                            Red Velvet Cake
-                        </option>
-
-                        <option value="Birthday Cake">
-                            Birthday Cake
-                        </option>
-
-                        <option value="Customized Cake">
-                            Customized Cake
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="size">
-                        Cake Size
-                    </label>
-
-                    <select id="size">
-
-                        <option value="1 Pound">
-                            1 Pound
-                        </option>
-
-                        <option value="2 Pound">
-                            2 Pound
-                        </option>
-
-                        <option value="3 Pound">
-                            3 Pound
-                        </option>
-
-                        <option value="4 Pound">
-                            4 Pound
-                        </option>
-
-                        <option value="5 Pound">
-                            5 Pound
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label for="details">
-                        Extra Details
-                    </label>
-
-                    <textarea
-                        id="details"
-                        placeholder="Cake design, delivery date, message..."
-                    ></textarea>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <button
-                        type="submit"
-                        class="submit"
-                    >
-                        Send Order on WhatsApp
-                        <span>→</span>
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section
-    class="contact"
-    id="contact"
->
-
-    <div class="container">
-
-        <div class="contact-content">
-
-            <small>GET IN TOUCH</small>
-
-            <h2>
-                Let's Bake Something Sweet
-            </h2>
-
-            <p>
-                Have a question or want to place
-                an order? We are here for you.
-            </p>
-
-
-            <div class="contact-links">
-
-                <a
-                    href="https://wa.me/8801717503093"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    📱 +880 1717-503093
-                </a>
-
-
-                <a href="mailto:Naharsm6@gmail.com">
-                    📧 Naharsm6@gmail.com
-                </a>
-
-            </div>
-
-
-            <a
-                href="https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x"
-                target="_blank"
-                rel="noopener"
-                class="channel-btn"
-            >
-                Join Our WhatsApp Channel →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="footer-inner">
-
-        <span>
-            © 2026 Cakes Buddy
-        </span>
-
-        <span>
-            Homemade with ❤️
-        </span>
-
-    </div>
-
-</footer>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+});
