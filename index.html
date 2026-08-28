@@ -1,1874 +1,2105 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Cakes Buddy | Homemade Cakes</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cakes Buddy | Homemade Cakes</title>
+
+    <style>
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf8;
+            color: #4b210c;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+        :root {
+            --brown: #4b210c;
+            --dark-brown: #321507;
+            --pink: #d9577c;
+            --light-pink: #ffe5ed;
+            --cream: #fffaf8;
+            --white: #ffffff;
+            --muted: #806d65;
+            --border: #ecd9df;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid #f0dfe3;
+
+            box-shadow: 0 3px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-inner {
+            width: 94%;
+            max-width: 1280px;
+            min-height: 82px;
+            margin: auto;
 
-html{
-    scroll-behavior:smooth;
-}
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#fffaf8;
-    color:#4b210c;
-    overflow-x:hidden;
-}
 
-img{
-    display:block;
-    max-width:100%;
-}
+        /* =========================
+           LOGO
+        ========================= */
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
 
-:root{
-    --brown:#4b210c;
-    --dark:#321507;
-    --pink:#d9577c;
-    --lightpink:#ffe5ed;
-    --cream:#fffaf8;
-    --muted:#806d65;
-    --border:#ecd9df;
-}
+        .logo {
+            width: 64px;
+            height: 64px;
 
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-/* =========================
-   CONTAINER
-========================= */
+            overflow: hidden;
+            background: #fff;
+        }
 
-.container{
-    width:92%;
-    max-width:1200px;
-    margin:auto;
-}
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
+        .logo-name {
+            font-family: Georgia, serif;
+            font-size: 24px;
+            font-weight: bold;
+            white-space: nowrap;
+            color: var(--brown);
+        }
 
-/* =========================
-   HEADER
-========================= */
 
-header{
-    position:sticky;
-    top:0;
-    z-index:9999;
+        /* =========================
+           SEARCH
+        ========================= */
 
-    background:rgba(255,255,255,.97);
+        .search-wrapper {
+            position: relative;
+            margin-left: auto;
+        }
 
-    border-bottom:1px solid #f0dfe3;
+        .search {
+            border: none;
+            background: transparent;
 
-    box-shadow:0 3px 18px rgba(0,0,0,.06);
-}
+            display: flex;
+            align-items: center;
+            gap: 7px;
 
-.header-inner{
-    width:94%;
-    max-width:1280px;
-    min-height:82px;
-    margin:auto;
+            padding: 10px 14px;
+            border-radius: 25px;
 
-    display:flex;
-    align-items:center;
-    gap:24px;
-}
+            color: var(--brown);
+            cursor: pointer;
 
+            font-size: 14px;
+            font-weight: 700;
 
-/* =========================
-   LOGO
-========================= */
+            transition: 0.25s;
+        }
 
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-shrink:0;
-}
+        .search:hover {
+            background: var(--light-pink);
+        }
 
-.logo{
-    width:64px;
-    height:64px;
+        .search-icon {
+            font-size: 21px;
+        }
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
 
-    overflow:hidden;
+        /* SEARCH DROPDOWN */
 
-    flex-shrink:0;
+        .search-dropdown {
+            position: absolute;
 
-    background:#fff;
+            top: 54px;
+            right: 0;
 
-    border-radius:50%;
-}
+            width: 320px;
 
-.logo img{
-    width:100%;
-    height:100%;
+            background: #fff;
 
-    object-fit:contain;
+            border: 1px solid var(--border);
+            border-radius: 18px;
 
-    display:block;
-}
+            box-shadow: 0 18px 45px rgba(75, 33, 12, 0.16);
 
-.logo-name{
-    font-family:Georgia,serif;
+            overflow: hidden;
 
-    font-size:24px;
-    font-weight:700;
+            opacity: 0;
+            visibility: hidden;
 
-    color:var(--brown);
+            transform: translateY(-8px);
 
-    white-space:nowrap;
-}
+            transition: 0.25s;
 
+            z-index: 99999;
+        }
 
-/* =========================
-   SEARCH
-========================= */
+        .search-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-.search{
-    margin-left:auto;
+        .search-input {
+            display: flex;
+            align-items: center;
+            gap: 9px;
 
-    display:flex;
-    align-items:center;
-    gap:7px;
+            padding: 14px;
 
-    padding:10px 13px;
+            background: #fffaf8;
 
-    border-radius:25px;
+            border-bottom: 1px solid #f0dfe3;
+        }
 
-    cursor:pointer;
+        .search-input span {
+            font-size: 20px;
+            color: var(--pink);
+        }
 
-    transition:.25s;
-}
+        .search-input input {
+            width: 100%;
 
-.search:hover{
-    background:var(--lightpink);
-}
+            border: 0;
+            outline: 0;
 
-.search-icon{
-    font-size:21px;
-}
+            background: transparent;
 
-.search-text{
-    font-size:14px;
-    font-weight:700;
-}
+            color: var(--brown);
+            font-size: 14px;
+        }
 
+        .search-input input::placeholder {
+            color: #a89791;
+        }
 
-/* =========================
-   NAV
-========================= */
+        .search-list {
+            max-height: 310px;
+            overflow-y: auto;
+        }
 
-nav{
-    display:flex;
-    align-items:center;
-    gap:23px;
-}
+        .search-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-nav a{
-    font-size:14px;
-    font-weight:700;
+            padding: 14px 17px;
 
-    color:var(--brown);
+            border-bottom: 1px solid #f4e7ea;
 
-    white-space:nowrap;
+            color: var(--brown);
 
-    transition:.25s;
-}
+            font-size: 14px;
+            font-weight: 700;
 
-nav a:hover{
-    color:var(--pink);
-}
+            transition: 0.2s;
+        }
 
-nav .shop{
-    color:var(--pink);
-}
+        .search-item:hover {
+            background: var(--light-pink);
+            color: var(--pink);
+            padding-left: 23px;
+        }
 
+        .search-item-icon {
+            font-size: 19px;
+        }
 
-/* =========================
-   ORDER BUTTON
-========================= */
+        .no-result {
+            display: none;
+            padding: 22px;
+            text-align: center;
+            color: var(--muted);
+        }
 
-.order-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
 
-    padding:13px 21px;
+        /* =========================
+           NAV
+        ========================= */
 
-    background:var(--brown);
-    color:white;
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-    border-radius:30px;
+        nav a {
+            color: var(--brown);
 
-    font-size:14px;
-    font-weight:800;
+            font-size: 14px;
+            font-weight: 700;
 
-    white-space:nowrap;
+            white-space: nowrap;
 
-    transition:.3s;
-}
+            transition: 0.25s;
+        }
 
-.order-btn:hover{
-    background:var(--dark);
-    transform:translateY(-2px);
-}
+        nav a:hover {
+            color: var(--pink);
+        }
 
+        nav .shop {
+            color: var(--pink);
+        }
 
-/* =========================
-   MOBILE MENU BUTTON
-========================= */
 
-.menu-btn{
-    display:none;
+        /* =========================
+           ORDER BUTTON
+        ========================= */
 
-    width:45px;
-    height:45px;
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-    border:0;
-    border-radius:12px;
+            padding: 13px 21px;
 
-    background:var(--lightpink);
+            background: var(--brown);
+            color: white;
 
-    color:var(--brown);
+            border-radius: 30px;
 
-    font-size:23px;
+            font-size: 14px;
+            font-weight: 800;
 
-    cursor:pointer;
-}
+            white-space: nowrap;
 
+            transition: 0.3s;
+        }
 
-/* =========================
-   MOBILE MENU
-========================= */
+        .order-btn:hover {
+            background: var(--dark-brown);
+            transform: translateY(-2px);
+        }
 
-.mobile-menu{
-    display:none;
 
-    position:absolute;
+        /* =========================
+           MOBILE MENU
+        ========================= */
 
-    top:82px;
-    left:3%;
-    right:3%;
+        .menu-btn {
+            display: none;
 
-    padding:10px;
+            width: 45px;
+            height: 45px;
 
-    background:white;
+            border: none;
+            border-radius: 12px;
 
-    border-radius:18px;
+            background: var(--light-pink);
+            color: var(--brown);
 
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
+            font-size: 23px;
 
-.mobile-menu.active{
-    display:block;
-}
+            cursor: pointer;
+        }
 
-.mobile-menu a{
-    display:block;
+        .mobile-menu {
+            display: none;
 
-    padding:15px;
+            position: absolute;
 
-    border-bottom:1px solid #f1e3e6;
+            top: 82px;
+            left: 3%;
+            right: 3%;
 
-    font-weight:700;
-}
+            padding: 10px;
 
-.mobile-menu a:last-child{
-    border-bottom:0;
-}
+            background: white;
 
-.mobile-order{
-    margin-top:7px;
+            border-radius: 18px;
 
-    text-align:center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
 
-    background:var(--brown);
+        .mobile-menu.active {
+            display: block;
+        }
 
-    color:white !important;
+        .mobile-menu a {
+            display: block;
 
-    border-radius:25px;
-}
+            padding: 15px;
 
+            border-bottom: 1px solid #f1e3e6;
 
-/* =========================
-   HERO
-========================= */
+            font-weight: 700;
+        }
 
-.hero{
-    min-height:calc(100vh - 82px);
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
 
-    display:flex;
-    align-items:center;
+        .mobile-order {
+            margin-top: 7px;
 
-    padding:70px 0;
+            text-align: center;
 
-    background:
-    radial-gradient(
-        circle at 90% 10%,
-        #ffd4e1 0,
-        transparent 28%
-    ),
-    linear-gradient(
-        135deg,
-        #fff0f4,
-        #fffaf8
-    );
-}
+            background: var(--brown);
+            color: white !important;
 
-.hero-grid{
-    display:grid;
+            border-radius: 25px;
+        }
 
-    grid-template-columns:1fr 1fr;
 
-    gap:55px;
+        /* =========================
+           HERO
+        ========================= */
 
-    align-items:center;
-}
+        .hero {
+            min-height: calc(100vh - 82px);
 
-.badge{
-    display:inline-block;
+            display: flex;
+            align-items: center;
 
-    padding:9px 16px;
+            padding: 70px 0;
 
-    background:var(--lightpink);
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    #ffd4e1 0,
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #fff0f4,
+                    #fffaf8
+                );
+        }
 
-    color:#a23d5a;
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-    border-radius:30px;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
 
-    font-size:12px;
-    font-weight:900;
+            gap: 55px;
 
-    margin-bottom:20px;
-}
+            align-items: center;
+        }
 
-.hero h1{
-    font-family:Georgia,serif;
+        .badge {
+            display: inline-block;
 
-    font-size:clamp(44px,6vw,78px);
+            padding: 9px 16px;
 
-    line-height:1.03;
+            background: var(--light-pink);
+            color: #a23d5a;
 
-    margin-bottom:22px;
-}
+            border-radius: 30px;
 
-.hero h1 span{
-    color:var(--pink);
-}
+            font-size: 12px;
+            font-weight: 900;
 
-.hero p{
-    max-width:580px;
+            margin-bottom: 20px;
+        }
 
-    color:var(--muted);
+        .hero h1 {
+            font-family: Georgia, serif;
 
-    font-size:18px;
+            font-size: clamp(44px, 6vw, 78px);
 
-    line-height:1.8;
+            line-height: 1.03;
 
-    margin-bottom:30px;
-}
+            margin-bottom: 22px;
+        }
 
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
+        .hero h1 span {
+            color: var(--pink);
+        }
 
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+        .hero p {
+            max-width: 580px;
 
-    padding:15px 25px;
+            color: var(--muted);
 
-    border-radius:30px;
+            font-size: 18px;
 
-    font-weight:800;
+            line-height: 1.8;
 
-    transition:.3s;
-}
+            margin-bottom: 30px;
+        }
 
-.btn-primary{
-    background:var(--brown);
-    color:white;
-}
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
 
-.btn-primary:hover{
-    background:var(--dark);
-    transform:translateY(-3px);
-}
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-.btn-secondary{
-    background:white;
+            padding: 15px 25px;
 
-    border:1px solid var(--border);
-}
+            border-radius: 30px;
 
-.btn-secondary:hover{
-    background:var(--lightpink);
-}
+            font-weight: 800;
 
+            transition: 0.3s;
+        }
 
-/* =========================
-   HERO IMAGE
-========================= */
+        .btn-primary {
+            background: var(--brown);
+            color: white;
+        }
 
-.hero-image{
-    height:530px;
+        .btn-primary:hover {
+            background: var(--dark-brown);
+            transform: translateY(-3px);
+        }
 
-    overflow:hidden;
+        .btn-secondary {
+            background: white;
+            border: 1px solid var(--border);
+        }
 
-    border-radius:32px;
+        .btn-secondary:hover {
+            background: var(--light-pink);
+        }
 
-    box-shadow:
-    0 20px 50px rgba(75,33,12,.15);
-}
+        .hero-image {
+            height: 530px;
 
-.hero-image img{
-    width:100%;
-    height:100%;
+            overflow: hidden;
 
-    object-fit:cover;
-}
+            border-radius: 32px;
 
+            box-shadow: 0 20px 50px rgba(75, 33, 12, 0.15);
+        }
 
-/* =========================
-   SECTIONS
-========================= */
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-section{
-    padding:90px 0;
-}
 
-.heading{
-    max-width:700px;
+        /* =========================
+           SECTION
+        ========================= */
 
-    text-align:center;
+        section {
+            padding: 90px 0;
+        }
 
-    margin:0 auto 45px;
-}
+        .heading {
+            max-width: 700px;
 
-.heading small{
-    color:var(--pink);
+            text-align: center;
 
-    font-size:12px;
+            margin: 0 auto 45px;
+        }
 
-    font-weight:900;
+        .heading small {
+            color: var(--pink);
 
-    letter-spacing:2px;
-}
+            font-size: 12px;
+            font-weight: 900;
 
-.heading h2{
-    font-family:Georgia,serif;
+            letter-spacing: 2px;
+        }
 
-    font-size:clamp(36px,5vw,52px);
+        .heading h2 {
+            font-family: Georgia, serif;
 
-    margin:10px 0 13px;
-}
+            font-size: clamp(36px, 5vw, 52px);
 
-.heading p{
-    color:var(--muted);
+            margin: 10px 0 13px;
+        }
 
-    line-height:1.7;
-}
+        .heading p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
 
 
-/* =========================
-   CAKES
-========================= */
+        /* =========================
+           CAKES
+        ========================= */
 
-.cakes{
-    background:white;
-}
+        .cakes {
+            background: white;
+        }
 
-.cake-grid{
-    display:grid;
+        .cake-grid {
+            display: grid;
 
-    grid-template-columns:
-    repeat(3,1fr);
+            grid-template-columns: repeat(3, 1fr);
 
-    gap:25px;
-}
+            gap: 25px;
+        }
 
-.cake-card{
-    overflow:hidden;
+        .cake-card {
+            overflow: hidden;
 
-    background:var(--cream);
+            background: var(--cream);
 
-    border:1px solid var(--border);
+            border: 1px solid var(--border);
 
-    border-radius:23px;
+            border-radius: 23px;
 
-    transition:.35s;
-}
+            transition: 0.35s;
+        }
 
-.cake-card:hover{
-    transform:translateY(-8px);
+        .cake-card:hover {
+            transform: translateY(-8px);
 
-    box-shadow:
-    0 18px 45px rgba(75,33,12,.13);
-}
+            box-shadow: 0 18px 45px rgba(75, 33, 12, 0.13);
+        }
 
-.cake-img{
-    height:270px;
+        .cake-img {
+            height: 270px;
+            overflow: hidden;
+        }
 
-    overflow:hidden;
-}
+        .cake-img img {
+            width: 100%;
+            height: 100%;
 
-.cake-img img{
-    width:100%;
-    height:100%;
+            object-fit: cover;
 
-    object-fit:cover;
+            transition: 0.5s;
+        }
 
-    transition:.5s;
-}
+        .cake-card:hover .cake-img img {
+            transform: scale(1.07);
+        }
 
-.cake-card:hover .cake-img img{
-    transform:scale(1.07);
-}
+        .cake-content {
+            padding: 22px;
+        }
 
-.cake-content{
-    padding:22px;
-}
+        .cake-content h3 {
+            font-family: Georgia, serif;
 
-.cake-content h3{
-    font-family:Georgia,serif;
+            font-size: 24px;
 
-    font-size:24px;
+            margin-bottom: 8px;
+        }
 
-    margin-bottom:8px;
-}
+        .cake-content p {
+            color: var(--muted);
 
-.cake-content p{
-    color:var(--muted);
+            font-size: 14px;
 
-    font-size:14px;
+            line-height: 1.65;
+        }
 
-    line-height:1.65;
-}
+        .price {
+            display: block;
 
-.price{
-    display:block;
+            margin-top: 15px;
 
-    margin-top:15px;
+            color: var(--pink);
 
-    color:var(--pink);
+            font-size: 19px;
 
-    font-size:19px;
+            font-weight: 900;
+        }
 
-    font-weight:900;
-}
 
+        /* =========================
+           ABOUT
+        ========================= */
 
-/* =========================
-   ABOUT
-========================= */
+        .about {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe5ed,
+                    #fff5ef
+                );
+        }
 
-.about{
-    background:
-    linear-gradient(
-        135deg,
-        #ffe5ed,
-        #fff5ef
-    );
-}
+        .about-grid {
+            display: grid;
 
-.about-grid{
-    display:grid;
+            grid-template-columns: 1fr 1fr;
 
-    grid-template-columns:1fr 1fr;
+            gap: 55px;
 
-    gap:55px;
+            align-items: center;
+        }
 
-    align-items:center;
-}
+        .about-img {
+            height: 480px;
 
-.about-img{
-    height:480px;
+            overflow: hidden;
 
-    overflow:hidden;
+            border-radius: 30px;
 
-    border-radius:30px;
-}
+            box-shadow: 0 18px 45px rgba(75, 33, 12, 0.12);
+        }
 
-.about-img img{
-    width:100%;
-    height:100%;
+        .about-img img {
+            width: 100%;
+            height: 100%;
 
-    object-fit:cover;
-}
+            object-fit: cover;
+        }
 
-.about-content small{
-    color:var(--pink);
+        .about-content small {
+            color: var(--pink);
 
-    font-weight:900;
+            font-weight: 900;
 
-    letter-spacing:2px;
-}
+            letter-spacing: 2px;
+        }
 
-.about-content h2{
-    font-family:Georgia,serif;
+        .about-content h2 {
+            font-family: Georgia, serif;
 
-    font-size:clamp(38px,5vw,55px);
+            font-size: clamp(38px, 5vw, 55px);
 
-    line-height:1.1;
+            line-height: 1.1;
 
-    margin:12px 0 20px;
-}
+            margin: 12px 0 20px;
+        }
 
-.about-content p{
-    color:var(--muted);
+        .about-content p {
+            color: var(--muted);
 
-    line-height:1.8;
+            line-height: 1.8;
 
-    margin-bottom:14px;
-}
+            margin-bottom: 14px;
+        }
 
 
-/* =========================
-   WHY US
-========================= */
+        /* =========================
+           WHY US
+        ========================= */
 
-.why-grid{
-    display:grid;
+        .why-grid {
+            display: grid;
 
-    grid-template-columns:
-    repeat(4,1fr);
+            grid-template-columns: repeat(4, 1fr);
 
-    gap:20px;
-}
+            gap: 20px;
+        }
 
-.why-card{
-    padding:30px 20px;
+        .why-card {
+            padding: 30px 20px;
 
-    background:white;
+            background: white;
 
-    border:1px solid var(--border);
+            border: 1px solid var(--border);
 
-    border-radius:20px;
+            border-radius: 20px;
 
-    text-align:center;
+            text-align: center;
 
-    transition:.3s;
-}
+            transition: 0.3s;
+        }
 
-.why-card:hover{
-    transform:translateY(-5px);
+        .why-card:hover {
+            transform: translateY(-5px);
 
-    box-shadow:
-    0 15px 35px rgba(75,33,12,.1);
-}
+            box-shadow: 0 15px 35px rgba(75, 33, 12, 0.1);
+        }
 
-.why-icon{
-    font-size:40px;
+        .why-icon {
+            font-size: 40px;
+            margin-bottom: 13px;
+        }
 
-    margin-bottom:13px;
-}
+        .why-card h3 {
+            margin-bottom: 8px;
+        }
 
-.why-card h3{
-    margin-bottom:8px;
-}
+        .why-card p {
+            color: var(--muted);
 
-.why-card p{
-    color:var(--muted);
+            font-size: 14px;
 
-    font-size:14px;
+            line-height: 1.6;
+        }
 
-    line-height:1.6;
-}
 
+        /* =========================
+           ORDER
+        ========================= */
 
-/* =========================
-   ORDER
-========================= */
+        .order {
+            background: white;
+        }
 
-.order{
-    background:white;
-}
+        .order-box {
+            max-width: 850px;
 
-.order-box{
-    max-width:850px;
+            margin: auto;
 
-    margin:auto;
+            padding: 38px;
 
-    padding:38px;
+            background: #fff0f4;
 
-    background:#fff0f4;
+            border-radius: 30px;
+        }
 
-    border-radius:30px;
-}
+        .order-form {
+            display: grid;
 
-.order-form{
-    display:grid;
+            grid-template-columns: 1fr 1fr;
 
-    grid-template-columns:
-    1fr 1fr;
+            gap: 15px;
+        }
 
-    gap:15px;
-}
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
 
-.form-group{
-    display:flex;
-    flex-direction:column;
+        .full {
+            grid-column: 1 / -1;
+        }
 
-    gap:7px;
-}
+        .form-group label {
+            font-size: 13px;
+            font-weight: 800;
+        }
 
-.full{
-    grid-column:1/-1;
-}
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
 
-.form-group label{
-    font-size:13px;
-    font-weight:800;
-}
+            padding: 14px;
 
-.form-group input,
-.form-group select,
-.form-group textarea{
-    width:100%;
+            border: 1px solid #e5cdd5;
 
-    padding:14px;
+            border-radius: 12px;
 
-    border:1px solid #e5cdd5;
+            background: white;
 
-    border-radius:12px;
+            color: var(--brown);
 
-    background:white;
+            font-size: 15px;
 
-    color:var(--brown);
+            outline: none;
+        }
 
-    font-size:15px;
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--pink);
 
-    outline:none;
-}
+            box-shadow:
+                0 0 0 3px rgba(217, 87, 124, 0.12);
+        }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:var(--pink);
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
 
-    box-shadow:
-    0 0 0 3px rgba(217,87,124,.12);
-}
+        .submit {
+            width: 100%;
 
-.form-group textarea{
-    min-height:120px;
+            border: none;
 
-    resize:vertical;
-}
+            padding: 15px;
 
-.submit{
-    width:100%;
+            border-radius: 30px;
 
-    border:0;
+            background: var(--brown);
 
-    padding:15px;
+            color: white;
 
-    border-radius:30px;
+            font-size: 16px;
 
-    background:var(--brown);
+            font-weight: 800;
 
-    color:white;
+            cursor: pointer;
 
-    font-size:16px;
+            transition: 0.3s;
+        }
 
-    font-weight:800;
+        .submit:hover {
+            background: var(--dark-brown);
+        }
 
-    cursor:pointer;
 
-    transition:.3s;
-}
+        /* =========================
+           CONTACT
+        ========================= */
 
-.submit:hover{
-    background:var(--dark);
-}
+        .contact {
+            background: var(--brown);
 
+            color: white;
 
-/* =========================
-   CONTACT
-========================= */
+            text-align: center;
+        }
 
-.contact{
-    background:var(--brown);
+        .contact h2 {
+            font-family: Georgia, serif;
 
-    color:white;
+            font-size: clamp(36px, 5vw, 48px);
 
-    text-align:center;
-}
+            margin-bottom: 15px;
+        }
 
-.contact h2{
-    font-family:Georgia,serif;
+        .contact p {
+            color: #ead8d0;
+            margin: 8px;
+        }
 
-    font-size:clamp(36px,5vw,48px);
+        .contact a {
+            color: white;
+        }
 
-    margin-bottom:15px;
-}
 
-.contact p{
-    color:#ead8d0;
+        /* =========================
+           FOOTER
+        ========================= */
 
-    margin:7px;
-}
+        footer {
+            padding: 23px 15px;
 
+            background: var(--dark-brown);
 
-/* =========================
-   FOOTER
-========================= */
+            color: #dec8bd;
 
-footer{
-    padding:23px 15px;
+            text-align: center;
 
-    background:var(--dark);
+            font-size: 13px;
+        }
 
-    color:#dec8bd;
 
-    text-align:center;
+        /* =========================
+           TABLET
+        ========================= */
 
-    font-size:13px;
-}
+        @media (max-width: 1100px) {
 
+            nav {
+                gap: 13px;
+            }
 
-/* =========================
-   TABLET
-========================= */
+            nav a {
+                font-size: 13px;
+            }
 
-@media(max-width:1100px){
+            .cake-grid {
+                grid-template-columns: 1fr 1fr;
+            }
 
-    .search{
-        display:none;
-    }
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-    nav{
-        gap:15px;
-    }
 
-    nav a{
-        font-size:13px;
-    }
+        /* =========================
+           MOBILE
+        ========================= */
 
-    .header-inner{
-        gap:15px;
-    }
+        @media (max-width: 800px) {
 
-    .cake-grid{
-        grid-template-columns:1fr 1fr;
-    }
+            .header-inner {
+                min-height: 75px;
 
-    .why-grid{
-        grid-template-columns:1fr 1fr;
-    }
+                justify-content: space-between;
+            }
 
-}
+            .logo {
+                width: 54px;
+                height: 54px;
+            }
 
+            .logo-name {
+                font-size: 21px;
+            }
 
-/* =========================
-   MOBILE
-========================= */
+            .search-wrapper {
+                display: none;
+            }
 
-@media(max-width:800px){
+            nav,
+            .header-order {
+                display: none;
+            }
 
-    .header-inner{
-        min-height:75px;
+            .menu-btn {
+                display: block;
+            }
 
-        justify-content:space-between;
-    }
+            .mobile-menu {
+                top: 75px;
+            }
 
-    .logo{
-        width:54px;
-        height:54px;
-    }
+            .hero {
+                min-height: auto;
 
-    .logo-name{
-        font-size:21px;
-    }
+                padding: 55px 0;
+            }
 
-    nav,
-    .header-order{
-        display:none;
-    }
+            .hero-grid {
+                grid-template-columns: 1fr;
 
-    .menu-btn{
-        display:block;
-    }
+                text-align: center;
 
-    .mobile-menu{
-        top:75px;
-    }
+                gap: 40px;
+            }
 
-    .hero{
-        min-height:auto;
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
 
-        padding:55px 0;
-    }
+                font-size: 16px;
+            }
 
-    .hero-grid{
-        grid-template-columns:1fr;
+            .hero-buttons {
+                justify-content: center;
+            }
 
-        text-align:center;
+            .hero-image {
+                height: 390px;
+            }
 
-        gap:40px;
-    }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .hero p{
-        margin-left:auto;
-        margin-right:auto;
+            .about-img {
+                height: 390px;
+            }
 
-        font-size:16px;
-    }
+            .cake-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-    .hero-buttons{
-        justify-content:center;
-    }
 
-    .hero-image{
-        height:390px;
-    }
+        /* =========================
+           SMALL MOBILE
+        ========================= */
 
-    .about-grid{
-        grid-template-columns:1fr;
-    }
+        @media (max-width: 560px) {
 
-    .about-img{
-        height:390px;
-    }
+            .container {
+                width: 91%;
+            }
 
-    .cake-grid{
-        grid-template-columns:1fr 1fr;
-    }
+            .header-inner {
+                width: 92%;
+            }
 
-}
+            .logo {
+                width: 48px;
+                height: 48px;
+            }
 
+            .logo-name {
+                font-size: 19px;
+            }
 
-/* =========================
-   SMALL PHONE
-========================= */
+            .hero h1 {
+                font-size: 43px;
+            }
 
-@media(max-width:560px){
+            .hero-buttons {
+                flex-direction: column;
+            }
 
-    .container{
-        width:91%;
-    }
+            .btn {
+                width: 100%;
+            }
 
-    .header-inner{
-        width:92%;
-    }
+            .hero-image {
+                height: 320px;
+                border-radius: 25px;
+            }
 
-    .logo{
-        width:48px;
-        height:48px;
-    }
+            section {
+                padding: 65px 0;
+            }
 
-    .logo-name{
-        font-size:19px;
-    }
+            .cake-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .hero h1{
-        font-size:43px;
-    }
+            .cake-img {
+                height: 280px;
+            }
 
-    .hero-buttons{
-        flex-direction:column;
-    }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .btn{
-        width:100%;
-    }
+            .about-img {
+                height: 320px;
+            }
 
-    .hero-image{
-        height:320px;
+            .order-box {
+                padding: 22px 16px;
+            }
 
-        border-radius:25px;
-    }
+            .order-form {
+                grid-template-columns: 1fr;
+            }
 
-    section{
-        padding:65px 0;
-    }
+            .full {
+                grid-column: auto;
+            }
+        }
 
-    .cake-grid{
-        grid-template-columns:1fr;
-    }
 
-    .cake-img{
-        height:280px;
-    }
+        @media (max-width: 370px) {
 
-    .why-grid{
-        grid-template-columns:1fr;
-    }
+            .logo-name {
+                font-size: 17px;
+            }
 
-    .about-img{
-        height:320px;
-    }
+            .logo {
+                width: 44px;
+                height: 44px;
+            }
 
-    .order-box{
-        padding:22px 16px;
-    }
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
 
-    .order-form{
-        grid-template-columns:1fr;
-    }
-
-    .full{
-        grid-column:auto;
-    }
-
-}
-
-
-/* =========================
-   VERY SMALL
-========================= */
-
-@media(max-width:370px){
-
-    .logo-name{
-        font-size:17px;
-    }
-
-    .logo{
-        width:44px;
-        height:44px;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-}
-
-</style>
+    </style>
 </head>
-
 
 <body>
 
 
-<!-- ==================================================
+<!-- =========================
      HEADER
-================================================== -->
+========================= -->
 
 <header>
 
-<div class="header-inner">
+    <div class="header-inner">
+
+        <a href="#home" class="logo-area">
+
+            <div class="logo">
+
+                <img
+                    src="https://raw.githubusercontent.com/yourdocuments/products/main/cakeFrame%201%20(1).svg"
+                    alt="Cakes Buddy Logo"
+                >
+
+            </div>
+
+            <div class="logo-name">
+                Cakes Buddy
+            </div>
+
+        </a>
 
 
-<a href="#home" class="logo-area">
+        <!-- SEARCH -->
 
-<div class="logo">
+        <div class="search-wrapper">
 
-<img
-src="https://raw.githubusercontent.com/yourdocuments/products/main/cakeFrame%201%20(1).svg"
-alt="Cakes Buddy Logo"
->
+            <button
+                class="search"
+                id="searchButton"
+                type="button"
+            >
 
-</div>
+                <span class="search-icon">⌕</span>
 
-<div class="logo-name">
-Cakes Buddy
-</div>
+                <span>
+                    Search
+                </span>
 
-</a>
-
-
-<div class="search" onclick="searchCake()">
-
-<span class="search-icon">⌕</span>
-
-<span class="search-text">
-Search
-</span>
-
-</div>
+            </button>
 
 
-<nav>
+            <div
+                class="search-dropdown"
+                id="searchDropdown"
+            >
 
-<a href="#home">
-Home
-</a>
+                <div class="search-input">
 
-<a href="#cakes">
-Our Cakes
-</a>
+                    <span>⌕</span>
 
-<a href="#about">
-About
-</a>
+                    <input
+                        type="text"
+                        id="cakeSearchInput"
+                        placeholder="Search cakes..."
+                        autocomplete="off"
+                    >
 
-<a href="#why">
-Why Us
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-<a href="#cakes" class="shop">
-Shop
-</a>
-
-</nav>
+                </div>
 
 
-<a
-href="#order"
-class="order-btn">
+                <div
+                    class="search-list"
+                    id="searchList"
+                >
 
-Order Now
+                    <a
+                        href="#chocolate-dream"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">🍫</span>
+                        Chocolate Dream
+                    </a>
 
-</a>
+                    <a
+                        href="#strawberry-bliss"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">🍓</span>
+                        Strawberry Bliss
+                    </a>
+
+                    <a
+                        href="#vanilla-celebration"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">🍰</span>
+                        Vanilla Celebration
+                    </a>
+
+                    <a
+                        href="#red-velvet"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">❤️</span>
+                        Red Velvet
+                    </a>
+
+                    <a
+                        href="#fresh-fruit"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">🍓</span>
+                        Fresh Fruit Cake
+                    </a>
+
+                    <a
+                        href="#birthday-special"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">🎂</span>
+                        Birthday Special
+                    </a>
+
+                    <a
+                        href="#custom-cake"
+                        class="search-item"
+                    >
+                        <span class="search-item-icon">🎨</span>
+                        Custom Cake
+                    </a>
+
+                </div>
 
 
-<button
-class="menu-btn"
-onclick="toggleMenu()">
+                <div
+                    class="no-result"
+                    id="noResult"
+                >
+                    No cake found 😔
+                </div>
 
-☰
+            </div>
 
-</button>
-
-
-</div>
+        </div>
 
 
-<!-- MOBILE MENU -->
+        <!-- DESKTOP NAV -->
 
-<div
-class="mobile-menu"
-id="mobileMenu">
+        <nav>
 
-<a
-href="#home"
-onclick="closeMenu()">
+            <a href="#home">Home</a>
 
-Home
+            <a href="#cakes">Our Cakes</a>
 
-</a>
+            <a href="#about">About</a>
 
-<a
-href="#cakes"
-onclick="closeMenu()">
+            <a href="#why">Why Us</a>
 
-Our Cakes
+            <a href="#contact">Contact</a>
 
-</a>
+            <a href="#cakes" class="shop">Shop</a>
 
-<a
-href="#about"
-onclick="closeMenu()">
+        </nav>
 
-About
 
-</a>
+        <a
+            href="#order"
+            class="order-btn"
+        >
+            Order Now
+        </a>
 
-<a
-href="#why"
-onclick="closeMenu()">
 
-Why Us
+        <!-- MOBILE BUTTON -->
 
-</a>
+        <button
+            class="menu-btn"
+            id="menuButton"
+            type="button"
+            aria-label="Open Menu"
+        >
+            ☰
+        </button>
 
-<a
-href="#contact"
-onclick="closeMenu()">
+    </div>
 
-Contact
 
-</a>
+    <!-- MOBILE MENU -->
 
-<a
-href="#cakes"
-onclick="closeMenu()">
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
 
-Shop
+        <a href="#home">Home</a>
 
-</a>
+        <a href="#cakes">Our Cakes</a>
 
-<a
-href="#order"
-class="mobile-order"
-onclick="closeMenu()">
+        <a href="#about">About</a>
 
-Order Now
+        <a href="#why">Why Us</a>
 
-</a>
+        <a href="#contact">Contact</a>
 
-</div>
+        <a href="#cakes">Shop</a>
+
+        <a
+            href="#order"
+            class="mobile-order"
+        >
+            Order Now
+        </a>
+
+    </div>
 
 </header>
 
 
 
-<!-- ==================================================
+<!-- =========================
      HERO
-================================================== -->
+========================= -->
 
 <section
-class="hero"
-id="home">
-
-<div class="container hero-grid">
-
-
-<div>
-
-<span class="badge">
-
-🍰 HOMEMADE • FRESH • MADE WITH LOVE
-
-</span>
-
-
-<h1>
-
-We bake to
-
-<span>
-make your day.
-</span>
-
-</h1>
-
-
-<p>
-
-Welcome to Cakes Buddy — beautiful homemade cakes
-prepared with fresh ingredients and lots of love.
-From birthdays to simple sweet moments,
-we're here to make your day extra special.
-
-</p>
-
-
-<div class="hero-buttons">
-
-<a
-href="#cakes"
-class="btn btn-primary">
-
-Explore Cakes →
-
-</a>
-
-
-<a
-href="#order"
-class="btn btn-secondary">
-
-Custom Cake
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="hero-image">
-
-<img
-src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90"
-alt="Chocolate cake"
+    class="hero"
+    id="home"
 >
 
-</div>
+    <div class="container">
+
+        <div class="hero-grid">
+
+            <div>
+
+                <span class="badge">
+                    🍰 HOMEMADE • FRESH • MADE WITH LOVE
+                </span>
 
 
-</div>
+                <h1>
+                    We bake to
+                    <span>make your day.</span>
+                </h1>
+
+
+                <p>
+                    Welcome to Cakes Buddy — beautiful homemade
+                    cakes prepared with fresh ingredients and lots
+                    of love. From birthdays to simple sweet moments,
+                    we're here to make your day extra special.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#cakes"
+                        class="btn btn-primary"
+                    >
+                        Explore Cakes →
+                    </a>
+
+                    <a
+                        href="#order"
+                        class="btn btn-secondary"
+                    >
+                        Custom Cake
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90"
+                    alt="Homemade Chocolate Cake"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- ==================================================
-     CAKES
-================================================== -->
+<!-- =========================
+     OUR CAKES
+========================= -->
 
 <section
-class="cakes"
-id="cakes">
-
-<div class="container">
-
-
-<div class="heading">
-
-<small>
-OUR FAVOURITES
-</small>
-
-<h2>
-Pick Your Perfect Cake
-</h2>
-
-<p>
-Fresh homemade cakes for birthdays,
-parties and all your sweet moments.
-</p>
-
-</div>
-
-
-<div class="cake-grid">
-
-
-<div class="cake-card">
-
-<div class="cake-img">
-
-<img
-src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=90"
-alt="Chocolate Dream"
-loading="lazy"
+    class="cakes"
+    id="cakes"
 >
 
-</div>
+    <div class="container">
 
-<div class="cake-content">
+        <div class="heading">
 
-<h3>
-Chocolate Dream
-</h3>
+            <small>
+                OUR FAVOURITES
+            </small>
 
-<p>
-Moist chocolate sponge with silky cream
-and rich chocolate finish.
-</p>
+            <h2>
+                Pick Your Perfect Cake
+            </h2>
 
-<span class="price">
-৳ 950+
-</span>
+            <p>
+                Fresh homemade cakes for birthdays,
+                parties and all your sweet moments.
+            </p>
 
-</div>
+        </div>
 
-</div>
 
+        <div class="cake-grid">
 
-<div class="cake-card">
 
-<div class="cake-img">
+            <!-- Chocolate -->
 
-<img
-src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=90"
-alt="Strawberry Bliss"
-loading="lazy"
->
+            <div
+                class="cake-card"
+                id="chocolate-dream"
+            >
 
-</div>
+                <div class="cake-img">
 
-<div class="cake-content">
+                    <img
+                        src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=90"
+                        alt="Chocolate Dream Cake"
+                        loading="lazy"
+                    >
 
-<h3>
-Strawberry Bliss
-</h3>
+                </div>
 
-<p>
-Soft vanilla sponge with strawberry cream
-and fresh berries.
-</p>
+                <div class="cake-content">
 
-<span class="price">
-৳ 900+
-</span>
+                    <h3>
+                        Chocolate Dream
+                    </h3>
 
-</div>
+                    <p>
+                        Moist chocolate sponge with silky cream
+                        and rich chocolate finish.
+                    </p>
 
-</div>
+                    <span class="price">
+                        ৳ 950+
+                    </span>
 
+                </div>
 
-<div class="cake-card">
+            </div>
 
-<div class="cake-img">
 
-<img
-src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=90"
-alt="Vanilla Celebration"
-loading="lazy"
->
+            <!-- Strawberry -->
 
-</div>
+            <div
+                class="cake-card"
+                id="strawberry-bliss"
+            >
 
-<div class="cake-content">
+                <div class="cake-img">
 
-<h3>
-Vanilla Celebration
-</h3>
+                    <img
+                        src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=90"
+                        alt="Strawberry Bliss Cake"
+                        loading="lazy"
+                    >
 
-<p>
-Light vanilla cake with smooth buttercream.
-</p>
+                </div>
 
-<span class="price">
-৳ 800+
-</span>
+                <div class="cake-content">
 
-</div>
+                    <h3>
+                        Strawberry Bliss
+                    </h3>
 
-</div>
+                    <p>
+                        Soft vanilla sponge with strawberry cream
+                        and fresh berries.
+                    </p>
 
+                    <span class="price">
+                        ৳ 900+
+                    </span>
 
-<div class="cake-card">
+                </div>
 
-<div class="cake-img">
+            </div>
 
-<img
-src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=90"
-alt="Red Velvet"
-loading="lazy"
->
 
-</div>
+            <!-- Vanilla -->
 
-<div class="cake-content">
+            <div
+                class="cake-card"
+                id="vanilla-celebration"
+            >
 
-<h3>
-Red Velvet
-</h3>
+                <div class="cake-img">
 
-<p>
-Soft red velvet sponge with creamy cheese frosting.
-</p>
+                    <img
+                        src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=90"
+                        alt="Vanilla Celebration Cake"
+                        loading="lazy"
+                    >
 
-<span class="price">
-৳ 1100+
-</span>
+                </div>
 
-</div>
+                <div class="cake-content">
 
-</div>
+                    <h3>
+                        Vanilla Celebration
+                    </h3>
 
+                    <p>
+                        Light vanilla cake with smooth buttercream.
+                    </p>
 
-<div class="cake-card">
+                    <span class="price">
+                        ৳ 800+
+                    </span>
 
-<div class="cake-img">
+                </div>
 
-<img
-src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=90"
-alt="Fresh Fruit Cake"
-loading="lazy"
->
+            </div>
 
-</div>
 
-<div class="cake-content">
+            <!-- Red Velvet -->
 
-<h3>
-Fresh Fruit Cake
-</h3>
+            <div
+                class="cake-card"
+                id="red-velvet"
+            >
 
-<p>
-Fresh seasonal fruits with soft sponge and cream.
-</p>
+                <div class="cake-img">
 
-<span class="price">
-৳ 1000+
-</span>
+                    <img
+                        src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=90"
+                        alt="Red Velvet Cake"
+                        loading="lazy"
+                    >
 
-</div>
+                </div>
 
-</div>
+                <div class="cake-content">
 
+                    <h3>
+                        Red Velvet
+                    </h3>
 
-<div class="cake-card">
+                    <p>
+                        Soft red velvet sponge with creamy cheese frosting.
+                    </p>
 
-<div class="cake-img">
+                    <span class="price">
+                        ৳ 1100+
+                    </span>
 
-<img
-src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=90"
-alt="Birthday Special"
-loading="lazy"
->
+                </div>
 
-</div>
+            </div>
 
-<div class="cake-content">
 
-<h3>
-Birthday Special
-</h3>
+            <!-- Fruit -->
 
-<p>
-Custom cake designed especially for your celebration.
-</p>
+            <div
+                class="cake-card"
+                id="fresh-fruit"
+            >
 
-<span class="price">
-৳ 1200+
-</span>
+                <div class="cake-img">
 
-</div>
+                    <img
+                        src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=90"
+                        alt="Fresh Fruit Cake"
+                        loading="lazy"
+                    >
 
-</div>
+                </div>
 
+                <div class="cake-content">
 
-</div>
+                    <h3>
+                        Fresh Fruit Cake
+                    </h3>
 
-</div>
+                    <p>
+                        Fresh seasonal fruits with soft sponge and cream.
+                    </p>
+
+                    <span class="price">
+                        ৳ 1000+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Birthday -->
+
+            <div
+                class="cake-card"
+                id="birthday-special"
+            >
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=90"
+                        alt="Birthday Special Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="cake-content">
+
+                    <h3>
+                        Birthday Special
+                    </h3>
+
+                    <p>
+                        Custom cake designed especially for your celebration.
+                    </p>
+
+                    <span class="price">
+                        ৳ 1200+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Custom -->
+
+            <div
+                class="cake-card"
+                id="custom-cake"
+            >
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=90"
+                        alt="Custom Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="cake-content">
+
+                    <h3>
+                        Custom Cake
+                    </h3>
+
+                    <p>
+                        Tell us your theme, colour and design.
+                        We will make it special for you.
+                    </p>
+
+                    <span class="price">
+                        Custom Price
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =========================
      ABOUT
-================================================== -->
+========================= -->
 
 <section
-class="about"
-id="about">
-
-<div class="container about-grid">
-
-
-<div class="about-img">
-
-<img
-src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=90"
-alt="Homemade baking"
-loading="lazy"
+    class="about"
+    id="about"
 >
 
-</div>
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=90"
+                    alt="Homemade Baking"
+                    loading="lazy"
+                >
+
+            </div>
 
 
-<div class="about-content">
+            <div class="about-content">
 
-<small>
-MADE WITH LOVE ❤️
-</small>
+                <small>
+                    MADE WITH LOVE ❤️
+                </small>
 
-<h2>
-Homemade tastes different.
-</h2>
+                <h2>
+                    Homemade tastes different.
+                </h2>
 
-<p>
-Cakes Buddy is all about warm,
-homemade goodness. Every cake is prepared
-with care and quality ingredients.
-</p>
+                <p>
+                    Cakes Buddy is all about warm,
+                    homemade goodness. Every cake is prepared
+                    with care and quality ingredients.
+                </p>
 
-<p>
-We make cakes for birthdays,
-anniversaries, parties and all the
-little moments worth celebrating.
-</p>
+                <p>
+                    We make cakes for birthdays,
+                    anniversaries, parties and all the
+                    little moments worth celebrating.
+                </p>
 
-</div>
+            </div>
 
+        </div>
 
-</div>
+    </div>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =========================
      WHY US
-================================================== -->
+========================= -->
 
 <section id="why">
 
-<div class="container">
+    <div class="container">
+
+        <div class="heading">
+
+            <small>
+                WHY CAKES BUDDY
+            </small>
+
+            <h2>
+                Sweetness you can trust
+            </h2>
+
+            <p>
+                We put love and care into every cake we make.
+            </p>
+
+        </div>
 
 
-<div class="heading">
-
-<small>
-WHY CAKES BUDDY
-</small>
-
-<h2>
-Sweetness you can trust
-</h2>
-
-<p>
-We put love and care into every cake we make.
-</p>
-
-</div>
+        <div class="why-grid">
 
 
-<div class="why-grid">
+            <div class="why-card">
+
+                <div class="why-icon">
+                    🥚
+                </div>
+
+                <h3>
+                    Fresh Ingredients
+                </h3>
+
+                <p>
+                    Fresh ingredients for better taste and quality.
+                </p>
+
+            </div>
 
 
-<div class="why-card">
+            <div class="why-card">
 
-<div class="why-icon">
-🥚
-</div>
+                <div class="why-icon">
+                    👩‍🍳
+                </div>
 
-<h3>
-Fresh Ingredients
-</h3>
+                <h3>
+                    Homemade
+                </h3>
 
-<p>
-Fresh ingredients for better taste and quality.
-</p>
+                <p>
+                    Prepared with homemade care and attention.
+                </p>
 
-</div>
-
-
-<div class="why-card">
-
-<div class="why-icon">
-👩‍🍳
-</div>
-
-<h3>
-Homemade
-</h3>
-
-<p>
-Prepared with homemade care and attention.
-</p>
-
-</div>
+            </div>
 
 
-<div class="why-card">
+            <div class="why-card">
 
-<div class="why-icon">
-🎨
-</div>
+                <div class="why-icon">
+                    🎨
+                </div>
 
-<h3>
-Custom Design
-</h3>
+                <h3>
+                    Custom Design
+                </h3>
 
-<p>
-Choose your theme, colour and writing.
-</p>
+                <p>
+                    Choose your theme, colour and writing.
+                </p>
 
-</div>
-
-
-<div class="why-card">
-
-<div class="why-icon">
-❤️
-</div>
-
-<h3>
-Made With Love
-</h3>
-
-<p>
-Every cake is made especially for you.
-</p>
-
-</div>
+            </div>
 
 
-</div>
+            <div class="why-card">
 
-</div>
+                <div class="why-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Made With Love
+                </h3>
+
+                <p>
+                    Every cake is made especially for you.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =========================
      ORDER
-================================================== -->
+========================= -->
 
 <section
-class="order"
-id="order">
-
-<div class="container">
-
-
-<div class="heading">
-
-<small>
-LET'S MAKE IT SWEET
-</small>
-
-<h2>
-Order Your Cake
-</h2>
-
-<p>
-Fill in your details and send your order through WhatsApp.
-</p>
-
-</div>
-
-
-<div class="order-box">
-
-<form
-class="order-form"
-id="orderForm">
-
-
-<div class="form-group">
-
-<label>
-Your Name
-</label>
-
-<input
-type="text"
-id="name"
-placeholder="Enter your name"
-required
+    class="order"
+    id="order"
 >
 
-</div>
+    <div class="container">
+
+        <div class="heading">
+
+            <small>
+                LET'S MAKE IT SWEET
+            </small>
+
+            <h2>
+                Order Your Cake
+            </h2>
+
+            <p>
+                Fill in your details and send your order through WhatsApp.
+            </p>
+
+        </div>
 
 
-<div class="form-group">
+        <div class="order-box">
 
-<label>
-Phone Number
-</label>
-
-<input
-type="tel"
-id="phone"
-placeholder="01XXXXXXXXX"
-required
->
-
-</div>
+            <form
+                class="order-form"
+                id="orderForm"
+            >
 
 
-<div class="form-group">
+                <div class="form-group">
 
-<label>
-Select Cake
-</label>
+                    <label>
+                        Your Name
+                    </label>
 
-<select
-id="cake"
-required>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
 
-<option value="">
-Choose a cake
-</option>
-
-<option>Chocolate Dream</option>
-<option>Strawberry Bliss</option>
-<option>Vanilla Celebration</option>
-<option>Red Velvet</option>
-<option>Fresh Fruit Cake</option>
-<option>Birthday Special</option>
-<option>Custom Cake</option>
-
-</select>
-
-</div>
+                </div>
 
 
-<div class="form-group">
+                <div class="form-group">
 
-<label>
-Cake Size
-</label>
+                    <label>
+                        Phone Number
+                    </label>
 
-<select id="size">
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="01XXXXXXXXX"
+                        required
+                    >
 
-<option>1 Pound</option>
-<option>2 Pound</option>
-<option>3 Pound</option>
-<option>4 Pound</option>
-<option>Custom Size</option>
-
-</select>
-
-</div>
+                </div>
 
 
-<div class="form-group full">
+                <div class="form-group">
 
-<label>
-Cake Details
-</label>
+                    <label>
+                        Select Cake
+                    </label>
 
-<textarea
-id="details"
-placeholder="Cake writing, colour, theme, delivery date..."
-></textarea>
+                    <select
+                        id="cake"
+                        required
+                    >
 
-</div>
+                        <option value="">
+                            Choose a cake
+                        </option>
+
+                        <option>
+                            Chocolate Dream
+                        </option>
+
+                        <option>
+                            Strawberry Bliss
+                        </option>
+
+                        <option>
+                            Vanilla Celebration
+                        </option>
+
+                        <option>
+                            Red Velvet
+                        </option>
+
+                        <option>
+                            Fresh Fruit Cake
+                        </option>
+
+                        <option>
+                            Birthday Special
+                        </option>
+
+                        <option>
+                            Custom Cake
+                        </option>
+
+                    </select>
+
+                </div>
 
 
-<div class="form-group full">
+                <div class="form-group">
 
-<button
-type="submit"
-class="submit">
+                    <label>
+                        Cake Size
+                    </label>
 
-Order Through WhatsApp 💬
+                    <select id="size">
 
-</button>
+                        <option>
+                            1 Pound
+                        </option>
 
-</div>
+                        <option>
+                            2 Pound
+                        </option>
+
+                        <option>
+                            3 Pound
+                        </option>
+
+                        <option>
+                            4 Pound
+                        </option>
+
+                        <option>
+                            Custom Size
+                        </option>
+
+                    </select>
+
+                </div>
 
 
-</form>
+                <div class="form-group full">
 
-</div>
+                    <label>
+                        Cake Details
+                    </label>
 
-</div>
+                    <textarea
+                        id="details"
+                        placeholder="Cake writing, colour, theme, delivery date..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <button
+                        type="submit"
+                        class="submit"
+                    >
+                        Order Through WhatsApp 💬
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- ==================================================
+<!-- =========================
      CONTACT
-================================================== -->
+========================= -->
 
 <section
-class="contact"
-id="contact">
+    class="contact"
+    id="contact"
+>
 
-<div class="container">
+    <div class="container">
 
-<h2>
-Contact Cakes Buddy 🎂
-</h2>
+        <h2>
+            Contact Cakes Buddy 🎂
+        </h2>
 
-<p>
-📞 01XXXXXXXXX
-</p>
+        <p>
+            📞
+            <a href="tel:+8801717503093">
+                +880 1717-503093
+            </a>
+        </p>
 
-<p>
-📧 cakebuddy@example.com
-</p>
+        <p>
+            📧
+            <a href="mailto:Naharsm6@gmail.com">
+                Naharsm6@gmail.com
+            </a>
+        </p>
 
-<p>
-📍 Bangladesh
-</p>
+        <p>
+            📍 Bangladesh
+        </p>
 
-</div>
+    </div>
 
 </section>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-© 2026 Cakes Buddy —
-We Bake To Make Your Day ❤️
+    © 2026 Cakes Buddy —
+    We Bake To Make Your Day ❤️
 
 </footer>
 
@@ -1876,141 +2107,179 @@ We Bake To Make Your Day ❤️
 
 <script>
 
-/* =========================
-   MOBILE MENU
-========================= */
+    /* =========================
+       SEARCH
+    ========================= */
 
-function toggleMenu(){
+    const searchButton =
+        document.getElementById("searchButton");
 
-    document
-    .getElementById("mobileMenu")
-    .classList
-    .toggle("active");
+    const searchDropdown =
+        document.getElementById("searchDropdown");
 
-}
+    const searchInput =
+        document.getElementById("cakeSearchInput");
 
-function closeMenu(){
+    const searchItems =
+        document.querySelectorAll(".search-item");
 
-    document
-    .getElementById("mobileMenu")
-    .classList
-    .remove("active");
-
-}
+    const noResult =
+        document.getElementById("noResult");
 
 
-/* =========================
-   SEARCH
-========================= */
+    searchButton.addEventListener("click", function(event) {
 
-function searchCake(){
+        event.stopPropagation();
 
-    const keyword =
-    prompt("Search for a cake:");
+        searchDropdown.classList.toggle("active");
 
-    if(!keyword){
-        return;
-    }
+        if (searchDropdown.classList.contains("active")) {
 
-    const cards =
-    document.querySelectorAll(".cake-card");
-
-    let found=false;
-
-    cards.forEach(function(card){
-
-        const title =
-        card
-        .querySelector("h3")
-        .innerText
-        .toLowerCase();
-
-        if(
-            title.includes(
-                keyword.toLowerCase()
-            )
-        ){
-
-            card.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-            found=true;
+            setTimeout(function() {
+                searchInput.focus();
+            }, 100);
 
         }
 
     });
 
-    if(!found){
 
-        alert(
-            "Cake not found. Try Chocolate, Strawberry, Vanilla or Red Velvet."
-        );
+    searchInput.addEventListener("input", function() {
 
-    }
+        const keyword =
+            this.value.toLowerCase().trim();
 
-}
+        let found = false;
 
 
-/* =========================
-   WHATSAPP ORDER
-========================= */
+        searchItems.forEach(function(item) {
 
-document
-.getElementById("orderForm")
-.addEventListener(
-"submit",
-function(e){
+            const text =
+                item.innerText.toLowerCase();
 
-    e.preventDefault();
+            if (text.includes(keyword)) {
+
+                item.style.display = "flex";
+
+                found = true;
+
+            } else {
+
+                item.style.display = "none";
+
+            }
+
+        });
 
 
-    const name =
+        if (found) {
+
+            noResult.style.display = "none";
+
+        } else {
+
+            noResult.style.display = "block";
+
+        }
+
+    });
+
+
+    searchItems.forEach(function(item) {
+
+        item.addEventListener("click", function() {
+
+            searchDropdown.classList.remove("active");
+
+            searchInput.value = "";
+
+            searchItems.forEach(function(link) {
+
+                link.style.display = "flex";
+
+            });
+
+        });
+
+    });
+
+
+    document.addEventListener("click", function(event) {
+
+        if (!event.target.closest(".search-wrapper")) {
+
+            searchDropdown.classList.remove("active");
+
+        }
+
+    });
+
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+
+    menuButton.addEventListener("click", function() {
+
+        mobileMenu.classList.toggle("active");
+
+    });
+
+
+    mobileMenu.querySelectorAll("a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            mobileMenu.classList.remove("active");
+
+        });
+
+    });
+
+
+
+    /* =========================
+       WHATSAPP ORDER
+    ========================= */
+
     document
-    .getElementById("name")
-    .value
-    .trim();
+        .getElementById("orderForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
 
 
-    const phone =
-    document
-    .getElementById("phone")
-    .value
-    .trim();
+            const name =
+                document.getElementById("name").value.trim();
+
+            const phone =
+                document.getElementById("phone").value.trim();
+
+            const cake =
+                document.getElementById("cake").value;
+
+            const size =
+                document.getElementById("size").value;
+
+            const details =
+                document.getElementById("details").value.trim();
 
 
-    const cake =
-    document
-    .getElementById("cake")
-    .value;
+            /* YOUR WHATSAPP NUMBER */
+
+            const whatsappNumber =
+                "8801717503093";
 
 
-    const size =
-    document
-    .getElementById("size")
-    .value;
-
-
-    const details =
-    document
-    .getElementById("details")
-    .value
-    .trim();
-
-
-    /*
-       নিজের WhatsApp number এখানে দিন.
-
-       Example:
-       8801712345678
-    */
-
-    const whatsappNumber =
-    "8801XXXXXXXXX";
-
-
-    const message =
+            const message =
 `Hello Cakes Buddy! 🎂
 
 I want to order a cake.
@@ -2022,22 +2291,21 @@ Size: ${size}
 Details: ${details}`;
 
 
-    const url =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(message);
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                encodeURIComponent(message);
 
 
-    window.open(
-        url,
-        "_blank"
-    );
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
 
-});
+        });
 
 </script>
 
 </body>
 </html>
-```
