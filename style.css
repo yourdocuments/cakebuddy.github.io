@@ -1,6 +1,6 @@
-/* =========================================
-   CAKES BUDDY - FULL STYLE.CSS
-========================================= */
+/* =====================================================
+   CAKES BUDDY — COMPLETE STYLE.CSS
+===================================================== */
 
 :root {
     --brown: #4b210c;
@@ -14,6 +14,11 @@
     --border: #ecd9df;
 }
 
+
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -25,9 +30,14 @@ html {
 }
 
 body {
+    width: 100%;
+    min-height: 100vh;
+
     font-family: Arial, Helvetica, sans-serif;
+
     background: var(--cream);
     color: var(--text);
+
     overflow-x: hidden;
 }
 
@@ -49,9 +59,9 @@ textarea {
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 header {
     position: sticky;
@@ -64,7 +74,8 @@ header {
 
     border-bottom: 1px solid #f0dfe3;
 
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.06);
+    box-shadow:
+        0 3px 18px rgba(0, 0, 0, 0.06);
 }
 
 .header-inner {
@@ -82,9 +93,9 @@ header {
 }
 
 
-/* =========================================
+/* =====================================================
    LOGO
-========================================= */
+===================================================== */
 
 .logo-area {
     display: flex;
@@ -105,7 +116,7 @@ header {
 
     overflow: hidden;
 
-    background: #fff;
+    background: #ffffff;
 
     border-radius: 50%;
 }
@@ -129,9 +140,9 @@ header {
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* =====================================================
+   DESKTOP NAV
+===================================================== */
 
 nav {
     display: flex;
@@ -150,7 +161,7 @@ nav a {
 
     white-space: nowrap;
 
-    transition: 0.25s;
+    transition: 0.25s ease;
 }
 
 nav a:hover {
@@ -162,9 +173,9 @@ nav .shop {
 }
 
 
-/* =========================================
+/* =====================================================
    SEARCH
-========================================= */
+===================================================== */
 
 .search-wrapper {
     position: relative;
@@ -178,8 +189,7 @@ nav .shop {
 
     padding: 10px 13px;
 
-    border: 0;
-
+    border: none;
     border-radius: 25px;
 
     background: transparent;
@@ -191,7 +201,7 @@ nav .shop {
     font-size: 14px;
     font-weight: 700;
 
-    transition: 0.25s;
+    transition: 0.25s ease;
 }
 
 .search:hover {
@@ -199,13 +209,13 @@ nav .shop {
 }
 
 .search-icon {
-    font-size: 20px;
+    font-size: 19px;
 }
 
 
-/* =========================================
+/* =====================================================
    SEARCH DROPDOWN
-========================================= */
+===================================================== */
 
 .search-dropdown {
     position: absolute;
@@ -215,7 +225,7 @@ nav .shop {
 
     width: 320px;
 
-    background: #fff;
+    background: #ffffff;
 
     border: 1px solid var(--border);
 
@@ -231,7 +241,7 @@ nav .shop {
 
     transform: translateY(-8px);
 
-    transition: 0.25s;
+    transition: 0.25s ease;
 
     z-index: 10000;
 }
@@ -257,15 +267,16 @@ nav .shop {
 }
 
 .search-input span {
-    font-size: 19px;
     color: var(--pink);
+
+    font-size: 19px;
 }
 
 .search-input input {
     width: 100%;
 
-    border: 0;
-    outline: 0;
+    border: none;
+    outline: none;
 
     background: transparent;
 
@@ -295,7 +306,7 @@ nav .shop {
     font-size: 14px;
     font-weight: 700;
 
-    transition: 0.2s;
+    transition: 0.2s ease;
 }
 
 .search-item:hover {
@@ -317,21 +328,19 @@ nav .shop {
 }
 
 
-/* =========================================
+/* =====================================================
    ORDER BUTTON
-========================================= */
+===================================================== */
 
 .order-btn {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
     padding: 13px 21px;
 
     background: var(--brown);
-
-    color: #fff;
+    color: #ffffff;
 
     border-radius: 30px;
 
@@ -340,7 +349,7 @@ nav .shop {
 
     white-space: nowrap;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .order-btn:hover {
@@ -350,9 +359,9 @@ nav .shop {
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE MENU BUTTON
-========================================= */
+===================================================== */
 
 .menu-btn {
     display: none;
@@ -360,8 +369,7 @@ nav .shop {
     width: 45px;
     height: 45px;
 
-    border: 0;
-
+    border: none;
     border-radius: 12px;
 
     background: var(--light-pink);
@@ -374,9 +382,9 @@ nav .shop {
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE MENU
-========================================= */
+===================================================== */
 
 .mobile-menu {
     display: none;
@@ -390,7 +398,7 @@ nav .shop {
 
     padding: 10px;
 
-    background: #fff;
+    background: #ffffff;
 
     border-radius: 18px;
 
@@ -413,7 +421,7 @@ nav .shop {
 }
 
 .mobile-menu a:last-child {
-    border-bottom: 0;
+    border-bottom: none;
 }
 
 .mobile-order {
@@ -423,19 +431,18 @@ nav .shop {
 
     background: var(--brown);
 
-    color: #fff !important;
+    color: #ffffff !important;
 
     border-radius: 25px;
 }
 
 
-/* =========================================
-   COMMON
-========================================= */
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container {
     width: 92%;
-
     max-width: 1200px;
 
     margin: auto;
@@ -446,17 +453,180 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
+   5 BANNER SLIDER
+===================================================== */
+
+.banner-slider {
+    position: relative;
+
+    width: 100%;
+
+    height: 560px;
+
+    overflow: hidden;
+
+    background: #ffeef3;
+}
+
+.slides {
+    display: flex;
+
+    width: 500%;
+    height: 100%;
+
+    transform: translateX(0);
+
+    transition:
+        transform 0.75s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.slide {
+    position: relative;
+
+    width: 20%;
+    height: 100%;
+
+    flex: 0 0 20%;
+
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+}
+
+
+/* =====================================================
+   SLIDER ARROWS
+===================================================== */
+
+.slider-btn {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: var(--brown);
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.15);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.slider-btn:hover {
+    background: var(--pink);
+
+    color: #ffffff;
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+.slider-btn:active {
+    transform:
+        translateY(-50%)
+        scale(0.95);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+
+/* =====================================================
+   SLIDER DOTS
+===================================================== */
+
+.slider-dots {
+    position: absolute;
+
+    left: 50%;
+    bottom: 20px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    z-index: 20;
+}
+
+.slider-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+}
+
+.slider-dot.active {
+    width: 26px;
+
+    background: #ffffff;
+}
+
+
+/* =====================================================
    HERO
-========================================= */
+===================================================== */
 
 .hero {
-    min-height: calc(100vh - 82px);
+    min-height: 650px;
 
     display: flex;
     align-items: center;
 
-    padding: 70px 0;
+    padding: 80px 0;
 
     background:
         radial-gradient(
@@ -496,6 +666,8 @@ section {
 
     font-size: 12px;
     font-weight: 900;
+
+    letter-spacing: 0.5px;
 }
 
 .hero h1 {
@@ -544,13 +716,13 @@ section {
 
     font-weight: 800;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .btn-primary {
     background: var(--brown);
 
-    color: #fff;
+    color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -560,9 +732,11 @@ section {
 }
 
 .btn-secondary {
-    background: #fff;
+    background: #ffffff;
 
     border: 1px solid var(--border);
+
+    color: var(--brown);
 }
 
 .btn-secondary:hover {
@@ -589,9 +763,9 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
    SECTION HEADING
-========================================= */
+===================================================== */
 
 .heading {
     max-width: 700px;
@@ -625,12 +799,12 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
    CAKES
-========================================= */
+===================================================== */
 
 .cakes {
-    background: #fff;
+    background: #ffffff;
 }
 
 .cake-grid {
@@ -651,7 +825,7 @@ section {
 
     border-radius: 23px;
 
-    transition: 0.35s;
+    transition: 0.35s ease;
 }
 
 .cake-card:hover {
@@ -673,7 +847,7 @@ section {
 
     object-fit: cover;
 
-    transition: 0.5s;
+    transition: 0.5s ease;
 }
 
 .cake-card:hover .cake-img img {
@@ -713,9 +887,9 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
    ABOUT
-========================================= */
+===================================================== */
 
 .about {
     background:
@@ -781,9 +955,9 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
    WHY US
-========================================= */
+===================================================== */
 
 .why-grid {
     display: grid;
@@ -797,7 +971,7 @@ section {
 .why-card {
     padding: 30px 20px;
 
-    background: #fff;
+    background: #ffffff;
 
     border: 1px solid var(--border);
 
@@ -805,7 +979,7 @@ section {
 
     text-align: center;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .why-card:hover {
@@ -834,12 +1008,12 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
    ORDER
-========================================= */
+===================================================== */
 
 .order {
-    background: #fff;
+    background: #ffffff;
 }
 
 .order-box {
@@ -891,7 +1065,7 @@ section {
 
     border-radius: 12px;
 
-    background: #fff;
+    background: #ffffff;
 
     color: var(--brown);
 
@@ -918,7 +1092,7 @@ section {
 .submit {
     width: 100%;
 
-    border: 0;
+    border: none;
 
     padding: 15px;
 
@@ -926,7 +1100,7 @@ section {
 
     background: var(--brown);
 
-    color: #fff;
+    color: #ffffff;
 
     font-size: 16px;
 
@@ -934,7 +1108,7 @@ section {
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .submit:hover {
@@ -942,14 +1116,14 @@ section {
 }
 
 
-/* =========================================
+/* =====================================================
    CONTACT
-========================================= */
+===================================================== */
 
 .contact {
     background: var(--brown);
 
-    color: #fff;
+    color: #ffffff;
 
     text-align: center;
 }
@@ -969,13 +1143,13 @@ section {
 }
 
 .contact a {
-    color: #fff;
+    color: #ffffff;
 }
 
 
-/* =========================================
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
 footer {
     padding: 23px 15px;
@@ -990,9 +1164,9 @@ footer {
 }
 
 
-/* =========================================
+/* =====================================================
    TABLET
-========================================= */
+===================================================== */
 
 @media (max-width: 1100px) {
 
@@ -1012,12 +1186,16 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 
+    .banner-slider {
+        height: 500px;
+    }
+
 }
 
 
-/* =========================================
+/* =====================================================
    MOBILE / TABLET
-========================================= */
+===================================================== */
 
 @media (max-width: 800px) {
 
@@ -1037,10 +1215,7 @@ footer {
     }
 
     nav,
-    .header-order {
-        display: none;
-    }
-
+    .header-order,
     .search-wrapper {
         display: none;
     }
@@ -1057,12 +1232,34 @@ footer {
     }
 
 
+    /* BANNER */
+
+    .banner-slider {
+        height: 430px;
+    }
+
+    .slider-btn {
+        width: 42px;
+        height: 42px;
+
+        font-size: 17px;
+    }
+
+    .prev {
+        left: 12px;
+    }
+
+    .next {
+        right: 12px;
+    }
+
+
     /* HERO */
 
     .hero {
         min-height: auto;
 
-        padding: 55px 0;
+        padding: 60px 0;
     }
 
     .hero-grid {
@@ -1106,9 +1303,9 @@ footer {
 }
 
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 560px) {
 
@@ -1127,6 +1324,45 @@ footer {
 
     .logo-name {
         font-size: 19px;
+    }
+
+
+    /* BANNER */
+
+    .banner-slider {
+        height: 300px;
+    }
+
+    .slide img {
+        object-fit: cover;
+    }
+
+    .slider-btn {
+        width: 36px;
+        height: 36px;
+
+        font-size: 14px;
+    }
+
+    .prev {
+        left: 8px;
+    }
+
+    .next {
+        right: 8px;
+    }
+
+    .slider-dots {
+        bottom: 12px;
+    }
+
+    .slider-dot {
+        width: 7px;
+        height: 7px;
+    }
+
+    .slider-dot.active {
+        width: 21px;
     }
 
 
@@ -1197,21 +1433,14 @@ footer {
         grid-column: auto;
     }
 
-
-    /* SEARCH */
-
-    .search-dropdown {
-        width: 290px;
-    }
-
 }
 
 
-/* =========================================
-   VERY SMALL PHONE
-========================================= */
+/* =====================================================
+   SMALL PHONE
+===================================================== */
 
-@media (max-width: 370px) {
+@media (max-width: 380px) {
 
     .logo {
         width: 44px;
@@ -1222,16 +1451,40 @@ footer {
         font-size: 17px;
     }
 
+    .banner-slider {
+        height: 260px;
+    }
+
     .hero h1 {
         font-size: 38px;
+    }
+
+    .slider-btn {
+        width: 32px;
+        height: 32px;
+
+        font-size: 12px;
     }
 
 }
 
 
-/* =========================================
+/* =====================================================
+   LANDSCAPE PHONE
+===================================================== */
+
+@media (max-height: 500px) and (max-width: 800px) {
+
+    .banner-slider {
+        height: 320px;
+    }
+
+}
+
+
+/* =====================================================
    ACCESSIBILITY
-========================================= */
+===================================================== */
 
 button:focus-visible,
 a:focus-visible,
@@ -1244,9 +1497,9 @@ textarea:focus-visible {
 }
 
 
-/* =========================================
+/* =====================================================
    REDUCE MOTION
-========================================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
