@@ -1,2559 +1,1873 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <meta name="description"
-        content="Cakes Buddy - Homemade cakes baked with love to make your day special.">
-
-  <title>Cakes Buddy | Homemade Cakes</title>
-
-
-  <style>
-
-    /* =====================================================
-       RESET
-    ===================================================== */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff9f7;
-      color: #47200e;
-      overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font-family: inherit;
-    }
-
-
-    /* =====================================================
-       COLORS
-    ===================================================== */
-
-    :root {
-      --brown: #4b210c;
-      --brown-light: #743916;
-      --pink: #d9577c;
-      --pink-light: #ffe1eb;
-      --pink-bg: #fff0f4;
-      --cream: #fff9f7;
-      --text: #402b24;
-      --muted: #78645d;
-      --white: #ffffff;
-      --border: #ead5d8;
-      --shadow: 0 15px 45px rgba(75, 33, 12, 0.12);
-    }
-
-
-    /* =====================================================
-       CONTAINER
-    ===================================================== */
-
-    .container {
-      width: 92%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-
-      background: rgba(255, 255, 255, 0.96);
-
-      backdrop-filter: blur(15px);
-
-      border-bottom: 1px solid rgba(75, 33, 12, 0.08);
-
-      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-    }
-
-    .nav-inner {
-      min-height: 78px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
-    }
-
-
-    /* LOGO */
-
-    .brand {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      color: var(--brown);
-
-      flex-shrink: 0;
-    }
-
-    .brand img {
-      width: 62px;
-      height: 62px;
-
-      object-fit: contain;
-
-      border-radius: 50%;
-    }
-
-    .brand-name {
-      font-size: 23px;
-      font-weight: 800;
-    }
-
-    .brand-name span {
-      color: var(--pink);
-    }
-
-
-    /* NAV LINKS */
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: var(--brown);
-
-      font-size: 15px;
-      font-weight: 700;
-
-      transition: 0.25s;
-    }
-
-    .nav-links a:hover {
-      color: var(--pink);
-    }
-
-
-    /* NAV ORDER BUTTON */
-
-    .nav-order {
-      background: var(--brown);
-      color: white;
-
-      padding: 12px 21px;
-
-      border-radius: 30px;
-
-      font-size: 14px;
-      font-weight: 700;
-
-      transition: 0.25s;
-    }
-
-    .nav-order:hover {
-      background: var(--brown-light);
-      transform: translateY(-2px);
-    }
-
-
-    /* MOBILE MENU BUTTON */
-
-    .menu-btn {
-      display: none;
-
-      width: 45px;
-      height: 45px;
-
-      border: none;
-      border-radius: 12px;
-
-      background: var(--pink-light);
-
-      color: var(--brown);
-
-      font-size: 25px;
-
-      cursor: pointer;
-    }
-
-
-    /* =====================================================
-       HERO
-    ===================================================== */
-
-    .hero {
-      position: relative;
-
-      min-height: calc(100vh - 78px);
-
-      padding: 75px 0;
-
-      display: flex;
-      align-items: center;
-
-      background:
-        radial-gradient(
-          circle at 90% 15%,
-          #ffd1df 0,
-          transparent 28%
-        ),
-
-        linear-gradient(
-          135deg,
-          #fff0f4,
-          #fffaf8
-        );
-
-      overflow: hidden;
-    }
-
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 400px;
-      height: 400px;
-
-      background: #ffe0e9;
-
-      border-radius: 50%;
-
-      left: -250px;
-      bottom: -200px;
-
-      z-index: 0;
-    }
-
-
-    .hero-container {
-      position: relative;
-      z-index: 1;
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      align-items: center;
-
-      gap: 65px;
-    }
-
-
-    .hero-badge-top {
-      display: inline-block;
-
-      background: var(--pink-light);
-
-      color: #a13c5a;
-
-      padding: 9px 16px;
-
-      border-radius: 30px;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      margin-bottom: 20px;
-    }
-
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-
-      color: var(--brown);
-
-      font-size: clamp(45px, 6vw, 78px);
-
-      line-height: 1.03;
-
-      margin-bottom: 22px;
-    }
-
-
-    .hero h1 span {
-      color: var(--pink);
-    }
-
-
-    .hero-text {
-      color: var(--muted);
-
-      font-size: 18px;
-
-      line-height: 1.8;
-
-      max-width: 580px;
-
-      margin-bottom: 30px;
-    }
-
-
-    .hero-buttons {
-      display: flex;
-
-      align-items: center;
-
-      gap: 13px;
-
-      flex-wrap: wrap;
-    }
-
-
-    .btn-primary {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background: var(--brown);
-
-      color: white;
-
-      padding: 15px 25px;
-
-      border-radius: 30px;
-
-      font-weight: 800;
-
-      transition: 0.3s;
-    }
-
-
-    .btn-primary:hover {
-      background: var(--brown-light);
-
-      transform: translateY(-3px);
-    }
-
-
-    .btn-secondary {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background: white;
-
-      color: var(--brown);
-
-      border: 1px solid var(--border);
-
-      padding: 14px 24px;
-
-      border-radius: 30px;
-
-      font-weight: 800;
-
-      transition: 0.3s;
-    }
-
-
-    .btn-secondary:hover {
-      background: var(--pink-light);
-    }
-
-
-    /* HERO IMAGE */
-
-    .hero-image {
-      position: relative;
-
-      height: 540px;
-
-      border-radius: 38px;
-
-      overflow: hidden;
-
-      box-shadow: var(--shadow);
-
-      background: #f4d4de;
-    }
-
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-
-    .hero-floating {
-      position: absolute;
-
-      left: 20px;
-      bottom: 20px;
-
-      background: rgba(255,255,255,0.95);
-
-      padding: 16px 18px;
-
-      border-radius: 18px;
-
-      box-shadow: 0 10px 30px rgba(0,0,0,0.13);
-    }
-
-
-    .hero-floating strong {
-      display: block;
-
-      color: var(--brown);
-
-      margin-bottom: 4px;
-    }
-
-
-    .hero-floating span {
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    /* =====================================================
-       SECTIONS
-    ===================================================== */
-
-    section {
-      padding: 90px 0;
-    }
-
-
-    .section-heading {
-      max-width: 700px;
-
-      margin: 0 auto 45px;
-
-      text-align: center;
-    }
-
-
-    .section-heading small {
-      color: var(--pink);
-
-      font-size: 12px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: 2px;
-    }
-
-
-    .section-heading h2 {
-      font-family: Georgia, "Times New Roman", serif;
-
-      color: var(--brown);
-
-      font-size: clamp(35px, 5vw, 52px);
-
-      margin: 10px 0 12px;
-    }
-
-
-    .section-heading p {
-      color: var(--muted);
-
-      line-height: 1.7;
-    }
-
-
-    /* =====================================================
-       CAKE SECTION
-    ===================================================== */
-
-    .cakes-section {
-      background: white;
-    }
-
-
-    .cake-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 25px;
-    }
-
-
-    .cake-card {
-      background: #fffaf8;
-
-      border: 1px solid #f0dfdf;
-
-      border-radius: 23px;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 8px 25px rgba(75,33,12,0.06);
-
-      transition: 0.35s;
-    }
-
-
-    .cake-card:hover {
-      transform: translateY(-8px);
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .cake-img {
-      position: relative;
-
-      height: 275px;
-
-      overflow: hidden;
-
-      background: #f7dce4;
-    }
-
-
-    .cake-img img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition: 0.5s;
-    }
-
-
-    .cake-card:hover .cake-img img {
-      transform: scale(1.07);
-    }
-
-
-    .cake-label {
-      position: absolute;
-
-      left: 15px;
-      top: 15px;
-
-      background: white;
-
-      color: #a23c5a;
-
-      padding: 7px 12px;
-
-      border-radius: 20px;
-
-      font-size: 11px;
-
-      font-weight: 900;
-
-      z-index: 2;
-    }
-
-
-    .cake-body {
-      padding: 22px;
-    }
-
-
-    .cake-body h3 {
-      font-family: Georgia, serif;
-
-      color: var(--brown);
-
-      font-size: 25px;
-
-      margin-bottom: 8px;
-    }
-
-
-    .cake-body p {
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.65;
-
-      margin-bottom: 18px;
-    }
-
-
-    .cake-bottom {
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-    }
-
-
-    .price {
-      color: var(--pink);
-
-      font-size: 19px;
-
-      font-weight: 900;
-    }
-
-
-    .cake-order {
-      color: var(--brown);
-
-      font-weight: 800;
-
-      font-size: 14px;
-    }
-
-
-    /* =====================================================
-       ABOUT
-    ===================================================== */
-
-    .about-section {
-      background:
-        linear-gradient(
-          135deg,
-          #ffe4ed,
-          #fff6f0
-        );
-    }
-
-
-    .about-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 60px;
-
-      align-items: center;
-    }
-
-
-    .about-image {
-      height: 500px;
-
-      border-radius: 32px;
-
-      overflow: hidden;
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .about-image img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-
-    .about-small {
-      color: var(--pink);
-
-      font-size: 12px;
-
-      font-weight: 900;
-
-      text-transform: uppercase;
-
-      letter-spacing: 2px;
-    }
-
-
-    .about-content h2 {
-      font-family: Georgia, serif;
-
-      color: var(--brown);
-
-      font-size: clamp(38px, 5vw, 55px);
-
-      line-height: 1.1;
-
-      margin: 12px 0 20px;
-    }
-
-
-    .about-content p {
-      color: var(--muted);
-
-      line-height: 1.85;
-
-      margin-bottom: 13px;
-    }
-
-
-    .feature-grid {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 12px;
-
-      margin-top: 25px;
-    }
-
-
-    .feature {
-      background: rgba(255,255,255,0.85);
-
-      padding: 15px;
-
-      border-radius: 15px;
-
-      font-size: 14px;
-
-      font-weight: 800;
-    }
-
-
-    /* =====================================================
-       ORDER
-    ===================================================== */
-
-    .order-section {
-      background: white;
-    }
-
-
-    .order-box {
-      display: grid;
-
-      grid-template-columns: 0.8fr 1.2fr;
-
-      gap: 45px;
-
-      background: #fff0f4;
-
-      padding: 45px;
-
-      border-radius: 32px;
-    }
-
-
-    .order-info h2 {
-      font-family: Georgia, serif;
-
-      color: var(--brown);
-
-      font-size: 43px;
-
-      line-height: 1.1;
-
-      margin-bottom: 17px;
-    }
-
-
-    .order-info p {
-      color: var(--muted);
-
-      line-height: 1.8;
-    }
-
-
-    .contact-mini {
-      margin-top: 25px;
-
-      display: grid;
-
-      gap: 12px;
-    }
-
-
-    .contact-mini div {
-      background: white;
-
-      padding: 14px;
-
-      border-radius: 13px;
-
-      font-weight: 700;
-
-      font-size: 14px;
-    }
-
-
-    .order-form {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 15px;
-    }
-
-
-    .form-group {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 7px;
-    }
-
-
-    .full {
-      grid-column: 1 / -1;
-    }
-
-
-    .form-group label {
-      color: var(--brown);
-
-      font-size: 13px;
-
-      font-weight: 800;
-    }
-
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-
-      border: 1px solid #e6ccd3;
-
-      background: white;
-
-      color: var(--brown);
-
-      border-radius: 12px;
-
-      padding: 14px;
-
-      outline: none;
-
-      font-size: 15px;
-    }
-
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--pink);
-
-      box-shadow:
-        0 0 0 3px rgba(217,87,124,0.12);
-    }
-
-
-    .form-group textarea {
-      min-height: 120px;
-
-      resize: vertical;
-    }
-
-
-    .submit-btn {
-      width: 100%;
-
-      border: none;
-
-      background: var(--brown);
-
-      color: white;
-
-      padding: 15px;
-
-      border-radius: 30px;
-
-      font-size: 16px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition: 0.3s;
-    }
-
-
-    .submit-btn:hover {
-      background: var(--brown-light);
-
-      transform: translateY(-2px);
-    }
-
-
-    .success {
-      display: none;
-
-      margin-top: 10px;
-
-      padding: 13px;
-
-      border-radius: 12px;
-
-      background: #e4f6e8;
-
-      color: #286338;
-
-      font-size: 14px;
-
-      font-weight: 700;
-    }
-
-
-    /* =====================================================
-       WHY US
-    ===================================================== */
-
-    .why-section {
-      background: #fff9f7;
-    }
-
-
-    .why-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, minmax(0,1fr));
-
-      gap: 20px;
-    }
-
-
-    .why-card {
-      background: white;
-
-      border: 1px solid #f0dfdf;
-
-      border-radius: 20px;
-
-      padding: 30px 20px;
-
-      text-align: center;
-
-      transition: 0.3s;
-    }
-
-
-    .why-card:hover {
-      transform: translateY(-5px);
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .why-icon {
-      font-size: 42px;
-
-      margin-bottom: 15px;
-    }
-
-
-    .why-card h3 {
-      color: var(--brown);
-
-      margin-bottom: 8px;
-    }
-
-
-    .why-card p {
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.6;
-    }
-
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    .contact-section {
-      background: var(--brown);
-
-      color: white;
-
-      text-align: center;
-    }
-
-
-    .contact-section h2 {
-      font-family: Georgia, serif;
-
-      font-size: clamp(34px, 5vw, 45px);
-
-      margin-bottom: 15px;
-    }
-
-
-    .contact-section p {
-      color: #ead8d0;
-
-      margin: 8px 0;
-    }
-
-
-    .socials {
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-
-      margin-top: 25px;
-    }
-
-
-    .social {
-      background: white;
-
-      color: var(--brown);
-
-      padding: 11px 18px;
-
-      border-radius: 30px;
-
-      font-weight: 800;
-
-      font-size: 14px;
-
-      transition: 0.3s;
-    }
-
-
-    .social:hover {
-      transform: translateY(-3px);
-
-      background: var(--pink-light);
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    footer {
-      background: #30160b;
-
-      color: #dfc8be;
-
-      text-align: center;
-
-      padding: 23px 15px;
-
-      font-size: 13px;
-    }
-
-
-    /* =====================================================
-       TABLET
-    ===================================================== */
-
-    @media (max-width: 1000px) {
-
-      .nav-links {
-        gap: 17px;
-      }
-
-      .nav-links a {
-        font-size: 14px;
-      }
-
-      .hero-container {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-        gap: 45px;
-      }
-
-      .hero-text {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-image {
-        max-width: 700px;
-
-        width: 100%;
-
-        margin: auto;
-
-        height: 480px;
-      }
-
-
-      .cake-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-
-      .about-grid {
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-      }
-
-
-      .about-image {
-        max-width: 700px;
-
-        width: 100%;
-
-        margin: auto;
-      }
-
-
-      .order-box {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-      }
-
-
-      .why-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-    }
-
-
-    /* =====================================================
-       MOBILE NAV
-    ===================================================== */
-
-    @media (max-width: 780px) {
-
-      .nav-inner {
-        min-height: 70px;
-      }
-
-
-      .brand img {
-        width: 52px;
-
-        height: 52px;
-      }
-
-
-      .brand-name {
-        font-size: 19px;
-      }
-
-
-      .menu-btn {
-        display: block;
-      }
-
-
-      .nav-order {
-        display: none;
-      }
-
-
-      .nav-links {
-
-        display: none;
-
-        position: absolute;
-
-        top: 70px;
-
-        left: 4%;
-
-        right: 4%;
-
-        background: white;
-
-        padding: 20px;
-
-        border-radius: 18px;
-
-        box-shadow: var(--shadow);
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 0;
-      }
-
-
-      .nav-links.active {
-        display: flex;
-      }
-
-
-      .nav-links a {
-        padding: 13px 5px;
-
-        border-bottom: 1px solid #f2e3e3;
-      }
-
-
-      .nav-links a:last-child {
-        border-bottom: none;
-      }
-
-    }
-
-
-    /* =====================================================
-       SMALL MOBILE
-    ===================================================== */
-
-    @media (max-width: 600px) {
-
-      .container {
-        width: 91%;
-      }
-
-
-      section {
-        padding: 65px 0;
-      }
-
-
-      .hero {
-        padding: 55px 0;
-      }
-
-
-      .hero h1 {
-        font-size: 45px;
-      }
-
-
-      .hero-text {
-        font-size: 16px;
-      }
-
-
-      .hero-image {
-        height: 350px;
-
-        border-radius: 25px;
-      }
-
-
-      .hero-floating {
-        left: 12px;
-
-        bottom: 12px;
-
-        padding: 13px 14px;
-      }
-
-
-      .hero-floating strong {
-        font-size: 14px;
-      }
-
-
-      .hero-floating span {
-        font-size: 11px;
-      }
-
-
-      .cake-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .cake-img {
-        height: 260px;
-      }
-
-
-      .about-image {
-        height: 350px;
-
-        border-radius: 24px;
-      }
-
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .order-box {
-        padding: 25px 18px;
-
-        border-radius: 24px;
-      }
-
-
-      .order-info h2 {
-        font-size: 36px;
-      }
-
-
-      .order-form {
-        grid-template-columns: 1fr;
-      }
-
-
-      .full {
-        grid-column: auto;
-      }
-
-
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-
-
-      .socials {
-        gap: 8px;
-      }
-
-    }
-
-
-    /* =====================================================
-       VERY SMALL DEVICES
-    ===================================================== */
-
-    @media (max-width: 380px) {
-
-      .brand-name {
-        font-size: 17px;
-      }
-
-
-      .hero h1 {
-        font-size: 39px;
-      }
-
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-
-      .btn-primary,
-      .btn-secondary {
-        width: 100%;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cakes Buddy | Homemade Cakes</title>
+
+<meta name="description"
+content="Cakes Buddy - Homemade cakes baked with love to make your day special.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#fffaf8;
+    color:#4b210c;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+:root{
+    --brown:#4b210c;
+    --brown2:#6c3215;
+    --pink:#d9577c;
+    --pink-light:#ffe0e9;
+    --cream:#fffaf8;
+    --white:#fff;
+    --text:#432d25;
+    --muted:#79665f;
+    --border:#edd8dc;
+    --shadow:0 15px 40px rgba(75,33,12,.12);
+}
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:9999;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #f0dfe2;
+    box-shadow:0 3px 15px rgba(0,0,0,.05);
+}
+
+.nav-inner{
+    min-height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+
+/* LOGO */
+
+.logo-link{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+}
+
+
+/*
+   Logo wrapper বড় রাখা হয়েছে
+   যাতে uploaded logo clear দেখা যায়
+*/
+
+.logo-box{
+    width:155px;
+    height:70px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f9c1d2;
+    border-radius:12px;
+}
+
+
+/*
+   GitHub RAW image ব্যবহার করুন।
+   আপনার file name যদি .png হয়,
+   নিচের URL-এ .png রাখবেন।
+*/
+
+.logo-box img{
+    width:155px;
+    height:155px;
+    max-width:none;
+    object-fit:cover;
+    object-position:center center;
+}
+
+
+/* NAV LINKS */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    color:var(--brown);
+    font-size:15px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--pink);
+}
+
+.nav-order{
+    background:var(--brown);
+    color:white;
+    padding:13px 22px;
+    border-radius:30px;
+    font-weight:800;
+    font-size:14px;
+    transition:.3s;
+}
+
+.nav-order:hover{
+    background:var(--brown2);
+    transform:translateY(-2px);
+}
+
+.menu-btn{
+    display:none;
+    width:44px;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:var(--pink-light);
+    color:var(--brown);
+    font-size:24px;
+    cursor:pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:calc(100vh - 82px);
+    display:flex;
+    align-items:center;
+    padding:75px 0;
+    background:
+        radial-gradient(circle at 90% 15%,#ffd2df 0,transparent 28%),
+        linear-gradient(135deg,#fff0f4,#fffaf8);
+}
+
+.hero-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:60px;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:var(--pink-light);
+    color:#a33c5a;
+    padding:9px 16px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    color:var(--brown);
+    font-size:clamp(45px,6vw,78px);
+    line-height:1.02;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:var(--pink);
+}
+
+.hero-text{
+    max-width:580px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px 25px;
+    border-radius:30px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--brown);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:var(--brown2);
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:white;
+    color:var(--brown);
+    border:1px solid var(--border);
+}
+
+.btn-secondary:hover{
+    background:var(--pink-light);
+}
+
+
+/* HERO IMAGE */
+
+.hero-image{
+    height:540px;
+    border-radius:35px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    position:relative;
+    background:#f4d4de;
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-label{
+    position:absolute;
+    left:20px;
+    bottom:20px;
+    background:rgba(255,255,255,.96);
+    padding:15px 18px;
+    border-radius:17px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.hero-label strong{
+    display:block;
+    margin-bottom:4px;
+}
+
+.hero-label span{
+    font-size:12px;
+    color:var(--muted);
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+section{
+    padding:90px 0;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 45px;
+}
+
+.section-heading small{
+    color:var(--pink);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    font-family:Georgia,serif;
+    color:var(--brown);
+    font-size:clamp(35px,5vw,52px);
+    margin:10px 0 12px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+
+/* =========================
+   CAKES
+========================= */
+
+.cakes-section{
+    background:white;
+}
+
+.cake-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.cake-card{
+    background:#fffaf8;
+    border:1px solid #f0dfe0;
+    border-radius:23px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(75,33,12,.06);
+    transition:.35s;
+}
+
+.cake-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow);
+}
+
+.cake-img{
+    height:275px;
+    position:relative;
+    overflow:hidden;
+    background:#f5dce4;
+}
+
+.cake-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.cake-card:hover .cake-img img{
+    transform:scale(1.07);
+}
+
+.cake-tag{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:white;
+    color:#a23d5a;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:900;
+    z-index:2;
+}
+
+.cake-body{
+    padding:22px;
+}
+
+.cake-body h3{
+    font-family:Georgia,serif;
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.cake-body p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.65;
+    margin-bottom:18px;
+}
+
+.cake-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    color:var(--pink);
+    font-size:19px;
+    font-weight:900;
+}
+
+.order-link{
+    color:var(--brown);
+    font-weight:800;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:linear-gradient(135deg,#ffe5ed,#fff6f0);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-image{
+    height:500px;
+    overflow:hidden;
+    border-radius:32px;
+    box-shadow:var(--shadow);
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.about-small{
+    color:var(--pink);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.about-content h2{
+    font-family:Georgia,serif;
+    font-size:clamp(38px,5vw,55px);
+    line-height:1.1;
+    margin:12px 0 20px;
+}
+
+.about-content p{
+    color:var(--muted);
+    line-height:1.85;
+    margin-bottom:13px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:25px;
+}
+
+.feature{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    font-size:14px;
+    font-weight:800;
+}
+
+
+/* =========================
+   WHY US
+========================= */
+
+.why{
+    background:#fffaf8;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.why-card{
+    background:white;
+    border:1px solid #f0dfe0;
+    border-radius:20px;
+    padding:30px 20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.why-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+}
+
+.icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:8px;
+}
+
+.why-card p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+}
+
+
+/* =========================
+   ORDER
+========================= */
+
+.order{
+    background:white;
+}
+
+.order-box{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:45px;
+    background:#fff0f4;
+    padding:45px;
+    border-radius:32px;
+}
+
+.order-info h2{
+    font-family:Georgia,serif;
+    font-size:43px;
+    line-height:1.1;
+    margin-bottom:17px;
+}
+
+.order-info p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.contact-mini{
+    display:grid;
+    gap:12px;
+    margin-top:25px;
+}
+
+.contact-mini div{
+    background:white;
+    padding:14px;
+    border-radius:13px;
+    font-size:14px;
+    font-weight:700;
+}
+
+.order-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    font-size:13px;
+    font-weight:800;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:1px solid #e6ccd3;
+    background:white;
+    color:var(--brown);
+    border-radius:12px;
+    padding:14px;
+    outline:none;
+    font-size:15px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:var(--pink);
+    box-shadow:0 0 0 3px rgba(217,87,124,.12);
+}
+
+.form-group textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.submit{
+    width:100%;
+    border:none;
+    background:var(--brown);
+    color:white;
+    padding:15px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit:hover{
+    background:var(--brown2);
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    background:var(--brown);
+    color:white;
+    text-align:center;
+}
+
+.contact h2{
+    font-family:Georgia,serif;
+    font-size:clamp(35px,5vw,48px);
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:#ead8d0;
+    margin:8px 0;
+}
+
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.social{
+    background:white;
+    color:var(--brown);
+    padding:11px 18px;
+    border-radius:30px;
+    font-weight:800;
+    font-size:14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#30160b;
+    color:#dfc8be;
+    text-align:center;
+    padding:23px 15px;
+    font-size:13px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        gap:18px;
+    }
+
+    .nav-links a{
+        font-size:14px;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-image{
+        width:100%;
+        max-width:700px;
+        margin:auto;
+        height:470px;
+    }
+
+    .cake-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        max-width:700px;
+        width:100%;
+        margin:auto;
+    }
+
+    .order-box{
+        grid-template-columns:1fr;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:780px){
+
+    .nav-inner{
+        min-height:75px;
+    }
+
+    /*
+       Mobile logo
+       বড় এবং clear
+    */
+
+    .logo-box{
+        width:130px;
+        height:60px;
+    }
+
+    .logo-box img{
+        width:135px;
+        height:135px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-order{
+        display:none;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:75px;
+        left:4%;
+        right:4%;
+        background:white;
+        padding:15px;
+        border-radius:18px;
+        box-shadow:var(--shadow);
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:14px 8px;
+        border-bottom:1px solid #f1e2e4;
+    }
+
+    .nav-links a:last-child{
+        border-bottom:none;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .container{
+        width:91%;
+    }
+
+    section{
+        padding:65px 0;
+    }
+
+    .hero{
+        padding:55px 0;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero-text{
+        font-size:16px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-image{
+        height:350px;
+        border-radius:25px;
+    }
+
+    .cake-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cake-img{
+        height:260px;
+    }
+
+    .about-image{
+        height:350px;
+        border-radius:25px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .order-box{
+        padding:25px 18px;
+        border-radius:24px;
+    }
+
+    .order-info h2{
+        font-size:36px;
+    }
+
+    .order-form{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+}
+
+
+/* =========================
+   EXTRA SMALL
+========================= */
+
+@media(max-width:380px){
+
+    .logo-box{
+        width:115px;
+        height:55px;
+    }
+
+    .logo-box img{
+        width:125px;
+        height:125px;
+    }
+
+    .hero h1{
+        font-size:39px;
+    }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-  <!-- =====================================================
-       NAVBAR
-  ===================================================== -->
+<!-- =========================
+     NAVBAR
+========================= -->
 
-  <nav class="navbar">
+<nav class="navbar">
 
-    <div class="container nav-inner">
+<div class="container nav-inner">
 
+<a href="#home" class="logo-link">
 
-      <!-- LOGO -->
+<div class="logo-box">
 
-      <a href="#home" class="brand">
+<img
+src="https://raw.githubusercontent.com/yourdocuments/products/main/logocakebuddyai.png"
+alt="Cakes Buddy Logo"
+>
 
-        <img
-          src="https://raw.githubusercontent.com/yourdocuments/products/main/logocakebuddyai.png"
-          alt="Cakes Buddy Logo"
-          onerror="this.style.display='none';"
-        >
+</div>
 
-        <div class="brand-name">
-          Cakes <span>Buddy</span>
-        </div>
+</a>
 
-      </a>
 
+<div class="nav-links" id="navLinks">
 
-      <!-- MENU -->
+<a href="#home">Home</a>
+<a href="#cakes">Our Cakes</a>
+<a href="#about">About</a>
+<a href="#why">Why Us</a>
+<a href="#order">Order</a>
+<a href="#contact">Contact</a>
 
-      <div class="nav-links" id="navLinks">
+</div>
 
-        <a href="#home">
-          Home
-        </a>
 
-        <a href="#cakes">
-          Our Cakes
-        </a>
+<a href="#order" class="nav-order">
+Order Now
+</a>
 
-        <a href="#about">
-          About
-        </a>
 
-        <a href="#why">
-          Why Us
-        </a>
+<button class="menu-btn" id="menuBtn">
+☰
+</button>
 
-        <a href="#order">
-          Order
-        </a>
+</div>
 
-        <a href="#contact">
-          Contact
-        </a>
+</nav>
 
-      </div>
 
 
-      <a href="#order" class="nav-order">
-        Order Now
-      </a>
+<!-- =========================
+     HERO
+========================= -->
 
+<section class="hero" id="home">
 
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open menu">
+<div class="container hero-container">
 
-        ☰
 
-      </button>
+<div>
 
+<span class="hero-badge">
+🍰 HOMEMADE • FRESH • MADE WITH LOVE
+</span>
 
-    </div>
 
-  </nav>
+<h1>
+We bake to
+<span>make your day.</span>
+</h1>
 
 
+<p class="hero-text">
 
-  <!-- =====================================================
-       HERO
-  ===================================================== -->
+Welcome to Cakes Buddy — beautiful homemade cakes
+prepared with fresh ingredients and lots of love.
+From birthdays to simple sweet moments,
+we're here to make your day extra special.
 
-  <section class="hero" id="home">
+</p>
 
-    <div class="container hero-container">
 
+<div class="hero-buttons">
 
-      <div>
+<a href="#cakes" class="btn btn-primary">
+Explore Cakes →
+</a>
 
-        <span class="hero-badge-top">
-          🍰 HOMEMADE • FRESH • MADE WITH LOVE
-        </span>
+<a href="#order" class="btn btn-secondary">
+Custom Cake
+</a>
 
+</div>
 
-        <h1>
-          We bake to
-          <span>make your day.</span>
-        </h1>
+</div>
 
 
-        <p class="hero-text">
 
-          Welcome to Cakes Buddy — beautiful homemade cakes
-          prepared with fresh ingredients and lots of love.
-          From birthdays to simple sweet moments,
-          we're here to make your day extra special.
+<div class="hero-image">
 
-        </p>
+<img
+src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90"
+alt="Chocolate cake"
+>
 
+<div class="hero-label">
 
-        <div class="hero-buttons">
+<strong>
+Freshly baked today ✨
+</strong>
 
-          <a
-            href="#cakes"
-            class="btn-primary">
+<span>
+Made specially for your sweet moments
+</span>
 
-            Explore Cakes →
+</div>
 
-          </a>
+</div>
 
 
-          <a
-            href="#order"
-            class="btn-secondary">
+</div>
 
-            Custom Cake
+</section>
 
-          </a>
 
-        </div>
 
-      </div>
+<!-- =========================
+     CAKES
+========================= -->
 
+<section class="cakes-section" id="cakes">
 
+<div class="container">
 
-      <div class="hero-image">
 
-        <img
-          src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90"
-          alt="Beautiful chocolate cake"
-        >
+<div class="section-heading">
 
+<small>
+OUR FAVOURITES
+</small>
 
-        <div class="hero-floating">
+<h2>
+Pick Your Perfect Cake
+</h2>
 
-          <strong>
-            Freshly baked today ✨
-          </strong>
+<p>
+From creamy classics to celebration cakes,
+every cake is baked fresh and finished with care.
+</p>
 
-          <span>
-            Made specially for your sweet moments
-          </span>
+</div>
 
-        </div>
 
-      </div>
 
+<div class="cake-grid">
 
-    </div>
 
-  </section>
+<div class="cake-card">
 
+<div class="cake-img">
 
+<span class="cake-tag">
+BEST SELLER
+</span>
 
-  <!-- =====================================================
-       CAKES
-  ===================================================== -->
+<img
+src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=90"
+alt="Chocolate Dream Cake"
+loading="lazy"
+>
 
-  <section class="cakes-section" id="cakes">
+</div>
 
-    <div class="container">
+<div class="cake-body">
 
+<h3>
+Chocolate Dream
+</h3>
 
-      <div class="section-heading">
+<p>
+Moist chocolate sponge with silky cream
+and rich chocolate finish.
+</p>
 
-        <small>
-          OUR FAVOURITES
-        </small>
+<div class="cake-bottom">
 
-        <h2>
-          Pick Your Perfect Cake
-        </h2>
+<span class="price">
+৳ 950+
+</span>
 
-        <p>
-          From creamy classics to celebration cakes,
-          every cake is baked fresh and finished with care.
-        </p>
+<a href="#order" class="order-link">
+Order →
+</a>
 
-      </div>
+</div>
 
+</div>
 
+</div>
 
-      <div class="cake-grid">
 
 
-        <!-- CAKE 1 -->
+<div class="cake-card">
 
-        <article class="cake-card">
+<div class="cake-img">
 
-          <div class="cake-img">
+<span class="cake-tag">
+FRESH
+</span>
 
-            <span class="cake-label">
-              BEST SELLER
-            </span>
+<img
+src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=90"
+alt="Strawberry Cake"
+loading="lazy"
+>
 
-            <img
-              src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=90"
-              alt="Chocolate Dream Cake"
-              loading="lazy"
-            >
+</div>
 
-          </div>
+<div class="cake-body">
 
+<h3>
+Strawberry Bliss
+</h3>
 
-          <div class="cake-body">
+<p>
+Soft vanilla sponge layered with strawberry
+cream and fresh berries.
+</p>
 
-            <h3>
-              Chocolate Dream
-            </h3>
+<div class="cake-bottom">
 
-            <p>
-              Moist chocolate sponge with silky cream
-              and rich chocolate finish.
-            </p>
+<span class="price">
+৳ 900+
+</span>
 
+<a href="#order" class="order-link">
+Order →
+</a>
 
-            <div class="cake-bottom">
+</div>
 
-              <span class="price">
-                ৳ 950+
-              </span>
+</div>
 
-              <a
-                href="#order"
-                class="cake-order">
+</div>
 
-                Order →
 
-              </a>
 
-            </div>
+<div class="cake-card">
 
-          </div>
+<div class="cake-img">
 
-        </article>
+<span class="cake-tag">
+CLASSIC
+</span>
 
+<img
+src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=90"
+alt="Vanilla Cake"
+loading="lazy"
+>
 
+</div>
 
-        <!-- CAKE 2 -->
+<div class="cake-body">
 
-        <article class="cake-card">
+<h3>
+Vanilla Celebration
+</h3>
 
-          <div class="cake-img">
+<p>
+Light vanilla cake with smooth buttercream,
+perfect for every occasion.
+</p>
 
-            <span class="cake-label">
-              FRESH
-            </span>
+<div class="cake-bottom">
 
-            <img
-              src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=90"
-              alt="Strawberry Cake"
-              loading="lazy"
-            >
+<span class="price">
+৳ 800+
+</span>
 
-          </div>
+<a href="#order" class="order-link">
+Order →
+</a>
 
+</div>
 
-          <div class="cake-body">
+</div>
 
-            <h3>
-              Strawberry Bliss
-            </h3>
+</div>
 
-            <p>
-              Soft vanilla sponge layered with strawberry
-              cream and fresh berries.
-            </p>
 
 
-            <div class="cake-bottom">
+<div class="cake-card">
 
-              <span class="price">
-                ৳ 900+
-              </span>
+<div class="cake-img">
 
-              <a
-                href="#order"
-                class="cake-order">
+<span class="cake-tag">
+SPECIAL
+</span>
 
-                Order →
+<img
+src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=90"
+alt="Red Velvet Cake"
+loading="lazy"
+>
 
-              </a>
+</div>
 
-            </div>
+<div class="cake-body">
 
-          </div>
+<h3>
+Red Velvet
+</h3>
 
-        </article>
+<p>
+Soft red velvet sponge with creamy
+cheese frosting.
+</p>
 
+<div class="cake-bottom">
 
+<span class="price">
+৳ 1100+
+</span>
 
-        <!-- CAKE 3 -->
+<a href="#order" class="order-link">
+Order →
+</a>
 
-        <article class="cake-card">
+</div>
 
-          <div class="cake-img">
+</div>
 
-            <span class="cake-label">
-              CLASSIC
-            </span>
+</div>
 
-            <img
-              src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=90"
-              alt="Vanilla Cake"
-              loading="lazy"
-            >
 
-          </div>
 
+<div class="cake-card">
 
-          <div class="cake-body">
+<div class="cake-img">
 
-            <h3>
-              Vanilla Celebration
-            </h3>
+<span class="cake-tag">
+SEASONAL
+</span>
 
-            <p>
-              Light vanilla cake with smooth buttercream,
-              perfect for every occasion.
-            </p>
+<img
+src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=90"
+alt="Fresh Fruit Cake"
+loading="lazy"
+>
 
+</div>
 
-            <div class="cake-bottom">
+<div class="cake-body">
 
-              <span class="price">
-                ৳ 800+
-              </span>
+<h3>
+Fresh Fruit Cake
+</h3>
 
-              <a
-                href="#order"
-                class="cake-order">
+<p>
+Fresh seasonal fruits with soft sponge
+and delicious cream.
+</p>
 
-                Order →
+<div class="cake-bottom">
 
-              </a>
+<span class="price">
+৳ 1000+
+</span>
 
-            </div>
+<a href="#order" class="order-link">
+Order →
+</a>
 
-          </div>
+</div>
 
-        </article>
+</div>
 
+</div>
 
 
-        <!-- CAKE 4 -->
 
-        <article class="cake-card">
+<div class="cake-card">
 
-          <div class="cake-img">
+<div class="cake-img">
 
-            <span class="cake-label">
-              SPECIAL
-            </span>
+<span class="cake-tag">
+CUSTOM
+</span>
 
-            <img
-              src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=90"
-              alt="Red Velvet Cake"
-              loading="lazy"
-            >
+<img
+src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=90"
+alt="Birthday Cake"
+loading="lazy"
+>
 
-          </div>
+</div>
 
+<div class="cake-body">
 
-          <div class="cake-body">
+<h3>
+Birthday Special
+</h3>
 
-            <h3>
-              Red Velvet
-            </h3>
+<p>
+Tell us your theme and we'll create
+something special for your celebration.
+</p>
 
-            <p>
-              Soft red velvet sponge with creamy
-              cheese frosting.
-            </p>
+<div class="cake-bottom">
 
+<span class="price">
+৳ 1200+
+</span>
 
-            <div class="cake-bottom">
+<a href="#order" class="order-link">
+Order →
+</a>
 
-              <span class="price">
-                ৳ 1100+
-              </span>
+</div>
 
-              <a
-                href="#order"
-                class="cake-order">
+</div>
 
-                Order →
+</div>
 
-              </a>
 
-            </div>
+</div>
 
-          </div>
+</div>
 
-        </article>
+</section>
 
 
 
-        <!-- CAKE 5 -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-        <article class="cake-card">
+<section class="about" id="about">
 
-          <div class="cake-img">
+<div class="container about-grid">
 
-            <span class="cake-label">
-              SEASONAL
-            </span>
 
-            <img
-              src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=90"
-              alt="Fresh Fruit Cake"
-              loading="lazy"
-            >
+<div class="about-image">
 
-          </div>
+<img
+src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=90"
+alt="Homemade baking"
+loading="lazy"
+>
 
+</div>
 
-          <div class="cake-body">
 
-            <h3>
-              Fresh Fruit Cake
-            </h3>
+<div class="about-content">
 
-            <p>
-              Fresh seasonal fruits with soft sponge
-              and delicious cream.
-            </p>
+<span class="about-small">
+MADE IN OUR LITTLE KITCHEN ❤️
+</span>
 
+<h2>
+Homemade tastes different.
+</h2>
 
-            <div class="cake-bottom">
+<p>
+Cakes Buddy is all about warm, homemade goodness.
+We believe a cake should look beautiful,
+taste amazing and feel personal.
+</p>
 
-              <span class="price">
-                ৳ 1000+
-              </span>
+<p>
+Every cake is prepared with care, quality
+ingredients and a little extra love.
+</p>
 
-              <a
-                href="#order"
-                class="cake-order">
 
-                Order →
+<div class="features">
 
-              </a>
+<div class="feature">
+🌸 Fresh Ingredients
+</div>
 
-            </div>
+<div class="feature">
+🎂 Made To Order
+</div>
 
-          </div>
+<div class="feature">
+✨ Custom Designs
+</div>
 
-        </article>
+<div class="feature">
+💝 Baked With Love
+</div>
 
+</div>
 
+</div>
 
-        <!-- CAKE 6 -->
+</div>
 
-        <article class="cake-card">
+</section>
 
-          <div class="cake-img">
 
-            <span class="cake-label">
-              CUSTOM
-            </span>
 
-            <img
-              src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=90"
-              alt="Custom Birthday Cake"
-              loading="lazy"
-            >
+<!-- =========================
+     WHY US
+========================= -->
 
-          </div>
+<section class="why" id="why">
 
+<div class="container">
 
-          <div class="cake-body">
+<div class="section-heading">
 
-            <h3>
-              Birthday Special
-            </h3>
+<small>
+WHY CAKES BUDDY
+</small>
 
-            <p>
-              Tell us your theme and we'll create
-              something special for your celebration.
-            </p>
+<h2>
+Sweetness you can trust
+</h2>
 
+<p>
+We put love and care into every cake we make.
+</p>
 
-            <div class="cake-bottom">
+</div>
 
-              <span class="price">
-                ৳ 1200+
-              </span>
 
-              <a
-                href="#order"
-                class="cake-order">
+<div class="why-grid">
 
-                Order →
 
-              </a>
+<div class="why-card">
 
-            </div>
+<div class="icon">
+🥚
+</div>
 
-          </div>
+<h3>
+Fresh Ingredients
+</h3>
 
-        </article>
+<p>
+We use fresh ingredients for
+better taste and quality.
+</p>
 
+</div>
 
-      </div>
 
-    </div>
+<div class="why-card">
 
-  </section>
+<div class="icon">
+👩‍🍳
+</div>
 
+<h3>
+Homemade
+</h3>
 
+<p>
+Every cake is prepared with
+homemade care and attention.
+</p>
 
-  <!-- =====================================================
-       ABOUT
-  ===================================================== -->
+</div>
 
-  <section class="about-section" id="about">
 
-    <div class="container about-grid">
+<div class="why-card">
 
+<div class="icon">
+🎨
+</div>
 
-      <div class="about-image">
+<h3>
+Custom Design
+</h3>
 
-        <img
-          src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=90"
-          alt="Homemade baking"
-          loading="lazy"
-        >
+<p>
+Choose your theme, colour,
+writing and design.
+</p>
 
-      </div>
+</div>
 
 
-      <div class="about-content">
+<div class="why-card">
 
-        <span class="about-small">
-          MADE IN OUR LITTLE KITCHEN ❤️
-        </span>
+<div class="icon">
+❤️
+</div>
 
+<h3>
+Made With Love
+</h3>
 
-        <h2>
-          Homemade tastes different.
-        </h2>
+<p>
+Your special moments deserve
+something special.
+</p>
 
+</div>
 
-        <p>
-          Cakes Buddy is all about warm, homemade goodness.
-          We believe a cake should look beautiful,
-          taste amazing and feel personal.
-        </p>
 
+</div>
 
-        <p>
-          Every cake is prepared with care, quality
-          ingredients and a little extra love.
-        </p>
+</div>
 
+</section>
 
-        <div class="feature-grid">
 
-          <div class="feature">
-            🌸 Fresh Ingredients
-          </div>
 
-          <div class="feature">
-            🎂 Made To Order
-          </div>
+<!-- =========================
+     ORDER
+========================= -->
 
-          <div class="feature">
-            ✨ Custom Designs
-          </div>
+<section class="order" id="order">
 
-          <div class="feature">
-            💝 Baked With Love
-          </div>
+<div class="container">
 
-        </div>
 
-      </div>
+<div class="section-heading">
 
+<small>
+LET'S MAKE IT SWEET
+</small>
 
-    </div>
+<h2>
+Order Your Cake
+</h2>
 
-  </section>
+<p>
+Fill out the form and send your order
+directly through WhatsApp.
+</p>
 
+</div>
 
 
-  <!-- =====================================================
-       WHY US
-  ===================================================== -->
+<div class="order-box">
 
-  <section class="why-section" id="why">
 
-    <div class="container">
+<div class="order-info">
 
+<h2>
+Your cake,
+<br>
+your way.
+</h2>
 
-      <div class="section-heading">
+<p>
+Need a birthday message, special flavour,
+colour or custom design?
+Add all your ideas in the form.
+</p>
 
-        <small>
-          WHY CAKES BUDDY
-        </small>
 
-        <h2>
-          Sweetness you can trust
-        </h2>
+<div class="contact-mini">
 
-        <p>
-          We put love and care into every cake we make.
-        </p>
+<div>
+📞 01XXXXXXXXX
+</div>
 
-      </div>
+<div>
+📧 cakebuddy@example.com
+</div>
 
+<div>
+📍 Bangladesh
+</div>
 
+</div>
 
-      <div class="why-grid">
+</div>
 
 
-        <div class="why-card">
 
-          <div class="why-icon">
-            🥚
-          </div>
+<form class="order-form" id="orderForm">
 
-          <h3>
-            Fresh Ingredients
-          </h3>
 
-          <p>
-            We use fresh ingredients for
-            better taste and quality.
-          </p>
+<div class="form-group">
 
-        </div>
+<label>
+Your Name
+</label>
 
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+required
+>
 
+</div>
 
-        <div class="why-card">
 
-          <div class="why-icon">
-            👩‍🍳
-          </div>
+<div class="form-group">
 
-          <h3>
-            Homemade
-          </h3>
+<label>
+Phone Number
+</label>
 
-          <p>
-            Every cake is prepared with
-            homemade care and attention.
-          </p>
+<input
+type="tel"
+id="phone"
+placeholder="01XXXXXXXXX"
+required
+>
 
-        </div>
+</div>
 
 
+<div class="form-group">
 
-        <div class="why-card">
+<label>
+Select Cake
+</label>
 
-          <div class="why-icon">
-            🎨
-          </div>
+<select id="cake" required>
 
-          <h3>
-            Custom Design
-          </h3>
+<option value="">
+Choose a cake
+</option>
 
-          <p>
-            Choose your theme, colour,
-            writing and design.
-          </p>
+<option>Chocolate Dream</option>
+<option>Strawberry Bliss</option>
+<option>Vanilla Celebration</option>
+<option>Red Velvet</option>
+<option>Fresh Fruit Cake</option>
+<option>Birthday Special</option>
+<option>Custom Cake</option>
 
-        </div>
+</select>
 
+</div>
 
 
-        <div class="why-card">
+<div class="form-group">
 
-          <div class="why-icon">
-            ❤️
-          </div>
+<label>
+Cake Size
+</label>
 
-          <h3>
-            Made With Love
-          </h3>
+<select id="size">
 
-          <p>
-            Because your special moments
-            deserve something special.
-          </p>
+<option>1 Pound</option>
+<option>2 Pound</option>
+<option>3 Pound</option>
+<option>4 Pound</option>
+<option>Custom Size</option>
 
-        </div>
+</select>
 
+</div>
 
-      </div>
 
-    </div>
+<div class="form-group full">
 
-  </section>
+<label>
+Cake Details
+</label>
 
+<textarea
+id="details"
+placeholder="Cake writing, colour, theme, delivery date etc."
+></textarea>
 
+</div>
 
-  <!-- =====================================================
-       ORDER
-  ===================================================== -->
 
-  <section class="order-section" id="order">
+<div class="form-group full">
 
-    <div class="container">
+<button
+type="submit"
+class="submit">
 
+Order Through WhatsApp 💬
 
-      <div class="section-heading">
+</button>
 
-        <small>
-          LET'S MAKE IT SWEET
-        </small>
+</div>
 
-        <h2>
-          Order Your Cake
-        </h2>
 
-        <p>
-          Fill out the form and send your order
-          directly through WhatsApp.
-        </p>
+</form>
 
-      </div>
 
+</div>
 
+</div>
 
-      <div class="order-box">
+</section>
 
 
-        <div class="order-info">
 
-          <h2>
-            Your cake,
-            <br>
-            your way.
-          </h2>
+<!-- =========================
+     CONTACT
+========================= -->
 
+<section class="contact" id="contact">
 
-          <p>
-            Need a birthday message, special flavour,
-            colour or custom design?
-            Add all your ideas in the form.
-          </p>
+<div class="container">
 
+<h2>
+Contact Cakes Buddy 🎂
+</h2>
 
-          <div class="contact-mini">
+<p>
+📞 Phone: 01XXXXXXXXX
+</p>
 
-            <div>
-              📞 01XXXXXXXXX
-            </div>
+<p>
+📧 Email: cakebuddy@example.com
+</p>
 
-            <div>
-              📧 cakebuddy@example.com
-            </div>
+<p>
+📍 Bangladesh
+</p>
 
-            <div>
-              📍 Bangladesh
-            </div>
 
-          </div>
+<div class="socials">
 
-        </div>
+<a href="#" class="social">
+Facebook
+</a>
 
+<a href="#" class="social">
+Instagram
+</a>
 
+<a href="#" class="social">
+WhatsApp
+</a>
 
-        <div>
+</div>
 
-          <form
-            class="order-form"
-            id="orderForm">
+</div>
 
+</section>
 
-            <div class="form-group">
 
-              <label for="customerName">
-                Your Name
-              </label>
 
-              <input
-                type="text"
-                id="customerName"
-                placeholder="Enter your name"
-                required
-              >
+<footer>
 
-            </div>
+© 2026 Cakes Buddy —
+We Bake To Make Your Day ❤️
 
+</footer>
 
-            <div class="form-group">
 
-              <label for="phone">
-                Phone Number
-              </label>
 
-              <input
-                type="tel"
-                id="phone"
-                placeholder="01XXXXXXXXX"
-                required
-              >
+<script>
 
-            </div>
+/* =========================
+   MOBILE MENU
+========================= */
 
+const menuBtn =
+document.getElementById("menuBtn");
 
-            <div class="form-group">
+const navLinks =
+document.getElementById("navLinks");
 
-              <label for="cakeSelect">
-                Select Cake
-              </label>
+menuBtn.addEventListener("click",function(){
 
-              <select
-                id="cakeSelect"
-                required>
+navLinks.classList.toggle("active");
 
-                <option value="">
-                  Choose a cake
-                </option>
+});
 
-                <option>
-                  Chocolate Dream
-                </option>
 
-                <option>
-                  Strawberry Bliss
-                </option>
+document.querySelectorAll(".nav-links a")
+.forEach(function(link){
 
-                <option>
-                  Vanilla Celebration
-                </option>
+link.addEventListener("click",function(){
 
-                <option>
-                  Red Velvet
-                </option>
+navLinks.classList.remove("active");
 
-                <option>
-                  Fresh Fruit Cake
-                </option>
+});
 
-                <option>
-                  Birthday Special
-                </option>
+});
 
-                <option>
-                  Custom Cake
-                </option>
 
-              </select>
+/* =========================
+   WHATSAPP ORDER
+========================= */
 
-            </div>
+document
+.getElementById("orderForm")
+.addEventListener("submit",function(e){
 
+e.preventDefault();
 
-            <div class="form-group">
 
-              <label for="cakeSize">
-                Cake Size
-              </label>
+const name =
+document.getElementById("name").value.trim();
 
-              <select id="cakeSize">
+const phone =
+document.getElementById("phone").value.trim();
 
-                <option>
-                  1 Pound
-                </option>
+const cake =
+document.getElementById("cake").value;
 
-                <option>
-                  2 Pound
-                </option>
+const size =
+document.getElementById("size").value;
 
-                <option>
-                  3 Pound
-                </option>
+const details =
+document.getElementById("details").value.trim();
 
-                <option>
-                  4 Pound
-                </option>
 
-                <option>
-                  Custom Size
-                </option>
+/*
+   নিজের WhatsApp number এখানে দিন।
 
-              </select>
+   Bangladesh format:
+   8801XXXXXXXXX
 
-            </div>
+   Example:
+   8801712345678
+*/
 
+const whatsappNumber =
+"8801XXXXXXXXX";
 
-            <div class="form-group full">
 
-              <label for="cakeDetails">
-                Cake Details
-              </label>
+const message =
+`Hello Cakes Buddy! 🎂
 
-              <textarea
-                id="cakeDetails"
-                placeholder="Cake writing, colour, theme, delivery date, etc."
-              ></textarea>
+I want to order a cake.
 
-            </div>
+Name: ${name}
+Phone: ${phone}
+Cake: ${cake}
+Size: ${size}
+Details: ${details}`;
 
 
-            <div class="form-group full">
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+encodeURIComponent(message);
 
-              <button
-                type="submit"
-                class="submit-btn">
 
-                Order Through WhatsApp 💬
+window.open(
+whatsappURL,
+"_blank"
+);
 
-              </button>
+});
 
-
-              <div
-                class="success"
-                id="success">
-
-                ✓ Opening WhatsApp with your order...
-
-              </div>
-
-            </div>
-
-
-          </form>
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =====================================================
-       CONTACT
-  ===================================================== -->
-
-  <section
-    class="contact-section"
-    id="contact">
-
-
-    <div class="container">
-
-      <h2>
-        Contact Cakes Buddy 🎂
-      </h2>
-
-
-      <p>
-        📞 Phone: 01XXXXXXXXX
-      </p>
-
-
-      <p>
-        📧 Email: cakebuddy@example.com
-      </p>
-
-
-      <p>
-        📍 Bangladesh
-      </p>
-
-
-      <div class="socials">
-
-        <a
-          href="#"
-          class="social">
-
-          Facebook
-
-        </a>
-
-
-        <a
-          href="#"
-          class="social">
-
-          Instagram
-
-        </a>
-
-
-        <a
-          href="#"
-          class="social">
-
-          WhatsApp
-
-        </a>
-
-      </div>
-
-    </div>
-
-
-  </section>
-
-
-
-  <!-- =====================================================
-       FOOTER
-  ===================================================== -->
-
-  <footer>
-
-    © 2026 Cakes Buddy —
-    We Bake To Make Your Day ❤️
-
-  </footer>
-
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-  ===================================================== -->
-
-  <script>
-
-
-    /* ==========================================
-       MOBILE MENU
-    ========================================== */
-
-    const menuBtn =
-      document.getElementById("menuBtn");
-
-    const navLinks =
-      document.getElementById("navLinks");
-
-
-    menuBtn.addEventListener(
-      "click",
-      function() {
-
-        navLinks.classList.toggle("active");
-
-      }
-    );
-
-
-    /* Close menu after clicking */
-
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(function(link) {
-
-        link.addEventListener(
-          "click",
-          function() {
-
-            navLinks.classList.remove("active");
-
-          }
-        );
-
-      });
-
-
-
-    /* ==========================================
-       WHATSAPP ORDER
-    ========================================== */
-
-    document
-      .getElementById("orderForm")
-      .addEventListener(
-        "submit",
-        function(event) {
-
-          event.preventDefault();
-
-
-          const name =
-            document
-              .getElementById("customerName")
-              .value
-              .trim();
-
-
-          const phone =
-            document
-              .getElementById("phone")
-              .value
-              .trim();
-
-
-          const cake =
-            document
-              .getElementById("cakeSelect")
-              .value;
-
-
-          const size =
-            document
-              .getElementById("cakeSize")
-              .value;
-
-
-          const details =
-            document
-              .getElementById("cakeDetails")
-              .value
-              .trim();
-
-
-          /*
-             IMPORTANT:
-             এখানে নিজের WhatsApp number বসান।
-
-             Bangladesh example:
-             8801XXXXXXXXX
-
-             + অথবা space দেবেন না।
-          */
-
-          const whatsappNumber =
-            "8801XXXXXXXXX";
-
-
-          const message =
-            "Hello Cakes Buddy! 🎂%0A%0A" +
-
-            "I want to order a cake.%0A%0A" +
-
-            "Name: " +
-            encodeURIComponent(name) +
-            "%0A" +
-
-            "Phone: " +
-            encodeURIComponent(phone) +
-            "%0A" +
-
-            "Cake: " +
-            encodeURIComponent(cake) +
-            "%0A" +
-
-            "Size: " +
-            encodeURIComponent(size) +
-            "%0A" +
-
-            "Details: " +
-            encodeURIComponent(details);
-
-
-          document
-            .getElementById("success")
-            .style.display = "block";
-
-
-          window.open(
-            "https://wa.me/" +
-            whatsappNumber +
-            "?text=" +
-            message,
-            "_blank"
-          );
-
-        }
-      );
-
-
-  </script>
+</script>
 
 
 </body>
