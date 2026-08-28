@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
           content="Cakes Buddy - Homemade cakes made with love.">
@@ -13,17 +10,15 @@
     <title>Cakes Buddy | Homemade Cakes</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      HEADER
-===================================================== -->
+========================= -->
 
-<header>
+<header class="site-header">
 
     <div class="header-inner">
 
@@ -32,12 +27,10 @@
         <a href="#home" class="logo-area">
 
             <div class="logo">
-
                 <img
                     src="https://raw.githubusercontent.com/yourdocuments/products/main/cakeFrame%201%20(1).svg"
                     alt="Cakes Buddy Logo"
                 >
-
             </div>
 
             <span class="logo-name">
@@ -56,13 +49,8 @@
                 id="searchButton"
                 type="button"
             >
-
-                <span class="search-icon">
-                    🔍
-                </span>
-
+                <span>🔍</span>
                 Search
-
             </button>
 
 
@@ -79,6 +67,7 @@
                         type="text"
                         id="cakeSearchInput"
                         placeholder="Search cakes..."
+                        autocomplete="off"
                     >
 
                 </div>
@@ -86,45 +75,27 @@
 
                 <div class="search-list">
 
-                    <a
-                        href="#cakes"
-                        class="search-item"
-                    >
+                    <a href="#cakes" class="search-item">
                         🎂 Chocolate Cake
                     </a>
 
-                    <a
-                        href="#cakes"
-                        class="search-item"
-                    >
+                    <a href="#cakes" class="search-item">
                         🍓 Strawberry Cake
                     </a>
 
-                    <a
-                        href="#cakes"
-                        class="search-item"
-                    >
+                    <a href="#cakes" class="search-item">
                         🍰 Vanilla Cake
                     </a>
 
-                    <a
-                        href="#cakes"
-                        class="search-item"
-                    >
+                    <a href="#cakes" class="search-item">
                         ❤️ Red Velvet Cake
                     </a>
 
-                    <a
-                        href="#cakes"
-                        class="search-item"
-                    >
+                    <a href="#cakes" class="search-item">
                         🎉 Birthday Cake
                     </a>
 
-                    <a
-                        href="#cakes"
-                        class="search-item"
-                    >
+                    <a href="#cakes" class="search-item">
                         ✨ Customized Cake
                     </a>
 
@@ -144,51 +115,40 @@
 
         <!-- DESKTOP NAV -->
 
-        <nav>
+        <nav class="desktop-nav">
 
-            <a href="#home">
-                Home
-            </a>
+            <a href="#home">Home</a>
 
-            <a href="#cakes">
-                Our Cakes
-            </a>
+            <a href="#cakes">Our Cakes</a>
 
-            <a href="#about">
-                About
-            </a>
+            <a href="#about">About</a>
 
-            <a href="#why">
-                Why Us
-            </a>
+            <a href="#why">Why Us</a>
 
-            <a href="#contact">
-                Contact
-            </a>
+            <a href="#contact">Contact</a>
 
-            <a href="#cakes" class="shop">
-                Shop
-            </a>
+            <a href="#cakes">Shop</a>
 
         </nav>
 
 
-        <!-- ORDER -->
+        <!-- ORDER BUTTON -->
 
         <a
             href="#order"
-            class="order-btn header-order"
+            class="order-btn"
         >
             Order Now
         </a>
 
 
-        <!-- MOBILE MENU -->
+        <!-- MOBILE MENU BUTTON -->
 
         <button
             class="menu-btn"
             id="menuButton"
             type="button"
+            aria-label="Open menu"
         >
             ☰
         </button>
@@ -196,36 +156,24 @@
     </div>
 
 
-    <!-- MOBILE NAV -->
+    <!-- MOBILE MENU -->
 
     <div
         class="mobile-menu"
         id="mobileMenu"
     >
 
-        <a href="#home">
-            Home
-        </a>
+        <a href="#home">Home</a>
 
-        <a href="#cakes">
-            Our Cakes
-        </a>
+        <a href="#cakes">Our Cakes</a>
 
-        <a href="#about">
-            About
-        </a>
+        <a href="#about">About</a>
 
-        <a href="#why">
-            Why Us
-        </a>
+        <a href="#why">Why Us</a>
 
-        <a href="#contact">
-            Contact
-        </a>
+        <a href="#contact">Contact</a>
 
-        <a href="#cakes">
-            Shop
-        </a>
+        <a href="#cakes">Shop</a>
 
         <a
             href="#order"
@@ -240,47 +188,24 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      MAIN
-===================================================== -->
+========================= -->
 
 <main id="home">
 
 
-<!-- =====================================================
-     COMPACT AD BANNER SLIDER
-===================================================== -->
+<!-- =========================
+     COMPACT AD SLIDER
+     5 SLIDES
+========================= -->
 
 <section class="banner-slider">
 
-    <div class="slides">
+    <div class="slides" id="slides">
 
 
-        <!-- BANNER 1 -->
-
-        <div class="slide">
-
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
-                alt="Cakes Buddy Advertisement"
-            >
-
-        </div>
-
-
-        <!-- BANNER 2 -->
-
-        <div class="slide">
-
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adsnFrame%202%20(1).svg"
-                alt="Cakes Buddy Advertisement"
-            >
-
-        </div>
-
-
-        <!-- BANNER 3 -->
+        <!-- SLIDE 1 -->
 
         <div class="slide">
 
@@ -292,7 +217,7 @@
         </div>
 
 
-        <!-- BANNER 4 -->
+        <!-- SLIDE 2 -->
 
         <div class="slide">
 
@@ -304,7 +229,31 @@
         </div>
 
 
-        <!-- BANNER 5 -->
+        <!-- SLIDE 3 -->
+
+        <div class="slide">
+
+            <img
+                src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
+                alt="Cakes Buddy Advertisement"
+            >
+
+        </div>
+
+
+        <!-- SLIDE 4 -->
+
+        <div class="slide">
+
+            <img
+                src="https://raw.githubusercontent.com/yourdocuments/products/main/adsnFrame%202%20(1).svg"
+                alt="Cakes Buddy Advertisement"
+            >
+
+        </div>
+
+
+        <!-- SLIDE 5 -->
 
         <div class="slide">
 
@@ -318,7 +267,7 @@
     </div>
 
 
-    <!-- PREVIOUS -->
+    <!-- ARROWS -->
 
     <button
         class="slider-btn prev"
@@ -329,8 +278,6 @@
         ❮
     </button>
 
-
-    <!-- NEXT -->
 
     <button
         class="slider-btn next"
@@ -353,9 +300,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section class="hero">
 
@@ -363,19 +310,16 @@
 
         <div class="hero-grid">
 
-
             <div class="hero-content">
 
                 <span class="badge">
                     HOMEMADE WITH LOVE
                 </span>
 
-
                 <h1>
                     Sweet moments,
                     <span>beautiful cakes.</span>
                 </h1>
-
 
                 <p>
                     Fresh homemade cakes made specially
@@ -408,12 +352,11 @@
             <div class="hero-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85"
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
                     alt="Homemade Chocolate Cake"
                 >
 
             </div>
-
 
         </div>
 
@@ -423,9 +366,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      OUR CAKES
-===================================================== -->
+========================= -->
 
 <section
     class="cakes"
@@ -433,7 +376,6 @@
 >
 
     <div class="container">
-
 
         <div class="heading">
 
@@ -481,9 +423,20 @@
                         smooth creamy frosting.
                     </p>
 
-                    <span class="price">
-                        From ৳850
-                    </span>
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            From ৳850
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
+                            Order
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -515,9 +468,20 @@
                         strawberry cream.
                     </p>
 
-                    <span class="price">
-                        From ৳900
-                    </span>
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            From ৳900
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
+                            Order
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -549,9 +513,20 @@
                         soft creamy frosting.
                     </p>
 
-                    <span class="price">
-                        From ৳750
-                    </span>
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            From ৳750
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
+                            Order
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -583,9 +558,20 @@
                         cream cheese frosting.
                     </p>
 
-                    <span class="price">
-                        From ৳950
-                    </span>
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            From ৳950
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
+                            Order
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -617,9 +603,20 @@
                         birthday celebrations.
                     </p>
 
-                    <span class="price">
-                        From ৳850
-                    </span>
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            From ৳850
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
+                            Order
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -648,12 +645,23 @@
 
                     <p>
                         Tell us your idea and
-                        we create your cake.
+                        we create your dream cake.
                     </p>
 
-                    <span class="price">
-                        Contact Us
-                    </span>
+                    <div class="card-bottom">
+
+                        <span class="price">
+                            Custom Price
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
+                            Order
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -668,9 +676,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      ABOUT
-===================================================== -->
+========================= -->
 
 <section
     class="about"
@@ -681,11 +689,10 @@
 
         <div class="about-grid">
 
-
             <div class="about-img">
 
                 <img
-                    src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=85"
+                    src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=900&q=85"
                     alt="Homemade Cake"
                     loading="lazy"
                 >
@@ -699,25 +706,21 @@
                     ABOUT CAKES BUDDY
                 </small>
 
-
                 <h2>
                     Baked with love,
                     made for you.
                 </h2>
 
-
                 <p>
-                    Cakes Buddy makes delicious
-                    homemade cakes with care,
+                    Cakes Buddy is all about delicious
+                    homemade cakes made with care,
                     quality ingredients and love.
                 </p>
-
 
                 <p>
                     Every cake is prepared specially
                     for your celebration.
                 </p>
-
 
                 <a
                     href="#order"
@@ -736,14 +739,16 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      WHY US
-===================================================== -->
+========================= -->
 
-<section id="why">
+<section
+    class="why"
+    id="why"
+>
 
     <div class="container">
-
 
         <div class="heading">
 
@@ -846,9 +851,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      ORDER
-===================================================== -->
+========================= -->
 
 <section
     class="order"
@@ -856,7 +861,6 @@
 >
 
     <div class="container">
-
 
         <div class="heading">
 
@@ -931,27 +935,27 @@
                             Select a cake
                         </option>
 
-                        <option>
+                        <option value="Chocolate Cake">
                             Chocolate Cake
                         </option>
 
-                        <option>
+                        <option value="Strawberry Cake">
                             Strawberry Cake
                         </option>
 
-                        <option>
+                        <option value="Vanilla Cake">
                             Vanilla Cake
                         </option>
 
-                        <option>
+                        <option value="Red Velvet Cake">
                             Red Velvet Cake
                         </option>
 
-                        <option>
+                        <option value="Birthday Cake">
                             Birthday Cake
                         </option>
 
-                        <option>
+                        <option value="Customized Cake">
                             Customized Cake
                         </option>
 
@@ -968,23 +972,23 @@
 
                     <select id="size">
 
-                        <option>
+                        <option value="1 Pound">
                             1 Pound
                         </option>
 
-                        <option>
+                        <option value="2 Pound">
                             2 Pound
                         </option>
 
-                        <option>
+                        <option value="3 Pound">
                             3 Pound
                         </option>
 
-                        <option>
+                        <option value="4 Pound">
                             4 Pound
                         </option>
 
-                        <option>
+                        <option value="5 Pound">
                             5 Pound
                         </option>
 
@@ -1029,9 +1033,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      CONTACT
-===================================================== -->
+========================= -->
 
 <section
     class="contact"
@@ -1044,14 +1048,15 @@
             Let's Make Something Sweet
         </h2>
 
-
         <p>
             Have a question or want to order?
         </p>
 
 
         <p>
+
             📱
+
             <a
                 href="https://wa.me/8801717503093"
                 target="_blank"
@@ -1059,18 +1064,21 @@
             >
                 +880 1717-503093
             </a>
+
         </p>
 
 
         <p>
+
             📧
-            <a href="mailto:Naharsm6@gmail.com">
+
+            <a
+                href="mailto:Naharsm6@gmail.com"
+            >
                 Naharsm6@gmail.com
             </a>
+
         </p>
-
-
-        <br>
 
 
         <a
@@ -1091,9 +1099,9 @@
 
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================= -->
 
 <footer>
 
@@ -1104,9 +1112,9 @@
 
 
 
-<!-- =====================================================
-     JS
-===================================================== -->
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script src="script.js"></script>
 
