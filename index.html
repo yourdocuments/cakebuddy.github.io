@@ -7,6 +7,11 @@
 <title>Cakes Buddy | Homemade Cakes</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -18,7 +23,7 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#fffaf7;
     color:#402b27;
     overflow-x:hidden;
@@ -29,10 +34,18 @@ a{
     color:inherit;
 }
 
-img{
-    display:block;
-    max-width:100%;
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
 }
+
+img{
+    max-width:100%;
+    display:block;
+}
+
 
 /* =========================
    HEADER
@@ -51,10 +64,12 @@ header{
     width:min(1180px,calc(100% - 28px));
     min-height:70px;
     margin:auto;
+
     display:flex;
     align-items:center;
     gap:18px;
 }
+
 
 /* LOGO */
 
@@ -78,6 +93,7 @@ header{
     white-space:nowrap;
 }
 
+
 /* SEARCH */
 
 .search-wrap{
@@ -88,11 +104,15 @@ header{
 .search-btn{
     height:40px;
     padding:0 15px;
+
     border:1px solid #e8d9d3;
     border-radius:50px;
+
     background:#fff;
-    cursor:pointer;
     color:#593b34;
+
+    cursor:pointer;
+
     display:flex;
     align-items:center;
     gap:7px;
@@ -109,14 +129,20 @@ header{
 
 .search-box{
     display:none;
+
     position:absolute;
     top:50px;
     right:0;
-    width:280px;
+
+    width:285px;
+
     padding:12px;
+
     background:#fff;
+
     border:1px solid #eadbd5;
     border-radius:15px;
+
     box-shadow:0 15px 35px rgba(60,35,30,.14);
 }
 
@@ -127,9 +153,12 @@ header{
 .search-input{
     width:100%;
     height:40px;
+
     padding:0 11px;
+
     border:1px solid #e6d8d2;
     border-radius:9px;
+
     outline:none;
 }
 
@@ -139,8 +168,11 @@ header{
 
 .search-list a{
     display:block;
-    padding:9px;
+
+    padding:10px;
+
     border-radius:8px;
+
     font-size:12px;
 }
 
@@ -148,7 +180,8 @@ header{
     background:#fff1ec;
 }
 
-/* NAV */
+
+/* DESKTOP NAV */
 
 .nav-links{
     display:flex;
@@ -168,30 +201,46 @@ header{
 
 .order-top{
     padding:11px 17px;
+
     border-radius:50px;
+
     background:#b9534d;
     color:#fff;
+
     font-size:12px;
     font-weight:700;
+
     white-space:nowrap;
 }
 
-/* MOBILE MENU */
+
+/* MOBILE MENU BUTTON */
 
 .menu-btn{
     display:none;
+
     width:40px;
     height:40px;
+
     border:1px solid #e7d8d2;
     border-radius:10px;
+
     background:#fff;
+
     font-size:20px;
+
     cursor:pointer;
 }
 
+
+/* MOBILE MENU */
+
 .mobile-menu{
     display:none;
+
     padding:5px 14px 14px;
+
+    background:#fffaf7;
 }
 
 .mobile-menu.show{
@@ -200,38 +249,54 @@ header{
 
 .mobile-menu a{
     display:block;
+
     padding:12px 8px;
+
     border-bottom:1px solid #f0e2dd;
+
     font-size:13px;
     font-weight:600;
 }
 
 .mobile-menu .mobile-order{
     margin-top:8px;
+
     text-align:center;
+
     border:0;
+
     background:#b9534d;
     color:#fff;
+
     border-radius:50px;
 }
 
+
 /* =================================================
-   COMPACT 2-BANNER SLIDER
+   COMPACT AD BANNER
 ================================================= */
 
 .banner-section{
     width:min(1080px,calc(100% - 24px));
+
     margin:14px auto 0;
+
     overflow:hidden;
+
     border-radius:15px;
+
     background:#f7ebe6;
+
     box-shadow:0 7px 22px rgba(70,40,30,.07);
 }
 
 .banner-track{
     display:flex;
+
     width:200%;
+
     transform:translateX(0);
+
     transition:transform .7s ease-in-out;
 }
 
@@ -240,11 +305,25 @@ header{
     flex:0 0 50%;
 }
 
+.banner a{
+    display:block;
+    cursor:pointer;
+}
+
 .banner img{
     width:100%;
+
     height:190px;
+
     object-fit:cover;
+
+    transition:transform .3s ease;
 }
+
+.banner a:hover img{
+    transform:scale(1.01);
+}
+
 
 /* =================================================
    HERO
@@ -252,30 +331,47 @@ header{
 
 .hero{
     width:min(1160px,calc(100% - 30px));
+
     margin:auto;
+
     min-height:510px;
+
     padding:60px 0;
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     align-items:center;
+
     gap:45px;
 }
 
 .hero-label{
     display:inline-block;
+
     padding:8px 13px;
+
     background:#fff0eb;
+
     color:#b6534d;
+
     border-radius:50px;
+
     font-size:10px;
+
     font-weight:800;
+
     letter-spacing:1px;
 }
 
 .hero h1{
     margin-top:17px;
+
     font-size:clamp(42px,5vw,66px);
+
     line-height:1.04;
+
     letter-spacing:-2px;
 }
 
@@ -286,28 +382,42 @@ header{
 
 .hero-text{
     margin-top:18px;
+
     max-width:520px;
+
     color:#806962;
+
     font-size:14px;
+
     line-height:1.75;
 }
 
 .hero-buttons{
     display:flex;
+
     gap:11px;
+
     flex-wrap:wrap;
+
     margin-top:26px;
 }
 
 .main-btn,
 .second-btn{
     min-height:47px;
+
     padding:0 20px;
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
+
     border-radius:50px;
+
     font-size:12px;
+
     font-weight:700;
 }
 
@@ -318,20 +428,27 @@ header{
 
 .second-btn{
     background:#fff;
+
     border:1px solid #dfcdc7;
+
     color:#65453d;
 }
 
 .trust{
     display:flex;
+
     align-items:center;
+
     gap:13px;
+
     margin-top:30px;
 }
 
 .trust-item{
     display:flex;
+
     flex-direction:column;
+
     gap:3px;
 }
 
@@ -350,52 +467,77 @@ header{
     background:#dfd0ca;
 }
 
+
 /* HERO IMAGE */
 
 .hero-image{
     position:relative;
+
     min-height:390px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 }
 
 .hero-bg{
     position:absolute;
+
     width:350px;
     height:350px;
+
     border-radius:50%;
+
     background:#f4d8d1;
 }
 
 .hero-circle{
     position:relative;
+
     z-index:2;
+
     width:350px;
     height:350px;
+
     padding:11px;
+
     background:#fff;
+
     border-radius:50%;
+
     box-shadow:0 22px 55px rgba(60,35,30,.13);
 }
 
 .hero-circle img{
     width:100%;
     height:100%;
+
     border-radius:50%;
+
     object-fit:cover;
 }
 
 .float-card{
     position:absolute;
+
     z-index:5;
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
     padding:10px 12px;
+
     background:#fff;
+
     border:1px solid #eadbd5;
+
     border-radius:13px;
+
     box-shadow:0 10px 28px rgba(60,35,30,.12);
 }
 
@@ -412,16 +554,23 @@ header{
 .float-icon{
     width:30px;
     height:30px;
+
     border-radius:9px;
+
     background:#fff0eb;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 }
 
 .float-text{
     display:flex;
+
     flex-direction:column;
+
     gap:2px;
 }
 
@@ -434,41 +583,63 @@ header{
     font-size:8px;
 }
 
-/* FEATURES */
+
+/* =================================================
+   FEATURES
+================================================= */
 
 .features{
     width:min(1160px,calc(100% - 30px));
+
     margin:0 auto 70px;
+
     padding:18px;
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:8px;
+
     background:#fff;
+
     border:1px solid #eee0da;
+
     border-radius:18px;
 }
 
 .feature{
     display:flex;
+
     align-items:center;
+
     gap:9px;
+
     padding:6px;
 }
 
 .feature-icon{
     width:38px;
     height:38px;
+
     flex-shrink:0;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     border-radius:11px;
+
     background:#fff0eb;
 }
 
 .feature-text{
     display:flex;
+
     flex-direction:column;
+
     gap:3px;
 }
 
@@ -481,7 +652,10 @@ header{
     color:#947971;
 }
 
-/* SECTIONS */
+
+/* =================================================
+   GENERAL SECTIONS
+================================================= */
 
 section{
     scroll-margin-top:80px;
@@ -504,54 +678,75 @@ section{
 
 .section-title small{
     color:#b9534d;
+
     font-size:10px;
+
     font-weight:800;
+
     letter-spacing:1px;
 }
 
 .section-title h2{
     margin-top:9px;
+
     font-size:clamp(30px,4vw,44px);
 }
 
 .section-title p{
     margin:10px auto 0;
+
     max-width:600px;
+
     color:#8b7169;
+
     font-size:13px;
+
     line-height:1.7;
 }
 
-/* CAKE CARDS */
+
+/* =================================================
+   CAKE CARDS
+================================================= */
 
 .cake-grid{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:20px;
 }
 
 .cake-card{
     overflow:hidden;
+
     background:#fffaf7;
+
     border:1px solid #eee0da;
+
     border-radius:18px;
+
     transition:.25s;
 }
 
 .cake-card:hover{
     transform:translateY(-4px);
+
     box-shadow:0 15px 35px rgba(60,35,30,.09);
 }
 
 .cake-image{
     height:210px;
+
     overflow:hidden;
 }
 
 .cake-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     transition:.35s;
 }
 
@@ -569,21 +764,29 @@ section{
 
 .cake-info p{
     margin-top:6px;
+
     color:#92766e;
+
     font-size:11px;
+
     line-height:1.6;
 }
 
 .cake-bottom{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-top:13px;
 }
 
 .price{
     color:#b9534d;
+
     font-size:13px;
+
     font-weight:800;
 }
 
@@ -592,43 +795,59 @@ section{
     font-weight:700;
 }
 
-/* ABOUT */
+
+/* =================================================
+   ABOUT
+================================================= */
 
 .about{
     padding:80px 0;
+
     background:#fffaf7;
 }
 
 .about-grid{
     width:min(1160px,calc(100% - 30px));
+
     margin:auto;
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     align-items:center;
+
     gap:55px;
 }
 
 .about-image{
     overflow:hidden;
+
     border-radius:20px;
 }
 
 .about-image img{
     width:100%;
     height:390px;
+
     object-fit:cover;
 }
 
 .about-text small{
     color:#b9534d;
+
     font-size:10px;
+
     font-weight:800;
+
     letter-spacing:1px;
 }
 
 .about-text h2{
     margin-top:10px;
+
     font-size:clamp(32px,4vw,47px);
+
     line-height:1.1;
 }
 
@@ -638,40 +857,60 @@ section{
 
 .about-text p{
     margin-top:14px;
+
     color:#826a62;
+
     font-size:13px;
+
     line-height:1.75;
 }
 
 .about-btn{
     display:inline-flex;
+
     margin-top:22px;
+
     padding:12px 19px;
+
     border-radius:50px;
+
     background:#b9534d;
+
     color:#fff;
+
     font-size:11px;
+
     font-weight:700;
 }
 
-/* WHY */
+
+/* =================================================
+   WHY US
+================================================= */
 
 .why-grid{
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:16px;
 }
 
 .why-card{
     padding:25px 15px;
+
     text-align:center;
+
     background:#fffaf7;
+
     border:1px solid #eee0da;
+
     border-radius:17px;
 }
 
 .why-icon{
     font-size:26px;
+
     margin-bottom:10px;
 }
 
@@ -681,36 +920,52 @@ section{
 
 .why-card p{
     margin-top:6px;
+
     color:#92766e;
+
     font-size:10px;
+
     line-height:1.6;
 }
 
-/* ORDER */
+
+/* =================================================
+   ORDER
+================================================= */
 
 .order-area{
     padding:75px 0;
+
     background:#fffaf7;
 }
 
 .order-box{
     width:min(730px,calc(100% - 30px));
+
     margin:auto;
+
     padding:25px;
+
     background:#fff;
+
     border:1px solid #eee0da;
+
     border-radius:20px;
 }
 
 .order-form{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:14px;
 }
 
 .form-group{
     display:flex;
+
     flex-direction:column;
+
     gap:6px;
 }
 
@@ -720,6 +975,7 @@ section{
 
 .form-group label{
     font-size:10px;
+
     font-weight:700;
 }
 
@@ -727,10 +983,15 @@ section{
 .form-group select,
 .form-group textarea{
     width:100%;
+
     padding:11px;
+
     border:1px solid #e8dad4;
+
     border-radius:9px;
+
     background:#fffaf7;
+
     outline:none;
 }
 
@@ -741,83 +1002,127 @@ section{
 
 .form-group textarea{
     min-height:95px;
+
     resize:vertical;
 }
 
 .submit-btn{
     width:100%;
+
     height:46px;
+
     border:0;
+
     border-radius:50px;
+
     background:#b9534d;
+
     color:#fff;
+
     font-size:12px;
+
     font-weight:700;
+
     cursor:pointer;
 }
 
-/* CONTACT */
+
+/* =================================================
+   CONTACT
+================================================= */
 
 .contact{
     padding:70px 15px;
+
     text-align:center;
+
     background:#fff0eb;
 }
 
 .contact h2{
     margin-top:8px;
+
     font-size:clamp(29px,4vw,44px);
 }
 
 .contact p{
     max-width:550px;
+
     margin:10px auto;
+
     color:#846a62;
+
     font-size:12px;
+
     line-height:1.7;
 }
 
 .contact-buttons{
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     flex-wrap:wrap;
+
     margin-top:18px;
 }
 
 .contact-btn{
     padding:11px 17px;
+
     border-radius:50px;
+
     background:#fff;
+
     border:1px solid #e7d8d2;
+
     font-size:11px;
+
     font-weight:700;
 }
 
 .channel-btn{
     display:inline-flex;
+
     margin-top:12px;
+
     padding:12px 18px;
+
     border-radius:50px;
+
     background:#b9534d;
+
     color:#fff;
+
     font-size:11px;
+
     font-weight:700;
 }
 
-/* FOOTER */
+
+/* =================================================
+   FOOTER
+================================================= */
 
 footer{
     padding:22px 15px;
+
     background:#3c2924;
+
     color:#e9dcd7;
 }
 
 .footer-inner{
     width:min(1160px,100%);
+
     margin:auto;
+
     display:flex;
+
     justify-content:space-between;
+
     font-size:10px;
 }
 
@@ -868,7 +1173,9 @@ footer{
 
     .navbar{
         min-height:62px;
+
         width:calc(100% - 20px);
+
         gap:8px;
     }
 
@@ -888,7 +1195,9 @@ footer{
     .search-btn{
         width:40px;
         height:40px;
+
         padding:0;
+
         justify-content:center;
     }
 
@@ -898,9 +1207,12 @@ footer{
 
     .search-box{
         position:fixed;
+
         top:69px;
+
         left:10px;
         right:10px;
+
         width:auto;
     }
 
@@ -911,15 +1223,19 @@ footer{
 
     .menu-btn{
         display:flex;
+
         align-items:center;
         justify-content:center;
     }
 
-    /* BANNER MOBILE */
+
+    /* COMPACT BANNER */
 
     .banner-section{
         width:calc(100% - 16px);
+
         margin-top:9px;
+
         border-radius:10px;
     }
 
@@ -927,25 +1243,33 @@ footer{
         height:100px;
     }
 
+
     /* HERO */
 
     .hero{
         width:calc(100% - 24px);
+
         grid-template-columns:1fr;
+
         min-height:auto;
+
         padding:43px 0 52px;
+
         text-align:center;
+
         gap:32px;
     }
 
     .hero h1{
         font-size:clamp(36px,11vw,49px);
+
         letter-spacing:-1.5px;
     }
 
     .hero-text{
         margin-left:auto;
         margin-right:auto;
+
         font-size:12px;
     }
 
@@ -986,14 +1310,20 @@ footer{
         bottom:0;
     }
 
+
     /* FEATURES */
 
     .features{
         width:calc(100% - 20px);
+
         margin-bottom:50px;
+
         padding:11px;
+
         grid-template-columns:1fr 1fr;
+
         gap:4px;
+
         border-radius:14px;
     }
 
@@ -1004,6 +1334,7 @@ footer{
     .feature-icon{
         width:31px;
         height:31px;
+
         font-size:13px;
     }
 
@@ -1014,6 +1345,7 @@ footer{
     .feature-text small{
         font-size:7px;
     }
+
 
     /* SECTION */
 
@@ -1029,16 +1361,19 @@ footer{
         font-size:30px;
     }
 
+
     /* CAKES */
 
     .cake-grid{
         grid-template-columns:1fr;
+
         gap:15px;
     }
 
     .cake-image{
         height:205px;
     }
+
 
     /* ABOUT */
 
@@ -1048,8 +1383,11 @@ footer{
 
     .about-grid{
         width:calc(100% - 22px);
+
         grid-template-columns:1fr;
+
         gap:28px;
+
         text-align:center;
     }
 
@@ -1057,10 +1395,12 @@ footer{
         height:280px;
     }
 
+
     /* WHY */
 
     .why-grid{
         grid-template-columns:1fr 1fr;
+
         gap:8px;
     }
 
@@ -1076,6 +1416,7 @@ footer{
         font-size:8px;
     }
 
+
     /* ORDER */
 
     .order-area{
@@ -1084,6 +1425,7 @@ footer{
 
     .order-box{
         width:calc(100% - 22px);
+
         padding:17px 13px;
     }
 
@@ -1095,24 +1437,32 @@ footer{
         grid-column:auto;
     }
 
+
     /* CONTACT */
 
     .contact-buttons{
         flex-direction:column;
+
         align-items:stretch;
     }
+
 
     /* FOOTER */
 
     .footer-inner{
         flex-direction:column;
+
         align-items:center;
+
         gap:7px;
     }
+
 }
 
 
-/* SMALL MOBILE */
+/* =================================================
+   SMALL MOBILE
+================================================= */
 
 @media(max-width:400px){
 
@@ -1138,12 +1488,15 @@ footer{
     .hero-image{
         min-height:265px;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =================================================
      HEADER
@@ -1152,6 +1505,9 @@ footer{
 <header>
 
     <div class="navbar">
+
+
+        <!-- LOGO -->
 
         <a href="#home" class="logo">
 
@@ -1174,9 +1530,13 @@ footer{
                 id="searchButton"
                 type="button"
             >
+
                 <span>⌕</span>
+
                 <span>Search</span>
+
             </button>
+
 
             <div
                 class="search-box"
@@ -1190,13 +1550,19 @@ footer{
                     placeholder="Search cake..."
                 >
 
+
                 <div class="search-list">
 
                     <a href="#cakes">🎂 Chocolate Cake</a>
+
                     <a href="#cakes">🍓 Strawberry Cake</a>
+
                     <a href="#cakes">🍰 Vanilla Cake</a>
+
                     <a href="#cakes">❤️ Red Velvet Cake</a>
+
                     <a href="#cakes">🎉 Birthday Cake</a>
+
                     <a href="#cakes">✨ Customized Cake</a>
 
                 </div>
@@ -1211,14 +1577,21 @@ footer{
         <nav class="nav-links">
 
             <a href="#home">Home</a>
+
             <a href="#cakes">Our Cakes</a>
+
             <a href="#about">About</a>
+
             <a href="#why">Why Us</a>
+
             <a href="#contact">Contact</a>
+
             <a href="#cakes">Shop</a>
 
         </nav>
 
+
+        <!-- ORDER BUTTON -->
 
         <a
             href="#order"
@@ -1228,7 +1601,7 @@ footer{
         </a>
 
 
-        <!-- MOBILE -->
+        <!-- MOBILE MENU -->
 
         <button
             class="menu-btn"
@@ -1241,26 +1614,45 @@ footer{
     </div>
 
 
+    <!-- MOBILE NAV -->
+
     <div
         class="mobile-menu"
         id="mobileMenu"
     >
 
         <a href="#home">Home</a>
+
         <a href="#cakes">Our Cakes</a>
+
         <a href="#about">About</a>
+
         <a href="#why">Why Us</a>
+
         <a href="#contact">Contact</a>
+
         <a href="#cakes">Shop</a>
-        <a href="#order" class="mobile-order">Order Now</a>
+
+        <a
+            href="#order"
+            class="mobile-order"
+        >
+            Order Now
+        </a>
 
     </div>
 
 </header>
 
 
+
 <!-- =================================================
-     COMPACT 2 BANNER SLIDER
+     AD BANNER
+     
+     IMPORTANT:
+     Banner click = WhatsApp Channel
+     
+     NOT order number
 ================================================= -->
 
 <div class="banner-section">
@@ -1270,14 +1662,23 @@ footer{
         id="bannerTrack"
     >
 
+
         <!-- BANNER 1 -->
 
         <div class="banner">
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
-                alt="Cakes Buddy Banner"
+            <a
+                href="https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x"
+                target="_blank"
+                rel="noopener noreferrer"
             >
+
+                <img
+                    src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
+                    alt="Cakes Buddy Advertisement"
+                >
+
+            </a>
 
         </div>
 
@@ -1286,82 +1687,143 @@ footer{
 
         <div class="banner">
 
-            <img
-                src="https://raw.githubusercontent.com/yourdocuments/products/main/adsnFrame%202%20(1).svg"
-                alt="Cakes Buddy Banner"
+            <a
+                href="https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x"
+                target="_blank"
+                rel="noopener noreferrer"
             >
 
+                <img
+                    src="https://raw.githubusercontent.com/yourdocuments/products/main/adsnFrame%202%20(1).svg"
+                    alt="Cakes Buddy Advertisement"
+                >
+
+            </a>
+
         </div>
+
 
     </div>
 
 </div>
 
 
+
 <!-- =================================================
      HERO
 ================================================= -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
+
 
     <div>
+
 
         <span class="hero-label">
             🍰 HOMEMADE • FRESH • LOVELY
         </span>
 
+
         <h1>
+
             Sweet cakes,
-            <span>made with love.</span>
+
+            <span>
+                made with love.
+            </span>
+
         </h1>
 
+
         <p class="hero-text">
+
             Fresh homemade cakes made specially
             for birthdays, celebrations and all
             your beautiful moments.
+
         </p>
+
 
         <div class="hero-buttons">
 
-            <a href="#order" class="main-btn">
+
+            <a
+                href="#order"
+                class="main-btn"
+            >
                 Order Your Cake →
             </a>
 
-            <a href="#cakes" class="second-btn">
+
+            <a
+                href="#cakes"
+                class="second-btn"
+            >
                 Explore Cakes
             </a>
 
+
         </div>
+
 
         <div class="trust">
 
+
             <div class="trust-item">
+
                 <strong>100%</strong>
-                <small>Homemade</small>
+
+                <small>
+                    Homemade
+                </small>
+
             </div>
+
 
             <div class="trust-line"></div>
 
+
             <div class="trust-item">
+
                 <strong>Fresh</strong>
-                <small>Every Order</small>
+
+                <small>
+                    Every Order
+                </small>
+
             </div>
+
 
             <div class="trust-line"></div>
 
+
             <div class="trust-item">
+
                 <strong>Custom</strong>
-                <small>Designs</small>
+
+                <small>
+                    Designs
+                </small>
+
             </div>
+
 
         </div>
 
     </div>
 
 
+
+    <!-- HERO IMAGE -->
+
     <div class="hero-image">
 
+
         <div class="hero-bg"></div>
+
 
         <div class="hero-circle">
 
@@ -1375,11 +1837,20 @@ footer{
 
         <div class="float-card float-one">
 
-            <div class="float-icon">⭐</div>
+            <div class="float-icon">
+                ⭐
+            </div>
 
             <div class="float-text">
-                <strong>Freshly Baked</strong>
-                <small>Made with love</small>
+
+                <strong>
+                    Freshly Baked
+                </strong>
+
+                <small>
+                    Made with love
+                </small>
+
             </div>
 
         </div>
@@ -1387,18 +1858,29 @@ footer{
 
         <div class="float-card float-two">
 
-            <div class="float-icon">❤️</div>
+            <div class="float-icon">
+                ❤️
+            </div>
 
             <div class="float-text">
-                <strong>Made For You</strong>
-                <small>Custom cakes</small>
+
+                <strong>
+                    Made For You
+                </strong>
+
+                <small>
+                    Custom cakes
+                </small>
+
             </div>
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =================================================
@@ -1407,54 +1889,117 @@ footer{
 
 <div class="features">
 
-    <div class="feature">
-        <div class="feature-icon">🎂</div>
-        <div class="feature-text">
-            <strong>Freshly Baked</strong>
-            <small>Fresh for you</small>
-        </div>
-    </div>
 
     <div class="feature">
-        <div class="feature-icon">❤️</div>
-        <div class="feature-text">
-            <strong>Made With Love</strong>
-            <small>Homemade care</small>
+
+        <div class="feature-icon">
+            🎂
         </div>
+
+        <div class="feature-text">
+
+            <strong>
+                Freshly Baked
+            </strong>
+
+            <small>
+                Fresh for you
+            </small>
+
+        </div>
+
     </div>
 
-    <div class="feature">
-        <div class="feature-icon">✨</div>
-        <div class="feature-text">
-            <strong>Custom Design</strong>
-            <small>Your idea</small>
-        </div>
-    </div>
 
     <div class="feature">
-        <div class="feature-icon">📱</div>
-        <div class="feature-text">
-            <strong>Easy Order</strong>
-            <small>Via WhatsApp</small>
+
+        <div class="feature-icon">
+            ❤️
         </div>
+
+        <div class="feature-text">
+
+            <strong>
+                Made With Love
+            </strong>
+
+            <small>
+                Homemade care
+            </small>
+
+        </div>
+
     </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ✨
+        </div>
+
+        <div class="feature-text">
+
+            <strong>
+                Custom Design
+            </strong>
+
+            <small>
+                Your idea
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            📱
+        </div>
+
+        <div class="feature-text">
+
+            <strong>
+                Easy Order
+            </strong>
+
+            <small>
+                Via WhatsApp
+            </small>
+
+        </div>
+
+    </div>
+
 
 </div>
+
 
 
 <!-- =================================================
      OUR CAKES
 ================================================= -->
 
-<section class="section" id="cakes">
+<section
+    class="section"
+    id="cakes"
+>
+
 
     <div class="container">
 
+
         <div class="section-title">
 
-            <small>OUR SPECIAL CAKES</small>
+            <small>
+                OUR SPECIAL CAKES
+            </small>
 
-            <h2>Pick Your Favourite</h2>
+            <h2>
+                Pick Your Favourite
+            </h2>
 
             <p>
                 Delicious homemade cakes for
@@ -1464,8 +2009,11 @@ footer{
         </div>
 
 
+
         <div class="cake-grid">
 
+
+            <!-- CAKE 1 -->
 
             <div class="cake-card">
 
@@ -1478,26 +2026,41 @@ footer{
 
                 </div>
 
+
                 <div class="cake-info">
 
-                    <h3>Chocolate Cake</h3>
+                    <h3>
+                        Chocolate Cake
+                    </h3>
 
                     <p>
                         Rich chocolate cake with
                         creamy chocolate frosting.
                     </p>
 
+
                     <div class="cake-bottom">
-                        <span class="price">৳850+</span>
-                        <a href="#order" class="card-order">
+
+                        <span class="price">
+                            ৳850+
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
                             Order →
                         </a>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+
+            <!-- CAKE 2 -->
 
             <div class="cake-card">
 
@@ -1510,26 +2073,41 @@ footer{
 
                 </div>
 
+
                 <div class="cake-info">
 
-                    <h3>Strawberry Cake</h3>
+                    <h3>
+                        Strawberry Cake
+                    </h3>
 
                     <p>
                         Soft sponge with delicious
                         strawberry cream.
                     </p>
 
+
                     <div class="cake-bottom">
-                        <span class="price">৳900+</span>
-                        <a href="#order" class="card-order">
+
+                        <span class="price">
+                            ৳900+
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
                             Order →
                         </a>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+
+            <!-- CAKE 3 -->
 
             <div class="cake-card">
 
@@ -1542,26 +2120,41 @@ footer{
 
                 </div>
 
+
                 <div class="cake-info">
 
-                    <h3>Vanilla Cake</h3>
+                    <h3>
+                        Vanilla Cake
+                    </h3>
 
                     <p>
                         Light vanilla sponge with
                         smooth creamy frosting.
                     </p>
 
+
                     <div class="cake-bottom">
-                        <span class="price">৳750+</span>
-                        <a href="#order" class="card-order">
+
+                        <span class="price">
+                            ৳750+
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
                             Order →
                         </a>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+
+            <!-- CAKE 4 -->
 
             <div class="cake-card">
 
@@ -1574,26 +2167,41 @@ footer{
 
                 </div>
 
+
                 <div class="cake-info">
 
-                    <h3>Red Velvet Cake</h3>
+                    <h3>
+                        Red Velvet Cake
+                    </h3>
 
                     <p>
                         Soft red velvet with
                         creamy frosting.
                     </p>
 
+
                     <div class="cake-bottom">
-                        <span class="price">৳950+</span>
-                        <a href="#order" class="card-order">
+
+                        <span class="price">
+                            ৳950+
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
                             Order →
                         </a>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+
+            <!-- CAKE 5 -->
 
             <div class="cake-card">
 
@@ -1606,26 +2214,41 @@ footer{
 
                 </div>
 
+
                 <div class="cake-info">
 
-                    <h3>Birthday Cake</h3>
+                    <h3>
+                        Birthday Cake
+                    </h3>
 
                     <p>
                         Beautiful cake for your
                         birthday celebration.
                     </p>
 
+
                     <div class="cake-bottom">
-                        <span class="price">৳850+</span>
-                        <a href="#order" class="card-order">
+
+                        <span class="price">
+                            ৳850+
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
                             Order →
                         </a>
+
                     </div>
 
                 </div>
 
             </div>
 
+
+
+            <!-- CAKE 6 -->
 
             <div class="cake-card">
 
@@ -1638,20 +2261,32 @@ footer{
 
                 </div>
 
+
                 <div class="cake-info">
 
-                    <h3>Customized Cake</h3>
+                    <h3>
+                        Customized Cake
+                    </h3>
 
                     <p>
                         Your idea, your design,
                         your special cake.
                     </p>
 
+
                     <div class="cake-bottom">
-                        <span class="price">Custom</span>
-                        <a href="#order" class="card-order">
+
+                        <span class="price">
+                            Custom
+                        </span>
+
+                        <a
+                            href="#order"
+                            class="card-order"
+                        >
                             Order →
                         </a>
+
                     </div>
 
                 </div>
@@ -1666,13 +2301,19 @@ footer{
 </section>
 
 
+
 <!-- =================================================
      ABOUT
 ================================================= -->
 
-<section class="about" id="about">
+<section
+    class="about"
+    id="about"
+>
+
 
     <div class="about-grid">
+
 
         <div class="about-image">
 
@@ -1686,89 +2327,155 @@ footer{
 
         <div class="about-text">
 
-            <small>ABOUT CAKES BUDDY</small>
+            <small>
+                ABOUT CAKES BUDDY
+            </small>
+
 
             <h2>
+
                 Homemade taste.
-                <span>Beautiful memories.</span>
+
+                <span>
+                    Beautiful memories.
+                </span>
+
             </h2>
 
+
             <p>
+
                 Cakes Buddy creates fresh homemade
                 cakes with quality ingredients,
                 beautiful designs and lots of love.
+
             </p>
+
 
             <p>
+
                 From birthdays to celebrations,
                 we make every moment a little sweeter.
+
             </p>
 
-            <a href="#order" class="about-btn">
+
+            <a
+                href="#order"
+                class="about-btn"
+            >
                 Order Your Cake →
             </a>
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =================================================
      WHY US
 ================================================= -->
 
-<section class="section" id="why">
+<section
+    class="section"
+    id="why"
+>
+
 
     <div class="container">
 
+
         <div class="section-title">
 
-            <small>WHY CAKES BUDDY</small>
+            <small>
+                WHY CAKES BUDDY
+            </small>
 
-            <h2>Why Choose Us?</h2>
+            <h2>
+                Why Choose Us?
+            </h2>
 
         </div>
 
 
         <div class="why-grid">
 
+
             <div class="why-card">
-                <div class="why-icon">🎂</div>
-                <h3>Freshly Baked</h3>
+
+                <div class="why-icon">
+                    🎂
+                </div>
+
+                <h3>
+                    Freshly Baked
+                </h3>
+
                 <p>
                     Every cake is prepared
                     fresh for your order.
                 </p>
+
             </div>
 
+
             <div class="why-card">
-                <div class="why-icon">❤️</div>
-                <h3>Homemade Love</h3>
+
+                <div class="why-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Homemade Love
+                </h3>
+
                 <p>
                     Made carefully with
                     homemade goodness.
                 </p>
+
             </div>
 
+
             <div class="why-card">
-                <div class="why-icon">✨</div>
-                <h3>Custom Cakes</h3>
+
+                <div class="why-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Custom Cakes
+                </h3>
+
                 <p>
                     Tell us your idea and
                     make it yours.
                 </p>
+
             </div>
 
+
             <div class="why-card">
-                <div class="why-icon">💰</div>
-                <h3>Friendly Price</h3>
+
+                <div class="why-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Friendly Price
+                </h3>
+
                 <p>
                     Beautiful cakes at
                     affordable prices.
                 </p>
+
             </div>
+
 
         </div>
 
@@ -1777,17 +2484,30 @@ footer{
 </section>
 
 
+
 <!-- =================================================
      ORDER
+     
+     IMPORTANT:
+     Order goes to business owner's number:
+     +8801717503093
 ================================================= -->
 
-<section class="order-area" id="order">
+<section
+    class="order-area"
+    id="order"
+>
+
 
     <div class="section-title">
 
-        <small>READY TO ORDER?</small>
+        <small>
+            READY TO ORDER?
+        </small>
 
-        <h2>Let's Make Your Cake</h2>
+        <h2>
+            Let's Make Your Cake
+        </h2>
 
         <p>
             Fill in your details and send
@@ -1797,14 +2517,21 @@ footer{
     </div>
 
 
+
     <div class="order-box">
 
-        <form class="order-form" id="orderForm">
+
+        <form
+            class="order-form"
+            id="orderForm"
+        >
 
 
             <div class="form-group">
 
-                <label>Your Name</label>
+                <label>
+                    Your Name
+                </label>
 
                 <input
                     type="text"
@@ -1818,7 +2545,9 @@ footer{
 
             <div class="form-group">
 
-                <label>Phone Number</label>
+                <label>
+                    Phone Number
+                </label>
 
                 <input
                     type="tel"
@@ -1832,20 +2561,42 @@ footer{
 
             <div class="form-group">
 
-                <label>Select Cake</label>
+                <label>
+                    Select Cake
+                </label>
 
-                <select id="cakeName" required>
+                <select
+                    id="cakeName"
+                    required
+                >
 
                     <option value="">
                         Select cake
                     </option>
 
-                    <option>Chocolate Cake</option>
-                    <option>Strawberry Cake</option>
-                    <option>Vanilla Cake</option>
-                    <option>Red Velvet Cake</option>
-                    <option>Birthday Cake</option>
-                    <option>Customized Cake</option>
+                    <option>
+                        Chocolate Cake
+                    </option>
+
+                    <option>
+                        Strawberry Cake
+                    </option>
+
+                    <option>
+                        Vanilla Cake
+                    </option>
+
+                    <option>
+                        Red Velvet Cake
+                    </option>
+
+                    <option>
+                        Birthday Cake
+                    </option>
+
+                    <option>
+                        Customized Cake
+                    </option>
 
                 </select>
 
@@ -1854,15 +2605,31 @@ footer{
 
             <div class="form-group">
 
-                <label>Cake Size</label>
+                <label>
+                    Cake Size
+                </label>
 
                 <select id="cakeSize">
 
-                    <option>1 Pound</option>
-                    <option>2 Pound</option>
-                    <option>3 Pound</option>
-                    <option>4 Pound</option>
-                    <option>5 Pound</option>
+                    <option>
+                        1 Pound
+                    </option>
+
+                    <option>
+                        2 Pound
+                    </option>
+
+                    <option>
+                        3 Pound
+                    </option>
+
+                    <option>
+                        4 Pound
+                    </option>
+
+                    <option>
+                        5 Pound
+                    </option>
 
                 </select>
 
@@ -1871,7 +2638,9 @@ footer{
 
             <div class="form-group full">
 
-                <label>Extra Details</label>
+                <label>
+                    Extra Details
+                </label>
 
                 <textarea
                     id="cakeDetails"
@@ -1892,6 +2661,7 @@ footer{
 
             </div>
 
+
         </form>
 
     </div>
@@ -1899,35 +2669,49 @@ footer{
 </section>
 
 
+
 <!-- =================================================
      CONTACT
 ================================================= -->
 
-<section class="contact" id="contact">
+<section
+    class="contact"
+    id="contact"
+>
+
 
     <div class="section-title">
 
-        <small>GET IN TOUCH</small>
+        <small>
+            CONTACT THE CAKE BUSINESS
+        </small>
 
-        <h2>Let's Bake Something Sweet</h2>
+        <h2>
+            Let's Bake Something Sweet
+        </h2>
 
         <p>
-            Have a question or want to place
-            an order? Contact us anytime.
+            For cake orders and business enquiries,
+            contact us directly.
         </p>
 
     </div>
 
 
+    <!-- BUSINESS NUMBER -->
+
     <div class="contact-buttons">
+
 
         <a
             href="https://wa.me/8801717503093"
             target="_blank"
+            rel="noopener noreferrer"
             class="contact-btn"
         >
-            📱 +880 1717-503093
+            📱 WhatsApp: +880 1717-503093
         </a>
+
 
         <a
             href="mailto:Naharsm6@gmail.com"
@@ -1936,18 +2720,24 @@ footer{
             📧 Naharsm6@gmail.com
         </a>
 
+
     </div>
 
+
+    <!-- CHANNEL -->
 
     <a
         href="https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x"
         target="_blank"
+        rel="noopener noreferrer"
         class="channel-btn"
     >
-        Join Our WhatsApp Channel →
+        📢 Join Our WhatsApp Channel →
     </a>
 
+
 </section>
+
 
 
 <!-- =================================================
@@ -1958,13 +2748,18 @@ footer{
 
     <div class="footer-inner">
 
-        <span>© 2026 Cakes Buddy</span>
+        <span>
+            © 2026 Cakes Buddy
+        </span>
 
-        <span>Homemade with ❤️</span>
+        <span>
+            Homemade with ❤️
+        </span>
 
     </div>
 
 </footer>
+
 
 
 <script>
@@ -1979,29 +2774,44 @@ const menuButton =
 const mobileMenu =
     document.getElementById("mobileMenu");
 
-menuButton.addEventListener("click",function(){
 
-    mobileMenu.classList.toggle("show");
+menuButton.addEventListener(
+    "click",
+    function(){
 
-    menuButton.textContent =
-        mobileMenu.classList.contains("show")
-        ? "✕"
-        : "☰";
+        mobileMenu.classList.toggle("show");
 
-});
+
+        if(
+            mobileMenu.classList.contains("show")
+        ){
+
+            menuButton.textContent = "✕";
+
+        }else{
+
+            menuButton.textContent = "☰";
+
+        }
+
+    }
+);
 
 
 document
 .querySelectorAll(".mobile-menu a")
 .forEach(function(link){
 
-    link.addEventListener("click",function(){
+    link.addEventListener(
+        "click",
+        function(){
 
-        mobileMenu.classList.remove("show");
+            mobileMenu.classList.remove("show");
 
-        menuButton.textContent = "☰";
+            menuButton.textContent = "☰";
 
-    });
+        }
+    );
 
 });
 
@@ -2023,68 +2833,97 @@ const searchItems =
     document.querySelectorAll(".search-list a");
 
 
-searchButton.addEventListener("click",function(event){
+searchButton.addEventListener(
+    "click",
+    function(event){
 
-    event.stopPropagation();
+        event.stopPropagation();
 
-    searchBox.classList.toggle("show");
+        searchBox.classList.toggle("show");
 
-    if(searchBox.classList.contains("show")){
 
-        setTimeout(function(){
+        if(
+            searchBox.classList.contains("show")
+        ){
 
-            searchInput.focus();
+            setTimeout(
+                function(){
 
-        },100);
+                    searchInput.focus();
+
+                },
+                100
+            );
+
+        }
 
     }
-
-});
-
-
-searchBox.addEventListener("click",function(event){
-
-    event.stopPropagation();
-
-});
+);
 
 
-document.addEventListener("click",function(){
+searchBox.addEventListener(
+    "click",
+    function(event){
 
-    searchBox.classList.remove("show");
+        event.stopPropagation();
 
-});
-
-
-/* SEARCH FILTER */
-
-searchInput.addEventListener("input",function(){
-
-    const value =
-        searchInput.value
-        .toLowerCase()
-        .trim();
+    }
+);
 
 
-    searchItems.forEach(function(item){
+document.addEventListener(
+    "click",
+    function(){
 
-        const text =
-            item.textContent
-            .toLowerCase();
+        searchBox.classList.remove("show");
 
-
-        item.style.display =
-            text.includes(value)
-            ? "block"
-            : "none";
-
-    });
-
-});
+    }
+);
 
 
 /* =================================================
-   2 BANNER AUTO SLIDER
+   SEARCH FILTER
+================================================= */
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        const value =
+            searchInput.value
+            .toLowerCase()
+            .trim();
+
+
+        searchItems.forEach(
+            function(item){
+
+                const text =
+                    item.textContent
+                    .toLowerCase();
+
+
+                if(
+                    text.includes(value)
+                ){
+
+                    item.style.display = "block";
+
+                }else{
+
+                    item.style.display = "none";
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =================================================
+   TWO BANNER AUTO SLIDER
 ================================================= */
 
 const bannerTrack =
@@ -2099,11 +2938,15 @@ function nextBanner(){
 
     currentBanner++;
 
-    if(currentBanner >= totalBanners){
+
+    if(
+        currentBanner >= totalBanners
+    ){
 
         currentBanner = 0;
 
     }
+
 
     bannerTrack.style.transform =
         "translateX(-" +
@@ -2114,8 +2957,15 @@ function nextBanner(){
 
 
 /*
-   Banner changes every 5 seconds:
-   1 → 2 → 1 → 2
+    5 seconds:
+
+    Banner 1
+       ↓
+    Banner 2
+       ↓
+    Banner 1
+       ↓
+    Banner 2
 */
 
 setInterval(
@@ -2125,137 +2975,168 @@ setInterval(
 
 
 /* =================================================
-   WHATSAPP ORDER
+   ORDER FORM
 ================================================= */
 
 const orderForm =
     document.getElementById("orderForm");
 
 
-orderForm.addEventListener("submit",function(event){
+orderForm.addEventListener(
+    "submit",
+    function(event){
 
-    event.preventDefault();
-
-
-    const name =
-        document
-        .getElementById("customerName")
-        .value
-        .trim();
+        event.preventDefault();
 
 
-    const phone =
-        document
-        .getElementById("customerPhone")
-        .value
-        .trim();
+        const name =
+            document
+            .getElementById("customerName")
+            .value
+            .trim();
 
 
-    const cake =
-        document
-        .getElementById("cakeName")
-        .value;
+        const phone =
+            document
+            .getElementById("customerPhone")
+            .value
+            .trim();
 
 
-    const size =
-        document
-        .getElementById("cakeSize")
-        .value;
+        const cake =
+            document
+            .getElementById("cakeName")
+            .value;
 
 
-    const details =
-        document
-        .getElementById("cakeDetails")
-        .value
-        .trim();
+        const size =
+            document
+            .getElementById("cakeSize")
+            .value;
 
 
-    if(!name){
-
-        alert("Please enter your name.");
-
-        return;
-
-    }
+        const details =
+            document
+            .getElementById("cakeDetails")
+            .value
+            .trim();
 
 
-    if(!phone){
+        /* VALIDATION */
 
-        alert("Please enter your phone number.");
+        if(!name){
 
-        return;
+            alert(
+                "Please enter your name."
+            );
 
-    }
+            return;
 
-
-    if(!cake){
-
-        alert("Please select a cake.");
-
-        return;
-
-    }
+        }
 
 
-    let message =
+        if(!phone){
+
+            alert(
+                "Please enter your phone number."
+            );
+
+            return;
+
+        }
+
+
+        if(!cake){
+
+            alert(
+                "Please select a cake."
+            );
+
+            return;
+
+        }
+
+
+        /* WHATSAPP MESSAGE */
+
+        let message =
 `Hello Cakes Buddy! 🍰
 
 I want to order a cake.
 
 👤 Name: ${name}
-📱 Phone: ${phone}
+📱 Customer Phone: ${phone}
 🎂 Cake: ${cake}
 ⚖️ Size: ${size}`;
 
 
-    if(details){
+        if(details){
 
-        message +=
+            message +=
 `
 
 📝 Details: ${details}`;
 
-    }
+        }
 
 
-    message +=
+        message +=
 `
 
 Thank you ❤️`;
 
 
-    const whatsappURL =
-        "https://wa.me/8801717503093?text=" +
-        encodeURIComponent(message);
+        /*
+            BUSINESS OWNER NUMBER
+
+            +880 1717-503093
+        */
+
+        const businessNumber =
+            "8801717503093";
 
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
+        const whatsappURL =
+            "https://wa.me/" +
+            businessNumber +
+            "?text=" +
+            encodeURIComponent(message);
 
-});
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    }
+);
 
 
 /* =================================================
-   ESC CLOSE
+   ESCAPE KEY
 ================================================= */
 
-document.addEventListener("keydown",function(event){
+document.addEventListener(
+    "keydown",
+    function(event){
 
-    if(event.key === "Escape"){
+        if(
+            event.key === "Escape"
+        ){
 
-        searchBox.classList.remove("show");
+            searchBox.classList.remove("show");
 
-        mobileMenu.classList.remove("show");
+            mobileMenu.classList.remove("show");
 
-        menuButton.textContent = "☰";
+            menuButton.textContent = "☰";
+
+        }
 
     }
-
-});
+);
 
 </script>
+
 
 </body>
 </html>
