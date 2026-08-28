@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,7 @@
 
 <title>Cakes Buddy | Homemade Cakes</title>
 
-<meta name="description"
-content="Cakes Buddy - Homemade cakes baked with love to make your day special.">
-
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -22,138 +19,138 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#fffaf8;
     color:#4b210c;
-    overflow-x:hidden;
-}
-
-img{
-    max-width:100%;
-    display:block;
 }
 
 a{
     text-decoration:none;
+    color:inherit;
 }
-
-:root{
-    --brown:#4b210c;
-    --brown2:#6c3215;
-    --pink:#d9577c;
-    --pink-light:#ffe0e9;
-    --cream:#fffaf8;
-    --white:#fff;
-    --text:#432d25;
-    --muted:#79665f;
-    --border:#edd8dc;
-    --shadow:0 15px 40px rgba(75,33,12,.12);
-}
-
-.container{
-    width:92%;
-    max-width:1200px;
-    margin:auto;
-}
-
 
 /* =========================
-   NAVBAR
+   HEADER
 ========================= */
 
-.navbar{
+.header{
     position:sticky;
     top:0;
     z-index:9999;
-    background:rgba(255,255,255,.97);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid #f0dfe2;
+    background:#fff;
+    border-bottom:1px solid #f1dfe3;
     box-shadow:0 3px 15px rgba(0,0,0,.05);
 }
 
-.nav-inner{
+.header-inner{
+    width:94%;
+    max-width:1280px;
     min-height:82px;
+    margin:auto;
+
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    gap:25px;
 }
 
+/* LOGO AREA */
 
-/* LOGO */
-
-.logo-link{
+.brand{
     display:flex;
     align-items:center;
+    gap:10px;
     flex-shrink:0;
 }
 
-
-/*
-   Logo wrapper বড় রাখা হয়েছে
-   যাতে uploaded logo clear দেখা যায়
-*/
-
-.logo-box{
-    width:155px;
-    height:70px;
+.logo{
+    width:55px;
+    height:55px;
+    border-radius:50%;
     overflow:hidden;
+    background:#f8b9ce;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#f9c1d2;
-    border-radius:12px;
 }
 
-
-/*
-   GitHub RAW image ব্যবহার করুন।
-   আপনার file name যদি .png হয়,
-   নিচের URL-এ .png রাখবেন।
-*/
-
-.logo-box img{
-    width:155px;
-    height:155px;
-    max-width:none;
+.logo img{
+    width:100%;
+    height:100%;
     object-fit:cover;
-    object-position:center center;
 }
 
+.brand-name{
+    font-family:Georgia,serif;
+    font-size:24px;
+    font-weight:700;
+    color:#4b210c;
+    white-space:nowrap;
+}
 
-/* NAV LINKS */
+/* SEARCH */
 
-.nav-links{
+.search{
+    margin-left:auto;
     display:flex;
     align-items:center;
-    gap:28px;
+    gap:8px;
+    color:#5d4035;
+    font-size:14px;
+    cursor:pointer;
+    padding:9px 12px;
+    border-radius:20px;
 }
 
-.nav-links a{
-    color:var(--brown);
-    font-size:15px;
+.search:hover{
+    background:#fff0f4;
+}
+
+.search-icon{
+    font-size:20px;
+}
+
+/* NAVIGATION */
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav a{
+    font-size:14px;
     font-weight:700;
+    color:#4b210c;
+    white-space:nowrap;
     transition:.25s;
 }
 
-.nav-links a:hover{
-    color:var(--pink);
+.nav a:hover{
+    color:#d9577c;
 }
 
-.nav-order{
-    background:var(--brown);
-    color:white;
-    padding:13px 22px;
+.shop{
+    color:#d9577c !important;
+}
+
+/* ORDER BUTTON */
+
+.order-btn{
+    background:#4b210c;
+    color:#fff !important;
+    padding:13px 21px;
     border-radius:30px;
-    font-weight:800;
-    font-size:14px;
+    font-weight:800 !important;
+    white-space:nowrap;
     transition:.3s;
 }
 
-.nav-order:hover{
-    background:var(--brown2);
+.order-btn:hover{
+    background:#6d3215;
     transform:translateY(-2px);
 }
+
+/* MOBILE BUTTON */
 
 .menu-btn{
     display:none;
@@ -161,12 +158,17 @@ a{
     height:44px;
     border:none;
     border-radius:12px;
-    background:var(--pink-light);
-    color:var(--brown);
-    font-size:24px;
+    background:#ffe2eb;
+    color:#4b210c;
+    font-size:23px;
     cursor:pointer;
 }
 
+/* MOBILE MENU */
+
+.mobile-menu{
+    display:none;
+}
 
 /* =========================
    HERO
@@ -176,96 +178,93 @@ a{
     min-height:calc(100vh - 82px);
     display:flex;
     align-items:center;
-    padding:75px 0;
+    padding:70px 0;
+
     background:
-        radial-gradient(circle at 90% 15%,#ffd2df 0,transparent 28%),
-        linear-gradient(135deg,#fff0f4,#fffaf8);
+    radial-gradient(
+        circle at 90% 10%,
+        #ffd7e3 0,
+        transparent 28%
+    ),
+    linear-gradient(
+        135deg,
+        #fff0f4,
+        #fffaf8
+    );
 }
 
-.hero-container{
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.hero-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
+    gap:55px;
     align-items:center;
-    gap:60px;
 }
 
-.hero-badge{
+.badge{
     display:inline-block;
-    background:var(--pink-light);
-    color:#a33c5a;
+    background:#ffe1e9;
+    color:#a53e5d;
     padding:9px 16px;
     border-radius:30px;
     font-size:12px;
-    font-weight:900;
+    font-weight:800;
     margin-bottom:20px;
 }
 
 .hero h1{
     font-family:Georgia,serif;
-    color:var(--brown);
-    font-size:clamp(45px,6vw,78px);
+    font-size:clamp(45px,6vw,76px);
     line-height:1.02;
+    color:#4b210c;
     margin-bottom:22px;
 }
 
 .hero h1 span{
-    color:var(--pink);
+    color:#d9577c;
 }
 
-.hero-text{
-    max-width:580px;
-    color:var(--muted);
+.hero p{
+    color:#79665f;
     font-size:18px;
     line-height:1.8;
+    max-width:580px;
     margin-bottom:30px;
 }
 
-.hero-buttons{
+.buttons{
     display:flex;
     gap:12px;
     flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:15px 25px;
+    padding:15px 24px;
     border-radius:30px;
     font-weight:800;
-    transition:.3s;
+    display:inline-block;
 }
 
-.btn-primary{
-    background:var(--brown);
+.btn-main{
+    background:#4b210c;
     color:white;
 }
 
-.btn-primary:hover{
-    background:var(--brown2);
-    transform:translateY(-3px);
-}
-
-.btn-secondary{
+.btn-light{
     background:white;
-    color:var(--brown);
-    border:1px solid var(--border);
+    border:1px solid #ecd9de;
 }
-
-.btn-secondary:hover{
-    background:var(--pink-light);
-}
-
-
-/* HERO IMAGE */
 
 .hero-image{
-    height:540px;
-    border-radius:35px;
+    height:530px;
+    border-radius:32px;
     overflow:hidden;
-    box-shadow:var(--shadow);
-    position:relative;
-    background:#f4d4de;
+    box-shadow:0 20px 50px rgba(75,33,12,.15);
 }
 
 .hero-image img{
@@ -274,67 +273,41 @@ a{
     object-fit:cover;
 }
 
-.hero-label{
-    position:absolute;
-    left:20px;
-    bottom:20px;
-    background:rgba(255,255,255,.96);
-    padding:15px 18px;
-    border-radius:17px;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.hero-label strong{
-    display:block;
-    margin-bottom:4px;
-}
-
-.hero-label span{
-    font-size:12px;
-    color:var(--muted);
-}
-
-
 /* =========================
-   GENERAL SECTION
+   SECTIONS
 ========================= */
 
 section{
     padding:90px 0;
 }
 
-.section-heading{
+.heading{
     text-align:center;
     max-width:700px;
     margin:0 auto 45px;
 }
 
-.section-heading small{
-    color:var(--pink);
-    font-size:12px;
+.heading small{
+    color:#d9577c;
     font-weight:900;
     letter-spacing:2px;
 }
 
-.section-heading h2{
+.heading h2{
     font-family:Georgia,serif;
-    color:var(--brown);
-    font-size:clamp(35px,5vw,52px);
-    margin:10px 0 12px;
+    font-size:48px;
+    margin:10px 0;
 }
 
-.section-heading p{
-    color:var(--muted);
+.heading p{
+    color:#79665f;
     line-height:1.7;
 }
 
+/* CAKES */
 
-/* =========================
-   CAKES
-========================= */
-
-.cakes-section{
-    background:white;
+.cakes{
+    background:#fff;
 }
 
 .cake-grid{
@@ -343,157 +316,96 @@ section{
     gap:25px;
 }
 
-.cake-card{
+.card{
     background:#fffaf8;
-    border:1px solid #f0dfe0;
-    border-radius:23px;
+    border:1px solid #efdcdf;
+    border-radius:22px;
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(75,33,12,.06);
-    transition:.35s;
+    transition:.3s;
 }
 
-.cake-card:hover{
-    transform:translateY(-8px);
-    box-shadow:var(--shadow);
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 40px rgba(75,33,12,.12);
 }
 
-.cake-img{
-    height:275px;
-    position:relative;
+.card-img{
+    height:260px;
     overflow:hidden;
-    background:#f5dce4;
 }
 
-.cake-img img{
+.card-img img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.5s;
+    transition:.4s;
 }
 
-.cake-card:hover .cake-img img{
-    transform:scale(1.07);
+.card:hover img{
+    transform:scale(1.06);
 }
 
-.cake-tag{
-    position:absolute;
-    top:15px;
-    left:15px;
-    background:white;
-    color:#a23d5a;
-    padding:7px 12px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:900;
-    z-index:2;
-}
-
-.cake-body{
+.card-body{
     padding:22px;
 }
 
-.cake-body h3{
+.card-body h3{
     font-family:Georgia,serif;
-    font-size:24px;
+    font-size:23px;
     margin-bottom:8px;
 }
 
-.cake-body p{
-    color:var(--muted);
+.card-body p{
+    color:#79665f;
+    line-height:1.6;
     font-size:14px;
-    line-height:1.65;
-    margin-bottom:18px;
-}
-
-.cake-bottom{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
 }
 
 .price{
-    color:var(--pink);
-    font-size:19px;
+    color:#d9577c;
     font-weight:900;
+    display:block;
+    margin-top:15px;
 }
 
-.order-link{
-    color:var(--brown);
-    font-weight:800;
-}
-
-
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .about{
-    background:linear-gradient(135deg,#ffe5ed,#fff6f0);
+    background:#ffe9ef;
 }
 
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
+    gap:55px;
     align-items:center;
 }
 
-.about-image{
-    height:500px;
+.about-img{
+    height:470px;
     overflow:hidden;
-    border-radius:32px;
-    box-shadow:var(--shadow);
+    border-radius:30px;
 }
 
-.about-image img{
+.about-img img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-.about-small{
-    color:var(--pink);
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.about-content h2{
+.about h2{
     font-family:Georgia,serif;
-    font-size:clamp(38px,5vw,55px);
-    line-height:1.1;
-    margin:12px 0 20px;
+    font-size:48px;
+    margin:10px 0 20px;
 }
 
-.about-content p{
-    color:var(--muted);
-    line-height:1.85;
-    margin-bottom:13px;
+.about p{
+    color:#79665f;
+    line-height:1.8;
+    margin-bottom:15px;
 }
 
-.features{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin-top:25px;
-}
-
-.feature{
-    background:white;
-    padding:15px;
-    border-radius:15px;
-    font-size:14px;
-    font-weight:800;
-}
-
-
-/* =========================
-   WHY US
-========================= */
-
-.why{
-    background:#fffaf8;
-}
+/* WHY */
 
 .why-grid{
     display:grid;
@@ -503,78 +415,39 @@ section{
 
 .why-card{
     background:white;
-    border:1px solid #f0dfe0;
+    border:1px solid #efdcdf;
     border-radius:20px;
     padding:30px 20px;
     text-align:center;
-    transition:.3s;
 }
 
-.why-card:hover{
-    transform:translateY(-5px);
-    box-shadow:var(--shadow);
-}
-
-.icon{
-    font-size:40px;
-    margin-bottom:15px;
-}
-
-.why-card h3{
-    margin-bottom:8px;
+.why-icon{
+    font-size:38px;
+    margin-bottom:12px;
 }
 
 .why-card p{
-    color:var(--muted);
+    color:#79665f;
     font-size:14px;
     line-height:1.6;
+    margin-top:8px;
 }
 
-
-/* =========================
-   ORDER
-========================= */
+/* ORDER */
 
 .order{
-    background:white;
+    background:#fff;
 }
 
 .order-box{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:45px;
+    max-width:800px;
+    margin:auto;
     background:#fff0f4;
-    padding:45px;
-    border-radius:32px;
+    padding:35px;
+    border-radius:28px;
 }
 
-.order-info h2{
-    font-family:Georgia,serif;
-    font-size:43px;
-    line-height:1.1;
-    margin-bottom:17px;
-}
-
-.order-info p{
-    color:var(--muted);
-    line-height:1.8;
-}
-
-.contact-mini{
-    display:grid;
-    gap:12px;
-    margin-top:25px;
-}
-
-.contact-mini div{
-    background:white;
-    padding:14px;
-    border-radius:13px;
-    font-size:14px;
-    font-weight:700;
-}
-
-.order-form{
+.form{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:15px;
@@ -590,32 +463,24 @@ section{
     grid-column:1/-1;
 }
 
-.form-group label{
+label{
     font-size:13px;
     font-weight:800;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea{
+input,
+select,
+textarea{
     width:100%;
-    border:1px solid #e6ccd3;
-    background:white;
-    color:var(--brown);
-    border-radius:12px;
     padding:14px;
-    outline:none;
+    border:1px solid #e7ccd4;
+    border-radius:12px;
+    background:#fff;
     font-size:15px;
+    outline:none;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:var(--pink);
-    box-shadow:0 0 0 3px rgba(217,87,124,.12);
-}
-
-.form-group textarea{
+textarea{
     min-height:120px;
     resize:vertical;
 }
@@ -623,124 +488,166 @@ section{
 .submit{
     width:100%;
     border:none;
-    background:var(--brown);
+    background:#4b210c;
     color:white;
     padding:15px;
     border-radius:30px;
     font-size:16px;
     font-weight:800;
     cursor:pointer;
-    transition:.3s;
 }
 
-.submit:hover{
-    background:var(--brown2);
-    transform:translateY(-2px);
-}
-
-
-/* =========================
-   CONTACT
-========================= */
+/* CONTACT */
 
 .contact{
-    background:var(--brown);
-    color:white;
+    background:#4b210c;
+    color:#fff;
     text-align:center;
 }
 
 .contact h2{
     font-family:Georgia,serif;
-    font-size:clamp(35px,5vw,48px);
+    font-size:45px;
     margin-bottom:15px;
 }
 
 .contact p{
     color:#ead8d0;
-    margin:8px 0;
+    margin:7px;
 }
 
-.socials{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:25px;
-}
-
-.social{
-    background:white;
-    color:var(--brown);
-    padding:11px 18px;
-    border-radius:30px;
-    font-weight:800;
-    font-size:14px;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
     background:#30160b;
-    color:#dfc8be;
+    color:#dec7bc;
     text-align:center;
-    padding:23px 15px;
+    padding:22px;
     font-size:13px;
 }
-
 
 /* =========================
    TABLET
 ========================= */
 
-@media(max-width:1000px){
+@media(max-width:1100px){
 
-    .nav-links{
-        gap:18px;
+    .header-inner{
+        gap:15px;
     }
 
-    .nav-links a{
-        font-size:14px;
+    .nav{
+        gap:15px;
     }
 
-    .hero-container{
-        grid-template-columns:1fr;
-        text-align:center;
+    .nav a{
+        font-size:13px;
     }
 
-    .hero-text{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-    .hero-image{
-        width:100%;
-        max-width:700px;
-        margin:auto;
-        height:470px;
+    .search{
+        display:none;
     }
 
     .cake-grid{
         grid-template-columns:1fr 1fr;
     }
 
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .header-inner{
+        min-height:72px;
+        justify-content:space-between;
+    }
+
+    .logo{
+        width:48px;
+        height:48px;
+    }
+
+    .brand-name{
+        font-size:21px;
+    }
+
+    .nav,
+    .search,
+    .header-order{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .mobile-menu{
+        position:absolute;
+        top:72px;
+        left:3%;
+        right:3%;
+        background:#fff;
+        border-radius:18px;
+        box-shadow:0 15px 40px rgba(0,0,0,.15);
+        padding:10px;
+    }
+
+    .mobile-menu.active{
+        display:block;
+    }
+
+    .mobile-menu a{
+        display:block;
+        padding:14px;
+        border-bottom:1px solid #f2e2e5;
+        font-weight:700;
+    }
+
+    .mobile-menu a:last-child{
+        border-bottom:none;
+    }
+
+    .mobile-order{
+        background:#4b210c;
+        color:#fff !important;
+        text-align:center;
+        border-radius:25px;
+        margin-top:8px;
+    }
+
+    .hero{
+        padding:55px 0;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .hero-image{
+        height:380px;
+    }
+
     .about-grid{
         grid-template-columns:1fr;
     }
 
-    .about-image{
-        max-width:700px;
-        width:100%;
-        margin:auto;
-    }
-
-    .order-box{
+    .cake-grid{
         grid-template-columns:1fr;
     }
 
@@ -749,97 +656,34 @@ footer{
     }
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:780px){
-
-    .nav-inner{
-        min-height:75px;
-    }
-
-    /*
-       Mobile logo
-       বড় এবং clear
-    */
-
-    .logo-box{
-        width:130px;
-        height:60px;
-    }
-
-    .logo-box img{
-        width:135px;
-        height:135px;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .nav-order{
-        display:none;
-    }
-
-    .nav-links{
-        display:none;
-        position:absolute;
-        top:75px;
-        left:4%;
-        right:4%;
-        background:white;
-        padding:15px;
-        border-radius:18px;
-        box-shadow:var(--shadow);
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-    }
-
-    .nav-links.active{
-        display:flex;
-    }
-
-    .nav-links a{
-        padding:14px 8px;
-        border-bottom:1px solid #f1e2e4;
-    }
-
-    .nav-links a:last-child{
-        border-bottom:none;
-    }
-}
-
-
 /* =========================
    SMALL MOBILE
 ========================= */
 
-@media(max-width:600px){
+@media(max-width:520px){
 
     .container{
         width:91%;
     }
 
-    section{
-        padding:65px 0;
+    .brand-name{
+        font-size:19px;
     }
 
-    .hero{
-        padding:55px 0;
+    .logo{
+        width:45px;
+        height:45px;
     }
 
     .hero h1{
-        font-size:45px;
+        font-size:44px;
     }
 
-    .hero-text{
+    .hero p{
         font-size:16px;
     }
 
-    .hero-buttons{
+    .buttons{
         flex-direction:column;
     }
 
@@ -848,89 +692,56 @@ footer{
     }
 
     .hero-image{
-        height:350px;
-        border-radius:25px;
+        height:330px;
     }
 
-    .cake-grid{
-        grid-template-columns:1fr;
+    section{
+        padding:65px 0;
     }
 
-    .cake-img{
-        height:260px;
-    }
-
-    .about-image{
-        height:350px;
-        border-radius:25px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
+    .heading h2,
+    .about h2{
+        font-size:38px;
     }
 
     .why-grid{
         grid-template-columns:1fr;
     }
 
-    .order-box{
-        padding:25px 18px;
-        border-radius:24px;
-    }
-
-    .order-info h2{
-        font-size:36px;
-    }
-
-    .order-form{
+    .form{
         grid-template-columns:1fr;
     }
 
     .full{
         grid-column:auto;
     }
-}
 
-
-/* =========================
-   EXTRA SMALL
-========================= */
-
-@media(max-width:380px){
-
-    .logo-box{
-        width:115px;
-        height:55px;
+    .order-box{
+        padding:22px 16px;
     }
 
-    .logo-box img{
-        width:125px;
-        height:125px;
-    }
-
-    .hero h1{
-        font-size:39px;
+    .contact h2{
+        font-size:36px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
 <!-- =========================
-     NAVBAR
+     HEADER
 ========================= -->
 
-<nav class="navbar">
+<header class="header">
 
-<div class="container nav-inner">
+<div class="header-inner">
 
-<a href="#home" class="logo-link">
+<!-- LOGO + NAME -->
 
-<div class="logo-box">
+<a href="#home" class="brand">
+
+<div class="logo">
 
 <img
 src="https://raw.githubusercontent.com/yourdocuments/products/main/logocakebuddyai.png"
@@ -939,34 +750,92 @@ alt="Cakes Buddy Logo"
 
 </div>
 
+<div class="brand-name">
+Cakes Buddy
+</div>
+
 </a>
 
 
-<div class="nav-links" id="navLinks">
+<!-- SEARCH -->
 
-<a href="#home">Home</a>
-<a href="#cakes">Our Cakes</a>
-<a href="#about">About</a>
-<a href="#why">Why Us</a>
-<a href="#order">Order</a>
-<a href="#contact">Contact</a>
+<div class="search" onclick="openSearch()">
+
+<span class="search-icon">⌕</span>
+
+<span>Search</span>
 
 </div>
 
 
-<a href="#order" class="nav-order">
+<!-- DESKTOP NAV -->
+
+<nav class="nav">
+
+<a href="#home">Home</a>
+
+<a href="#cakes">Our Cakes</a>
+
+<a href="#about">About</a>
+
+<a href="#why">Why Us</a>
+
+<a href="#contact">Contact</a>
+
+<a href="#cakes" class="shop">Shop</a>
+
+</nav>
+
+
+<!-- ORDER -->
+
+<a href="#order" class="order-btn header-order">
 Order Now
 </a>
 
 
-<button class="menu-btn" id="menuBtn">
+<!-- MOBILE BUTTON -->
+
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="Open menu">
+
 ☰
+
 </button>
 
 </div>
 
-</nav>
 
+<!-- MOBILE NAV -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="#home" onclick="closeMenu()">Home</a>
+
+<a href="#cakes" onclick="closeMenu()">Our Cakes</a>
+
+<a href="#about" onclick="closeMenu()">About</a>
+
+<a href="#why" onclick="closeMenu()">Why Us</a>
+
+<a href="#contact" onclick="closeMenu()">Contact</a>
+
+<a href="#cakes" onclick="closeMenu()">Shop</a>
+
+<a
+href="#order"
+class="mobile-order"
+onclick="closeMenu()">
+
+Order Now
+
+</a>
+
+</div>
+
+</header>
 
 
 <!-- =========================
@@ -975,39 +844,33 @@ Order Now
 
 <section class="hero" id="home">
 
-<div class="container hero-container">
-
+<div class="container hero-grid">
 
 <div>
 
-<span class="hero-badge">
+<span class="badge">
 🍰 HOMEMADE • FRESH • MADE WITH LOVE
 </span>
-
 
 <h1>
 We bake to
 <span>make your day.</span>
 </h1>
 
-
-<p class="hero-text">
-
+<p>
 Welcome to Cakes Buddy — beautiful homemade cakes
 prepared with fresh ingredients and lots of love.
 From birthdays to simple sweet moments,
 we're here to make your day extra special.
-
 </p>
 
+<div class="buttons">
 
-<div class="hero-buttons">
-
-<a href="#cakes" class="btn btn-primary">
+<a href="#cakes" class="btn btn-main">
 Explore Cakes →
 </a>
 
-<a href="#order" class="btn btn-secondary">
+<a href="#order" class="btn btn-light">
 Custom Cake
 </a>
 
@@ -1015,46 +878,29 @@ Custom Cake
 
 </div>
 
-
-
 <div class="hero-image">
 
 <img
 src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=90"
-alt="Chocolate cake"
+alt="Chocolate Cake"
 >
 
-<div class="hero-label">
-
-<strong>
-Freshly baked today ✨
-</strong>
-
-<span>
-Made specially for your sweet moments
-</span>
-
 </div>
-
-</div>
-
 
 </div>
 
 </section>
 
 
-
 <!-- =========================
      CAKES
 ========================= -->
 
-<section class="cakes-section" id="cakes">
+<section class="cakes" id="cakes">
 
 <div class="container">
 
-
-<div class="section-heading">
+<div class="heading">
 
 <small>
 OUR FAVOURITES
@@ -1065,34 +911,27 @@ Pick Your Perfect Cake
 </h2>
 
 <p>
-From creamy classics to celebration cakes,
-every cake is baked fresh and finished with care.
+Fresh homemade cakes for birthdays,
+celebrations and sweet moments.
 </p>
 
 </div>
 
 
-
 <div class="cake-grid">
 
+<div class="card">
 
-<div class="cake-card">
-
-<div class="cake-img">
-
-<span class="cake-tag">
-BEST SELLER
-</span>
+<div class="card-img">
 
 <img
 src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=90"
-alt="Chocolate Dream Cake"
-loading="lazy"
+alt="Chocolate Cake"
 >
 
 </div>
 
-<div class="cake-body">
+<div class="card-body">
 
 <h3>
 Chocolate Dream
@@ -1103,254 +942,170 @@ Moist chocolate sponge with silky cream
 and rich chocolate finish.
 </p>
 
-<div class="cake-bottom">
-
 <span class="price">
 ৳ 950+
 </span>
 
-<a href="#order" class="order-link">
-Order →
-</a>
-
-</div>
-
 </div>
 
 </div>
 
 
+<div class="card">
 
-<div class="cake-card">
-
-<div class="cake-img">
-
-<span class="cake-tag">
-FRESH
-</span>
+<div class="card-img">
 
 <img
 src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=90"
 alt="Strawberry Cake"
-loading="lazy"
 >
 
 </div>
 
-<div class="cake-body">
+<div class="card-body">
 
 <h3>
 Strawberry Bliss
 </h3>
 
 <p>
-Soft vanilla sponge layered with strawberry
-cream and fresh berries.
+Soft vanilla sponge with strawberry cream
+and fresh berries.
 </p>
-
-<div class="cake-bottom">
 
 <span class="price">
 ৳ 900+
 </span>
 
-<a href="#order" class="order-link">
-Order →
-</a>
-
-</div>
-
 </div>
 
 </div>
 
 
+<div class="card">
 
-<div class="cake-card">
-
-<div class="cake-img">
-
-<span class="cake-tag">
-CLASSIC
-</span>
+<div class="card-img">
 
 <img
 src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=90"
 alt="Vanilla Cake"
-loading="lazy"
 >
 
 </div>
 
-<div class="cake-body">
+<div class="card-body">
 
 <h3>
 Vanilla Celebration
 </h3>
 
 <p>
-Light vanilla cake with smooth buttercream,
-perfect for every occasion.
+Light vanilla cake with smooth buttercream.
 </p>
-
-<div class="cake-bottom">
 
 <span class="price">
 ৳ 800+
 </span>
 
-<a href="#order" class="order-link">
-Order →
-</a>
-
-</div>
-
 </div>
 
 </div>
 
 
+<div class="card">
 
-<div class="cake-card">
-
-<div class="cake-img">
-
-<span class="cake-tag">
-SPECIAL
-</span>
+<div class="card-img">
 
 <img
 src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&q=90"
 alt="Red Velvet Cake"
-loading="lazy"
 >
 
 </div>
 
-<div class="cake-body">
+<div class="card-body">
 
 <h3>
 Red Velvet
 </h3>
 
 <p>
-Soft red velvet sponge with creamy
-cheese frosting.
+Soft red velvet sponge with creamy cheese frosting.
 </p>
-
-<div class="cake-bottom">
 
 <span class="price">
 ৳ 1100+
 </span>
 
-<a href="#order" class="order-link">
-Order →
-</a>
-
-</div>
-
 </div>
 
 </div>
 
 
+<div class="card">
 
-<div class="cake-card">
-
-<div class="cake-img">
-
-<span class="cake-tag">
-SEASONAL
-</span>
+<div class="card-img">
 
 <img
 src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=90"
-alt="Fresh Fruit Cake"
-loading="lazy"
+alt="Fruit Cake"
 >
 
 </div>
 
-<div class="cake-body">
+<div class="card-body">
 
 <h3>
 Fresh Fruit Cake
 </h3>
 
 <p>
-Fresh seasonal fruits with soft sponge
-and delicious cream.
+Fresh seasonal fruits with soft sponge and cream.
 </p>
-
-<div class="cake-bottom">
 
 <span class="price">
 ৳ 1000+
 </span>
 
-<a href="#order" class="order-link">
-Order →
-</a>
-
-</div>
-
 </div>
 
 </div>
 
 
+<div class="card">
 
-<div class="cake-card">
-
-<div class="cake-img">
-
-<span class="cake-tag">
-CUSTOM
-</span>
+<div class="card-img">
 
 <img
 src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=900&q=90"
 alt="Birthday Cake"
-loading="lazy"
 >
 
 </div>
 
-<div class="cake-body">
+<div class="card-body">
 
 <h3>
 Birthday Special
 </h3>
 
 <p>
-Tell us your theme and we'll create
-something special for your celebration.
+Custom cake designed especially for your celebration.
 </p>
-
-<div class="cake-bottom">
 
 <span class="price">
 ৳ 1200+
 </span>
 
-<a href="#order" class="order-link">
-Order →
-</a>
-
 </div>
 
 </div>
-
-</div>
-
 
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -1361,23 +1116,20 @@ Order →
 
 <div class="container about-grid">
 
-
-<div class="about-image">
+<div class="about-img">
 
 <img
 src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1000&q=90"
-alt="Homemade baking"
-loading="lazy"
+alt="Homemade Baking"
 >
 
 </div>
 
+<div>
 
-<div class="about-content">
-
-<span class="about-small">
-MADE IN OUR LITTLE KITCHEN ❤️
-</span>
+<small>
+MADE WITH LOVE ❤️
+</small>
 
 <h2>
 Homemade tastes different.
@@ -1385,35 +1137,13 @@ Homemade tastes different.
 
 <p>
 Cakes Buddy is all about warm, homemade goodness.
-We believe a cake should look beautiful,
-taste amazing and feel personal.
+Every cake is prepared with care and quality ingredients.
 </p>
 
 <p>
-Every cake is prepared with care, quality
-ingredients and a little extra love.
+We make cakes for birthdays, anniversaries,
+parties and all the little moments worth celebrating.
 </p>
-
-
-<div class="features">
-
-<div class="feature">
-🌸 Fresh Ingredients
-</div>
-
-<div class="feature">
-🎂 Made To Order
-</div>
-
-<div class="feature">
-✨ Custom Designs
-</div>
-
-<div class="feature">
-💝 Baked With Love
-</div>
-
-</div>
 
 </div>
 
@@ -1422,16 +1152,15 @@ ingredients and a little extra love.
 </section>
 
 
-
 <!-- =========================
      WHY US
 ========================= -->
 
-<section class="why" id="why">
+<section id="why">
 
 <div class="container">
 
-<div class="section-heading">
+<div class="heading">
 
 <small>
 WHY CAKES BUDDY
@@ -1441,29 +1170,19 @@ WHY CAKES BUDDY
 Sweetness you can trust
 </h2>
 
-<p>
-We put love and care into every cake we make.
-</p>
-
 </div>
 
 
 <div class="why-grid">
 
-
 <div class="why-card">
 
-<div class="icon">
-🥚
-</div>
+<div class="why-icon">🥚</div>
 
-<h3>
-Fresh Ingredients
-</h3>
+<h3>Fresh Ingredients</h3>
 
 <p>
-We use fresh ingredients for
-better taste and quality.
+Fresh ingredients for better taste and quality.
 </p>
 
 </div>
@@ -1471,17 +1190,12 @@ better taste and quality.
 
 <div class="why-card">
 
-<div class="icon">
-👩‍🍳
-</div>
+<div class="why-icon">👩‍🍳</div>
 
-<h3>
-Homemade
-</h3>
+<h3>Homemade</h3>
 
 <p>
-Every cake is prepared with
-homemade care and attention.
+Prepared with homemade care and attention.
 </p>
 
 </div>
@@ -1489,17 +1203,12 @@ homemade care and attention.
 
 <div class="why-card">
 
-<div class="icon">
-🎨
-</div>
+<div class="why-icon">🎨</div>
 
-<h3>
-Custom Design
-</h3>
+<h3>Custom Design</h3>
 
 <p>
-Choose your theme, colour,
-writing and design.
+Choose your own theme, colour and writing.
 </p>
 
 </div>
@@ -1507,28 +1216,21 @@ writing and design.
 
 <div class="why-card">
 
-<div class="icon">
-❤️
-</div>
+<div class="why-icon">❤️</div>
 
-<h3>
-Made With Love
-</h3>
+<h3>Made With Love</h3>
 
 <p>
-Your special moments deserve
-something special.
+Every cake is made especially for you.
 </p>
 
 </div>
-
 
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -1539,8 +1241,7 @@ something special.
 
 <div class="container">
 
-
-<div class="section-heading">
+<div class="heading">
 
 <small>
 LET'S MAKE IT SWEET
@@ -1551,8 +1252,7 @@ Order Your Cake
 </h2>
 
 <p>
-Fill out the form and send your order
-directly through WhatsApp.
+Fill in the details and send your order through WhatsApp.
 </p>
 
 </div>
@@ -1560,54 +1260,15 @@ directly through WhatsApp.
 
 <div class="order-box">
 
-
-<div class="order-info">
-
-<h2>
-Your cake,
-<br>
-your way.
-</h2>
-
-<p>
-Need a birthday message, special flavour,
-colour or custom design?
-Add all your ideas in the form.
-</p>
-
-
-<div class="contact-mini">
-
-<div>
-📞 01XXXXXXXXX
-</div>
-
-<div>
-📧 cakebuddy@example.com
-</div>
-
-<div>
-📍 Bangladesh
-</div>
-
-</div>
-
-</div>
-
-
-
-<form class="order-form" id="orderForm">
-
+<form class="form" id="orderForm">
 
 <div class="form-group">
 
-<label>
-Your Name
-</label>
+<label>Your Name</label>
 
 <input
-type="text"
 id="name"
+type="text"
 placeholder="Enter your name"
 required
 >
@@ -1617,13 +1278,11 @@ required
 
 <div class="form-group">
 
-<label>
-Phone Number
-</label>
+<label>Phone Number</label>
 
 <input
-type="tel"
 id="phone"
+type="tel"
 placeholder="01XXXXXXXXX"
 required
 >
@@ -1633,22 +1292,24 @@ required
 
 <div class="form-group">
 
-<label>
-Select Cake
-</label>
+<label>Select Cake</label>
 
 <select id="cake" required>
 
-<option value="">
-Choose a cake
-</option>
+<option value="">Choose a cake</option>
 
 <option>Chocolate Dream</option>
+
 <option>Strawberry Bliss</option>
+
 <option>Vanilla Celebration</option>
+
 <option>Red Velvet</option>
+
 <option>Fresh Fruit Cake</option>
+
 <option>Birthday Special</option>
+
 <option>Custom Cake</option>
 
 </select>
@@ -1658,16 +1319,18 @@ Choose a cake
 
 <div class="form-group">
 
-<label>
-Cake Size
-</label>
+<label>Cake Size</label>
 
 <select id="size">
 
 <option>1 Pound</option>
+
 <option>2 Pound</option>
+
 <option>3 Pound</option>
+
 <option>4 Pound</option>
+
 <option>Custom Size</option>
 
 </select>
@@ -1677,13 +1340,11 @@ Cake Size
 
 <div class="form-group full">
 
-<label>
-Cake Details
-</label>
+<label>Cake Details</label>
 
 <textarea
 id="details"
-placeholder="Cake writing, colour, theme, delivery date etc."
+placeholder="Cake writing, colour, theme, delivery date..."
 ></textarea>
 
 </div>
@@ -1691,9 +1352,7 @@ placeholder="Cake writing, colour, theme, delivery date etc."
 
 <div class="form-group full">
 
-<button
-type="submit"
-class="submit">
+<button class="submit" type="submit">
 
 Order Through WhatsApp 💬
 
@@ -1701,16 +1360,13 @@ Order Through WhatsApp 💬
 
 </div>
 
-
 </form>
-
 
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
@@ -1726,122 +1382,124 @@ Contact Cakes Buddy 🎂
 </h2>
 
 <p>
-📞 Phone: 01XXXXXXXXX
+📞 01XXXXXXXXX
 </p>
 
 <p>
-📧 Email: cakebuddy@example.com
+📧 cakebuddy@example.com
 </p>
 
 <p>
 📍 Bangladesh
 </p>
 
-
-<div class="socials">
-
-<a href="#" class="social">
-Facebook
-</a>
-
-<a href="#" class="social">
-Instagram
-</a>
-
-<a href="#" class="social">
-WhatsApp
-</a>
-
-</div>
-
 </div>
 
 </section>
 
 
-
 <footer>
 
-© 2026 Cakes Buddy —
-We Bake To Make Your Day ❤️
+© 2026 Cakes Buddy — We Bake To Make Your Day ❤️
 
 </footer>
 
 
-
 <script>
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* MOBILE MENU */
 
-const menuBtn =
-document.getElementById("menuBtn");
+function toggleMenu(){
 
-const navLinks =
-document.getElementById("navLinks");
+    document
+    .getElementById("mobileMenu")
+    .classList
+    .toggle("active");
 
-menuBtn.addEventListener("click",function(){
+}
 
-navLinks.classList.toggle("active");
+function closeMenu(){
 
-});
+    document
+    .getElementById("mobileMenu")
+    .classList
+    .remove("active");
 
-
-document.querySelectorAll(".nav-links a")
-.forEach(function(link){
-
-link.addEventListener("click",function(){
-
-navLinks.classList.remove("active");
-
-});
-
-});
+}
 
 
-/* =========================
-   WHATSAPP ORDER
-========================= */
+/* SEARCH */
+
+function openSearch(){
+
+    const search =
+    prompt("What are you looking for?");
+
+    if(!search) return;
+
+    const text =
+    search.toLowerCase();
+
+    if(
+        text.includes("cake") ||
+        text.includes("chocolate") ||
+        text.includes("strawberry") ||
+        text.includes("vanilla")
+    ){
+
+        document
+        .getElementById("cakes")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }else{
+
+        alert(
+            "Try searching for Chocolate, Strawberry, Vanilla or Cake."
+        );
+
+    }
+
+}
+
+
+/* WHATSAPP ORDER */
 
 document
 .getElementById("orderForm")
 .addEventListener("submit",function(e){
 
-e.preventDefault();
+    e.preventDefault();
+
+    const name =
+    document.getElementById("name").value;
+
+    const phone =
+    document.getElementById("phone").value;
+
+    const cake =
+    document.getElementById("cake").value;
+
+    const size =
+    document.getElementById("size").value;
+
+    const details =
+    document.getElementById("details").value;
 
 
-const name =
-document.getElementById("name").value.trim();
+    /*
+       নিজের WhatsApp number এখানে দিন।
 
-const phone =
-document.getElementById("phone").value.trim();
+       Example:
+       8801712345678
+    */
 
-const cake =
-document.getElementById("cake").value;
-
-const size =
-document.getElementById("size").value;
-
-const details =
-document.getElementById("details").value.trim();
+    const whatsappNumber =
+    "8801XXXXXXXXX";
 
 
-/*
-   নিজের WhatsApp number এখানে দিন।
-
-   Bangladesh format:
-   8801XXXXXXXXX
-
-   Example:
-   8801712345678
-*/
-
-const whatsappNumber =
-"8801XXXXXXXXX";
-
-
-const message =
+    const message =
 `Hello Cakes Buddy! 🎂
 
 I want to order a cake.
@@ -1853,22 +1511,19 @@ Size: ${size}
 Details: ${details}`;
 
 
-const whatsappURL =
-"https://wa.me/" +
-whatsappNumber +
-"?text=" +
-encodeURIComponent(message);
+    const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
 
 
-window.open(
-whatsappURL,
-"_blank"
-);
+    window.open(url,"_blank");
 
 });
 
 </script>
 
-
 </body>
 </html>
+```
