@@ -1,36 +1,27 @@
 /* =====================================================
-   CAKES BUDDY
-   COMPLETE SCRIPT.JS
+   CAKES BUDDY - MAIN JAVASCRIPT
 ===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       1. MOBILE MENU
+       MOBILE MENU
     ================================================= */
 
-    const menuButton =
-        document.getElementById("menuButton");
-
-    const mobileMenu =
-        document.getElementById("mobileMenu");
-
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
     if (menuButton && mobileMenu) {
 
         menuButton.addEventListener("click", function () {
 
-            mobileMenu.classList.toggle("active");
+            mobileMenu.classList.toggle("show");
 
-            if (mobileMenu.classList.contains("active")) {
-
+            if (mobileMenu.classList.contains("show")) {
                 menuButton.innerHTML = "✕";
-
             } else {
-
                 menuButton.innerHTML = "☰";
-
             }
 
         });
@@ -45,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             link.addEventListener("click", function () {
 
-                mobileMenu.classList.remove("active");
+                mobileMenu.classList.remove("show");
 
                 menuButton.innerHTML = "☰";
 
@@ -58,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       2. SEARCH DROPDOWN
+       SEARCH DROPDOWN
     ================================================= */
 
     const searchButton =
@@ -79,144 +70,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (searchButton && searchDropdown) {
 
-        /* Open / close search */
+        searchButton.addEventListener("click", function (event) {
 
-        searchButton.addEventListener(
-            "click",
-            function (event) {
+            event.stopPropagation();
 
-                event.stopPropagation();
+            searchDropdown.classList.toggle("show");
 
-                searchDropdown.classList.toggle("active");
+            if (searchDropdown.classList.contains("show")) {
 
-                if (
-                    searchDropdown.classList.contains(
-                        "active"
-                    )
-                ) {
+                setTimeout(function () {
 
-                    setTimeout(function () {
-
-                        if (cakeSearchInput) {
-                            cakeSearchInput.focus();
-                        }
-
-                    }, 100);
-
-                }
-
-            }
-        );
-
-
-        /* Prevent dropdown click from closing */
-
-        searchDropdown.addEventListener(
-            "click",
-            function (event) {
-
-                event.stopPropagation();
-
-            }
-        );
-
-
-        /* Search filter */
-
-        if (cakeSearchInput) {
-
-            cakeSearchInput.addEventListener(
-                "input",
-                function () {
-
-                    const searchText =
-                        cakeSearchInput.value
-                            .toLowerCase()
-                            .trim();
-
-                    let found = false;
-
-
-                    searchItems.forEach(
-                        function (item) {
-
-                            const text =
-                                item.textContent
-                                    .toLowerCase();
-
-                            if (
-                                text.includes(
-                                    searchText
-                                )
-                            ) {
-
-                                item.style.display =
-                                    "flex";
-
-                                found = true;
-
-                            } else {
-
-                                item.style.display =
-                                    "none";
-
-                            }
-
-                        }
-                    );
-
-
-                    if (noResult) {
-
-                        if (!found) {
-
-                            noResult.style.display =
-                                "block";
-
-                        } else {
-
-                            noResult.style.display =
-                                "none";
-
-                        }
-
+                    if (cakeSearchInput) {
+                        cakeSearchInput.focus();
                     }
 
-                }
-            );
+                }, 100);
 
+            }
+
+        });
+
+
+        /* Don't close when clicking inside search */
+
+        searchDropdown.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+        });
+
+    }
+
+
+    /* Close search when clicking outside */
+
+    document.addEventListener("click", function () {
+
+        if (searchDropdown) {
+            searchDropdown.classList.remove("show");
         }
 
+    });
 
-        /* Close search when clicking outside */
 
-        document.addEventListener(
-            "click",
+
+    /* =================================================
+       SEARCH CAKES
+    ================================================= */
+
+    if (cakeSearchInput) {
+
+        cakeSearchInput.addEventListener(
+            "input",
             function () {
 
-                searchDropdown.classList.remove(
-                    "active"
-                );
+                const searchText =
+                    cakeSearchInput.value
+                    .toLowerCase()
+                    .trim();
 
-            }
-        );
+                let found = false;
 
 
-        /* Close after selecting search result */
+                searchItems.forEach(function (item) {
 
-        searchItems.forEach(
-            function (item) {
+                    const itemText =
+                        item.textContent.toLowerCase();
 
-                item.addEventListener(
-                    "click",
-                    function () {
 
-                        searchDropdown.classList.remove(
-                            "active"
-                        );
+                    if (
+                        searchText === "" ||
+                        itemText.includes(searchText)
+                    ) {
+
+                        item.style.display = "block";
+
+                        found = true;
+
+                    } else {
+
+                        item.style.display = "none";
 
                     }
-                );
+
+                });
+
+
+                if (noResult) {
+
+                    if (found) {
+                        noResult.style.display = "none";
+                    } else {
+                        noResult.style.display = "block";
+                    }
+
+                }
 
             }
         );
@@ -226,91 +174,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =================================================
-       3. BANNER SLIDER
+       AD BANNER SLIDER
+       5 SLIDES
+       RIGHT TO LEFT
     ================================================= */
 
     const slides =
-        document.querySelector(".slides");
+        document.getElementById("slides");
 
-    const slideItems =
-        document.querySelectorAll(".slide");
-
-    const nextBtn =
-        document.getElementById("nextBtn");
-
-    const prevBtn =
+    const prevButton =
         document.getElementById("prevBtn");
+
+    const nextButton =
+        document.getElementById("nextBtn");
 
     const dotsContainer =
         document.getElementById("sliderDots");
 
 
-    /* Stop if slider doesn't exist */
-
-    if (
-        !slides ||
-        slideItems.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    const totalSlides =
-        slideItems.length;
-
-
     let currentSlide = 0;
+
+    const totalSlides = 5;
 
     let autoSlide;
 
 
-    /* =================================================
-       CREATE DOTS
-    ================================================= */
+    /* Create dots */
 
     if (dotsContainer) {
 
-        dotsContainer.innerHTML = "";
-
-
-        for (
-            let i = 0;
-            i < totalSlides;
-            i++
-        ) {
+        for (let i = 0; i < totalSlides; i++) {
 
             const dot =
                 document.createElement("button");
 
+            dot.className = "slider-dot";
 
-            dot.className =
-                "slider-dot";
-
-
-            dot.type =
-                "button";
-
+            dot.type = "button";
 
             dot.setAttribute(
                 "aria-label",
-                "Go to banner " + (i + 1)
+                "Go to slide " + (i + 1)
             );
 
 
-            dot.addEventListener(
-                "click",
-                function () {
+            dot.addEventListener("click", function () {
 
-                    currentSlide = i;
+                currentSlide = i;
 
-                    updateSlider();
+                updateSlider();
 
-                    resetAutoSlide();
+                restartAutoSlide();
 
-                }
-            );
+            });
 
 
             dotsContainer.appendChild(dot);
@@ -320,113 +236,75 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    const dots =
-        document.querySelectorAll(
-            ".slider-dot"
-        );
-
-
-
-    /* =================================================
-       UPDATE SLIDER
-    ================================================= */
-
     function updateSlider() {
+
+        if (!slides) return;
 
 
         /*
-           Each slide = 20%
-           because there are 5 banners
-        */
-
-        const percentage =
-            (currentSlide * 100) /
-            totalSlides;
-
+         * 20% = one slide
+         * Positive slide number moves
+         * the banner from right to left.
+         */
 
         slides.style.transform =
             "translateX(-" +
-            percentage +
+            (currentSlide * 20) +
             "%)";
 
 
-        /* Update dots */
+        const dots =
+            document.querySelectorAll(".slider-dot");
 
-        dots.forEach(
-            function (dot, index) {
 
-                dot.classList.toggle(
-                    "active",
-                    index === currentSlide
-                );
+        dots.forEach(function (dot, index) {
 
+            if (index === currentSlide) {
+                dot.classList.add("active");
+            } else {
+                dot.classList.remove("active");
             }
-        );
+
+        });
 
     }
 
-
-
-    /* =================================================
-       NEXT SLIDE
-    ================================================= */
 
     function nextSlide() {
 
         currentSlide++;
 
-
-        if (
-            currentSlide >= totalSlides
-        ) {
-
+        if (currentSlide >= totalSlides) {
             currentSlide = 0;
-
         }
-
 
         updateSlider();
 
     }
 
-
-
-    /* =================================================
-       PREVIOUS SLIDE
-    ================================================= */
 
     function previousSlide() {
 
         currentSlide--;
 
-
         if (currentSlide < 0) {
-
-            currentSlide =
-                totalSlides - 1;
-
+            currentSlide = totalSlides - 1;
         }
-
 
         updateSlider();
 
     }
 
 
+    if (nextButton) {
 
-    /* =================================================
-       NEXT BUTTON
-    ================================================= */
-
-    if (nextBtn) {
-
-        nextBtn.addEventListener(
+        nextButton.addEventListener(
             "click",
             function () {
 
                 nextSlide();
 
-                resetAutoSlide();
+                restartAutoSlide();
 
             }
         );
@@ -434,20 +312,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    if (prevButton) {
 
-    /* =================================================
-       PREVIOUS BUTTON
-    ================================================= */
-
-    if (prevBtn) {
-
-        prevBtn.addEventListener(
+        prevButton.addEventListener(
             "click",
             function () {
 
                 previousSlide();
 
-                resetAutoSlide();
+                restartAutoSlide();
 
             }
         );
@@ -455,27 +328,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
-    /* =================================================
-       AUTO SLIDE
-    ================================================= */
+    /* Auto slide */
 
     function startAutoSlide() {
 
         autoSlide =
             setInterval(
-                function () {
-
-                    nextSlide();
-
-                },
-                4000
+                nextSlide,
+                5000
             );
 
     }
 
 
-    function resetAutoSlide() {
+    function restartAutoSlide() {
 
         clearInterval(autoSlide);
 
@@ -484,22 +350,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* Start slider */
-
-    updateSlider();
-
-    startAutoSlide();
-
-
-
-    /* =================================================
-       PAUSE WHEN MOUSE IS OVER BANNER
-    ================================================= */
+    /* Pause when mouse is over banner */
 
     const bannerSlider =
-        document.querySelector(
-            ".banner-slider"
-        );
+        document.querySelector(".banner-slider");
 
 
     if (bannerSlider) {
@@ -518,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "mouseleave",
             function () {
 
-                startAutoSlide();
+                restartAutoSlide();
 
             }
         );
@@ -526,13 +380,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
-    /* =================================================
-       4. MOBILE TOUCH / SWIPE
-    ================================================= */
+    /* Touch swipe support */
 
     let touchStartX = 0;
-
     let touchEndX = 0;
 
 
@@ -545,12 +395,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 touchStartX =
                     event.changedTouches[0].screenX;
 
-                clearInterval(autoSlide);
-
             },
-            {
-                passive: true
-            }
+            { passive: true }
         );
 
 
@@ -562,60 +408,47 @@ document.addEventListener("DOMContentLoaded", function () {
                     event.changedTouches[0].screenX;
 
 
-                handleSwipe();
+                const swipeDistance =
+                    touchStartX - touchEndX;
 
-                startAutoSlide();
+
+                if (Math.abs(swipeDistance) > 50) {
+
+                    if (swipeDistance > 0) {
+
+                        nextSlide();
+
+                    } else {
+
+                        previousSlide();
+
+                    }
+
+                    restartAutoSlide();
+
+                }
 
             },
-            {
-                passive: true
-            }
+            { passive: true }
         );
 
     }
 
 
-    function handleSwipe() {
+    /* Start slider */
 
-        const swipeDistance =
-            touchEndX - touchStartX;
+    updateSlider();
 
-
-        /*
-           Swipe left
-           = next banner
-        */
-
-        if (swipeDistance < -50) {
-
-            nextSlide();
-
-        }
-
-
-        /*
-           Swipe right
-           = previous banner
-        */
-
-        if (swipeDistance > 50) {
-
-            previousSlide();
-
-        }
-
-    }
+    startAutoSlide();
 
 
 
     /* =================================================
-       5. ORDER FORM → WHATSAPP
+       ORDER FORM → WHATSAPP
     ================================================= */
 
     const orderForm =
-        document.getElementById(
-            "orderForm"
-        );
+        document.getElementById("orderForm");
 
 
     if (orderForm) {
@@ -628,46 +461,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 const name =
-                    document.getElementById(
-                        "name"
-                    )?.value.trim() || "";
+                    document.getElementById("name").value.trim();
 
 
                 const phone =
-                    document.getElementById(
-                        "phone"
-                    )?.value.trim() || "";
+                    document.getElementById("phone").value.trim();
 
 
                 const cake =
-                    document.getElementById(
-                        "cake"
-                    )?.value || "";
+                    document.getElementById("cake").value;
 
 
                 const size =
-                    document.getElementById(
-                        "size"
-                    )?.value || "";
+                    document.getElementById("size").value;
 
 
                 const details =
-                    document.getElementById(
-                        "details"
-                    )?.value.trim() || "";
+                    document.getElementById("details").value.trim();
 
-
-                /* Basic validation */
 
                 if (!name) {
 
-                    alert(
-                        "Please enter your name."
-                    );
+                    alert("Please enter your name.");
 
-                    document.getElementById(
-                        "name"
-                    )?.focus();
+                    document
+                        .getElementById("name")
+                        .focus();
 
                     return;
 
@@ -676,13 +495,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!phone) {
 
-                    alert(
-                        "Please enter your phone number."
-                    );
+                    alert("Please enter your phone number.");
 
-                    document.getElementById(
-                        "phone"
-                    )?.focus();
+                    document
+                        .getElementById("phone")
+                        .focus();
 
                     return;
 
@@ -691,58 +508,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (!cake) {
 
-                    alert(
-                        "Please select a cake."
-                    );
+                    alert("Please select a cake.");
 
-                    document.getElementById(
-                        "cake"
-                    )?.focus();
+                    document
+                        .getElementById("cake")
+                        .focus();
 
                     return;
 
                 }
 
 
-                /* WhatsApp message */
+                let message =
+                    "Hello Cakes Buddy! 🍰%0A%0A" +
 
-                const message =
-`Hello Cakes Buddy! 🍰
+                    "*New Cake Order*%0A%0A" +
 
-I want to order a cake.
+                    "👤 Name: " +
+                    encodeURIComponent(name) +
 
-👤 Name: ${name}
+                    "%0A📱 Phone: " +
+                    encodeURIComponent(phone) +
 
-📱 Phone: ${phone}
+                    "%0A🎂 Cake: " +
+                    encodeURIComponent(cake) +
 
-🎂 Cake: ${cake}
+                    "%0A⚖️ Size: " +
+                    encodeURIComponent(size);
 
-⚖️ Size: ${size}
 
-📝 Details:
-${details || "No extra details"}
+                if (details) {
 
-Thank you! ❤️`;
+                    message +=
+                        "%0A📝 Details: " +
+                        encodeURIComponent(details);
+
+                }
+
+
+                message +=
+                    "%0A%0AThank you! ❤️";
 
 
                 /*
-                   Your WhatsApp number
-                */
-
-                const whatsappNumber =
-                    "8801717503093";
-
+                 * Cakes Buddy WhatsApp number
+                 * +880 1717-503093
+                 */
 
                 const whatsappURL =
-                    "https://wa.me/" +
-                    whatsappNumber +
-                    "?text=" +
-                    encodeURIComponent(
-                        message
-                    );
+                    "https://wa.me/8801717503093?text=" +
+                    message;
 
-
-                /* Open WhatsApp */
 
                 window.open(
                     whatsappURL,
@@ -757,125 +573,7 @@ Thank you! ❤️`;
 
 
     /* =================================================
-       6. WHATSAPP CHANNEL LINKS
-    ================================================= */
-
-    const channelURL =
-        "https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x";
-
-
-    const channelLinks =
-        document.querySelectorAll(
-            'a[href*="whatsapp.com/channel"]'
-        );
-
-
-    channelLinks.forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    link.href =
-                        channelURL;
-
-                }
-            );
-
-        }
-    );
-
-
-
-    /* =================================================
-       7. HEADER SCROLL EFFECT
-    ================================================= */
-
-    const header =
-        document.querySelector("header");
-
-
-    if (header) {
-
-        window.addEventListener(
-            "scroll",
-            function () {
-
-                if (
-                    window.scrollY > 30
-                ) {
-
-                    header.classList.add(
-                        "scrolled"
-                    );
-
-                } else {
-
-                    header.classList.remove(
-                        "scrolled"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-
-    /* =================================================
-       8. CLOSE SEARCH WITH ESC
-    ================================================= */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                if (searchDropdown) {
-
-                    searchDropdown.classList.remove(
-                        "active"
-                    );
-
-                }
-
-
-                if (
-                    mobileMenu &&
-                    mobileMenu.classList.contains(
-                        "active"
-                    )
-                ) {
-
-                    mobileMenu.classList.remove(
-                        "active"
-                    );
-
-
-                    if (menuButton) {
-
-                        menuButton.innerHTML =
-                            "☰";
-
-                    }
-
-                }
-
-            }
-
-        }
-    );
-
-
-
-    /* =================================================
-       9. SMOOTH NAVIGATION
+       SMOOTH SCROLL
     ================================================= */
 
     const allAnchors =
@@ -884,33 +582,23 @@ Thank you! ❤️`;
         );
 
 
-    allAnchors.forEach(
-        function (anchor) {
+    allAnchors.forEach(function (anchor) {
 
-            anchor.addEventListener(
-                "click",
-                function (event) {
+        anchor.addEventListener(
+            "click",
+            function (event) {
 
-                    const targetID =
-                        anchor.getAttribute(
-                            "href"
-                        );
+                const targetID =
+                    anchor.getAttribute("href");
 
 
-                    if (
-                        !targetID ||
-                        targetID === "#"
-                    ) {
-
-                        return;
-
-                    }
-
+                if (
+                    targetID &&
+                    targetID !== "#"
+                ) {
 
                     const target =
-                        document.querySelector(
-                            targetID
-                        );
+                        document.querySelector(targetID);
 
 
                     if (target) {
@@ -926,43 +614,71 @@ Thank you! ❤️`;
                     }
 
                 }
-            );
 
-        }
+            }
+        );
+
+    });
+
+
+
+    /* =================================================
+       HEADER SHADOW ON SCROLL
+    ================================================= */
+
+    const header =
+        document.querySelector(".site-header");
+
+
+    window.addEventListener(
+        "scroll",
+        function () {
+
+            if (!header) return;
+
+
+            if (window.scrollY > 20) {
+
+                header.style.boxShadow =
+                    "0 5px 20px rgba(60,30,20,.08)";
+
+            } else {
+
+                header.style.boxShadow =
+                    "none";
+
+            }
+
+        },
+        { passive: true }
     );
 
 
 
     /* =================================================
-       10. IMAGE ERROR HANDLER
+       IMAGE ERROR HANDLING
     ================================================= */
 
-    const allImages =
-        document.querySelectorAll(
-            "img"
+    const images =
+        document.querySelectorAll("img");
+
+
+    images.forEach(function (image) {
+
+        image.addEventListener(
+            "error",
+            function () {
+
+                image.style.background =
+                    "#fff0f3";
+
+                image.style.objectFit =
+                    "contain";
+
+            }
         );
 
-
-    allImages.forEach(
-        function (image) {
-
-            image.addEventListener(
-                "error",
-                function () {
-
-                    /*
-                       Hide broken image instead
-                       of showing ugly broken icon.
-                    */
-
-                    image.style.opacity =
-                        "0";
-
-                }
-            );
-
-        }
-    );
+    });
 
 
 });
