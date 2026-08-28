@@ -1,337 +1,1206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cakes Buddy | Homemade Cakes</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
         content="Cakes Buddy - Homemade cakes baked fresh with love."
     >
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Cakes Buddy | Homemade Cakes</title>
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            overflow: hidden;
-            background: #fffaf8;
-        }
-
-        /* =========================
-           COVER
-        ========================= */
-
-        .cover {
-            position: relative;
-
-            width: 100%;
-            height: 100vh;
-            height: 100svh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            overflow: hidden;
-
-            background: #fff0f4;
-        }
-
-        /* SVG COVER IMAGE */
-
-        .cover-image {
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-            object-position: center;
-
-            z-index: 1;
-        }
-
-        /* LIGHT OVERLAY */
-
-        .cover-overlay {
-            position: absolute;
-
-            inset: 0;
-
-            z-index: 2;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(0, 0, 0, 0.08),
-                    rgba(0, 0, 0, 0.18)
-                );
-        }
-
-        /* CONTENT */
-
-        .cover-content {
-            position: relative;
-
-            z-index: 3;
-
-            width: 92%;
-            max-width: 700px;
-
-            text-align: center;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            animation: fadeIn 1.2s ease;
-        }
-
-        /* BUTTON */
-
-        .enter-btn {
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-width: 220px;
-
-            padding: 16px 32px;
-
-            border-radius: 50px;
-
-            background: #ffffff;
-
-            color: #4b210c;
-
-            border: 0;
-
-            font-size: 16px;
-            font-weight: 800;
-
-            text-decoration: none;
-
-            box-shadow:
-                0 12px 35px rgba(0, 0, 0, 0.22);
-
-            transition:
-                transform 0.3s ease,
-                background 0.3s ease,
-                color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .enter-btn:hover {
-            transform: translateY(-5px);
-
-            background: #d9577c;
-
-            color: #ffffff;
-
-            box-shadow:
-                0 18px 40px rgba(0, 0, 0, 0.28);
-        }
-
-        .enter-btn:active {
-            transform: translateY(-1px);
-        }
-
-        /* SMALL TEXT */
-
-        .cover-text {
-            margin-top: 18px;
-
-            color: #ffffff;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-
-            text-shadow:
-                0 2px 10px rgba(0, 0, 0, 0.35);
-        }
-
-        /* ANIMATION */
-
-        @keyframes fadeIn {
-
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-        }
-
-        /* =========================
-           TABLET
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .cover-image {
-                object-position: center;
-            }
-
-            .enter-btn {
-                min-width: 210px;
-                padding: 15px 28px;
-            }
-
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            .cover {
-                min-height: 100svh;
-            }
-
-            .cover-image {
-                object-position: center center;
-            }
-
-            .cover-overlay {
-                background:
-                    linear-gradient(
-                        180deg,
-                        rgba(0, 0, 0, 0.06),
-                        rgba(0, 0, 0, 0.20)
-                    );
-            }
-
-            .cover-content {
-                width: 90%;
-            }
-
-            .enter-btn {
-                min-width: 195px;
-
-                padding: 14px 25px;
-
-                font-size: 15px;
-            }
-
-            .cover-text {
-                font-size: 10px;
-
-                letter-spacing: 1px;
-            }
-
-        }
-
-        /* =========================
-           SMALL PHONE
-        ========================= */
-
-        @media (max-width: 380px) {
-
-            .enter-btn {
-                min-width: 180px;
-
-                padding: 13px 22px;
-
-                font-size: 14px;
-            }
-
-            .cover-text {
-                margin-top: 14px;
-            }
-
-        }
-
-        /* =========================
-           LANDSCAPE MOBILE
-        ========================= */
-
-        @media (max-height: 500px) {
-
-            .enter-btn {
-                padding: 11px 24px;
-            }
-
-            .cover-text {
-                display: none;
-            }
-
-        }
-
-        /* =========================
-           ACCESSIBILITY
-        ========================= */
-
-        .enter-btn:focus-visible {
-            outline: 3px solid #ffffff;
-            outline-offset: 5px;
-        }
-
-    </style>
 </head>
 
 <body>
 
-    <main class="cover">
 
-        <!-- YOUR SVG COVER -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-        <img
-            class="cover-image"
-            src="https://raw.githubusercontent.com/yourdocuments/products/main/adscoverFrame%201%20(2).svg"
-            alt="Cakes Buddy Cover"
-        >
+<header>
 
-        <!-- OVERLAY -->
-
-        <div class="cover-overlay"></div>
+    <div class="header-inner">
 
 
-        <!-- BUTTON -->
+        <!-- LOGO -->
 
-        <div class="cover-content">
+        <a href="#home" class="logo-area">
 
-            <a
-                href="https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x"
-                class="enter-btn"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div class="logo">
+
+                <img
+                    src="https://raw.githubusercontent.com/yourdocuments/products/main/cakeFrame%201%20(1).svg"
+                    alt="Cakes Buddy Logo"
+                >
+
+            </div>
+
+            <div class="logo-name">
+                Cakes Buddy
+            </div>
+
+        </a>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-wrapper">
+
+            <button
+                class="search"
+                id="searchButton"
+                type="button"
             >
-                Enter Website →
-            </a>
 
-            <div class="cover-text">
-                Fresh • Homemade • Made With Love
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                Search
+
+            </button>
+
+
+            <div
+                class="search-dropdown"
+                id="searchDropdown"
+            >
+
+                <div class="search-input">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="cakeSearchInput"
+                        placeholder="Search cakes..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="search-list">
+
+
+                    <a
+                        href="#cakes"
+                        class="search-item"
+                    >
+
+                        <span class="search-item-icon">
+                            🎂
+                        </span>
+
+                        Chocolate Cake
+
+                    </a>
+
+
+                    <a
+                        href="#cakes"
+                        class="search-item"
+                    >
+
+                        <span class="search-item-icon">
+                            🍓
+                        </span>
+
+                        Strawberry Cake
+
+                    </a>
+
+
+                    <a
+                        href="#cakes"
+                        class="search-item"
+                    >
+
+                        <span class="search-item-icon">
+                            🍰
+                        </span>
+
+                        Vanilla Cake
+
+                    </a>
+
+
+                    <a
+                        href="#cakes"
+                        class="search-item"
+                    >
+
+                        <span class="search-item-icon">
+                            🧁
+                        </span>
+
+                        Red Velvet Cake
+
+                    </a>
+
+
+                    <a
+                        href="#cakes"
+                        class="search-item"
+                    >
+
+                        <span class="search-item-icon">
+                            🎀
+                        </span>
+
+                        Birthday Cake
+
+                    </a>
+
+
+                    <a
+                        href="#cakes"
+                        class="search-item"
+                    >
+
+                        <span class="search-item-icon">
+                            💕
+                        </span>
+
+                        Customized Cake
+
+                    </a>
+
+
+                    <div
+                        class="no-result"
+                        id="noResult"
+                    >
+                        No cake found.
+                    </div>
+
+
+                </div>
+
             </div>
 
         </div>
 
-    </main>
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#cakes">
+                Our Cakes
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#why">
+                Why Us
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+            <a
+                href="#cakes"
+                class="shop"
+            >
+                Shop
+            </a>
+
+        </nav>
+
+
+        <!-- ORDER BUTTON -->
+
+        <a
+            href="#order"
+            class="order-btn header-order"
+        >
+            Order Now
+        </a>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-btn"
+            id="menuButton"
+            type="button"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#cakes">
+            Our Cakes
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#why">
+            Why Us
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+        <a href="#cakes">
+            Shop
+        </a>
+
+        <a
+            href="#order"
+            class="mobile-order"
+        >
+            Order Now
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HOME / 5 BANNER SLIDER
+===================================================== -->
+
+<main id="home">
+
+<section class="banner-slider">
+
+
+    <div class="slides">
+
+
+        <!-- BANNER 1 -->
+
+        <div class="slide">
+
+            <img
+                src="BANNER-1-URL"
+                alt="Cakes Buddy Banner 1"
+            >
+
+        </div>
+
+
+        <!-- BANNER 2 -->
+
+        <div class="slide">
+
+            <img
+                src="BANNER-2-URL"
+                alt="Cakes Buddy Banner 2"
+            >
+
+        </div>
+
+
+        <!-- BANNER 3 -->
+
+        <div class="slide">
+
+            <img
+                src="BANNER-3-URL"
+                alt="Cakes Buddy Banner 3"
+            >
+
+        </div>
+
+
+        <!-- BANNER 4 -->
+
+        <div class="slide">
+
+            <img
+                src="BANNER-4-URL"
+                alt="Cakes Buddy Banner 4"
+            >
+
+        </div>
+
+
+        <!-- BANNER 5 -->
+
+        <div class="slide">
+
+            <img
+                src="BANNER-5-URL"
+                alt="Cakes Buddy Banner 5"
+            >
+
+        </div>
+
+
+    </div>
+
+
+    <!-- PREVIOUS -->
+
+    <button
+        class="slider-btn prev"
+        id="prevBtn"
+        type="button"
+        aria-label="Previous banner"
+    >
+        ❮
+    </button>
+
+
+    <!-- NEXT -->
+
+    <button
+        class="slider-btn next"
+        id="nextBtn"
+        type="button"
+        aria-label="Next banner"
+    >
+        ❯
+    </button>
+
+
+    <!-- DOTS -->
+
+    <div
+        class="slider-dots"
+        id="sliderDots"
+    ></div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    HOMEMADE WITH LOVE
+                </span>
+
+
+                <h1>
+                    Sweet moments,
+                    <span>beautiful cakes.</span>
+                </h1>
+
+
+                <p>
+                    Fresh homemade cakes made specially
+                    for birthdays, celebrations and every
+                    little happy moment.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#cakes"
+                        class="btn btn-primary"
+                    >
+                        Explore Cakes
+                    </a>
+
+
+                    <a
+                        href="#order"
+                        class="btn btn-secondary"
+                    >
+                        Order Your Cake
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=85"
+                    alt="Homemade chocolate cake"
+                >
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OUR CAKES
+===================================================== -->
+
+<section
+    class="cakes"
+    id="cakes"
+>
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <small>
+                OUR SPECIALITIES
+            </small>
+
+            <h2>
+                Our Cakes
+            </h2>
+
+            <p>
+                Delicious homemade cakes baked fresh
+                for your special moments.
+            </p>
+
+        </div>
+
+
+        <div class="cake-grid">
+
+
+            <!-- CAKE 1 -->
+
+            <article class="cake-card">
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+                        alt="Chocolate Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="cake-content">
+
+                    <h3>
+                        Chocolate Cake
+                    </h3>
+
+                    <p>
+                        Rich chocolate cake with
+                        creamy chocolate frosting.
+                    </p>
+
+                    <span class="price">
+                        From ৳850
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CAKE 2 -->
+
+            <article class="cake-card">
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85"
+                        alt="Strawberry Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="cake-content">
+
+                    <h3>
+                        Strawberry Cake
+                    </h3>
+
+                    <p>
+                        Soft vanilla sponge with
+                        fresh strawberry cream.
+                    </p>
+
+                    <span class="price">
+                        From ৳900
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CAKE 3 -->
+
+            <article class="cake-card">
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=900&q=85"
+                        alt="Vanilla Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="cake-content">
+
+                    <h3>
+                        Vanilla Cake
+                    </h3>
+
+                    <p>
+                        Light vanilla sponge with
+                        smooth creamy frosting.
+                    </p>
+
+                    <span class="price">
+                        From ৳750
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CAKE 4 -->
+
+            <article class="cake-card">
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1614707267537-2b9f6b8e9e5f?auto=format&fit=crop&w=900&q=85"
+                        alt="Red Velvet Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="cake-content">
+
+                    <h3>
+                        Red Velvet
+                    </h3>
+
+                    <p>
+                        Soft red velvet with
+                        delicious cream cheese frosting.
+                    </p>
+
+                    <span class="price">
+                        From ৳950
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CAKE 5 -->
+
+            <article class="cake-card">
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=85"
+                        alt="Birthday Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="cake-content">
+
+                    <h3>
+                        Birthday Cake
+                    </h3>
+
+                    <p>
+                        Beautiful cakes designed
+                        specially for birthdays.
+                    </p>
+
+                    <span class="price">
+                        From ৳850
+                    </span>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- CAKE 6 -->
+
+            <article class="cake-card">
+
+                <div class="cake-img">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=900&q=85"
+                        alt="Customized Cake"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="cake-content">
+
+                    <h3>
+                        Customized Cake
+                    </h3>
+
+                    <p>
+                        Tell us your idea and we
+                        will make your dream cake.
+                    </p>
+
+                    <span class="price">
+                        Contact Us
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    class="about"
+    id="about"
+>
+
+    <div class="container">
+
+        <div class="about-grid">
+
+
+            <div class="about-img">
+
+                <img
+                    src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1200&q=85"
+                    alt="Fresh homemade cake"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="about-content">
+
+                <small>
+                    ABOUT CAKES BUDDY
+                </small>
+
+
+                <h2>
+                    Baked with love,
+                    made for you.
+                </h2>
+
+
+                <p>
+                    Cakes Buddy is all about delicious
+                    homemade cakes made with care.
+                </p>
+
+
+                <p>
+                    We believe every celebration deserves
+                    a beautiful and tasty cake.
+                </p>
+
+
+                <a
+                    href="#order"
+                    class="btn btn-primary"
+                >
+                    Order Your Cake
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY US
+===================================================== -->
+
+<section id="why">
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <small>
+                WHY CAKES BUDDY
+            </small>
+
+            <h2>
+                Why Choose Us?
+            </h2>
+
+            <p>
+                Simple ingredients, homemade taste
+                and lots of love.
+            </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    🎂
+                </div>
+
+                <h3>
+                    Freshly Baked
+                </h3>
+
+                <p>
+                    Every cake is prepared fresh
+                    for your order.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    ❤️
+                </div>
+
+                <h3>
+                    Made With Love
+                </h3>
+
+                <p>
+                    Homemade with care and
+                    attention to every detail.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Custom Designs
+                </h3>
+
+                <p>
+                    We can create cakes based
+                    on your special ideas.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Affordable
+                </h3>
+
+                <p>
+                    Beautiful cakes at
+                    friendly prices.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ORDER
+===================================================== -->
+
+<section
+    class="order"
+    id="order"
+>
+
+    <div class="container">
+
+
+        <div class="heading">
+
+            <small>
+                PLACE YOUR ORDER
+            </small>
+
+            <h2>
+                Order Your Cake
+            </h2>
+
+            <p>
+                Fill in the details and send your
+                order directly through WhatsApp.
+            </p>
+
+        </div>
+
+
+        <div class="order-box">
+
+
+            <form
+                class="order-form"
+                id="orderForm"
+            >
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="01XXXXXXXXX"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- CAKE -->
+
+                <div class="form-group">
+
+                    <label for="cake">
+                        Select Cake
+                    </label>
+
+                    <select
+                        id="cake"
+                        name="cake"
+                        required
+                    >
+
+                        <option value="">
+                            Select a cake
+                        </option>
+
+                        <option value="Chocolate Cake">
+                            Chocolate Cake
+                        </option>
+
+                        <option value="Strawberry Cake">
+                            Strawberry Cake
+                        </option>
+
+                        <option value="Vanilla Cake">
+                            Vanilla Cake
+                        </option>
+
+                        <option value="Red Velvet Cake">
+                            Red Velvet Cake
+                        </option>
+
+                        <option value="Birthday Cake">
+                            Birthday Cake
+                        </option>
+
+                        <option value="Customized Cake">
+                            Customized Cake
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- SIZE -->
+
+                <div class="form-group">
+
+                    <label for="size">
+                        Cake Size
+                    </label>
+
+                    <select
+                        id="size"
+                        name="size"
+                    >
+
+                        <option value="1 Pound">
+                            1 Pound
+                        </option>
+
+                        <option value="2 Pound">
+                            2 Pound
+                        </option>
+
+                        <option value="3 Pound">
+                            3 Pound
+                        </option>
+
+                        <option value="4 Pound">
+                            4 Pound
+                        </option>
+
+                        <option value="5 Pound">
+                            5 Pound
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- DETAILS -->
+
+                <div class="form-group full">
+
+                    <label for="details">
+                        Extra Details
+                    </label>
+
+                    <textarea
+                        id="details"
+                        name="details"
+                        placeholder="Write your cake design, delivery date, message etc."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <div class="form-group full">
+
+                    <button
+                        type="submit"
+                        class="submit"
+                    >
+                        Order via WhatsApp 💬
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    class="contact"
+    id="contact"
+>
+
+    <div class="container">
+
+        <h2>
+            Let's Make Something Sweet
+        </h2>
+
+        <p>
+            Have a question or want to order?
+        </p>
+
+
+        <p>
+            📱
+            <a
+                href="https://wa.me/8801717503093"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                +880 1717-503093
+            </a>
+        </p>
+
+
+        <p>
+            📧
+            <a
+                href="mailto:Naharsm6@gmail.com"
+            >
+                Naharsm6@gmail.com
+            </a>
+        </p>
+
+
+        <br>
+
+
+        <a
+            href="https://whatsapp.com/channel/0029VbD6LlH6RGJJ1QsBN93x"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+        >
+            Join Our WhatsApp Channel
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    © 2026 Cakes Buddy.
+    Homemade with love. ❤️
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
 
 </body>
 </html>
