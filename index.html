@@ -1,1 +1,577 @@
-#
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cake Buddy | Homemade Cakes</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff8f6;
+      color: #4b2c2c;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      padding: 18px 7%;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #d85b78;
+    }
+
+    .logo span {
+      color: #6b3e3e;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #4b2c2c;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d85b78;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 7%;
+      background: linear-gradient(120deg, #fff0f3, #fff8f6);
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #d85b78;
+    }
+
+    .hero-text p {
+      font-size: 19px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      color: #745858;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #d85b78;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #b9405e;
+      transform: translateY(-2px);
+    }
+
+    .hero-cake {
+      width: 430px;
+      height: 430px;
+      border-radius: 50%;
+      background: #ffdce5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 190px;
+      box-shadow: 0 15px 40px rgba(216,91,120,0.2);
+    }
+
+    /* Common */
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #4b2c2c;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #8a6b6b;
+    }
+
+    /* Cakes */
+    .cake-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .cake-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .cake-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .cake-img {
+      height: 220px;
+      background: #ffe3ea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 100px;
+    }
+
+    .cake-info {
+      padding: 22px;
+    }
+
+    .cake-info h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .cake-info p {
+      color: #806969;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      color: #d85b78;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* About */
+    .about {
+      background: #fff0f3;
+    }
+
+    .about-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-content h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #705959;
+    }
+
+    /* Order */
+    .order-box {
+      max-width: 650px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ead0d6;
+      border-radius: 10px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .form-group textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .order-box button {
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 30px;
+      background: #d85b78;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .order-box button:hover {
+      background: #b9405e;
+    }
+
+    /* Contact */
+    .contact {
+      background: #4b2c2c;
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .contact p {
+      margin: 8px 0;
+      color: #f5dddd;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #321d1d;
+      color: #f8dede;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 50px;
+      }
+
+      .hero-text h1 {
+        font-size: 42px;
+      }
+
+      .hero-cake {
+        width: 280px;
+        height: 280px;
+        font-size: 120px;
+      }
+
+      .cake-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Cake <span>Buddy</span> 🎂</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#cakes">Cakes</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+      <h1>Sweet Moments,<br><span>Made Homemade.</span></h1>
+
+      <p>
+        Welcome to Cake Buddy — delicious homemade cakes
+        baked with love, fresh ingredients and lots of sweetness.
+      </p>
+
+      <a href="#cakes" class="btn">Explore Cakes 🍰</a>
+    </div>
+
+    <div class="hero-cake">
+      🎂
+    </div>
+
+  </section>
+
+
+  <!-- Cakes -->
+  <section id="cakes">
+
+    <div class="section-title">
+      <h2>Our Delicious Cakes</h2>
+      <p>Freshly baked with love, just for you ❤️</p>
+    </div>
+
+    <div class="cake-grid">
+
+      <div class="cake-card">
+        <div class="cake-img">🍓</div>
+
+        <div class="cake-info">
+          <h3>Strawberry Cake</h3>
+          <p>
+            Soft vanilla cake with fresh strawberry cream.
+          </p>
+          <div class="price">৳ 850</div>
+        </div>
+      </div>
+
+
+      <div class="cake-card">
+        <div class="cake-img">🍫</div>
+
+        <div class="cake-info">
+          <h3>Chocolate Cake</h3>
+          <p>
+            Rich chocolate cake with creamy chocolate frosting.
+          </p>
+          <div class="price">৳ 950</div>
+        </div>
+      </div>
+
+
+      <div class="cake-card">
+        <div class="cake-img">🧁</div>
+
+        <div class="cake-info">
+          <h3>Vanilla Cake</h3>
+          <p>
+            Classic soft vanilla cake with delicious buttercream.
+          </p>
+          <div class="price">৳ 750</div>
+        </div>
+      </div>
+
+
+      <div class="cake-card">
+        <div class="cake-img">🍰</div>
+
+        <div class="cake-info">
+          <h3>Red Velvet</h3>
+          <p>
+            Soft red velvet sponge with smooth cream cheese frosting.
+          </p>
+          <div class="price">৳ 1100</div>
+        </div>
+      </div>
+
+
+      <div class="cake-card">
+        <div class="cake-img">🥭</div>
+
+        <div class="cake-info">
+          <h3>Mango Cake</h3>
+          <p>
+            Fresh mango flavor with creamy homemade frosting.
+          </p>
+          <div class="price">৳ 900</div>
+        </div>
+      </div>
+
+
+      <div class="cake-card">
+        <div class="cake-img">🎂</div>
+
+        <div class="cake-info">
+          <h3>Birthday Special</h3>
+          <p>
+            A special customized cake for your special day.
+          </p>
+          <div class="price">৳ 1200+</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- About -->
+  <section class="about" id="about">
+
+    <div class="about-content">
+
+      <h2>Why Cake Buddy?</h2>
+
+      <p>
+        At Cake Buddy, every cake is homemade with care.
+        We use fresh ingredients and prepare every order
+        specially for you. Whether it's a birthday, anniversary,
+        celebration or just a sweet craving — we're here to
+        make your moments sweeter.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Order -->
+  <section id="order">
+
+    <div class="section-title">
+      <h2>Order Your Cake 🎂</h2>
+      <p>Fill out the form and we'll contact you.</p>
+    </div>
+
+    <div class="order-box">
+
+      <form onsubmit="placeOrder(event)">
+
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter phone number" required>
+        </div>
+
+        <div class="form-group">
+          <label>Select Cake</label>
+
+          <select id="cake" required>
+            <option value="">Choose a cake</option>
+            <option>Strawberry Cake</option>
+            <option>Chocolate Cake</option>
+            <option>Vanilla Cake</option>
+            <option>Red Velvet</option>
+            <option>Mango Cake</option>
+            <option>Birthday Special</option>
+          </select>
+
+        </div>
+
+        <div class="form-group">
+          <label>Message / Customization</label>
+
+          <textarea
+            id="message"
+            placeholder="Cake size, writing, design etc."
+          ></textarea>
+
+        </div>
+
+        <button type="submit">
+          Place Order 🍰
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+
+    <h2>Contact Cake Buddy</h2>
+
+    <p>📞 Phone: 01XXXXXXXXX</p>
+    <p>📧 Email: cakebuddy@example.com</p>
+    <p>📍 Homemade with love in Bangladesh</p>
+
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Cake Buddy — Homemade Cakes With Love ❤️
+  </footer>
+
+
+  <script>
+
+    function placeOrder(event) {
+
+      event.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let cake = document.getElementById("cake").value;
+
+      alert(
+        "Thank you, " + name +
+        "! 🎂\n\nYour order for " + cake +
+        " has been received.\n\nWe will contact you at " +
+        phone + "."
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
+```
