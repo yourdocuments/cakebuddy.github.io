@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Developer Connect — MyStore</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f7f7;
+      color: #111;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      text-decoration: none;
+      color: #111;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #16a34a;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      color: #16a34a;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      min-height: calc(100vh - 75px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 50px 20px;
+    }
+
+    .developer-container {
+      width: 100%;
+      max-width: 700px;
+    }
+
+    /* =========================
+       TOP TEXT
+    ========================= */
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intro small {
+      color: #16a34a;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .intro h1 {
+      font-size: 42px;
+      margin: 12px 0;
+    }
+
+    .intro p {
+      color: #777;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       DEVELOPER CARD
+    ========================= */
+
+    .developer-card {
+      background: #111;
+      color: white;
+
+      border-radius: 24px;
+
+      padding: 35px;
+
+      display: flex;
+      align-items: center;
+      gap: 25px;
+
+      box-shadow: 0 25px 60px rgba(0,0,0,.15);
+    }
+
+    .developer-logo {
+      width: 90px;
+      height: 90px;
+
+      flex-shrink: 0;
+
+      background: white;
+      color: #111;
+
+      border-radius: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .developer-info {
+      flex: 1;
+    }
+
+    .developer-info small {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .developer-info h2 {
+      font-size: 25px;
+      margin: 6px 0;
+    }
+
+    .developer-info p {
+      color: #aaa;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* =========================
+       LOGIN BUTTON
+    ========================= */
+
+    .login-btn {
+      width: 52px;
+      height: 52px;
+
+      flex-shrink: 0;
+
+      background: white;
+      color: #111;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-decoration: none;
+
+      font-size: 24px;
+
+      transition: .25s;
+    }
+
+    .login-btn:hover {
+      transform: translateX(6px);
+    }
+
+    /* =========================
+       SECURITY NOTE
+    ========================= */
+
+    .security-note {
+      margin-top: 18px;
+
+      background: white;
+
+      border: 1px solid #eee;
+
+      border-radius: 15px;
+
+      padding: 18px 20px;
+
+      text-align: center;
+
+      color: #777;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      main {
+        padding: 35px 15px;
+      }
+
+      .intro h1 {
+        font-size: 32px;
+      }
+
+      .intro p {
+        font-size: 14px;
+      }
+
+      .developer-card {
+        padding: 25px 20px;
+
+        flex-wrap: wrap;
+
+        text-align: center;
+
+        justify-content: center;
+      }
+
+      .developer-info {
+        flex: auto;
+        width: 100%;
+      }
+
+      .login-btn {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+
+    <div class="header-inner">
+
+      <a href="index.html" class="logo">
+        My<span>Store</span>
+      </a>
+
+      <a href="index.html" class="back-btn">
+        ← Back to Store
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main>
+
+    <div class="developer-container">
+
+
+      <!-- INTRO -->
+
+      <div class="intro">
+
+        <small>Developer Area</small>
+
+        <h1>
+          Developer Connect
+        </h1>
+
+        <p>
+          Website management and developer access
+          are available from this area.
+        </p>
+
+      </div>
+
+
+      <!-- DEVELOPER CARD -->
+
+      <div class="developer-card">
+
+
+        <!-- LOGO -->
+
+        <div class="developer-logo">
+          SNK
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="developer-info">
+
+          <small>
+            Website Developer
+          </small>
+
+          <h2>
+            SNK Developer
+          </h2>
+
+          <p>
+            Manage website content, products,
+            posts and other website settings.
+          </p>
+
+        </div>
+
+
+        <!-- LOGIN ARROW -->
+
+        <a
+          href="admin.html"
+          class="login-btn"
+          title="Admin Login"
+        >
+          →
+        </a>
+
+      </div>
+
+
+      <!-- SECURITY NOTE -->
+
+      <div class="security-note">
+
+        🔒 Admin access is protected.
+        Only authorized users can continue
+        to the management area.
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+</body>
+</html>
+```
