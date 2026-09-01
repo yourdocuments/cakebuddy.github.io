@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MyStore — Modern Marketplace</title>
+  <title>CakeBuddy — Discover Something Delicious</title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -15,7 +17,7 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #f7f7f7;
+      background: #fafafa;
       color: #111;
     }
 
@@ -24,59 +26,84 @@
     ========================= */
 
     header {
-      background: #ffffff;
-      border-bottom: 1px solid #e8e8e8;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eee;
     }
 
-    .header-inner {
+    .nav {
       max-width: 1200px;
       margin: auto;
-      padding: 18px 20px;
+      height: 72px;
+      padding: 0 20px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
       text-decoration: none;
       color: #111;
-      white-space: nowrap;
+
+      font-size: 21px;
+      font-weight: 900;
     }
 
-    .logo span {
-      color: #16a34a;
-    }
+    .logo-icon {
+      width: 42px;
+      height: 42px;
 
-    nav {
-      display: flex;
-      gap: 25px;
-    }
+      border-radius: 12px;
 
-    nav a {
-      text-decoration: none;
-      color: #555;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #16a34a;
-    }
-
-    .cart {
       background: #111;
       color: white;
-      padding: 10px 15px;
-      border-radius: 8px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 13px;
+    }
+
+    /* Developer Website Button */
+
+    .developer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
+
+      color: #555;
+
+      border: 1px solid #ddd;
+
+      padding: 10px 15px;
+
+      border-radius: 9px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: .2s;
+    }
+
+    .developer-link:hover {
+      background: #111;
+      color: white;
+      border-color: #111;
+    }
+
+    .arrow {
+      font-size: 16px;
     }
 
     /* =========================
@@ -86,262 +113,287 @@
     .hero {
       max-width: 1200px;
       margin: auto;
-      padding: 80px 20px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 50px;
+
+      padding: 75px 20px 55px;
+
+      text-align: center;
     }
 
-    .hero-content small {
-      color: #16a34a;
-      font-weight: 700;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .hero-content h1 {
-      font-size: 58px;
-      line-height: 1.05;
-      margin: 15px 0 20px;
-      letter-spacing: -2px;
-    }
-
-    .hero-content p {
-      color: #666;
-      font-size: 18px;
-      line-height: 1.7;
-      max-width: 550px;
-    }
-
-    .hero-buttons {
-      margin-top: 30px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 22px;
-      border-radius: 9px;
-      text-decoration: none;
-      font-weight: 700;
+    .hero-badge {
       display: inline-block;
+
+      padding: 7px 12px;
+
+      background: #f1f1f1;
+
+      border-radius: 30px;
+
+      color: #555;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      margin-bottom: 18px;
     }
 
-    .btn-primary {
-      background: #111;
-      color: white;
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+
+      max-width: 800px;
+
+      margin: auto;
     }
 
-    .btn-secondary {
-      background: white;
-      color: #111;
-      border: 1px solid #ddd;
+    .hero h1 span {
+      color: #777;
     }
 
-    .hero-image {
-      height: 420px;
-      border-radius: 24px;
-      background:
-        linear-gradient(135deg, #dfffe9, #ffffff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 100px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.08);
+    .hero p {
+      max-width: 600px;
+
+      margin: 20px auto 0;
+
+      color: #777;
+
+      line-height: 1.7;
+
+      font-size: 15px;
     }
 
     /* =========================
-       CATEGORIES
+       SEARCH
+    ========================= */
+
+    .search-wrap {
+      max-width: 650px;
+
+      margin: 30px auto 0;
+
+      position: relative;
+    }
+
+    .search {
+      width: 100%;
+
+      height: 52px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 14px;
+
+      padding: 0 20px 0 48px;
+
+      outline: none;
+
+      font-size: 14px;
+
+      background: white;
+    }
+
+    .search:focus {
+      border-color: #111;
+    }
+
+    .search-icon {
+      position: absolute;
+
+      left: 18px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #888;
+    }
+
+    /* =========================
+       POSTS
     ========================= */
 
     .section {
       max-width: 1200px;
+
       margin: auto;
-      padding: 70px 20px;
+
+      padding: 20px 20px 70px;
     }
 
-    .section-header {
+    .section-title {
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
-      margin-bottom: 30px;
+
+      justify-content: space-between;
+
+      margin-bottom: 22px;
     }
 
-    .section-header h2 {
-      font-size: 32px;
+    .section-title h2 {
+      font-size: 24px;
     }
 
-    .section-header a {
-      color: #16a34a;
-      text-decoration: none;
-      font-weight: 700;
+    .section-title span {
+      color: #888;
+
+      font-size: 12px;
     }
 
-    .categories {
+    .posts-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .post-card {
+      background: white;
+
+      border: 1px solid #eee;
+
+      border-radius: 17px;
+
+      overflow: hidden;
+
+      transition:
+        transform .2s,
+        box-shadow .2s;
+    }
+
+    .post-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.08);
+    }
+
+    .post-image {
+      width: 100%;
+
+      height: 220px;
+
+      object-fit: cover;
+
+      display: block;
+
+      background: #eee;
+    }
+
+    .post-content {
+      padding: 20px;
     }
 
     .category {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid #eee;
-      transition: .25s;
-    }
+      display: inline-block;
 
-    .category:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,.08);
-    }
+      padding: 5px 9px;
 
-    .category-icon {
-      font-size: 40px;
+      background: #f1f1f1;
+
+      border-radius: 6px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      color: #555;
+
       margin-bottom: 12px;
     }
 
-    .category h3 {
-      font-size: 17px;
+    .post-content h3 {
+      font-size: 18px;
+
+      line-height: 1.35;
+
+      margin-bottom: 9px;
     }
 
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid #eee;
-      transition: .25s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.08);
-    }
-
-    .product-image {
-      height: 230px;
-      background: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 70px;
-    }
-
-    .product-info {
-      padding: 18px;
-    }
-
-    .product-info h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .product-info p {
+    .post-content p {
       color: #777;
-      font-size: 14px;
-      margin-bottom: 15px;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      display: -webkit-box;
+
+      -webkit-line-clamp: 3;
+
+      -webkit-box-orient: vertical;
+
+      overflow: hidden;
     }
 
-    .price-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .post-footer {
+      margin-top: 18px;
 
-    .price {
-      font-weight: 800;
-      font-size: 18px;
-    }
+      padding-top: 14px;
 
-    .buy-btn {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 9px 13px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: 600;
+      border-top: 1px solid #eee;
+
+      color: #999;
+
+      font-size: 11px;
     }
 
     /* =========================
-       DEVELOPER CONNECT
+       LOADING
     ========================= */
 
-    .developer-section {
-      max-width: 1200px;
-      margin: 40px auto 70px;
-      padding: 0 20px;
+    .loading {
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      padding: 70px 20px;
+
+      color: #888;
     }
 
-    .developer-card {
-      background: #111;
-      color: white;
-      border-radius: 20px;
-      padding: 25px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .loading-icon {
+      font-size: 35px;
+
+      margin-bottom: 10px;
     }
 
-    .developer-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+    /* =========================
+       EMPTY
+    ========================= */
 
-    .developer-logo {
-      width: 55px;
-      height: 55px;
-      border-radius: 12px;
+    .empty {
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      padding: 70px 20px;
+
       background: white;
-      color: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
+
+      border: 1px solid #eee;
+
+      border-radius: 16px;
+    }
+
+    .empty-icon {
+      font-size: 40px;
+
+      margin-bottom: 12px;
+    }
+
+    .empty h3 {
       font-size: 18px;
+
+      margin-bottom: 7px;
     }
 
-    .developer-text h3 {
-      margin-bottom: 5px;
-    }
+    .empty p {
+      color: #888;
 
-    .developer-text p {
-      color: #aaa;
       font-size: 13px;
-    }
-
-    .developer-arrow {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: white;
-      color: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      text-decoration: none;
-      transition: .25s;
-    }
-
-    .developer-arrow:hover {
-      transform: translateX(5px);
     }
 
     /* =========================
@@ -349,423 +401,702 @@
     ========================= */
 
     footer {
-      background: #111;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
+      border-top: 1px solid #eee;
 
-    footer p {
-      color: #999;
-      font-size: 14px;
+      padding: 25px 20px;
+
+      text-align: center;
+
+      color: #888;
+
+      font-size: 12px;
     }
 
     /* =========================
        MOBILE
     ========================= */
 
-    @media (max-width: 900px) {
+    @media (max-width: 850px) {
 
-      nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 55px 20px;
-      }
-
-      .hero-content h1 {
-        font-size: 44px;
-      }
-
-      .hero-image {
-        height: 300px;
-      }
-
-      .categories,
-      .products {
+      .posts-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
 
-      .header-inner {
-        padding: 15px;
+      .nav {
+        height: 64px;
       }
 
       .logo {
-        font-size: 21px;
+        font-size: 18px;
       }
 
-      .cart {
+      .logo-icon {
+        width: 37px;
+        height: 37px;
+      }
+
+      .developer-link {
         padding: 8px 11px;
+        font-size: 11px;
       }
 
       .hero {
-        padding: 45px 15px;
+        padding: 55px 18px 40px;
       }
 
-      .hero-content h1 {
-        font-size: 38px;
+      .hero h1 {
+        letter-spacing: -1px;
       }
 
-      .hero-content p {
-        font-size: 16px;
-      }
-
-      .hero-image {
-        height: 250px;
-        font-size: 70px;
+      .hero p {
+        font-size: 13px;
       }
 
       .section {
-        padding: 50px 15px;
+        padding: 15px 15px 50px;
       }
 
-      .section-header h2 {
-        font-size: 25px;
-      }
-
-      .categories,
-      .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .product-image {
-        height: 160px;
-        font-size: 50px;
-      }
-
-      .product-info {
-        padding: 13px;
-      }
-
-      .developer-section {
-        padding: 0 15px;
-      }
-
-      .developer-card {
-        padding: 20px;
-      }
-    }
-
-    @media (max-width: 400px) {
-
-      .categories,
-      .products {
+      .posts-grid {
         grid-template-columns: 1fr;
       }
 
-      .developer-text p {
-        display: none;
+      .post-image {
+        height: 210px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
+
+  <!-- =========================
+       HEADER
+  ========================= -->
 
   <header>
-    <div class="header-inner">
 
-      <a href="#" class="logo">
-        My<span>Store</span>
+    <nav class="nav">
+
+
+      <!-- CakeBuddy Logo -->
+
+      <a
+        href="index.html"
+        class="logo"
+      >
+
+        <div class="logo-icon">
+          CB
+        </div>
+
+        CakeBuddy
+
       </a>
 
-      <nav>
-        <a href="#">Home</a>
-        <a href="#categories">Categories</a>
-        <a href="#products">Products</a>
-        <a href="#about">About</a>
-      </nav>
 
-      <a href="#" class="cart">
-        🛒 Cart
+      <!-- Developer Website -->
+
+      <a
+        href="https://websitesdeal.com"
+        class="developer-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        Developer Connect
+
+        <span class="arrow">
+          →
+        </span>
+
       </a>
 
-    </div>
+
+    </nav>
+
   </header>
 
 
-  <!-- HERO -->
+
+  <!-- =========================
+       HERO
+  ========================= -->
 
   <section class="hero">
 
-    <div class="hero-content">
 
-      <small>Welcome to our marketplace</small>
-
-      <h1>
-        Everything you need,
-        <br>
-        in one place.
-      </h1>
-
-      <p>
-        Discover quality products, useful resources and amazing
-        collections — all in one modern marketplace.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary">
-          Explore Products →
-        </a>
-
-        <a href="#categories" class="btn btn-secondary">
-          Browse Categories
-        </a>
-      </div>
-
+    <div class="hero-badge">
+      ✦ CakeBuddy Community
     </div>
 
-    <div class="hero-image">
-      🛍️
-    </div>
 
-  </section>
+    <h1>
 
+      Discover
 
-  <!-- CATEGORIES -->
+      <span>
+        Something Delicious.
+      </span>
 
-  <section class="section" id="categories">
+    </h1>
 
-    <div class="section-header">
-
-      <h2>Categories</h2>
-
-      <a href="#">
-        View all →
-      </a>
-
-    </div>
-
-    <div class="categories">
-
-      <div class="category">
-        <div class="category-icon">👕</div>
-        <h3>Fashion</h3>
-      </div>
-
-      <div class="category">
-        <div class="category-icon">💻</div>
-        <h3>Technology</h3>
-      </div>
-
-      <div class="category">
-        <div class="category-icon">🏠</div>
-        <h3>Home & Living</h3>
-      </div>
-
-      <div class="category">
-        <div class="category-icon">📚</div>
-        <h3>Digital Resources</h3>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PRODUCTS -->
-
-  <section class="section" id="products">
-
-    <div class="section-header">
-
-      <h2>Featured Products</h2>
-
-      <a href="#">
-        View all →
-      </a>
-
-    </div>
-
-    <div class="products">
-
-      <div class="product">
-
-        <div class="product-image">
-          👟
-        </div>
-
-        <div class="product-info">
-
-          <h3>Premium Sneakers</h3>
-
-          <p>
-            Comfortable everyday sneakers.
-          </p>
-
-          <div class="price-row">
-
-            <span class="price">
-              ৳1,999
-            </span>
-
-            <button class="buy-btn">
-              View
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product">
-
-        <div class="product-image">
-          🎧
-        </div>
-
-        <div class="product-info">
-
-          <h3>Wireless Headphones</h3>
-
-          <p>
-            Clear sound with modern design.
-          </p>
-
-          <div class="price-row">
-
-            <span class="price">
-              ৳1,499
-            </span>
-
-            <button class="buy-btn">
-              View
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product">
-
-        <div class="product-image">
-          🎒
-        </div>
-
-        <div class="product-info">
-
-          <h3>Premium Backpack</h3>
-
-          <p>
-            Stylish backpack for everyday use.
-          </p>
-
-          <div class="price-row">
-
-            <span class="price">
-              ৳1,200
-            </span>
-
-            <button class="buy-btn">
-              View
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="product">
-
-        <div class="product-image">
-          📱
-        </div>
-
-        <div class="product-info">
-
-          <h3>Mobile Accessories</h3>
-
-          <p>
-            Useful accessories for your phone.
-          </p>
-
-          <div class="price-row">
-
-            <span class="price">
-              ৳799
-            </span>
-
-            <button class="buy-btn">
-              View
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- DEVELOPER CONNECT -->
-
-  <section class="developer-section">
-
-    <div class="developer-card">
-
-      <div class="developer-left">
-
-        <div class="developer-logo">
-          SNK
-        </div>
-
-        <div class="developer-text">
-
-          <h3>Developer Connect</h3>
-
-          <p>
-            Website Developer & Admin Access
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- STEP 1.3 এ এখানে Admin Login যুক্ত হবে -->
-
-      <a
-        href="#"
-        class="developer-arrow"
-        title="Developer Connect"
-      >
-        →
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer id="about">
 
     <p>
-      © 2026 MyStore. All rights reserved.
+
+      নতুন পোস্ট, অফার, রেসিপি এবং CakeBuddy-এর
+      latest updates এক জায়গায় দেখুন।
+
     </p>
+
+
+    <!-- Search -->
+
+    <div class="search-wrap">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+
+      <input
+        type="search"
+        id="searchInput"
+        class="search"
+        placeholder="Search posts..."
+      >
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       POSTS
+  ========================= -->
+
+  <section class="section">
+
+
+    <div class="section-title">
+
+      <h2>
+        Latest Posts
+      </h2>
+
+
+      <span id="postTotal">
+        Loading...
+      </span>
+
+    </div>
+
+
+    <div
+      id="postsGrid"
+      class="posts-grid"
+    >
+
+      <div class="loading">
+
+        <div class="loading-icon">
+          ⏳
+        </div>
+
+        Loading posts...
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    © 2026 CakeBuddy.
+    All rights reserved.
 
   </footer>
 
 
+
+  <!-- =========================
+       FIREBASE
+  ========================= -->
+
+  <script type="module">
+
+
+    import {
+      initializeApp
+    }
+    from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      query,
+      orderBy
+    }
+    from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+    /* =========================
+       FIREBASE CONFIG
+    ========================= */
+
+    const firebaseConfig = {
+
+      apiKey:
+        "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
+
+      authDomain:
+        "cakebuddymb.firebaseapp.com",
+
+      projectId:
+        "cakebuddymb",
+
+      storageBucket:
+        "cakebuddymb.firebasestorage.app",
+
+      messagingSenderId:
+        "31596118058",
+
+      appId:
+        "1:31596118058:web:ecfe00171d91ee15c64353",
+
+      measurementId:
+        "G-D0ZV3FN1LQ"
+
+    };
+
+
+    /* =========================
+       FIREBASE INIT
+    ========================= */
+
+    const app =
+      initializeApp(firebaseConfig);
+
+
+    const db =
+      getFirestore(app);
+
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const postsGrid =
+      document.getElementById(
+        "postsGrid"
+      );
+
+
+    const postTotal =
+      document.getElementById(
+        "postTotal"
+      );
+
+
+    const searchInput =
+      document.getElementById(
+        "searchInput"
+      );
+
+
+    let allPosts = [];
+
+
+    /* =========================
+       LOAD POSTS
+    ========================= */
+
+    async function loadPosts() {
+
+      try {
+
+
+        const postsQuery =
+          query(
+
+            collection(
+              db,
+              "posts"
+            ),
+
+            orderBy(
+              "createdAt",
+              "desc"
+            )
+
+          );
+
+
+        const snapshot =
+          await getDocs(
+            postsQuery
+          );
+
+
+        allPosts = [];
+
+
+        snapshot.forEach(
+          function(documentSnapshot) {
+
+            allPosts.push({
+
+              id:
+                documentSnapshot.id,
+
+              ...documentSnapshot.data()
+
+            });
+
+          }
+        );
+
+
+        postTotal.textContent =
+          allPosts.length +
+          " Posts";
+
+
+        displayPosts(
+          allPosts
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "Firebase Error:",
+          error
+        );
+
+
+        postsGrid.innerHTML = `
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              ⚠️
+            </div>
+
+            <h3>
+              Posts load করা যায়নি
+            </h3>
+
+            <p>
+              Firebase Firestore Rules অথবা Database check করুন।
+            </p>
+
+          </div>
+
+        `;
+
+
+        postTotal.textContent =
+          "Error";
+
+      }
+
+    }
+
+
+    /* =========================
+       DISPLAY POSTS
+    ========================= */
+
+    function displayPosts(
+      posts
+    ) {
+
+
+      if (!posts.length) {
+
+        postsGrid.innerHTML = `
+
+          <div class="empty">
+
+            <div class="empty-icon">
+              📝
+            </div>
+
+            <h3>
+              এখনো কোনো পোস্ট নেই
+            </h3>
+
+            <p>
+              খুব শীঘ্রই নতুন content আসবে।
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      postsGrid.innerHTML = "";
+
+
+      posts.forEach(
+        function(post) {
+
+
+          const card =
+            document.createElement(
+              "article"
+            );
+
+
+          card.className =
+            "post-card";
+
+
+          const image =
+            post.image ||
+            "https://via.placeholder.com/800x500?text=CakeBuddy";
+
+
+          const title =
+            post.title ||
+            "Untitled Post";
+
+
+          const category =
+            post.category ||
+            "General";
+
+
+          const description =
+            post.description ||
+            "";
+
+
+          let dateText =
+            "Recently";
+
+
+          if (
+            post.createdAt
+          ) {
+
+            try {
+
+              dateText =
+                post.createdAt
+                  .toDate()
+                  .toLocaleDateString(
+                    "en-GB",
+                    {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric"
+                    }
+                  );
+
+            } catch (error) {
+
+              dateText =
+                "Recently";
+
+            }
+
+          }
+
+
+          card.innerHTML = `
+
+            <img
+              class="post-image"
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(title)}"
+              onerror="this.src='https://via.placeholder.com/800x500?text=CakeBuddy'"
+            >
+
+
+            <div class="post-content">
+
+              <span class="category">
+                ${escapeHtml(category)}
+              </span>
+
+
+              <h3>
+                ${escapeHtml(title)}
+              </h3>
+
+
+              <p>
+                ${escapeHtml(description)}
+              </p>
+
+
+              <div class="post-footer">
+
+                📅 ${dateText}
+
+              </div>
+
+            </div>
+
+          `;
+
+
+          postsGrid.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    searchInput.addEventListener(
+      "input",
+      function() {
+
+
+        const keyword =
+          searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+        if (!keyword) {
+
+          displayPosts(
+            allPosts
+          );
+
+          return;
+
+        }
+
+
+        const filtered =
+          allPosts.filter(
+            function(post) {
+
+
+              const title =
+                (
+                  post.title ||
+                  ""
+                ).toLowerCase();
+
+
+              const description =
+                (
+                  post.description ||
+                  ""
+                ).toLowerCase();
+
+
+              const category =
+                (
+                  post.category ||
+                  ""
+                ).toLowerCase();
+
+
+              return (
+
+                title.includes(
+                  keyword
+                )
+
+                ||
+
+                description.includes(
+                  keyword
+                )
+
+                ||
+
+                category.includes(
+                  keyword
+                )
+
+              );
+
+            }
+          );
+
+
+        displayPosts(
+          filtered
+        );
+
+
+      }
+    );
+
+
+    /* =========================
+       HTML SECURITY
+    ========================= */
+
+    function escapeHtml(
+      value
+    ) {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.textContent =
+        String(value);
+
+
+      return div.innerHTML;
+
+    }
+
+
+    /* =========================
+       START
+    ========================= */
+
+    loadPosts();
+
+
+  </script>
+
+
 </body>
+
 </html>
-```
