@@ -1,10 +1,10 @@
-<!DOCTYPE html> 
-<html lang="bn">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Developer Connect — MyStore</title>
+  <title>CakeBuddy — Admin Dashboard</title>
 
   <style>
     * {
@@ -14,246 +14,613 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f7f7;
-      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      background: #f6f6f7;
+      color: #202223;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       LAYOUT
+    ========================== */
+
+    .admin-layout {
+      display: flex;
       min-height: 100vh;
     }
 
     /* =========================
-       HEADER
-    ========================= */
+       SIDEBAR
+    ========================== */
 
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
+    .sidebar {
+      width: 250px;
+      background: #ffffff;
+      border-right: 1px solid #e1e3e5;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
     }
 
-    .header-inner {
-      max-width: 1100px;
-      margin: auto;
-      padding: 18px 20px;
+    .brand {
+      height: 72px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e1e3e5;
+    }
 
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #111827;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 11px;
+    }
+
+    .brand-text h2 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 11px;
+      color: #6d7175;
+      margin-top: 2px;
+    }
+
+    .menu {
+      padding: 20px 12px;
+      flex: 1;
+    }
+
+    .menu-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #8c9196;
+      text-transform: uppercase;
+      padding: 0 12px;
+      margin-bottom: 8px;
+      letter-spacing: .7px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 13px;
+      margin-bottom: 4px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #42474c;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .menu-item:hover {
+      background: #f1f2f3;
+    }
+
+    .menu-item.active {
+      background: #f1f2f3;
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .menu-icon {
+      width: 20px;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .sidebar-bottom {
+      padding: 14px;
+      border-top: 1px solid #e1e3e5;
+    }
+
+    .admin-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .admin-info {
+      overflow: hidden;
+    }
+
+    .admin-info strong {
+      display: block;
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .admin-info span {
+      display: block;
+      font-size: 11px;
+      color: #8c9196;
+      margin-top: 2px;
+    }
+
+    .logout-btn {
+      width: 100%;
+      border: 1px solid #e1e3e5;
+      background: #fff;
+      border-radius: 7px;
+      padding: 9px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #42474c;
+      transition: .2s;
+    }
+
+    .logout-btn:hover {
+      background: #f6f6f7;
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .main {
+      margin-left: 250px;
+      width: calc(100% - 250px);
+      min-height: 100vh;
+    }
+
+    /* =========================
+       TOPBAR
+    ========================== */
+
+    .topbar {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e1e3e5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .page-title h1 {
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: -0.4px;
+    }
+
+    .page-title p {
+      font-size: 12px;
+      color: #6d7175;
+      margin-top: 3px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view-site {
+      border: 1px solid #d2d5d8;
+      background: white;
+      padding: 9px 14px;
+      border-radius: 7px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .view-site:hover {
+      background: #f6f6f7;
+    }
+
+    .add-btn {
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .add-btn:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    /* =========================
+       CONTENT
+    ========================== */
+
+    .content {
+      padding: 30px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    /* =========================
+       STATS
+    ========================== */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border: 1px solid #e1e3e5;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .stat-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
-      text-decoration: none;
-      color: #111;
-      font-size: 24px;
-      font-weight: 800;
+    .stat-label {
+      font-size: 13px;
+      color: #6d7175;
     }
 
-    .logo span {
-      color: #16a34a;
-    }
-
-    .back-btn {
-      text-decoration: none;
-      color: #555;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .back-btn:hover {
-      color: #16a34a;
-    }
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-      min-height: calc(100vh - 75px);
-
+    .stat-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: #f1f2f3;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      padding: 50px 20px;
-    }
-
-    .developer-container {
-      width: 100%;
-      max-width: 700px;
-    }
-
-    /* =========================
-       TOP TEXT
-    ========================= */
-
-    .intro {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .intro small {
-      color: #16a34a;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .intro h1 {
-      font-size: 42px;
-      margin: 12px 0;
-    }
-
-    .intro p {
-      color: #777;
       font-size: 16px;
-      line-height: 1.7;
+    }
+
+    .stat-number {
+      font-size: 29px;
+      font-weight: 700;
+      margin-top: 13px;
+      letter-spacing: -1px;
+    }
+
+    .stat-description {
+      font-size: 11px;
+      color: #8c9196;
+      margin-top: 5px;
     }
 
     /* =========================
-       DEVELOPER CARD
-    ========================= */
+       POSTS SECTION
+    ========================== */
 
-    .developer-card {
-      background: #111;
-      color: white;
-
-      border-radius: 24px;
-
-      padding: 35px;
-
-      display: flex;
-      align-items: center;
-      gap: 25px;
-
-      box-shadow: 0 25px 60px rgba(0,0,0,.15);
+    .posts-panel {
+      background: #fff;
+      border: 1px solid #e1e3e5;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
-    .developer-logo {
-      width: 90px;
-      height: 90px;
-
-      flex-shrink: 0;
-
-      background: white;
-      color: #111;
-
-      border-radius: 20px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 24px;
-      font-weight: 900;
-    }
-
-    .developer-info {
-      flex: 1;
-    }
-
-    .developer-info small {
-      color: #aaa;
-      font-size: 13px;
-    }
-
-    .developer-info h2 {
-      font-size: 25px;
-      margin: 6px 0;
-    }
-
-    .developer-info p {
-      color: #aaa;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    /* =========================
-       LOGIN BUTTON
-    ========================= */
-
-    .login-btn {
-      width: 52px;
-      height: 52px;
-
-      flex-shrink: 0;
-
-      background: white;
-      color: #111;
-
-      border-radius: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      text-decoration: none;
-
-      font-size: 24px;
-
-      transition: .25s;
-    }
-
-    .login-btn:hover {
-      transform: translateX(6px);
-    }
-
-    /* =========================
-       SECURITY NOTE
-    ========================= */
-
-    .security-note {
-      margin-top: 18px;
-
-      background: white;
-
-      border: 1px solid #eee;
-
-      border-radius: 15px;
-
+    .panel-header {
       padding: 18px 20px;
+      border-bottom: 1px solid #e1e3e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
 
-      text-align: center;
+    .panel-title h2 {
+      font-size: 15px;
+      font-weight: 650;
+    }
 
-      color: #777;
+    .panel-title p {
+      font-size: 11px;
+      color: #8c9196;
+      margin-top: 3px;
+    }
 
+    .search-box {
+      width: 250px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 1px solid #d2d5d8;
+      border-radius: 7px;
+      padding: 9px 12px 9px 35px;
+      outline: none;
+      font-size: 12px;
+      background: #fff;
+    }
+
+    .search-box input:focus {
+      border-color: #8c9196;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 9px;
       font-size: 13px;
+      color: #8c9196;
+    }
 
-      line-height: 1.6;
+    /* =========================
+       TABLE
+    ========================== */
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 750px;
+    }
+
+    th {
+      background: #fafbfb;
+      text-align: left;
+      padding: 12px 18px;
+      font-size: 11px;
+      color: #6d7175;
+      font-weight: 650;
+      border-bottom: 1px solid #e1e3e5;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+
+    td {
+      padding: 13px 18px;
+      border-bottom: 1px solid #e1e3e5;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #fafbfb;
+    }
+
+    .post-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 250px;
+    }
+
+    .post-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 7px;
+      object-fit: cover;
+      background: #f1f2f3;
+      border: 1px solid #e1e3e5;
+    }
+
+    .post-title {
+      font-weight: 600;
+      color: #202223;
+      max-width: 240px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .post-description {
+      font-size: 11px;
+      color: #8c9196;
+      margin-top: 3px;
+      max-width: 240px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .category {
+      display: inline-flex;
+      padding: 5px 9px;
+      background: #f1f2f3;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #42474c;
+    }
+
+    .date {
+      color: #6d7175;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .action-btn {
+      border: 1px solid #d2d5d8;
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 9px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .action-btn:hover {
+      background: #f1f2f3;
+    }
+
+    .delete-btn:hover {
+      background: #fff4f4;
+    }
+
+    /* =========================
+       EMPTY / LOADING
+    ========================== */
+
+    .state-box {
+      text-align: center;
+      padding: 60px 20px;
+      color: #6d7175;
+    }
+
+    .state-icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .state-box h3 {
+      color: #202223;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .state-box p {
+      font-size: 12px;
     }
 
     /* =========================
        MOBILE
-    ========================= */
+    ========================== */
 
-    @media (max-width: 600px) {
+    .mobile-menu {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      cursor: pointer;
+      margin-right: 12px;
+    }
 
-      main {
-        padding: 35px 15px;
+    @media (max-width: 900px) {
+
+      .sidebar {
+        transform: translateX(-100%);
+        transition: .25s;
       }
 
-      .intro h1 {
-        font-size: 32px;
+      .sidebar.open {
+        transform: translateX(0);
       }
 
-      .intro p {
-        font-size: 14px;
-      }
-
-      .developer-card {
-        padding: 25px 20px;
-
-        flex-wrap: wrap;
-
-        text-align: center;
-
-        justify-content: center;
-      }
-
-      .developer-info {
-        flex: auto;
+      .main {
+        margin-left: 0;
         width: 100%;
       }
 
-      .login-btn {
-        margin-top: 5px;
+      .mobile-menu {
+        display: inline-block;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        padding: 0 18px;
+      }
+
+      .content {
+        padding: 20px 15px;
+      }
+
+      .view-site {
+        display: none;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .topbar {
+        height: 65px;
+      }
+
+      .page-title h1 {
+        font-size: 17px;
+      }
+
+      .page-title p {
+        font-size: 10px;
+      }
+
+      .add-btn {
+        padding: 9px 11px;
+        font-size: 11px;
+      }
+
+      .content {
+        padding: 15px 10px;
+      }
+
+      .stat-card {
+        padding: 16px;
+      }
+
+      .stat-number {
+        font-size: 25px;
       }
     }
   </style>
@@ -261,115 +628,814 @@
 
 <body>
 
+<div class="admin-layout">
 
   <!-- =========================
-       HEADER
-  ========================= -->
+       SIDEBAR
+  ========================== -->
 
-  <header>
+  <aside class="sidebar" id="sidebar">
 
-    <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon">🎂</div>
 
-      <a href="index.html" class="logo">
-        My<span>Store</span>
+      <div class="brand-text">
+        <h2>CakeBuddy</h2>
+        <span>Admin Panel</span>
+      </div>
+    </div>
+
+    <div class="menu">
+
+      <div class="menu-title">Management</div>
+
+      <div class="menu-item active">
+        <div class="menu-icon">▦</div>
+        <span>Dashboard</span>
+      </div>
+
+      <a href="add-post.html" class="menu-item">
+        <div class="menu-icon">＋</div>
+        <span>Add New Post</span>
       </a>
 
-      <a href="index.html" class="back-btn">
-        ← Back to Store
+      <a href="index.html" class="menu-item" target="_blank">
+        <div class="menu-icon">↗</div>
+        <span>View Website</span>
       </a>
 
     </div>
 
-  </header>
+    <div class="sidebar-bottom">
 
+      <div class="admin-mini">
 
-  <!-- =========================
-       MAIN
-  ========================= -->
+        <div class="avatar">SN</div>
 
-  <main>
-
-    <div class="developer-container">
-
-
-      <!-- INTRO -->
-
-      <div class="intro">
-
-        <small>Developer Area</small>
-
-        <h1>
-          Developer Connect
-        </h1>
-
-        <p>
-          Website management and developer access
-          are available from this area.
-        </p>
+        <div class="admin-info">
+          <strong>Administrator</strong>
+          <span>CakeBuddy Admin</span>
+        </div>
 
       </div>
 
+      <button class="logout-btn" id="logoutBtn">
+        ⇥ &nbsp; Logout
+      </button>
 
-      <!-- DEVELOPER CARD -->
+    </div>
 
-      <div class="developer-card">
+  </aside>
 
 
-        <!-- LOGO -->
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
 
-        <div class="developer-logo">
-          SNK
+  <main class="main">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <div style="display:flex; align-items:center;">
+
+        <button class="mobile-menu" id="mobileMenu">
+          ☰
+        </button>
+
+        <div class="page-title">
+          <h1>Dashboard</h1>
+          <p>Manage your CakeBuddy content</p>
         </div>
 
+      </div>
 
-        <!-- INFORMATION -->
+      <div class="top-actions">
 
-        <div class="developer-info">
+        <a href="index.html" target="_blank" class="view-site">
+          View Store ↗
+        </a>
 
-          <small>
-            Website Developer
-          </small>
-
-          <h2>
-            SNK Developer
-          </h2>
-
-          <p>
-            Manage website content, products,
-            posts and other website settings.
-          </p>
-
-        </div>
-
-
-        <!-- LOGIN ARROW -->
-
-        <a
-          href="admin.html"
-          class="login-btn"
-          title="Admin Login"
-        >
-          →
+        <a href="add-post.html" class="add-btn">
+          ＋ Add New
         </a>
 
       </div>
 
+    </header>
 
-      <!-- SECURITY NOTE -->
 
-      <div class="security-note">
+    <!-- CONTENT -->
 
-        🔒 Admin access is protected.
-        Only authorized users can continue
-        to the management area.
+    <section class="content">
+
+      <!-- STATS -->
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <span class="stat-label">
+              Total Posts
+            </span>
+
+            <div class="stat-icon">
+              📝
+            </div>
+
+          </div>
+
+          <div class="stat-number" id="totalPosts">
+            0
+          </div>
+
+          <div class="stat-description">
+            Published content
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <span class="stat-label">
+              Status
+            </span>
+
+            <div class="stat-icon">
+              ●
+            </div>
+
+          </div>
+
+          <div class="stat-number" style="font-size:22px;">
+            Active
+          </div>
+
+          <div class="stat-description">
+            Firebase connection
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <span class="stat-label">
+              Store
+            </span>
+
+            <div class="stat-icon">
+              🛍️
+            </div>
+
+          </div>
+
+          <div class="stat-number" style="font-size:22px;">
+            Online
+          </div>
+
+          <div class="stat-description">
+            CakeBuddy storefront
+          </div>
+
+        </div>
 
       </div>
 
-    </div>
+
+      <!-- POSTS -->
+
+      <div class="posts-panel">
+
+        <div class="panel-header">
+
+          <div class="panel-title">
+
+            <h2>All Posts</h2>
+
+            <p>
+              Create, edit and manage your website posts
+            </p>
+
+          </div>
+
+          <div class="search-box">
+
+            <span class="search-icon">⌕</span>
+
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search posts..."
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Post</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="postsTableBody">
+
+              <tr>
+                <td colspan="4">
+
+                  <div class="state-box">
+
+                    <div class="state-icon">
+                      ⏳
+                    </div>
+
+                    <h3>Loading posts...</h3>
+
+                    <p>
+                      Please wait while we load your content.
+                    </p>
+
+                  </div>
+
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
 
   </main>
 
+</div>
+
+
+<!-- =========================
+     FIREBASE
+========================== -->
+
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    orderBy,
+    deleteDoc,
+    doc
+  }
+  from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+  import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+  }
+  from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+  /* =========================
+     FIREBASE CONFIG
+  ========================== */
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
+    authDomain: "cakebuddymb.firebaseapp.com",
+    projectId: "cakebuddymb",
+    storageBucket: "cakebuddymb.firebasestorage.app",
+    messagingSenderId: "31596118058",
+    appId: "1:31596118058:web:ecfe00171d91ee15c64353",
+    measurementId: "G-D0ZV3FN1LQ"
+  };
+
+
+  /* =========================
+     INITIALIZE
+  ========================== */
+
+  const app = initializeApp(firebaseConfig);
+
+  const db = getFirestore(app);
+
+  const auth = getAuth(app);
+
+
+  /* =========================
+     ADMIN EMAIL
+  ========================== */
+
+  const ADMIN_EMAIL =
+    "ishahneilkhanbd@gmail.com";
+
+
+  /* =========================
+     ELEMENTS
+  ========================== */
+
+  const postsTableBody =
+    document.getElementById("postsTableBody");
+
+  const totalPosts =
+    document.getElementById("totalPosts");
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+  const mobileMenu =
+    document.getElementById("mobileMenu");
+
+  const sidebar =
+    document.getElementById("sidebar");
+
+
+  let allPosts = [];
+
+
+  /* =========================
+     AUTH CHECK
+  ========================== */
+
+  onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+
+      window.location.href = "admin.html";
+
+      return;
+    }
+
+    if (user.email !== ADMIN_EMAIL) {
+
+      alert("You are not authorized.");
+
+      signOut(auth);
+
+      return;
+    }
+
+    loadPosts();
+
+  });
+
+
+  /* =========================
+     LOAD POSTS
+  ========================== */
+
+  async function loadPosts() {
+
+    try {
+
+      const postsQuery = query(
+        collection(db, "posts"),
+        orderBy("createdAt", "desc")
+      );
+
+      const snapshot =
+        await getDocs(postsQuery);
+
+      allPosts = [];
+
+      snapshot.forEach((post) => {
+
+        allPosts.push({
+          id: post.id,
+          ...post.data()
+        });
+
+      });
+
+      totalPosts.textContent =
+        allPosts.length;
+
+      renderPosts(allPosts);
+
+    } catch (error) {
+
+      console.error(error);
+
+      postsTableBody.innerHTML = `
+
+        <tr>
+
+          <td colspan="4">
+
+            <div class="state-box">
+
+              <div class="state-icon">
+                ⚠️
+              </div>
+
+              <h3>
+                Could not load posts
+              </h3>
+
+              <p>
+                ${escapeHtml(error.message)}
+              </p>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+
+  }
+
+
+  /* =========================
+     RENDER POSTS
+  ========================== */
+
+  function renderPosts(posts) {
+
+    if (posts.length === 0) {
+
+      postsTableBody.innerHTML = `
+
+        <tr>
+
+          <td colspan="4">
+
+            <div class="state-box">
+
+              <div class="state-icon">
+                📦
+              </div>
+
+              <h3>
+                No posts yet
+              </h3>
+
+              <p>
+                Create your first CakeBuddy post.
+              </p>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+      return;
+    }
+
+
+    postsTableBody.innerHTML =
+      posts.map(post => {
+
+        const title =
+          post.title || "Untitled";
+
+        const category =
+          post.category || "General";
+
+        const description =
+          post.description || "";
+
+        const image =
+          post.image ||
+          "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80";
+
+
+        let dateText = "—";
+
+
+        if (post.createdAt) {
+
+          try {
+
+            const date =
+              post.createdAt.toDate
+                ? post.createdAt.toDate()
+                : new Date(post.createdAt);
+
+            dateText =
+              date.toLocaleDateString(
+                "en-US",
+                {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric"
+                }
+              );
+
+          } catch (e) {
+
+            dateText = "—";
+
+          }
+
+        }
+
+
+        return `
+
+          <tr>
+
+            <td>
+
+              <div class="post-info">
+
+                <img
+                  class="post-image"
+                  src="${escapeAttribute(image)}"
+                  alt=""
+                  onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80'"
+                >
+
+                <div>
+
+                  <div class="post-title">
+                    ${escapeHtml(title)}
+                  </div>
+
+                  <div class="post-description">
+                    ${escapeHtml(description)}
+                  </div>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <span class="category">
+                ${escapeHtml(category)}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <span class="date">
+                ${dateText}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <div class="actions">
+
+                <button
+                  class="action-btn"
+                  onclick="editPost('${post.id}')"
+                >
+                  Edit
+                </button>
+
+                <button
+                  class="action-btn delete-btn"
+                  onclick="deletePost('${post.id}')"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* =========================
+     SEARCH
+  ========================== */
+
+  searchInput.addEventListener(
+    "input",
+    () => {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      if (!search) {
+
+        renderPosts(allPosts);
+
+        return;
+
+      }
+
+
+      const filtered =
+        allPosts.filter(post => {
+
+          const title =
+            (post.title || "")
+              .toLowerCase();
+
+          const category =
+            (post.category || "")
+              .toLowerCase();
+
+          const description =
+            (post.description || "")
+              .toLowerCase();
+
+
+          return (
+            title.includes(search) ||
+            category.includes(search) ||
+            description.includes(search)
+          );
+
+        });
+
+
+      renderPosts(filtered);
+
+    }
+  );
+
+
+  /* =========================
+     EDIT POST
+  ========================== */
+
+  window.editPost = function(id) {
+
+    window.location.href =
+      `edit-post.html?id=${encodeURIComponent(id)}`;
+
+  };
+
+
+  /* =========================
+     DELETE POST
+  ========================== */
+
+  window.deletePost = async function(id) {
+
+    const post =
+      allPosts.find(item => item.id === id);
+
+
+    if (!post) return;
+
+
+    const confirmed =
+      confirm(
+        `Delete "${post.title || "this post"}"?\n\nThis action cannot be undone.`
+      );
+
+
+    if (!confirmed) return;
+
+
+    try {
+
+      await deleteDoc(
+        doc(db, "posts", id)
+      );
+
+      alert("Post deleted successfully.");
+
+      loadPosts();
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert(
+        "Delete failed: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+  /* =========================
+     LOGOUT
+  ========================== */
+
+  logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+      const confirmed =
+        confirm("Are you sure you want to logout?");
+
+      if (!confirmed) return;
+
+
+      try {
+
+        await signOut(auth);
+
+        window.location.href =
+          "admin.html";
+
+      } catch (error) {
+
+        alert(
+          "Logout failed: " +
+          error.message
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     MOBILE MENU
+  ========================== */
+
+  mobileMenu.addEventListener(
+    "click",
+    () => {
+
+      sidebar.classList.toggle("open");
+
+    }
+  );
+
+
+  /* =========================
+     ESCAPE HTML
+  ========================== */
+
+  function escapeHtml(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  function escapeAttribute(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+  }
+
+</script>
 
 </body>
 </html>
-```
