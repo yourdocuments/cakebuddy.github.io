@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CakeBuddy — Admin Login</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          #fff0f3,
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          #fff4e8,
+          transparent 35%
+        ),
+        #f8f7f5;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+      color: #171717;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 430px;
+
+      background: rgba(255, 255, 255, 0.96);
+
+      border: 1px solid #e9e9e9;
+      border-radius: 24px;
+
+      padding: 38px;
+
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+
+      margin-bottom: 22px;
+
+      border-radius: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #171717;
+      color: white;
+
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 6px 10px;
+
+      margin-bottom: 12px;
+
+      border-radius: 8px;
+
+      background: #f7f1ed;
+      color: #80695d;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      letter-spacing: -1px;
+
+      margin-bottom: 9px;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.6;
+
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      height: 48px;
+
+      padding: 0 14px;
+
+      border: 1px solid #dedede;
+      border-radius: 11px;
+
+      outline: none;
+
+      background: white;
+      color: #171717;
+
+      font-size: 14px;
+
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      border-color: #999;
+
+      box-shadow:
+        0 0 0 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .login-btn {
+      width: 100%;
+      height: 50px;
+
+      margin-top: 5px;
+
+      border: none;
+      border-radius: 11px;
+
+      background: #171717;
+      color: white;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+    }
+
+    .login-btn:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .message {
+      display: none;
+
+      margin-top: 17px;
+      padding: 12px 14px;
+
+      border-radius: 10px;
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .message.error {
+      display: block;
+
+      background: #fff0f0;
+      color: #b42318;
+
+      border: 1px solid #ffd6d6;
+    }
+
+    .message.success {
+      display: block;
+
+      background: #effaf2;
+      color: #18743a;
+
+      border: 1px solid #d0efd8;
+    }
+
+    .back-link {
+      display: block;
+
+      margin-top: 22px;
+
+      text-align: center;
+
+      color: #777;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      color: #171717;
+    }
+
+    .footer-text {
+      margin-top: 25px;
+
+      text-align: center;
+
+      color: #aaa;
+
+      font-size: 11px;
+    }
+
+    @media (max-width: 500px) {
+
+      .login-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+
+    <div class="logo">
+      CB
+    </div>
+
+    <span class="badge">
+      Admin Panel
+    </span>
+
+    <h1>
+      Welcome back
+    </h1>
+
+    <p class="subtitle">
+      Sign in to manage CakeBuddy posts and content.
+    </p>
+
+
+    <form id="loginForm">
+
+      <div class="form-group">
+
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter admin email"
+          autocomplete="email"
+          required
+        />
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="password">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        />
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="login-btn"
+        id="loginBtn"
+      >
+        Login to Dashboard
+      </button>
+
+    </form>
+
+
+    <div
+      id="message"
+      class="message"
+    ></div>
+
+
+    <a
+      href="index.html"
+      class="back-link"
+    >
+      ← Back to CakeBuddy
+    </a>
+
+
+    <div class="footer-text">
+      CakeBuddy Admin System
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       FIREBASE AUTH
+  ========================== -->
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+    /* =========================
+       FIREBASE CONFIG
+    ========================== */
+
+    const firebaseConfig = {
+
+      apiKey:
+        "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
+
+      authDomain:
+        "cakebuddymb.firebaseapp.com",
+
+      projectId:
+        "cakebuddymb",
+
+      storageBucket:
+        "cakebuddymb.firebasestorage.app",
+
+      messagingSenderId:
+        "31596118058",
+
+      appId:
+        "1:31596118058:web:ecfe00171d91ee15c64353",
+
+      measurementId:
+        "G-D0ZV3FN1LQ"
+
+    };
+
+
+    /* =========================
+       INITIALIZE FIREBASE
+    ========================== */
+
+    const app =
+      initializeApp(firebaseConfig);
+
+    const auth =
+      getAuth(app);
+
+
+    /* =========================
+       ELEMENTS
+    ========================== */
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const emailInput =
+      document.getElementById("email");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const loginBtn =
+      document.getElementById("loginBtn");
+
+    const message =
+      document.getElementById("message");
+
+
+    /* =========================
+       ADMIN EMAIL
+    ========================== */
+
+    const ADMIN_EMAIL =
+      "ishahneilkhanbd@gmail.com";
+
+
+    /* =========================
+       SHOW MESSAGE
+    ========================== */
+
+    function showMessage(
+      text,
+      type
+    ) {
+
+      message.textContent = text;
+
+      message.className =
+        "message " + type;
+
+    }
+
+
+    /* =========================
+       LOGIN
+    ========================== */
+
+    loginForm.addEventListener(
+      "submit",
+      async function (event) {
+
+        event.preventDefault();
+
+
+        const email =
+          emailInput.value
+            .trim()
+            .toLowerCase();
+
+        const password =
+          passwordInput.value;
+
+
+        /* Admin email check */
+
+        if (email !== ADMIN_EMAIL) {
+
+          showMessage(
+            "This email is not authorized as an admin.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        loginBtn.disabled = true;
+
+        loginBtn.textContent =
+          "Signing in...";
+
+
+        try {
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+
+          showMessage(
+            "Login successful. Opening dashboard...",
+            "success"
+          );
+
+
+          setTimeout(
+            function () {
+
+              window.location.href =
+                "dashboard.html";
+
+            },
+            800
+          );
+
+
+        } catch (error) {
+
+          console.error(
+            "Login Error:",
+            error
+          );
+
+
+          let errorMessage =
+            "Login failed. Please check your email and password.";
+
+
+          if (
+            error.code ===
+            "auth/invalid-credential"
+          ) {
+
+            errorMessage =
+              "Incorrect email or password.";
+
+          }
+
+          else if (
+            error.code ===
+            "auth/user-not-found"
+          ) {
+
+            errorMessage =
+              "Admin account not found.";
+
+          }
+
+          else if (
+            error.code ===
+            "auth/wrong-password"
+          ) {
+
+            errorMessage =
+              "Incorrect password.";
+
+          }
+
+          else if (
+            error.code ===
+            "auth/too-many-requests"
+          ) {
+
+            errorMessage =
+              "Too many attempts. Please try again later.";
+
+          }
+
+
+          showMessage(
+            errorMessage,
+            "error"
+          );
+
+
+          loginBtn.disabled = false;
+
+          loginBtn.textContent =
+            "Login to Dashboard";
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
