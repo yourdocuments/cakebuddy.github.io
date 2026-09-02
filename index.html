@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="bn">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CakeBuddy — Discover Something Delicious</title>
+  <title>CakeBuddy — Discover Delicious Cakes</title>
+
+  <meta
+    name="description"
+    content="CakeBuddy — Discover delicious cakes, offers, announcements and more."
+  >
 
   <style>
 
@@ -15,309 +19,427 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fafafa;
-      color: #111;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-    header {
+      background: #fafafa;
+      color: #202223;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+
+    /* =================================
+       HEADER
+    ================================= */
+
+    .header {
+      width: 100%;
+
+      background: rgba(255,255,255,.96);
+
+      border-bottom: 1px solid #e8e8e8;
+
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.95);
+
+      z-index: 1000;
+
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid #eee;
     }
 
-    .nav {
-      max-width: 1200px;
-      margin: auto;
+    .header-inner {
+      max-width: 1180px;
+
       height: 72px;
+
+      margin: auto;
+
       padding: 0 20px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
     }
 
+
+    /* LOGO */
+
     .logo {
       display: flex;
+
       align-items: center;
+
       gap: 10px;
-
-      text-decoration: none;
-      color: #111;
-
-      font-size: 21px;
-      font-weight: 900;
     }
 
     .logo-icon {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
 
-      border-radius: 12px;
+      border-radius: 11px;
 
-      background: #111;
+      background: #111827;
+
       color: white;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
-      font-size: 13px;
+      font-size: 20px;
     }
 
-    /* Developer Website Button */
+    .logo-text {
+      font-size: 18px;
 
-    .developer-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      font-weight: 750;
 
-      text-decoration: none;
+      letter-spacing: -.5px;
+    }
 
-      color: #555;
+    .logo-subtitle {
+      display: block;
 
-      border: 1px solid #ddd;
+      color: #8c9196;
 
-      padding: 10px 15px;
+      font-size: 10px;
 
-      border-radius: 9px;
+      font-weight: 400;
 
-      font-size: 13px;
-      font-weight: 700;
+      margin-top: -1px;
+    }
+
+
+    /* HEADER BUTTON */
+
+    .header-btn {
+      background: #111827;
+
+      color: white;
+
+      border-radius: 7px;
+
+      padding: 9px 15px;
+
+      font-size: 12px;
+
+      font-weight: 600;
 
       transition: .2s;
     }
 
-    .developer-link:hover {
-      background: #111;
-      color: white;
-      border-color: #111;
+    .header-btn:hover {
+      background: #000;
+      transform: translateY(-1px);
     }
 
-    .arrow {
-      font-size: 16px;
-    }
 
-    /* =========================
+    /* =================================
        HERO
-    ========================= */
+    ================================= */
 
     .hero {
-      max-width: 1200px;
-      margin: auto;
+      background: #ffffff;
 
-      padding: 75px 20px 55px;
+      border-bottom: 1px solid #eeeeee;
+
+      padding: 75px 20px 70px;
 
       text-align: center;
     }
 
-    .hero-badge {
-      display: inline-block;
-
-      padding: 7px 12px;
-
-      background: #f1f1f1;
-
-      border-radius: 30px;
-
-      color: #555;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 68px);
-
-      line-height: 1.05;
-
-      letter-spacing: -2px;
-
-      max-width: 800px;
+    .hero-content {
+      max-width: 760px;
 
       margin: auto;
     }
 
+    .hero-badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      background: #f1f2f3;
+
+      color: #42474c;
+
+      padding: 7px 12px;
+
+      border-radius: 30px;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      margin-bottom: 18px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+
+      background: #202223;
+
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+
+      line-height: 1.05;
+
+      letter-spacing: -2.8px;
+
+      font-weight: 750;
+
+      color: #111827;
+
+      margin-bottom: 18px;
+    }
+
     .hero h1 span {
-      color: #777;
+      color: #6d7175;
     }
 
     .hero p {
       max-width: 600px;
 
-      margin: 20px auto 0;
-
-      color: #777;
-
-      line-height: 1.7;
-
-      font-size: 15px;
-    }
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    .search-wrap {
-      max-width: 650px;
-
-      margin: 30px auto 0;
-
-      position: relative;
-    }
-
-    .search {
-      width: 100%;
-
-      height: 52px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 14px;
-
-      padding: 0 20px 0 48px;
-
-      outline: none;
-
-      font-size: 14px;
-
-      background: white;
-    }
-
-    .search:focus {
-      border-color: #111;
-    }
-
-    .search-icon {
-      position: absolute;
-
-      left: 18px;
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      color: #888;
-    }
-
-    /* =========================
-       POSTS
-    ========================= */
-
-    .section {
-      max-width: 1200px;
-
       margin: auto;
 
-      padding: 20px 20px 70px;
+      color: #6d7175;
+
+      font-size: 15px;
+
+      line-height: 1.7;
     }
 
-    .section-title {
+
+    /* =================================
+       SEARCH
+    ================================= */
+
+    .search-section {
+      max-width: 700px;
+
+      margin: -25px auto 0;
+
+      padding: 0 20px;
+
+      position: relative;
+
+      z-index: 10;
+    }
+
+    .search-box {
+      background: white;
+
+      border: 1px solid #dfe1e3;
+
+      border-radius: 10px;
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.07);
+
+      height: 54px;
+
       display: flex;
 
       align-items: center;
 
+      padding: 0 16px;
+    }
+
+    .search-icon {
+      font-size: 19px;
+
+      color: #8c9196;
+
+      margin-right: 10px;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      border: none;
+
+      outline: none;
+
+      font-size: 13px;
+
+      background: transparent;
+
+      color: #202223;
+    }
+
+    .search-box input::placeholder {
+      color: #8c9196;
+    }
+
+
+    /* =================================
+       POSTS
+    ================================= */
+
+    .posts-section {
+      max-width: 1180px;
+
+      margin: auto;
+
+      padding: 75px 20px 70px;
+    }
+
+    .section-heading {
+      display: flex;
+
       justify-content: space-between;
 
-      margin-bottom: 22px;
+      align-items: end;
+
+      margin-bottom: 25px;
     }
 
-    .section-title h2 {
+    .section-heading h2 {
       font-size: 24px;
+
+      letter-spacing: -.7px;
+
+      font-weight: 700;
     }
 
-    .section-title span {
-      color: #888;
+    .section-heading p {
+      color: #8c9196;
+
+      font-size: 12px;
+
+      margin-top: 4px;
+    }
+
+    .post-count {
+      color: #8c9196;
 
       font-size: 12px;
     }
 
+
+    /* POST GRID */
+
     .posts-grid {
       display: grid;
 
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-      gap: 22px;
+      gap: 20px;
     }
 
+
+    /* POST CARD */
+
     .post-card {
-      background: white;
+      background: #ffffff;
 
-      border: 1px solid #eee;
+      border: 1px solid #e3e5e7;
 
-      border-radius: 17px;
+      border-radius: 11px;
 
       overflow: hidden;
 
       transition:
-        transform .2s,
-        box-shadow .2s;
+        transform .25s ease,
+        box-shadow .25s ease;
+
+      animation: fadeUp .4s ease both;
     }
 
     .post-card:hover {
       transform: translateY(-4px);
 
       box-shadow:
-        0 15px 40px rgba(0,0,0,.08);
+        0 12px 35px rgba(0,0,0,.08);
     }
 
     .post-image {
       width: 100%;
 
-      height: 220px;
+      aspect-ratio: 16 / 10;
 
       object-fit: cover;
 
-      display: block;
-
-      background: #eee;
+      background: #f1f2f3;
     }
 
     .post-content {
-      padding: 20px;
+      padding: 17px;
     }
 
-    .category {
-      display: inline-block;
+    .post-category {
+      display: inline-flex;
 
       padding: 5px 9px;
 
-      background: #f1f1f1;
+      background: #f1f2f3;
 
-      border-radius: 6px;
+      color: #42474c;
+
+      border-radius: 20px;
 
       font-size: 10px;
 
-      font-weight: 800;
+      font-weight: 650;
 
-      color: #555;
-
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .post-content h3 {
-      font-size: 18px;
+    .post-title {
+      font-size: 17px;
+
+      font-weight: 700;
 
       line-height: 1.35;
 
-      margin-bottom: 9px;
+      letter-spacing: -.3px;
+
+      margin-bottom: 7px;
     }
 
-    .post-content p {
-      color: #777;
+    .post-description {
+      color: #6d7175;
 
-      font-size: 13px;
+      font-size: 12px;
 
-      line-height: 1.6;
+      line-height: 1.65;
 
       display: -webkit-box;
 
@@ -328,21 +450,22 @@
       overflow: hidden;
     }
 
-    .post-footer {
-      margin-top: 18px;
+    .post-date {
+      color: #9a9da0;
 
-      padding-top: 14px;
+      font-size: 10px;
 
-      border-top: 1px solid #eee;
+      margin-top: 13px;
 
-      color: #999;
+      padding-top: 11px;
 
-      font-size: 11px;
+      border-top: 1px solid #eeeeee;
     }
 
-    /* =========================
+
+    /* =================================
        LOADING
-    ========================= */
+    ================================= */
 
     .loading {
       grid-column: 1 / -1;
@@ -351,20 +474,34 @@
 
       padding: 70px 20px;
 
-      color: #888;
+      color: #8c9196;
     }
 
-    .loading-icon {
-      font-size: 35px;
+    .loading-spinner {
+      width: 28px;
+      height: 28px;
 
-      margin-bottom: 10px;
+      border: 3px solid #e1e3e5;
+
+      border-top-color: #111827;
+
+      border-radius: 50%;
+
+      margin: 0 auto 14px;
+
+      animation: spin .8s linear infinite;
     }
 
-    /* =========================
+    .loading p {
+      font-size: 12px;
+    }
+
+
+    /* =================================
        EMPTY
-    ========================= */
+    ================================= */
 
-    .empty {
+    .empty-state {
       grid-column: 1 / -1;
 
       text-align: center;
@@ -373,516 +510,740 @@
 
       background: white;
 
-      border: 1px solid #eee;
+      border: 1px solid #e1e3e5;
 
-      border-radius: 16px;
+      border-radius: 10px;
     }
 
     .empty-icon {
-      font-size: 40px;
+      font-size: 35px;
 
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .empty h3 {
-      font-size: 18px;
+    .empty-state h3 {
+      font-size: 16px;
 
-      margin-bottom: 7px;
+      margin-bottom: 5px;
     }
 
-    .empty p {
-      color: #888;
-
-      font-size: 13px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid #eee;
-
-      padding: 25px 20px;
-
-      text-align: center;
-
-      color: #888;
+    .empty-state p {
+      color: #8c9196;
 
       font-size: 12px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
 
-    @media (max-width: 850px) {
+    /* =================================
+       DEVELOPER CONNECT
+    ================================= */
+
+    .developer-section {
+      max-width: 1180px;
+
+      margin: auto;
+
+      padding: 0 20px 35px;
+    }
+
+    .developer-box {
+      background: #111827;
+
+      color: white;
+
+      border-radius: 12px;
+
+      padding: 27px 30px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .developer-text h3 {
+      font-size: 17px;
+
+      font-weight: 700;
+
+      margin-bottom: 4px;
+    }
+
+    .developer-text p {
+      color: #b7bbc0;
+
+      font-size: 11px;
+    }
+
+    .developer-btn {
+      background: white;
+
+      color: #111827;
+
+      padding: 10px 16px;
+
+      border-radius: 7px;
+
+      font-size: 12px;
+
+      font-weight: 650;
+
+      white-space: nowrap;
+
+      transition: .2s;
+    }
+
+    .developer-btn:hover {
+      transform: translateY(-2px);
+
+      background: #f1f2f3;
+    }
+
+
+    /* =================================
+       FOOTER
+    ================================= */
+
+    .footer {
+      background: #ffffff;
+
+      border-top: 1px solid #e3e5e7;
+
+      padding: 28px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .footer-brand {
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+    .footer-copy {
+      color: #8c9196;
+
+      font-size: 10px;
+
+      margin-top: 3px;
+    }
+
+    .footer-right {
+      color: #8c9196;
+
+      font-size: 10px;
+    }
+
+
+    /* =================================
+       ANIMATION
+    ================================= */
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =================================
+       TABLET
+    ================================= */
+
+    @media (max-width: 900px) {
 
       .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        padding-top: 60px;
+        padding-bottom: 60px;
       }
 
     }
 
+
+    /* =================================
+       MOBILE
+    ================================= */
+
     @media (max-width: 600px) {
 
-      .nav {
+      .header-inner {
         height: 64px;
-      }
 
-      .logo {
-        font-size: 18px;
+        padding: 0 14px;
       }
 
       .logo-icon {
-        width: 37px;
-        height: 37px;
+        width: 36px;
+        height: 36px;
+
+        font-size: 17px;
       }
 
-      .developer-link {
-        padding: 8px 11px;
-        font-size: 11px;
+      .logo-text {
+        font-size: 16px;
       }
+
+      .header-btn {
+        padding: 8px 10px;
+
+        font-size: 10px;
+      }
+
 
       .hero {
-        padding: 55px 18px 40px;
+        padding: 55px 16px 55px;
       }
 
       .hero h1 {
-        letter-spacing: -1px;
+        font-size: 39px;
+
+        letter-spacing: -1.8px;
       }
 
       .hero p {
         font-size: 13px;
       }
 
-      .section {
-        padding: 15px 15px 50px;
+
+      .search-section {
+        padding: 0 14px;
       }
+
+      .search-box {
+        height: 50px;
+      }
+
+
+      .posts-section {
+        padding: 60px 14px 50px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+      }
+
+      .section-heading h2 {
+        font-size: 21px;
+      }
+
 
       .posts-grid {
         grid-template-columns: 1fr;
+
+        gap: 15px;
       }
 
-      .post-image {
-        height: 210px;
+
+      .developer-section {
+        padding: 0 14px 25px;
+      }
+
+      .developer-box {
+        padding: 22px 18px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .developer-btn {
+        width: 100%;
+
+        text-align: center;
+      }
+
+
+      .footer-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
       }
 
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+<!-- =================================
+     HEADER
+================================= -->
 
-  <header>
+<header class="header">
 
-    <nav class="nav">
+  <div class="header-inner">
 
+    <a href="index.html" class="logo">
 
-      <!-- CakeBuddy Logo -->
+      <div class="logo-icon">
+        🎂
+      </div>
 
-      <a
-        href="index.html"
-        class="logo"
-      >
+      <div>
 
-        <div class="logo-icon">
-          CB
+        <div class="logo-text">
+          CakeBuddy
         </div>
 
-        CakeBuddy
-
-      </a>
-
-
-      <!-- Developer Website -->
-
-      <a
-        href="https://websitesdeal.com"
-        class="developer-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-
-        Developer Connect
-
-        <span class="arrow">
-          →
+        <span class="logo-subtitle">
+          Sweet moments, together
         </span>
 
-      </a>
+      </div>
+
+    </a>
 
 
-    </nav>
+    <a
+      href="#posts"
+      class="header-btn"
+    >
+      Explore Posts
+    </a>
 
-  </header>
+  </div>
+
+</header>
 
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+<!-- =================================
+     HERO
+================================= -->
 
-  <section class="hero">
+<section class="hero">
 
+  <div class="hero-content">
 
     <div class="hero-badge">
-      ✦ CakeBuddy Community
+
+      <span class="hero-badge-dot"></span>
+
+      Welcome to CakeBuddy
+
     </div>
 
 
     <h1>
-
-      Discover
-
-      <span>
-        Something Delicious.
-      </span>
-
+      Discover something
+      <span>delicious.</span>
     </h1>
 
 
     <p>
-
-      নতুন পোস্ট, অফার, রেসিপি এবং CakeBuddy-এর
-      latest updates এক জায়গায় দেখুন।
-
+      Explore the latest cakes, offers, announcements,
+      recipes and sweet moments from CakeBuddy.
     </p>
 
+  </div>
 
-    <!-- Search -->
-
-    <div class="search-wrap">
-
-      <span class="search-icon">
-        🔍
-      </span>
-
-
-      <input
-        type="search"
-        id="searchInput"
-        class="search"
-        placeholder="Search posts..."
-      >
-
-    </div>
-
-
-  </section>
+</section>
 
 
 
-  <!-- =========================
-       POSTS
-  ========================= -->
+<!-- =================================
+     SEARCH
+================================= -->
 
-  <section class="section">
+<div class="search-section">
+
+  <div class="search-box">
+
+    <span class="search-icon">
+      ⌕
+    </span>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search cakes, offers, announcements..."
+      autocomplete="off"
+    >
+
+  </div>
+
+</div>
 
 
-    <div class="section-title">
+
+<!-- =================================
+     POSTS
+================================= -->
+
+<section
+  class="posts-section"
+  id="posts"
+>
+
+  <div class="section-heading">
+
+    <div>
 
       <h2>
         Latest Posts
       </h2>
 
-
-      <span id="postTotal">
-        Loading...
-      </span>
+      <p>
+        Fresh updates from CakeBuddy
+      </p>
 
     </div>
 
 
     <div
-      id="postsGrid"
-      class="posts-grid"
+      class="post-count"
+      id="postCount"
     >
+      Loading...
+    </div>
 
-      <div class="loading">
+  </div>
 
-        <div class="loading-icon">
-          ⏳
-        </div>
 
+  <div
+    class="posts-grid"
+    id="postsGrid"
+  >
+
+    <div class="loading">
+
+      <div class="loading-spinner"></div>
+
+      <p>
         Loading posts...
+      </p>
 
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     DEVELOPER CONNECT
+     JUST ABOVE FOOTER
+================================= -->
+
+<section class="developer-section">
+
+  <div class="developer-box">
+
+    <div class="developer-text">
+
+      <h3>
+        Need a website like this?
+      </h3>
+
+      <p>
+        Connect with the developer to build your own website.
+      </p>
+
+    </div>
+
+
+    <a
+      href="https://websitesdeal.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="developer-btn"
+    >
+      Developer Connect →
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <div>
+
+      <div class="footer-brand">
+        CakeBuddy
+      </div>
+
+      <div class="footer-copy">
+        © 2026 CakeBuddy. All rights reserved.
       </div>
 
     </div>
 
 
-  </section>
+    <div class="footer-right">
+      Made with care.
+    </div>
+
+  </div>
+
+</footer>
 
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+<!-- =================================
+     FIREBASE
+================================= -->
 
-  <footer>
-
-    © 2026 CakeBuddy.
-    All rights reserved.
-
-  </footer>
+<script type="module">
 
 
+  /* =================================
+     FIREBASE IMPORTS
+  ================================= */
 
-  <!-- =========================
-       FIREBASE
-  ========================= -->
-
-  <script type="module">
-
-
-    import {
-      initializeApp
-    }
-    from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import {
+    initializeApp
+  }
+  from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
-    import {
-      getFirestore,
-      collection,
-      getDocs,
-      query,
-      orderBy
-    }
-    from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    query,
+    orderBy
+  }
+  from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-    /* =========================
-       FIREBASE CONFIG
-    ========================= */
 
-    const firebaseConfig = {
+  /* =================================
+     FIREBASE CONFIG
+  ================================= */
 
-      apiKey:
-        "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
+  const firebaseConfig = {
 
-      authDomain:
-        "cakebuddymb.firebaseapp.com",
+    apiKey:
+      "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
 
-      projectId:
-        "cakebuddymb",
+    authDomain:
+      "cakebuddymb.firebaseapp.com",
 
-      storageBucket:
-        "cakebuddymb.firebasestorage.app",
+    projectId:
+      "cakebuddymb",
 
-      messagingSenderId:
-        "31596118058",
+    storageBucket:
+      "cakebuddymb.firebasestorage.app",
 
-      appId:
-        "1:31596118058:web:ecfe00171d91ee15c64353",
+    messagingSenderId:
+      "31596118058",
 
-      measurementId:
-        "G-D0ZV3FN1LQ"
+    appId:
+      "1:31596118058:web:ecfe00171d91ee15c64353",
 
-    };
+    measurementId:
+      "G-D0ZV3FN1LQ"
 
-
-    /* =========================
-       FIREBASE INIT
-    ========================= */
-
-    const app =
-      initializeApp(firebaseConfig);
+  };
 
 
-    const db =
-      getFirestore(app);
+
+  /* =================================
+     INITIALIZE FIREBASE
+  ================================= */
+
+  const app =
+    initializeApp(firebaseConfig);
+
+  const db =
+    getFirestore(app);
 
 
-    /* =========================
-       ELEMENTS
-    ========================= */
 
-    const postsGrid =
-      document.getElementById(
-        "postsGrid"
-      );
+  /* =================================
+     ELEMENTS
+  ================================= */
 
+  const postsGrid =
+    document.getElementById("postsGrid");
 
-    const postTotal =
-      document.getElementById(
-        "postTotal"
-      );
+  const searchInput =
+    document.getElementById("searchInput");
 
-
-    const searchInput =
-      document.getElementById(
-        "searchInput"
-      );
+  const postCount =
+    document.getElementById("postCount");
 
 
-    let allPosts = [];
+
+  /* =================================
+     DATA
+  ================================= */
+
+  let allPosts = [];
 
 
-    /* =========================
-       LOAD POSTS
-    ========================= */
 
-    async function loadPosts() {
+  /* =================================
+     LOAD POSTS
+  ================================= */
 
-      try {
+  async function loadPosts() {
 
+    try {
 
-        const postsQuery =
-          query(
-
-            collection(
-              db,
-              "posts"
-            ),
-
-            orderBy(
-              "createdAt",
-              "desc"
-            )
-
-          );
-
-
-        const snapshot =
-          await getDocs(
-            postsQuery
-          );
-
-
-        allPosts = [];
-
-
-        snapshot.forEach(
-          function(documentSnapshot) {
-
-            allPosts.push({
-
-              id:
-                documentSnapshot.id,
-
-              ...documentSnapshot.data()
-
-            });
-
-          }
+      const postsQuery =
+        query(
+          collection(db, "posts"),
+          orderBy("createdAt", "desc")
         );
 
 
-        postTotal.textContent =
-          allPosts.length +
-          " Posts";
+      const snapshot =
+        await getDocs(postsQuery);
 
 
-        displayPosts(
-          allPosts
-        );
+      allPosts = [];
 
 
-      } catch (error) {
+      snapshot.forEach((doc) => {
 
-        console.error(
-          "Firebase Error:",
-          error
-        );
+        allPosts.push({
+
+          id: doc.id,
+
+          ...doc.data()
+
+        });
+
+      });
 
 
-        postsGrid.innerHTML = `
+      updateCount(
+        allPosts.length
+      );
 
-          <div class="empty">
 
-            <div class="empty-icon">
-              ⚠️
-            </div>
+      renderPosts(
+        allPosts
+      );
 
-            <h3>
-              Posts load করা যায়নি
-            </h3>
 
-            <p>
-              Firebase Firestore Rules অথবা Database check করুন।
-            </p>
+    } catch (error) {
 
+      console.error(
+        "Firebase Error:",
+        error
+      );
+
+
+      postsGrid.innerHTML = `
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            ⚠️
           </div>
 
-        `;
+          <h3>
+            Unable to load posts
+          </h3>
+
+          <p>
+            Please check your Firebase connection and Firestore setup.
+          </p>
+
+        </div>
+
+      `;
 
 
-        postTotal.textContent =
-          "Error";
+      postCount.textContent =
+        "Error";
 
-      }
+    }
+
+  }
+
+
+
+  /* =================================
+     RENDER POSTS
+  ================================= */
+
+  function renderPosts(posts) {
+
+
+    if (posts.length === 0) {
+
+      postsGrid.innerHTML = `
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            🍰
+          </div>
+
+          <h3>
+            No posts found
+          </h3>
+
+          <p>
+            New CakeBuddy content will appear here.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
 
     }
 
 
-    /* =========================
-       DISPLAY POSTS
-    ========================= */
-
-    function displayPosts(
-      posts
-    ) {
-
-
-      if (!posts.length) {
-
-        postsGrid.innerHTML = `
-
-          <div class="empty">
-
-            <div class="empty-icon">
-              📝
-            </div>
-
-            <h3>
-              এখনো কোনো পোস্ট নেই
-            </h3>
-
-            <p>
-              খুব শীঘ্রই নতুন content আসবে।
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      postsGrid.innerHTML = "";
-
-
-      posts.forEach(
-        function(post) {
-
-
-          const card =
-            document.createElement(
-              "article"
-            );
-
-
-          card.className =
-            "post-card";
-
-
-          const image =
-            post.image ||
-            "https://via.placeholder.com/800x500?text=CakeBuddy";
-
+    postsGrid.innerHTML =
+      posts.map(
+        (post, index) => {
 
           const title =
             post.title ||
@@ -896,207 +1257,304 @@
 
           const description =
             post.description ||
-            "";
+            "No description available.";
 
 
-          let dateText =
-            "Recently";
+          const image =
+            post.image ||
+            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85";
 
 
-          if (
-            post.createdAt
-          ) {
-
-            try {
-
-              dateText =
-                post.createdAt
-                  .toDate()
-                  .toLocaleDateString(
-                    "en-GB",
-                    {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric"
-                    }
-                  );
-
-            } catch (error) {
-
-              dateText =
-                "Recently";
-
-            }
-
-          }
+          const date =
+            formatDate(
+              post.createdAt
+            );
 
 
-          card.innerHTML = `
+          return `
 
-            <img
-              class="post-image"
-              src="${escapeHtml(image)}"
-              alt="${escapeHtml(title)}"
-              onerror="this.src='https://via.placeholder.com/800x500?text=CakeBuddy'"
+            <article
+              class="post-card"
+              style="animation-delay:${index * 60}ms"
             >
 
+              <img
 
-            <div class="post-content">
+                class="post-image"
 
-              <span class="category">
-                ${escapeHtml(category)}
-              </span>
+                src="${escapeAttribute(image)}"
 
+                alt="${escapeAttribute(title)}"
 
-              <h3>
-                ${escapeHtml(title)}
-              </h3>
+                loading="lazy"
 
+                onerror="
+                  this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85'
+                "
 
-              <p>
-                ${escapeHtml(description)}
-              </p>
+              >
 
 
-              <div class="post-footer">
+              <div class="post-content">
 
-                📅 ${dateText}
+
+                <div class="post-category">
+                  ${escapeHtml(category)}
+                </div>
+
+
+                <h3 class="post-title">
+                  ${escapeHtml(title)}
+                </h3>
+
+
+                <p class="post-description">
+                  ${escapeHtml(description)}
+                </p>
+
+
+                <div class="post-date">
+                  ${date}
+                </div>
+
 
               </div>
 
-            </div>
+            </article>
 
           `;
 
-
-          postsGrid.appendChild(
-            card
-          );
-
         }
+      ).join("");
+
+  }
+
+
+
+  /* =================================
+     SEARCH
+  ================================= */
+
+  searchInput.addEventListener(
+    "input",
+    () => {
+
+      const search =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+
+      if (!search) {
+
+        updateCount(
+          allPosts.length
+        );
+
+        renderPosts(
+          allPosts
+        );
+
+        return;
+
+      }
+
+
+      const filtered =
+        allPosts.filter(
+          (post) => {
+
+            const title =
+              String(
+                post.title || ""
+              ).toLowerCase();
+
+
+            const category =
+              String(
+                post.category || ""
+              ).toLowerCase();
+
+
+            const description =
+              String(
+                post.description || ""
+              ).toLowerCase();
+
+
+            return (
+
+              title.includes(search) ||
+
+              category.includes(search) ||
+
+              description.includes(search)
+
+            );
+
+          }
+        );
+
+
+      updateCount(
+        filtered.length,
+        true
+      );
+
+
+      renderPosts(
+        filtered
       );
 
     }
+  );
 
 
-    /* =========================
-       SEARCH
-    ========================= */
 
-    searchInput.addEventListener(
-      "input",
-      function() {
+  /* =================================
+     COUNT
+  ================================= */
 
+  function updateCount(
+    count,
+    isSearch = false
+  ) {
 
-        const keyword =
-          searchInput.value
-            .trim()
-            .toLowerCase();
+    if (isSearch) {
 
+      postCount.textContent =
+        `${count} result${count !== 1 ? "s" : ""}`;
 
-        if (!keyword) {
-
-          displayPosts(
-            allPosts
-          );
-
-          return;
-
-        }
-
-
-        const filtered =
-          allPosts.filter(
-            function(post) {
-
-
-              const title =
-                (
-                  post.title ||
-                  ""
-                ).toLowerCase();
-
-
-              const description =
-                (
-                  post.description ||
-                  ""
-                ).toLowerCase();
-
-
-              const category =
-                (
-                  post.category ||
-                  ""
-                ).toLowerCase();
-
-
-              return (
-
-                title.includes(
-                  keyword
-                )
-
-                ||
-
-                description.includes(
-                  keyword
-                )
-
-                ||
-
-                category.includes(
-                  keyword
-                )
-
-              );
-
-            }
-          );
-
-
-        displayPosts(
-          filtered
-        );
-
-
-      }
-    );
-
-
-    /* =========================
-       HTML SECURITY
-    ========================= */
-
-    function escapeHtml(
-      value
-    ) {
-
-      const div =
-        document.createElement(
-          "div"
-        );
-
-
-      div.textContent =
-        String(value);
-
-
-      return div.innerHTML;
+      return;
 
     }
 
 
-    /* =========================
-       START
-    ========================= */
+    postCount.textContent =
+      `${count} post${count !== 1 ? "s" : ""}`;
 
-    loadPosts();
+  }
 
 
-  </script>
 
+  /* =================================
+     DATE
+  ================================= */
+
+  function formatDate(
+    timestamp
+  ) {
+
+    if (!timestamp) {
+
+      return "Recently";
+
+    }
+
+
+    try {
+
+      const date =
+        timestamp.toDate
+          ? timestamp.toDate()
+          : new Date(timestamp);
+
+
+      return date.toLocaleDateString(
+        "en-US",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      );
+
+    } catch (error) {
+
+      return "Recently";
+
+    }
+
+  }
+
+
+
+  /* =================================
+     SECURITY
+  ================================= */
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(value)
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+  }
+
+
+  function escapeAttribute(
+    value
+  ) {
+
+    return String(value)
+
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+
+      .replace(
+        /</g,
+        "&lt;"
+      )
+
+      .replace(
+        />/g,
+        "&gt;"
+      );
+
+  }
+
+
+
+  /* =================================
+     START
+  ================================= */
+
+  loadPosts();
+
+
+</script>
 
 </body>
-
 </html>
