@@ -1,82 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>CakeBuddy — Cakes, Desserts & Sweet Moments</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Discover cakes, desserts, offers and sweet moments from CakeBuddy."
-  />
+    content="CakeBuddy — Discover delicious cakes, desserts, offers and sweet moments."
+  >
 
-  <link rel="stylesheet" href="style.css" />
+  <title>CakeBuddy — Sweet Moments</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 </head>
 
 <body>
 
-  <!-- =====================================
+  <!-- =========================================
        SPECIAL OFFER BAR
-  ====================================== -->
+  ========================================== -->
 
   <div class="offer-bar">
-    🔥 Special Offer — Discover something sweet today!
+    <div class="container offer-inner">
+      <span>🎂 Special Offer</span>
+      <strong>Fresh cakes & sweet moments from CakeBuddy</strong>
+    </div>
   </div>
 
 
-  <!-- =====================================
+  <!-- =========================================
        HEADER
-       Customer homepage has NO Admin button
-  ====================================== -->
+  ========================================== -->
 
-  <header class="header">
+  <header class="site-header">
 
-    <div class="header-inner">
+    <div class="container header-inner">
 
-      <a href="./index.html" class="brand">
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="CakeBuddy Home"
+      >
 
         <div
-          id="brandFallback"
-          class="brand-fallback"
+          class="brand-logo"
+          id="brandLogo"
         >
           C
         </div>
 
-        <img
-          id="brandLogo"
-          class="brand-logo"
-          src=""
-          alt="CakeBuddy Logo"
-        />
+        <div class="brand-text">
+          <strong id="brandName">
+            CakeBuddy
+          </strong>
 
-        <span
-          id="brandName"
-          class="brand-name"
-        >
-          CakeBuddy
-        </span>
+          <span>
+            Sweet Moments
+          </span>
+        </div>
 
       </a>
 
 
-      <div class="search-wrap">
+      <!-- Search -->
 
-        <div class="search-container">
+      <div class="search-box">
 
-          <span class="search-icon">
-            ⌕
-          </span>
+        <span class="search-icon">
+          🔎
+        </span>
 
-          <input
-            id="searchInput"
-            class="search-box"
-            type="search"
-            placeholder="Search cakes, desserts, offers..."
-            autocomplete="off"
-          />
-
-        </div>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search cakes, desserts..."
+          autocomplete="off"
+        >
 
       </div>
 
@@ -85,13 +104,13 @@
   </header>
 
 
-  <!-- =====================================
-       CATEGORIES
-  ====================================== -->
+  <!-- =========================================
+       CATEGORY NAVIGATION
+  ========================================== -->
 
-  <section class="category-section">
+  <nav class="category-nav">
 
-    <div class="categories">
+    <div class="container category-inner">
 
       <button
         class="category-btn active"
@@ -104,354 +123,488 @@
         class="category-btn"
         data-category="Cakes"
       >
-        Cakes
+        🎂 Cakes
       </button>
 
       <button
         class="category-btn"
         data-category="Cupcakes"
       >
-        Cupcakes
+        🧁 Cupcakes
       </button>
 
       <button
         class="category-btn"
         data-category="Desserts"
       >
-        Desserts
+        🍮 Desserts
       </button>
 
       <button
         class="category-btn"
         data-category="Chocolate"
       >
-        Chocolate
+        🍫 Chocolate
       </button>
 
       <button
         class="category-btn"
         data-category="Gift"
       >
-        Gift
+        🎁 Gift
       </button>
 
       <button
         class="category-btn"
         data-category="Offers"
       >
-        Offers
+        🏷️ Offers
       </button>
 
       <button
         class="category-btn"
         data-category="Updates"
       >
-        Updates
+        📢 Updates
       </button>
 
     </div>
 
-  </section>
+  </nav>
 
 
-  <!-- =====================================
-       HERO
-  ====================================== -->
+  <!-- =========================================
+       HERO SECTION
+       3 SLIDE HERO
+  ========================================== -->
 
-  <section class="hero-section">
+  <main>
 
-    <div class="hero-grid">
+    <section class="hero-section">
 
-      <!-- MAIN HERO -->
-
-      <div class="hero-main">
-
-        <img
-          id="mainHeroImage"
-          class="hero-main-image"
-          src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=85"
-          alt="CakeBuddy"
-        />
+      <div class="container hero-layout">
 
 
-        <div class="hero-overlay">
+        <!-- =====================================
+             MAIN HERO SLIDER
+        ====================================== -->
 
-          <div class="hero-content">
+        <div
+          class="hero-slider"
+          id="heroSlider"
+        >
 
-            <span
-              id="mainHeroBadge"
-              class="hero-badge"
+          <!-- SLIDE 1 -->
+
+          <article
+            class="hero-slide active"
+            data-slide="0"
+          >
+
+            <img
+              id="heroImage1"
+              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=85"
+              alt="Delicious Cake"
             >
-              Freshly Made
-            </span>
 
+            <div class="hero-overlay"></div>
 
-            <h1 id="mainHeroTitle">
-              Sweet moments start here.
-            </h1>
+            <div class="hero-content">
 
-
-            <p id="mainHeroDescription">
-              Discover cakes, desserts, special offers
-              and delicious moments from CakeBuddy.
-            </p>
-
-
-            <div class="hero-buttons">
-
-              <a
-                href="#posts"
-                class="hero-btn"
+              <span
+                class="hero-badge"
+                id="heroBadge1"
               >
-                Explore Posts →
-              </a>
+                Fresh & Delicious
+              </span>
 
+              <h1 id="heroTitle1">
+                Make Every Moment Sweeter
+              </h1>
+
+              <p id="heroDescription1">
+                Discover beautiful cakes, desserts and sweet moments from CakeBuddy.
+              </p>
 
               <button
                 type="button"
-                class="hero-btn hero-order-btn"
-                id="heroOrderButton"
+                class="hero-order-btn"
+                id="heroOrderButton1"
               >
                 Order Now 🍰
               </button>
 
             </div>
 
+          </article>
+
+
+          <!-- SLIDE 2 -->
+
+          <article
+            class="hero-slide"
+            data-slide="1"
+          >
+
+            <img
+              id="heroImage2"
+              src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1600&q=85"
+              alt="Special Cake Offer"
+            >
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+              <span
+                class="hero-badge"
+                id="heroBadge2"
+              >
+                Special Offer
+              </span>
+
+              <h1 id="heroTitle2">
+                Something Sweet Is Waiting
+              </h1>
+
+              <p id="heroDescription2">
+                Find your favourite treats and make your special moments memorable.
+              </p>
+
+              <button
+                type="button"
+                class="hero-order-btn"
+                id="heroOrderButton2"
+              >
+                Order Now 🍰
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- SLIDE 3 -->
+
+          <article
+            class="hero-slide"
+            data-slide="2"
+          >
+
+            <img
+              id="heroImage3"
+              src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1600&q=85"
+              alt="Sweet Moments"
+            >
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+              <span
+                class="hero-badge"
+                id="heroBadge3"
+              >
+                Sweet Moments
+              </span>
+
+              <h1 id="heroTitle3">
+                Celebrate With Something Delicious
+              </h1>
+
+              <p id="heroDescription3">
+                Cakes, chocolates, desserts and more — all in one sweet place.
+              </p>
+
+              <button
+                type="button"
+                class="hero-order-btn"
+                id="heroOrderButton3"
+              >
+                Order Now 🍰
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- PREVIOUS -->
+
+          <button
+            type="button"
+            class="slider-arrow slider-prev"
+            id="sliderPrev"
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
+
+
+          <!-- NEXT -->
+
+          <button
+            type="button"
+            class="slider-arrow slider-next"
+            id="sliderNext"
+            aria-label="Next slide"
+          >
+            ›
+          </button>
+
+
+          <!-- DOTS -->
+
+          <div
+            class="slider-dots"
+            id="sliderDots"
+          >
+
+            <button
+              type="button"
+              class="slider-dot active"
+              data-slide-to="0"
+              aria-label="Go to slide 1"
+            ></button>
+
+            <button
+              type="button"
+              class="slider-dot"
+              data-slide-to="1"
+              aria-label="Go to slide 2"
+            ></button>
+
+            <button
+              type="button"
+              class="slider-dot"
+              data-slide-to="2"
+              aria-label="Go to slide 3"
+            ></button>
+
+          </div>
+
+        </div>
+
+
+        <!-- =====================================
+             RIGHT SIDE BANNERS
+        ====================================== -->
+
+        <div class="side-banners">
+
+
+          <!-- OFFER -->
+
+          <article class="side-banner">
+
+            <img
+              id="offerImage"
+              src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
+              alt="Special Offer"
+            >
+
+            <div class="side-overlay"></div>
+
+            <div class="side-content">
+
+              <span class="side-small">
+                Special Offer
+              </span>
+
+              <h3 id="offerTitle">
+                Sweet Deal
+              </h3>
+
+              <button
+                type="button"
+                class="side-order-btn"
+                id="offerOrderButton"
+              >
+                Order Now →
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- CHOCOLATE -->
+
+          <article class="side-banner">
+
+            <img
+              id="chocolateImage"
+              src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=900&q=80"
+              alt="Chocolate"
+            >
+
+            <div class="side-overlay"></div>
+
+            <div class="side-content">
+
+              <span class="side-small">
+                Chocolate
+              </span>
+
+              <h3 id="chocolateTitle">
+                Chocolate Love
+              </h3>
+
+              <button
+                type="button"
+                class="side-order-btn"
+                id="chocolateOrderButton"
+              >
+                Order Now →
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- SWEET -->
+
+          <article class="side-banner">
+
+            <img
+              id="sweetImage"
+              src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80"
+              alt="Sweet Moments"
+            >
+
+            <div class="side-overlay"></div>
+
+            <div class="side-content">
+
+              <span class="side-small">
+                Sweet Moments
+              </span>
+
+              <h3 id="sweetTitle">
+                Made With Love
+              </h3>
+
+              <button
+                type="button"
+                class="side-order-btn"
+                id="sweetOrderButton"
+              >
+                Order Now →
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         POSTS
+    ========================================== -->
+
+    <section
+      class="posts-section"
+      id="posts"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+            <span class="section-kicker">
+              CakeBuddy
+            </span>
+
+            <h2>
+              Latest Posts
+            </h2>
+          </div>
+
+          <span
+            class="post-count"
+            id="postCount"
+          >
+            0 posts
+          </span>
+
+        </div>
+
+
+        <div
+          class="posts-grid"
+          id="postsGrid"
+        >
+
+          <div class="loading-box">
+            <div class="loader"></div>
+            <p>
+              Loading delicious posts...
+            </p>
           </div>
 
         </div>
 
       </div>
 
-
-      <!-- =====================================
-           SIDE BANNERS
-      ====================================== -->
-
-      <div class="side-banners">
+    </section>
 
 
-        <!-- SIDE BANNER 1 -->
+    <!-- =========================================
+         DEVELOPER CONNECT
+    ========================================== -->
 
-        <button
-          type="button"
-          class="side-banner"
-          id="offerBannerButton"
+    <div class="developer-connect">
+
+      <div class="container developer-inner">
+
+        <span>
+          Website & Digital Solutions
+        </span>
+
+        <a
+          href="https://websitesdeal.com"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-
-          <img
-            id="offerImage"
-            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
-            alt="Special Offer"
-          />
-
-          <div class="side-overlay">
-
-            <span
-              id="offerSmall"
-              class="side-small"
-            >
-              Limited Time
-            </span>
-
-            <span
-              id="offerTitle"
-              class="side-title"
-            >
-              Special Offer
-            </span>
-
-            <span
-              id="offerLink"
-              class="side-link"
-            >
-              Order Now →
-            </span>
-
-          </div>
-
-        </button>
-
-
-        <!-- SIDE BANNER 2 -->
-
-        <button
-          type="button"
-          class="side-banner"
-          id="chocolateBannerButton"
-        >
-
-          <img
-            id="chocolateImage"
-            src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=900&q=80"
-            alt="Chocolate"
-          />
-
-          <div class="side-overlay">
-
-            <span
-              id="chocolateSmall"
-              class="side-small"
-            >
-              Delicious
-            </span>
-
-            <span
-              id="chocolateTitle"
-              class="side-title"
-            >
-              Chocolate
-            </span>
-
-            <span
-              id="chocolateLink"
-              class="side-link"
-            >
-              Order Now →
-            </span>
-
-          </div>
-
-        </button>
-
-
-        <!-- SIDE BANNER 3 -->
-
-        <button
-          type="button"
-          class="side-banner"
-          id="sweetBannerButton"
-        >
-
-          <img
-            id="sweetImage"
-            src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80"
-            alt="Sweet Moments"
-          />
-
-          <div class="side-overlay">
-
-            <span
-              id="sweetSmall"
-              class="side-small"
-            >
-              Made With Love
-            </span>
-
-            <span
-              id="sweetTitle"
-              class="side-title"
-            >
-              Sweet Moments
-            </span>
-
-            <span
-              id="sweetLink"
-              class="side-link"
-            >
-              Order Now →
-            </span>
-
-          </div>
-
-        </button>
-
+          Developer Connect →
+        </a>
 
       </div>
 
     </div>
 
-  </section>
+  </main>
 
 
-  <!-- =====================================
-       POSTS
-  ====================================== -->
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
 
-  <section
-    id="posts"
-    class="section"
-  >
+  <footer class="site-footer">
 
-    <div class="section-heading">
+    <div class="container footer-inner">
 
       <div>
 
-        <h2>
-          Latest Posts
-        </h2>
+        <strong>
+          CakeBuddy
+        </strong>
 
         <p>
-          Discover our latest cakes, offers and sweet moments.
+          Sweet moments, delicious memories.
         </p>
 
       </div>
 
-    </div>
-
-
-    <div
-      id="postsGrid"
-      class="posts-grid"
-    >
-
-      <div class="loading">
-        Loading CakeBuddy...
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================
-       DEVELOPER CONNECT
-  ====================================== -->
-
-  <div class="developer-area">
-
-    <a
-      href="https://websitesdeal.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="developer-link"
-    >
-      Developer Connect →
-    </a>
-
-  </div>
-
-
-  <!-- =====================================
-       FOOTER
-  ====================================== -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <div>
-
-        <div
-          id="footerBrandName"
-          class="footer-brand"
-        >
-          CakeBuddy
-        </div>
-
-        <div class="footer-text">
-          Cakes, desserts & sweet moments.
-        </div>
-
-      </div>
-
-
-      <div class="footer-text">
-
-        ©
-        <span id="year"></span>
-        CakeBuddy. All rights reserved.
-
+      <div class="footer-copy">
+        © <span id="currentYear"></span> CakeBuddy. All rights reserved.
       </div>
 
     </div>
@@ -459,16 +612,15 @@
   </footer>
 
 
-  <!-- =====================================
-       FIREBASE
-  ====================================== -->
+  <!-- =========================================
+       FIREBASE + APP
+  ========================================== -->
 
   <script type="module">
 
     import {
       initializeApp
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
 
     import {
       getFirestore,
@@ -481,215 +633,443 @@
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-    /* =====================================
+    /* =========================================
        FIREBASE CONFIG
-    ===================================== */
+    ========================================== */
 
     const firebaseConfig = {
 
-      apiKey:
-        "YOUR_API_KEY",
+      apiKey: "YOUR_API_KEY",
 
-      authDomain:
-        "cakebuddymb.firebaseapp.com",
+      authDomain: "cakebuddymb.firebaseapp.com",
 
-      projectId:
-        "cakebuddymb",
+      projectId: "cakebuddymb",
 
-      storageBucket:
-        "cakebuddymb.firebasestorage.app",
+      storageBucket: "cakebuddymb.firebasestorage.app",
 
-      messagingSenderId:
-        "YOUR_MESSAGING_SENDER_ID",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
 
-      appId:
-        "YOUR_APP_ID"
+      appId: "YOUR_APP_ID"
 
     };
 
 
-    const app =
-      initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore(app);
 
 
-    const db =
-      getFirestore(app);
+    /* =========================================
+       WHATSAPP
+    ========================================== */
+
+    const WHATSAPP_NUMBER = "8801717503093";
 
 
-    /* =====================================
-       WHATSAPP ORDER NUMBER
-       
-       CakeBuddy WhatsApp:
-       +880 1717-503093
+    function orderNow(
+      productTitle,
+      source = "CakeBuddy Website"
+    ) {
 
-       WhatsApp format:
-       8801717503093
-    ===================================== */
-
-    const WHATSAPP_NUMBER =
-      "8801717503093";
+      const title =
+        productTitle ||
+        "CakeBuddy Product";
 
 
-    /* =====================================
-       DEFAULT BANNER IMAGES
-    ===================================== */
-
-    const BANNER_IMAGES = {
-
-      mainHero:
-        "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=85",
-
-      offer:
-        "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80",
-
-      chocolate:
-        "https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=900&q=80",
-
-      sweet:
-        "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80"
-
-    };
+      const message =
+        "Hello CakeBuddy! 🍰\n\n" +
+        "I want to order:\n" +
+        title +
+        "\n\n" +
+        "Source: " +
+        source +
+        "\n\n" +
+        "Please share price, availability and delivery details.";
 
 
-    /* =====================================
-       DEFAULT BANNER TEXT
-    ===================================== */
-
-    const BANNER_TEXT = {
-
-      mainHero: {
-
-        badge:
-          "Freshly Made",
-
-        title:
-          "Sweet moments start here.",
-
-        description:
-          "Discover cakes, desserts, special offers and delicious moments from CakeBuddy."
-
-      },
+      const whatsappURL =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
 
 
-      offer: {
+      window.open(
+        whatsappURL,
+        "_blank",
+        "noopener,noreferrer"
+      );
 
-        small:
-          "Limited Time",
-
-        title:
-          "Special Offer",
-
-        link:
-          "Order Now →"
-
-      },
+    }
 
 
-      chocolate: {
-
-        small:
-          "Delicious",
-
-        title:
-          "Chocolate",
-
-        link:
-          "Order Now →"
-
-      },
-
-
-      sweet: {
-
-        small:
-          "Made With Love",
-
-        title:
-          "Sweet Moments",
-
-        link:
-          "Order Now →"
-
-      }
-
-    };
-
-
-    /* =====================================
+    /* =========================================
        SAFE HTML
-    ===================================== */
+    ========================================== */
 
     function escapeHTML(value) {
 
-      if (
-        value === undefined ||
-        value === null
-      ) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-        return "";
+    }
+
+
+    /* =========================================
+       HERO SLIDER DATA
+    ========================================== */
+
+    const HERO_DEFAULTS = [
+
+      {
+        image:
+          "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=85",
+
+        badge:
+          "Fresh & Delicious",
+
+        title:
+          "Make Every Moment Sweeter",
+
+        description:
+          "Discover beautiful cakes, desserts and sweet moments from CakeBuddy."
+      },
+
+      {
+        image:
+          "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1600&q=85",
+
+        badge:
+          "Special Offer",
+
+        title:
+          "Something Sweet Is Waiting",
+
+        description:
+          "Find your favourite treats and make your special moments memorable."
+      },
+
+      {
+        image:
+          "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1600&q=85",
+
+        badge:
+          "Sweet Moments",
+
+        title:
+          "Celebrate With Something Delicious",
+
+        description:
+          "Cakes, chocolates, desserts and more — all in one sweet place."
+      }
+
+    ];
+
+
+    let heroSlidesData = [...HERO_DEFAULTS];
+
+
+    /* =========================================
+       HERO SLIDER
+    ========================================== */
+
+    let currentSlide = 0;
+
+    let sliderTimer = null;
+
+
+    const slides =
+      Array.from(
+        document.querySelectorAll(".hero-slide")
+      );
+
+
+    const dots =
+      Array.from(
+        document.querySelectorAll(".slider-dot")
+      );
+
+
+    function showSlide(index) {
+
+      if (index < 0) {
+
+        index = slides.length - 1;
 
       }
 
 
-      return String(value)
+      if (index >= slides.length) {
 
-        .replace(
-          /&/g,
-          "&amp;"
-        )
+        index = 0;
 
-        .replace(
-          /</g,
-          "&lt;"
-        )
+      }
 
-        .replace(
-          />/g,
-          "&gt;"
-        )
 
-        .replace(
-          /"/g,
-          "&quot;"
-        )
+      currentSlide = index;
 
-        .replace(
-          /'/g,
-          "&#039;"
+
+      slides.forEach(
+        (slide, slideIndex) => {
+
+          slide.classList.toggle(
+            "active",
+            slideIndex === currentSlide
+          );
+
+        }
+      );
+
+
+      dots.forEach(
+        (dot, dotIndex) => {
+
+          dot.classList.toggle(
+            "active",
+            dotIndex === currentSlide
+          );
+
+        }
+      );
+
+    }
+
+
+    function nextSlide() {
+
+      showSlide(
+        currentSlide + 1
+      );
+
+    }
+
+
+    function previousSlide() {
+
+      showSlide(
+        currentSlide - 1
+      );
+
+    }
+
+
+    function startSlider() {
+
+      stopSlider();
+
+
+      sliderTimer =
+        setInterval(
+          nextSlide,
+          5000
         );
 
     }
 
 
-    /* =====================================
+    function stopSlider() {
+
+      if (sliderTimer) {
+
+        clearInterval(sliderTimer);
+
+        sliderTimer = null;
+
+      }
+
+    }
+
+
+    document
+      .getElementById("sliderNext")
+      .addEventListener(
+        "click",
+        () => {
+
+          nextSlide();
+
+          startSlider();
+
+        }
+      );
+
+
+    document
+      .getElementById("sliderPrev")
+      .addEventListener(
+        "click",
+        () => {
+
+          previousSlide();
+
+          startSlider();
+
+        }
+      );
+
+
+    dots.forEach(
+      (dot) => {
+
+        dot.addEventListener(
+          "click",
+          () => {
+
+            const index =
+              Number(
+                dot.dataset.slideTo
+              );
+
+            showSlide(index);
+
+            startSlider();
+
+          }
+        );
+
+      }
+    );
+
+
+    document
+      .getElementById("heroSlider")
+      .addEventListener(
+        "mouseenter",
+        stopSlider
+      );
+
+
+    document
+      .getElementById("heroSlider")
+      .addEventListener(
+        "mouseleave",
+        startSlider
+      );
+
+
+    /* =========================================
+       HERO ORDER BUTTONS
+    ========================================== */
+
+    document
+      .getElementById("heroOrderButton1")
+      .addEventListener(
+        "click",
+        () => {
+
+          orderNow(
+            heroSlidesData[0].title,
+            "Hero Banner 1"
+          );
+
+        }
+      );
+
+
+    document
+      .getElementById("heroOrderButton2")
+      .addEventListener(
+        "click",
+        () => {
+
+          orderNow(
+            heroSlidesData[1].title,
+            "Hero Banner 2"
+          );
+
+        }
+      );
+
+
+    document
+      .getElementById("heroOrderButton3")
+      .addEventListener(
+        "click",
+        () => {
+
+          orderNow(
+            heroSlidesData[2].title,
+            "Hero Banner 3"
+          );
+
+        }
+      );
+
+
+    /* =========================================
+       APPLY HERO DATA
+    ========================================== */
+
+    function applyHeroSlides(data) {
+
+      heroSlidesData =
+        Array.isArray(data) &&
+        data.length === 3
+          ? data
+          : [...HERO_DEFAULTS];
+
+
+      heroSlidesData.forEach(
+        (slide, index) => {
+
+          const number =
+            index + 1;
+
+
+          const image =
+            slide.image ||
+            HERO_DEFAULTS[index].image;
+
+
+          const badge =
+            slide.badge ||
+            HERO_DEFAULTS[index].badge;
+
+
+          const title =
+            slide.title ||
+            HERO_DEFAULTS[index].title;
+
+
+          const description =
+            slide.description ||
+            HERO_DEFAULTS[index].description;
+
+
+          document.getElementById(
+            `heroImage${number}`
+          ).src = image;
+
+
+          document.getElementById(
+            `heroBadge${number}`
+          ).textContent = badge;
+
+
+          document.getElementById(
+            `heroTitle${number}`
+          ).textContent = title;
+
+
+          document.getElementById(
+            `heroDescription${number}`
+          ).textContent = description;
+
+        }
+      );
+
+    }
+
+
+    /* =========================================
        LOGO SETTINGS
-    ===================================== */
+    ========================================== */
 
     async function loadLogoSettings() {
-
-      const brandNameElement =
-        document.getElementById(
-          "brandName"
-        );
-
-
-      const footerBrandName =
-        document.getElementById(
-          "footerBrandName"
-        );
-
-
-      const brandLogo =
-        document.getElementById(
-          "brandLogo"
-        );
-
-
-      const brandFallback =
-        document.getElementById(
-          "brandFallback"
-        );
-
 
       try {
 
@@ -701,14 +1081,12 @@
           );
 
 
-        const snapshot =
-          await getDoc(
-            logoRef
-          );
+        const logoSnapshot =
+          await getDoc(logoRef);
 
 
         if (
-          !snapshot.exists()
+          !logoSnapshot.exists()
         ) {
 
           return;
@@ -717,73 +1095,67 @@
 
 
         const data =
-          snapshot.data();
+          logoSnapshot.data();
 
 
-        const name =
+        const brandName =
           data.name ||
           "CakeBuddy";
 
 
-        const image =
+        const logoImage =
           data.image ||
           "";
 
 
-        const size =
-          Number(data.size) ||
-          42;
+        const logoSize =
+          Number(
+            data.size || 42
+          );
+
+
+        const brandLogo =
+          document.getElementById(
+            "brandLogo"
+          );
+
+
+        const brandNameElement =
+          document.getElementById(
+            "brandName"
+          );
 
 
         brandNameElement.textContent =
-          name;
-
-
-        footerBrandName.textContent =
-          name;
+          brandName;
 
 
         brandLogo.style.width =
-          size + "px";
+          logoSize + "px";
 
 
         brandLogo.style.height =
-          size + "px";
+          logoSize + "px";
 
 
-        brandFallback.style.width =
-          size + "px";
+        brandLogo.style.fontSize =
+          Math.max(
+            16,
+            logoSize * 0.42
+          ) + "px";
 
 
-        brandFallback.style.height =
-          size + "px";
+        if (logoImage) {
 
+          brandLogo.innerHTML =
+            `<img src="${escapeHTML(logoImage)}" alt="${escapeHTML(brandName)}">`;
 
-        if (image) {
+        } else {
 
-          brandLogo.src =
-            image;
-
-
-          brandLogo.style.display =
-            "block";
-
-
-          brandFallback.style.display =
-            "none";
-
-
-          brandLogo.onerror =
-            function () {
-
-              brandLogo.style.display =
-                "none";
-
-
-              brandFallback.style.display =
-                "flex";
-
-            };
+          brandLogo.textContent =
+            brandName
+              .charAt(0)
+              .toUpperCase();
 
         }
 
@@ -799,213 +1171,25 @@
     }
 
 
-    /* =====================================
+    /* =========================================
        BANNER SETTINGS
-    ===================================== */
+    ========================================== */
 
-    function applyBannerSettings(data) {
+    const BANNER_DEFAULTS = {
 
-      const mainHeroImage =
-        document.getElementById(
-          "mainHeroImage"
-        );
+      mainHero:
+        HERO_DEFAULTS[0].image,
 
+      offer:
+        "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80",
 
-      const mainHeroBadge =
-        document.getElementById(
-          "mainHeroBadge"
-        );
+      chocolate:
+        "https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=900&q=80",
 
+      sweet:
+        "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80"
 
-      const mainHeroTitle =
-        document.getElementById(
-          "mainHeroTitle"
-        );
-
-
-      const mainHeroDescription =
-        document.getElementById(
-          "mainHeroDescription"
-        );
-
-
-      const offerImage =
-        document.getElementById(
-          "offerImage"
-        );
-
-
-      const offerSmall =
-        document.getElementById(
-          "offerSmall"
-        );
-
-
-      const offerTitle =
-        document.getElementById(
-          "offerTitle"
-        );
-
-
-      const offerLink =
-        document.getElementById(
-          "offerLink"
-        );
-
-
-      const chocolateImage =
-        document.getElementById(
-          "chocolateImage"
-        );
-
-
-      const chocolateSmall =
-        document.getElementById(
-          "chocolateSmall"
-        );
-
-
-      const chocolateTitle =
-        document.getElementById(
-          "chocolateTitle"
-        );
-
-
-      const chocolateLink =
-        document.getElementById(
-          "chocolateLink"
-        );
-
-
-      const sweetImage =
-        document.getElementById(
-          "sweetImage"
-        );
-
-
-      const sweetSmall =
-        document.getElementById(
-          "sweetSmall"
-        );
-
-
-      const sweetTitle =
-        document.getElementById(
-          "sweetTitle"
-        );
-
-
-      const sweetLink =
-        document.getElementById(
-          "sweetLink"
-        );
-
-
-      /* =====================================
-         MAIN HERO
-      ===================================== */
-
-      mainHeroImage.src =
-        data.mainHero ||
-        BANNER_IMAGES.mainHero;
-
-
-      mainHeroBadge.textContent =
-        data.mainHeroBadge ||
-        BANNER_TEXT.mainHero.badge;
-
-
-      mainHeroTitle.textContent =
-        data.mainHeroTitle ||
-        BANNER_TEXT.mainHero.title;
-
-
-      mainHeroDescription.textContent =
-        data.mainHeroDescription ||
-        BANNER_TEXT.mainHero.description;
-
-
-      /* =====================================
-         OFFER
-      ===================================== */
-
-      const offer =
-        data.offer || {};
-
-
-      offerImage.src =
-        offer.image ||
-        BANNER_IMAGES.offer;
-
-
-      offerSmall.textContent =
-        offer.small ||
-        BANNER_TEXT.offer.small;
-
-
-      offerTitle.textContent =
-        offer.title ||
-        BANNER_TEXT.offer.title;
-
-
-      offerLink.textContent =
-        "Order Now →";
-
-
-      /* =====================================
-         CHOCOLATE
-      ===================================== */
-
-      const chocolate =
-        data.chocolate || {};
-
-
-      chocolateImage.src =
-        chocolate.image ||
-        BANNER_IMAGES.chocolate;
-
-
-      chocolateSmall.textContent =
-        chocolate.small ||
-        BANNER_TEXT.chocolate.small;
-
-
-      chocolateTitle.textContent =
-        chocolate.title ||
-        BANNER_TEXT.chocolate.title;
-
-
-      chocolateLink.textContent =
-        "Order Now →";
-
-
-      /* =====================================
-         SWEET
-      ===================================== */
-
-      const sweet =
-        data.sweet || {};
-
-
-      sweetImage.src =
-        sweet.image ||
-        BANNER_IMAGES.sweet;
-
-
-      sweetSmall.textContent =
-        sweet.small ||
-        BANNER_TEXT.sweet.small;
-
-
-      sweetTitle.textContent =
-        sweet.title ||
-        BANNER_TEXT.sweet.title;
-
-
-      sweetLink.textContent =
-        "Order Now →";
-
-    }
+    };
 
 
     async function loadBannerSettings() {
@@ -1020,21 +1204,67 @@
           );
 
 
-        const snapshot =
-          await getDoc(
-            bannerRef
-          );
+        const bannerSnapshot =
+          await getDoc(bannerRef);
 
 
         if (
-          snapshot.exists()
+          !bannerSnapshot.exists()
         ) {
 
-          applyBannerSettings(
-            snapshot.data()
-          );
+          return;
 
         }
+
+
+        const data =
+          bannerSnapshot.data();
+
+
+        /* SIDE BANNER IMAGES */
+
+        document.getElementById(
+          "offerImage"
+        ).src =
+          data.offer?.image ||
+          BANNER_DEFAULTS.offer;
+
+
+        document.getElementById(
+          "chocolateImage"
+        ).src =
+          data.chocolate?.image ||
+          BANNER_DEFAULTS.chocolate;
+
+
+        document.getElementById(
+          "sweetImage"
+        ).src =
+          data.sweet?.image ||
+          BANNER_DEFAULTS.sweet;
+
+
+        /* SIDE BANNER TEXT */
+
+        document.getElementById(
+          "offerTitle"
+        ).textContent =
+          data.offer?.title ||
+          "Sweet Deal";
+
+
+        document.getElementById(
+          "chocolateTitle"
+        ).textContent =
+          data.chocolate?.title ||
+          "Chocolate Love";
+
+
+        document.getElementById(
+          "sweetTitle"
+        ).textContent =
+          data.sweet?.title ||
+          "Made With Love";
 
       } catch (error) {
 
@@ -1048,101 +1278,20 @@
     }
 
 
-    /* =====================================
-       WHATSAPP ORDER SYSTEM
-    ===================================== */
-
-    function orderNow(
-      productTitle,
-      source
-    ) {
-
-      const title =
-        productTitle ||
-        "CakeBuddy Product";
-
-
-      const orderSource =
-        source ||
-        "CakeBuddy Website";
-
-
-      const message =
-        "Hello CakeBuddy! 🍰\n\n" +
-        "I want to order:\n" +
-        title +
-        "\n\n" +
-        "Source: " +
-        orderSource +
-        "\n\n" +
-        "Please share price, availability and delivery details.";
-
-
-      const whatsappURL =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(
-          message
-        );
-
-
-      window.open(
-        whatsappURL,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-    }
-
-
-    /* =====================================
-       HERO ORDER
-    ===================================== */
+    /* =========================================
+       SIDE BANNER ORDER BUTTONS
+    ========================================== */
 
     document
-      .getElementById(
-        "heroOrderButton"
-      )
+      .getElementById("offerOrderButton")
       .addEventListener(
         "click",
-        function () {
-
-          const heroTitle =
-            document.getElementById(
-              "mainHeroTitle"
-            ).textContent.trim();
-
+        () => {
 
           orderNow(
-            heroTitle,
-            "Hero Banner"
-          );
-
-        }
-      );
-
-
-    /* =====================================
-       SIDE BANNER ORDERS
-    ===================================== */
-
-    document
-      .getElementById(
-        "offerBannerButton"
-      )
-      .addEventListener(
-        "click",
-        function () {
-
-          const title =
             document.getElementById(
               "offerTitle"
-            ).textContent.trim();
-
-
-          orderNow(
-            title,
+            ).textContent,
             "Special Offer Banner"
           );
 
@@ -1151,21 +1300,15 @@
 
 
     document
-      .getElementById(
-        "chocolateBannerButton"
-      )
+      .getElementById("chocolateOrderButton")
       .addEventListener(
         "click",
-        function () {
-
-          const title =
-            document.getElementById(
-              "chocolateTitle"
-            ).textContent.trim();
-
+        () => {
 
           orderNow(
-            title,
+            document.getElementById(
+              "chocolateTitle"
+            ).textContent,
             "Chocolate Banner"
           );
 
@@ -1174,21 +1317,15 @@
 
 
     document
-      .getElementById(
-        "sweetBannerButton"
-      )
+      .getElementById("sweetOrderButton")
       .addEventListener(
         "click",
-        function () {
-
-          const title =
-            document.getElementById(
-              "sweetTitle"
-            ).textContent.trim();
-
+        () => {
 
           orderNow(
-            title,
+            document.getElementById(
+              "sweetTitle"
+            ).textContent,
             "Sweet Moments Banner"
           );
 
@@ -1196,30 +1333,291 @@
       );
 
 
-    /* =====================================
+    /* =========================================
        POSTS
-    ===================================== */
+    ========================================== */
 
     let allPosts = [];
 
-    let selectedCategory =
-      "All";
+    let activeCategory = "All";
 
 
-    async function loadPosts() {
+    const postsGrid =
+      document.getElementById(
+        "postsGrid"
+      );
 
-      const postsGrid =
-        document.getElementById(
-          "postsGrid"
+
+    const postCount =
+      document.getElementById(
+        "postCount"
+      );
+
+
+    function getPostImage(post) {
+
+      return (
+        post.imageUrl ||
+        post.imageURL ||
+        post.image ||
+        "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80"
+      );
+
+    }
+
+
+    function formatDate(timestamp) {
+
+      if (
+        !timestamp ||
+        !timestamp.toDate
+      ) {
+
+        return "";
+
+      }
+
+
+      try {
+
+        return timestamp
+          .toDate()
+          .toLocaleDateString(
+            "en-US",
+            {
+              year: "numeric",
+              month: "short",
+              day: "numeric"
+            }
+          );
+
+      } catch {
+
+        return "";
+
+      }
+
+    }
+
+
+    function renderPosts() {
+
+      const searchValue =
+        document
+          .getElementById(
+            "searchInput"
+          )
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      let filteredPosts =
+        allPosts.filter(
+          (post) => {
+
+            const title =
+              String(
+                post.title || ""
+              ).toLowerCase();
+
+
+            const description =
+              String(
+                post.description || ""
+              ).toLowerCase();
+
+
+            const category =
+              String(
+                post.category || ""
+              );
+
+
+            const matchesSearch =
+              !searchValue ||
+              title.includes(searchValue) ||
+              description.includes(searchValue);
+
+
+            const matchesCategory =
+              activeCategory === "All" ||
+              category.toLowerCase() ===
+                activeCategory.toLowerCase();
+
+
+            return (
+              matchesSearch &&
+              matchesCategory
+            );
+
+          }
         );
 
 
-      postsGrid.innerHTML = `
-        <div class="loading">
-          Loading CakeBuddy...
-        </div>
-      `;
+      postCount.textContent =
+        `${filteredPosts.length} ${
+          filteredPosts.length === 1
+            ? "post"
+            : "posts"
+        }`;
 
+
+      if (
+        filteredPosts.length === 0
+      ) {
+
+        postsGrid.innerHTML = `
+
+          <div class="empty-box">
+
+            <div class="empty-icon">
+              🍰
+            </div>
+
+            <h3>
+              No posts found
+            </h3>
+
+            <p>
+              Try another search or category.
+            </p>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      postsGrid.innerHTML =
+        filteredPosts
+          .map(
+            (post) => {
+
+              const title =
+                escapeHTML(
+                  post.title ||
+                  "CakeBuddy Product"
+                );
+
+
+              const description =
+                escapeHTML(
+                  post.description ||
+                  ""
+                );
+
+
+              const image =
+                escapeHTML(
+                  getPostImage(post)
+                );
+
+
+              const category =
+                escapeHTML(
+                  post.category ||
+                  "CakeBuddy"
+                );
+
+
+              const date =
+                formatDate(
+                  post.createdAt
+                );
+
+
+              return `
+
+                <article
+                  class="post-card"
+                >
+
+                  <div class="post-image-wrap">
+
+                    <img
+                      class="post-image"
+                      src="${image}"
+                      alt="${title}"
+                      loading="lazy"
+                    >
+
+                    <span class="post-category">
+                      ${category}
+                    </span>
+
+                  </div>
+
+
+                  <div class="post-content">
+
+                    ${
+                      date
+                        ? `
+                          <div class="post-date">
+                            ${date}
+                          </div>
+                        `
+                        : ""
+                    }
+
+                    <h3>
+                      ${title}
+                    </h3>
+
+                    <p>
+                      ${description}
+                    </p>
+
+
+                    <button
+                      type="button"
+                      class="order-btn"
+                      data-order-title="${title}"
+                    >
+                      Order Now →
+                    </button>
+
+                  </div>
+
+                </article>
+
+              `;
+
+            }
+          )
+          .join("");
+
+
+      document
+        .querySelectorAll(
+          ".order-btn"
+        )
+        .forEach(
+          (button) => {
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                orderNow(
+                  button.dataset.orderTitle,
+                  "CakeBuddy Post"
+                );
+
+              }
+            );
+
+          }
+        );
+
+    }
+
+
+    async function loadPosts() {
 
       try {
 
@@ -1250,7 +1648,7 @@
               postsQuery
             );
 
-        } catch (error) {
+        } catch {
 
           snapshot =
             await getDocs(
@@ -1260,23 +1658,17 @@
         }
 
 
-        allPosts = [];
-
-
-        snapshot.forEach(
-          (item) => {
-
-            allPosts.push({
+        allPosts =
+          snapshot.docs.map(
+            (document) => ({
 
               id:
-                item.id,
+                document.id,
 
-              ...item.data()
+              ...document.data()
 
-            });
-
-          }
-        );
+            })
+          );
 
 
         renderPosts();
@@ -1291,15 +1683,18 @@
 
         postsGrid.innerHTML = `
 
-          <div class="empty-state">
+          <div class="empty-box">
+
+            <div class="empty-icon">
+              🍰
+            </div>
 
             <h3>
               Unable to load posts
             </h3>
 
             <p>
-              Please check your Firebase
-              configuration and Firestore settings.
+              Please try again later.
             </p>
 
           </div>
@@ -1311,224 +1706,9 @@
     }
 
 
-    /* =====================================
-       RENDER POSTS
-    ===================================== */
-
-    function renderPosts() {
-
-      const postsGrid =
-        document.getElementById(
-          "postsGrid"
-        );
-
-
-      const searchValue =
-        document
-          .getElementById(
-            "searchInput"
-          )
-          .value
-          .trim()
-          .toLowerCase();
-
-
-      const filtered =
-        allPosts.filter(
-          (post) => {
-
-            const title =
-              String(
-                post.title || ""
-              ).toLowerCase();
-
-
-            const description =
-              String(
-                post.description || ""
-              ).toLowerCase();
-
-
-            const category =
-              String(
-                post.category ||
-                post.type ||
-                ""
-              ).toLowerCase();
-
-
-            const matchesSearch =
-              !searchValue ||
-              title.includes(
-                searchValue
-              ) ||
-              description.includes(
-                searchValue
-              ) ||
-              category.includes(
-                searchValue
-              );
-
-
-            const matchesCategory =
-              selectedCategory ===
-                "All" ||
-              category ===
-                selectedCategory.toLowerCase();
-
-
-            return (
-              matchesSearch &&
-              matchesCategory
-            );
-
-          }
-        );
-
-
-      if (
-        !filtered.length
-      ) {
-
-        postsGrid.innerHTML = `
-
-          <div class="empty-state">
-
-            <h3>
-              No posts found
-            </h3>
-
-            <p>
-              Try another search or category.
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      postsGrid.innerHTML =
-        filtered
-          .map(
-            (post) => {
-
-              const title =
-                escapeHTML(
-                  post.title ||
-                  "CakeBuddy"
-                );
-
-
-              const description =
-                escapeHTML(
-                  post.description ||
-                  "Discover something delicious from CakeBuddy."
-                );
-
-
-              const category =
-                escapeHTML(
-                  post.category ||
-                  post.type ||
-                  "Cake"
-                );
-
-
-              const image =
-                post.imageUrl ||
-                post.imageURL ||
-                post.image ||
-                BANNER_IMAGES.mainHero;
-
-
-              return `
-
-                <article class="post-card">
-
-                  <div class="post-image-wrap">
-
-                    <img
-                      class="post-image"
-                      src="${escapeHTML(image)}"
-                      alt="${title}"
-                      loading="lazy"
-                      onerror="this.src='${BANNER_IMAGES.mainHero}'"
-                    />
-
-                    <span class="post-category">
-                      ${category}
-                    </span>
-
-                  </div>
-
-
-                  <div class="post-body">
-
-                    <h3 class="post-title">
-                      ${title}
-                    </h3>
-
-
-                    <p class="post-description">
-                      ${description}
-                    </p>
-
-
-                    <button
-                      class="order-btn"
-                      type="button"
-                      data-order-title="${title}"
-                    >
-                      Order Now →
-                    </button>
-
-                  </div>
-
-                </article>
-
-              `;
-
-            }
-          )
-          .join("");
-
-
-      /* =====================================
-         POST ORDER BUTTON EVENTS
-      ===================================== */
-
-      document
-        .querySelectorAll(
-          ".order-btn"
-        )
-        .forEach(
-          (button) => {
-
-            button.addEventListener(
-              "click",
-              function () {
-
-                orderNow(
-                  this.dataset.orderTitle,
-                  "CakeBuddy Product"
-                );
-
-              }
-            );
-
-          }
-        );
-
-    }
-
-
-    /* =====================================
+    /* =========================================
        SEARCH
-    ===================================== */
+    ========================================== */
 
     document
       .getElementById(
@@ -1536,17 +1716,13 @@
       )
       .addEventListener(
         "input",
-        function () {
-
-          renderPosts();
-
-        }
+        renderPosts
       );
 
 
-    /* =====================================
+    /* =========================================
        CATEGORY FILTER
-    ===================================== */
+    ========================================== */
 
     document
       .querySelectorAll(
@@ -1557,16 +1733,16 @@
 
           button.addEventListener(
             "click",
-            function () {
+            () => {
 
               document
                 .querySelectorAll(
                   ".category-btn"
                 )
                 .forEach(
-                  (btn) => {
+                  (item) => {
 
-                    btn.classList.remove(
+                    item.classList.remove(
                       "active"
                     );
 
@@ -1574,25 +1750,16 @@
                 );
 
 
-              this.classList.add(
+              button.classList.add(
                 "active"
               );
 
 
-              selectedCategory =
-                this.dataset.category;
+              activeCategory =
+                button.dataset.category;
 
 
               renderPosts();
-
-
-              document
-                .getElementById(
-                  "posts"
-                )
-                .scrollIntoView({
-                  behavior: "smooth"
-                });
 
             }
           );
@@ -1601,27 +1768,35 @@
       );
 
 
-    /* =====================================
+    /* =========================================
        YEAR
-    ===================================== */
+    ========================================== */
 
-    document
-      .getElementById(
-        "year"
-      )
-      .textContent =
+    document.getElementById(
+      "currentYear"
+    ).textContent =
       new Date().getFullYear();
 
 
-    /* =====================================
-       START WEBSITE
-    ===================================== */
+    /* =========================================
+       START
+    ========================================== */
 
-    await loadLogoSettings();
+    applyHeroSlides(
+      HERO_DEFAULTS
+    );
 
-    await loadBannerSettings();
 
-    await loadPosts();
+    showSlide(0);
+
+    startSlider();
+
+
+    loadLogoSettings();
+
+    loadBannerSettings();
+
+    loadPosts();
 
   </script>
 
