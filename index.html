@@ -11,702 +11,7 @@
     content="Discover cakes, desserts, offers and sweet moments from CakeBuddy."
   />
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #7c3aed;
-      --primary-dark: #5b21b6;
-      --text: #171717;
-      --muted: #737373;
-      --border: #eeeeee;
-      --soft: #faf7ff;
-      --white: #ffffff;
-      --green: #16a34a;
-      --shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
-      --radius: 20px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    /* =========================
-       SPECIAL OFFER BAR
-    ========================= */
-
-    .offer-bar {
-      background: #171717;
-      color: #ffffff;
-      text-align: center;
-      padding: 10px 15px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      max-width: 1250px;
-      min-height: 76px;
-      margin: auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-width: max-content;
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      object-fit: cover;
-      display: none;
-    }
-
-    .brand-fallback {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: var(--primary);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-    .brand-name {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .search-wrap {
-      flex: 1;
-      max-width: 560px;
-      margin-left: auto;
-    }
-
-    .search-container {
-      position: relative;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 18px;
-      opacity: 0.55;
-    }
-
-    .search-box {
-      width: 100%;
-      height: 45px;
-      border: 1px solid #e5e5e5;
-      border-radius: 13px;
-      padding: 0 17px 0 43px;
-      outline: none;
-      background: #fafafa;
-      color: var(--text);
-      transition: 0.2s ease;
-    }
-
-    .search-box:focus {
-      border-color: var(--primary);
-      background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.08);
-    }
-
-    /* =========================
-       CATEGORIES
-    ========================= */
-
-    .category-section {
-      max-width: 1250px;
-      margin: auto;
-      padding: 18px 20px 5px;
-    }
-
-    .categories {
-      display: flex;
-      gap: 9px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      padding-bottom: 6px;
-    }
-
-    .categories::-webkit-scrollbar {
-      display: none;
-    }
-
-    .category-btn {
-      border: 1px solid #e8e8e8;
-      background: #ffffff;
-      padding: 9px 16px;
-      border-radius: 999px;
-      white-space: nowrap;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 700;
-      color: #555555;
-      transition: 0.2s ease;
-    }
-
-    .category-btn:hover,
-    .category-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero-section {
-      max-width: 1250px;
-      margin: 20px auto 0;
-      padding: 0 20px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.8fr 1fr;
-      gap: 15px;
-    }
-
-    .hero-main {
-      position: relative;
-      min-height: 440px;
-      border-radius: 25px;
-      overflow: hidden;
-      background: #eeeeee;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-main-image {
-      width: 100%;
-      height: 100%;
-      min-height: 440px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: flex-end;
-      padding: 40px;
-      background:
-        linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.75),
-          rgba(0, 0, 0, 0.12) 65%,
-          rgba(0, 0, 0, 0)
-        );
-    }
-
-    .hero-content {
-      color: #ffffff;
-      max-width: 600px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(8px);
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 13px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(34px, 4vw, 57px);
-      line-height: 1.03;
-      letter-spacing: -2px;
-      margin-bottom: 12px;
-    }
-
-    .hero-content p {
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 15px;
-      max-width: 500px;
-      margin-bottom: 22px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: #ffffff;
-      color: #171717;
-      padding: 12px 19px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      border: none;
-      transition: 0.2s ease;
-    }
-
-    .hero-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .hero-order-btn {
-      background: var(--green);
-      color: #ffffff;
-    }
-
-    .hero-order-btn:hover {
-      background: #15803d;
-    }
-
-    /* =========================
-       SIDE BANNERS
-    ========================= */
-
-    .side-banners {
-      display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .side-banner {
-      position: relative;
-      min-height: 136px;
-      border-radius: 20px;
-      overflow: hidden;
-      background: #eeeeee;
-      box-shadow: var(--shadow);
-    }
-
-    .side-banner img {
-      width: 100%;
-      height: 100%;
-      min-height: 136px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.35s ease;
-    }
-
-    .side-banner:hover img {
-      transform: scale(1.05);
-    }
-
-    .side-overlay {
-      position: absolute;
-      inset: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: #ffffff;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.7),
-          rgba(0, 0, 0, 0.05)
-        );
-    }
-
-    .side-small {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-      opacity: 0.9;
-      margin-bottom: 4px;
-    }
-
-    .side-title {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .side-link {
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-      max-width: 1250px;
-      margin: auto;
-      padding: 55px 20px;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .section-heading h2 {
-      font-size: 30px;
-      letter-spacing: -1px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 5px;
-    }
-
-    /* =========================
-       POSTS GRID
-    ========================= */
-
-    .posts-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .post-card {
-      background: #ffffff;
-      border: 1px solid #eeeeee;
-      border-radius: 18px;
-      overflow: hidden;
-      transition: 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .post-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .post-image-wrap {
-      position: relative;
-      aspect-ratio: 1 / 0.82;
-      background: #f3f3f3;
-      overflow: hidden;
-    }
-
-    .post-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .post-card:hover .post-image {
-      transform: scale(1.04);
-    }
-
-    .post-category {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(255, 255, 255, 0.94);
-      padding: 5px 9px;
-      border-radius: 999px;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .post-body {
-      padding: 17px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .post-title {
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 8px;
-    }
-
-    .post-description {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 15px;
-    }
-
-    /* =========================
-       ORDER BUTTON
-    ========================= */
-
-    .order-btn {
-      width: 100%;
-      margin-top: auto;
-      border: none;
-      background: #171717;
-      color: #ffffff;
-      border-radius: 11px;
-      padding: 12px 14px;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 13px;
-      transition: 0.2s ease;
-    }
-
-    .order-btn:hover {
-      background: var(--primary);
-      transform: translateY(-1px);
-    }
-
-    /* =========================
-       EMPTY / LOADING
-    ========================= */
-
-    .loading {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 55px 20px;
-      color: var(--muted);
-    }
-
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 20px;
-      border: 1px dashed #dddddd;
-      border-radius: 18px;
-      color: var(--muted);
-    }
-
-    .empty-state h3 {
-      color: #333333;
-      margin-bottom: 5px;
-    }
-
-    /* =========================
-       DEVELOPER CONNECT
-    ========================= */
-
-    .developer-area {
-      text-align: center;
-      padding: 5px 20px 30px;
-    }
-
-    .developer-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 13px;
-      border-radius: 999px;
-      color: #888888;
-      font-size: 11px;
-      font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .developer-link:hover {
-      color: var(--primary);
-      background: var(--soft);
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: #fafafa;
-      padding: 40px 20px;
-    }
-
-    .footer-inner {
-      max-width: 1250px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .footer-brand {
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .footer-text {
-      color: #888888;
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 1000px) {
-
-      .posts-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .side-banners {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-
-      .header-inner {
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .search-wrap {
-        order: 3;
-        flex-basis: 100%;
-        max-width: none;
-      }
-
-      .hero-main,
-      .hero-main-image {
-        min-height: 390px;
-      }
-
-      .hero-overlay {
-        padding: 25px;
-      }
-
-      .side-banners {
-        grid-template-columns: 1fr;
-      }
-
-      .side-banner,
-      .side-banner img {
-        min-height: 160px;
-      }
-
-      .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section {
-        padding: 40px 20px;
-      }
-    }
-
-    @media (max-width: 520px) {
-
-      .offer-bar {
-        font-size: 11px;
-      }
-
-      .brand-name {
-        font-size: 19px;
-      }
-
-      .hero-main,
-      .hero-main-image {
-        min-height: 380px;
-      }
-
-      .hero-content h1 {
-        font-size: 35px;
-      }
-
-      .hero-content p {
-        font-size: 13px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-btn {
-        width: 100%;
-      }
-
-      .posts-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading {
-        align-items: flex-start;
-      }
-
-      .section-heading h2 {
-        font-size: 25px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -919,15 +224,19 @@
       </div>
 
 
-      <!-- SIDE BANNERS -->
+      <!-- =====================================
+           SIDE BANNERS
+      ====================================== -->
 
       <div class="side-banners">
 
+
         <!-- SIDE BANNER 1 -->
 
-        <a
-          href="#posts"
+        <button
+          type="button"
           class="side-banner"
+          id="offerBannerButton"
         >
 
           <img
@@ -961,14 +270,15 @@
 
           </div>
 
-        </a>
+        </button>
 
 
         <!-- SIDE BANNER 2 -->
 
-        <a
-          href="#posts"
+        <button
+          type="button"
           class="side-banner"
+          id="chocolateBannerButton"
         >
 
           <img
@@ -997,19 +307,20 @@
               id="chocolateLink"
               class="side-link"
             >
-              Explore →
+              Order Now →
             </span>
 
           </div>
 
-        </a>
+        </button>
 
 
         <!-- SIDE BANNER 3 -->
 
-        <a
-          href="#posts"
+        <button
+          type="button"
           class="side-banner"
+          id="sweetBannerButton"
         >
 
           <img
@@ -1038,12 +349,13 @@
               id="sweetLink"
               class="side-link"
             >
-              Discover →
+              Order Now →
             </span>
 
           </div>
 
-        </a>
+        </button>
+
 
       </div>
 
@@ -1171,11 +483,12 @@
 
     /* =====================================
        FIREBASE CONFIG
-    ====================================== */
+    ===================================== */
 
     const firebaseConfig = {
 
-      apiKey: "YOUR_API_KEY",
+      apiKey:
+        "YOUR_API_KEY",
 
       authDomain:
         "cakebuddymb.firebaseapp.com",
@@ -1206,23 +519,15 @@
     /* =====================================
        WHATSAPP ORDER NUMBER
        
-       IMPORTANT:
-       Replace this with CakeBuddy's
-       WhatsApp number.
+       CakeBuddy WhatsApp:
+       +880 1717-503093
 
-       Bangladesh format:
-
-       8801XXXXXXXXX
-
-       Example:
-       8801712345678
-
-       Do NOT use:
-       +8801712345678
+       WhatsApp format:
+       8801717503093
     ===================================== */
 
     const WHATSAPP_NUMBER =
-      "8801XXXXXXXXX";
+      "8801717503093";
 
 
     /* =====================================
@@ -1289,7 +594,7 @@
           "Chocolate",
 
         link:
-          "Explore →"
+          "Order Now →"
 
       },
 
@@ -1303,7 +608,7 @@
           "Sweet Moments",
 
         link:
-          "Discover →"
+          "Order Now →"
 
       }
 
@@ -1397,7 +702,9 @@
 
 
         const snapshot =
-          await getDoc(logoRef);
+          await getDoc(
+            logoRef
+          );
 
 
         if (
@@ -1594,7 +901,9 @@
         );
 
 
-      /* MAIN HERO */
+      /* =====================================
+         MAIN HERO
+      ===================================== */
 
       mainHeroImage.src =
         data.mainHero ||
@@ -1616,7 +925,9 @@
         BANNER_TEXT.mainHero.description;
 
 
-      /* OFFER */
+      /* =====================================
+         OFFER
+      ===================================== */
 
       const offer =
         data.offer || {};
@@ -1638,11 +949,12 @@
 
 
       offerLink.textContent =
-        offer.link ||
-        BANNER_TEXT.offer.link;
+        "Order Now →";
 
 
-      /* CHOCOLATE */
+      /* =====================================
+         CHOCOLATE
+      ===================================== */
 
       const chocolate =
         data.chocolate || {};
@@ -1664,11 +976,12 @@
 
 
       chocolateLink.textContent =
-        chocolate.link ||
-        BANNER_TEXT.chocolate.link;
+        "Order Now →";
 
 
-      /* SWEET */
+      /* =====================================
+         SWEET
+      ===================================== */
 
       const sweet =
         data.sweet || {};
@@ -1690,8 +1003,7 @@
 
 
       sweetLink.textContent =
-        sweet.link ||
-        BANNER_TEXT.sweet.link;
+        "Order Now →";
 
     }
 
@@ -1709,7 +1021,9 @@
 
 
         const snapshot =
-          await getDoc(bannerRef);
+          await getDoc(
+            bannerRef
+          );
 
 
         if (
@@ -1732,6 +1046,154 @@
       }
 
     }
+
+
+    /* =====================================
+       WHATSAPP ORDER SYSTEM
+    ===================================== */
+
+    function orderNow(
+      productTitle,
+      source
+    ) {
+
+      const title =
+        productTitle ||
+        "CakeBuddy Product";
+
+
+      const orderSource =
+        source ||
+        "CakeBuddy Website";
+
+
+      const message =
+        "Hello CakeBuddy! 🍰\n\n" +
+        "I want to order:\n" +
+        title +
+        "\n\n" +
+        "Source: " +
+        orderSource +
+        "\n\n" +
+        "Please share price, availability and delivery details.";
+
+
+      const whatsappURL =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(
+          message
+        );
+
+
+      window.open(
+        whatsappURL,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+    }
+
+
+    /* =====================================
+       HERO ORDER
+    ===================================== */
+
+    document
+      .getElementById(
+        "heroOrderButton"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          const heroTitle =
+            document.getElementById(
+              "mainHeroTitle"
+            ).textContent.trim();
+
+
+          orderNow(
+            heroTitle,
+            "Hero Banner"
+          );
+
+        }
+      );
+
+
+    /* =====================================
+       SIDE BANNER ORDERS
+    ===================================== */
+
+    document
+      .getElementById(
+        "offerBannerButton"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          const title =
+            document.getElementById(
+              "offerTitle"
+            ).textContent.trim();
+
+
+          orderNow(
+            title,
+            "Special Offer Banner"
+          );
+
+        }
+      );
+
+
+    document
+      .getElementById(
+        "chocolateBannerButton"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          const title =
+            document.getElementById(
+              "chocolateTitle"
+            ).textContent.trim();
+
+
+          orderNow(
+            title,
+            "Chocolate Banner"
+          );
+
+        }
+      );
+
+
+    document
+      .getElementById(
+        "sweetBannerButton"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          const title =
+            document.getElementById(
+              "sweetTitle"
+            ).textContent.trim();
+
+
+          orderNow(
+            title,
+            "Sweet Moments Banner"
+          );
+
+        }
+      );
 
 
     /* =====================================
@@ -1806,7 +1268,8 @@
 
             allPosts.push({
 
-              id: item.id,
+              id:
+                item.id,
 
               ...item.data()
 
@@ -1846,63 +1309,6 @@
       }
 
     }
-
-
-    /* =====================================
-       ORDER NOW
-    ===================================== */
-
-    function orderNow(productTitle) {
-
-      const title =
-        productTitle ||
-        "CakeBuddy Product";
-
-
-      const message =
-        "Hello CakeBuddy! 🍰\n\n" +
-        "I want to order:\n" +
-        title +
-        "\n\n" +
-        "Please share the details.";
-
-
-      const whatsappURL =
-        "https://wa.me/" +
-        WHATSAPP_NUMBER +
-        "?text=" +
-        encodeURIComponent(
-          message
-        );
-
-
-      window.open(
-        whatsappURL,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-    }
-
-
-    /* =====================================
-       HERO ORDER BUTTON
-    ===================================== */
-
-    document
-      .getElementById(
-        "heroOrderButton"
-      )
-      .addEventListener(
-        "click",
-        function () {
-
-          orderNow(
-            "CakeBuddy Cake / Product"
-          );
-
-        }
-      );
 
 
     /* =====================================
@@ -2091,7 +1497,9 @@
           .join("");
 
 
-      /* ORDER BUTTON EVENTS */
+      /* =====================================
+         POST ORDER BUTTON EVENTS
+      ===================================== */
 
       document
         .querySelectorAll(
@@ -2105,7 +1513,8 @@
               function () {
 
                 orderNow(
-                  this.dataset.orderTitle
+                  this.dataset.orderTitle,
+                  "CakeBuddy Product"
                 );
 
               }
@@ -2218,4 +1627,3 @@
 
 </body>
 </html>
-```
