@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>CakeBuddy — Discover Something Delicious</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>CakeBuddy | Cakes, Offers & Sweet Moments</title>
 
   <meta
     name="description"
-    content="Explore the latest cakes, offers, announcements, recipes and sweet moments from CakeBuddy."
-  />
+    content="Discover cakes, desserts, special offers and sweet moments from CakeBuddy."
+  >
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+
+    :root {
+      --pink: #ff6480;
+      --pink-dark: #ed4f6b;
+      --peach: #ff9a76;
+      --cream: #fffaf7;
+      --text: #202020;
+      --muted: #777;
+      --border: #eeeeee;
+      --white: #ffffff;
+      --shadow: 0 12px 35px rgba(0,0,0,0.07);
+    }
+
+
     html {
       scroll-behavior: smooth;
     }
+
 
     body {
       font-family:
@@ -32,937 +52,1245 @@
         Arial,
         sans-serif;
 
-      background: #faf9f7;
-      color: #171717;
-      line-height: 1.6;
+      background: var(--cream);
+
+      color: var(--text);
+
+      line-height: 1.5;
     }
+
 
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    button,
-    input {
-      font: inherit;
-    }
 
-    /* =========================
-       HEADER
-    ========================== */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    .header-inner {
-      max-width: 1180px;
-      margin: auto;
-
-      min-height: 72px;
-      padding: 0 24px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-
-      font-weight: 800;
-      font-size: 20px;
-      letter-spacing: -0.5px;
-    }
-
-    .brand-icon {
-      width: 38px;
-      height: 38px;
-
-      border-radius: 12px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #171717;
-      color: white;
-
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .brand-text {
-      white-space: nowrap;
-    }
-
-    .nav-link {
-      font-size: 14px;
-      font-weight: 600;
-
-      color: #555;
-
-      padding: 10px 16px;
-      border-radius: 10px;
-
-      transition: 0.2s ease;
-    }
-
-    .nav-link:hover {
-      background: #f3f3f3;
-      color: #111;
-    }
-
-    /* =========================
-       HERO
-    ========================== */
-
-    .hero {
-      max-width: 1180px;
-      margin: auto;
-
-      padding: 92px 24px 70px;
-    }
-
-    .hero-box {
-      position: relative;
-      overflow: hidden;
-
-      min-height: 430px;
-
-      border-radius: 30px;
-
-      padding: 70px;
-
-      background:
-        radial-gradient(
-          circle at 90% 15%,
-          rgba(255, 196, 211, 0.55),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 10% 90%,
-          rgba(255, 221, 181, 0.5),
-          transparent 32%
-        ),
-        #fff;
-
-      border: 1px solid #eeeeee;
-
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-
-      max-width: 690px;
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 8px 13px;
-      margin-bottom: 22px;
-
-      border-radius: 100px;
-
-      background: #f7f1ed;
-      color: #765c4d;
-
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .hero-label-dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: #e88b9b;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 72px);
-
-      line-height: 1.02;
-      letter-spacing: -3px;
-
-      font-weight: 850;
-
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
+    img {
+      max-width: 100%;
       display: block;
     }
 
-    .hero h1 .highlight {
-      color: #d47787;
+
+    button,
+    input {
+      font-family: inherit;
     }
 
-    .hero-description {
-      max-width: 610px;
 
-      font-size: 17px;
-      line-height: 1.8;
+    .container {
+      width: min(1180px, calc(100% - 32px));
 
-      color: #666;
-
-      margin-bottom: 32px;
+      margin: 0 auto;
     }
 
-    .hero-actions {
-      display: flex;
-      align-items: center;
 
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    /* =========================================
+       SPECIAL OFFER
+    ========================================= */
 
-    .primary-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .offer-bar {
+      background:
+        linear-gradient(
+          90deg,
+          #ff5f7c,
+          #ff806f,
+          #ff9b72
+        );
 
-      padding: 13px 20px;
-
-      border-radius: 12px;
-
-      background: #171717;
       color: white;
 
-      font-size: 14px;
+      text-align: center;
+
+      padding: 10px 16px;
+
+      font-size: 13px;
+
       font-weight: 700;
-
-      transition: 0.2s ease;
     }
 
-    .primary-btn:hover {
-      transform: translateY(-2px);
-      background: #000;
+
+    .offer-bar span {
+      opacity: 0.95;
     }
 
-    .secondary-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
 
-      padding: 13px 20px;
+    /* =========================================
+       HEADER
+    ========================================= */
 
-      border-radius: 12px;
+    header {
+      background: rgba(255,255,255,0.96);
 
-      background: white;
-      color: #333;
+      border-bottom: 1px solid var(--border);
 
-      border: 1px solid #e5e5e5;
+      position: sticky;
 
-      font-size: 14px;
-      font-weight: 700;
+      top: 0;
 
-      transition: 0.2s ease;
+      z-index: 100;
     }
 
-    .secondary-btn:hover {
-      background: #f7f7f7;
-    }
 
-    /* =========================
-       CAKE DECORATION
-    ========================== */
+    .header-inner {
+      min-height: 74px;
 
-    .cake-decoration {
-      position: absolute;
-
-      right: 70px;
-      bottom: 55px;
-
-      width: 190px;
-      height: 150px;
-
-      opacity: 0.9;
-    }
-
-    .cake-base {
-      position: absolute;
-
-      left: 15px;
-      bottom: 5px;
-
-      width: 160px;
-      height: 75px;
-
-      border-radius: 18px 18px 25px 25px;
-
-      background: #f0b8a8;
-
-      box-shadow:
-        0 15px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .cake-cream {
-      position: absolute;
-
-      left: 12px;
-      bottom: 58px;
-
-      width: 166px;
-      height: 35px;
-
-      border-radius: 50%;
-
-      background: #fff;
-
-      box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .cake-top {
-      position: absolute;
-
-      left: 27px;
-      bottom: 79px;
-
-      width: 136px;
-      height: 35px;
-
-      border-radius: 50%;
-
-      background: #f7d6c9;
-    }
-
-    .cherry {
-      position: absolute;
-
-      width: 18px;
-      height: 18px;
-
-      border-radius: 50%;
-
-      background: #d47787;
-    }
-
-    .cherry.one {
-      left: 67px;
-      bottom: 105px;
-    }
-
-    .cherry.two {
-      left: 105px;
-      bottom: 110px;
-    }
-
-    .candle {
-      position: absolute;
-
-      width: 7px;
-      height: 42px;
-
-      border-radius: 5px;
-
-      background: #d9a0a9;
-
-      bottom: 108px;
-    }
-
-    .candle.one {
-      left: 87px;
-    }
-
-    .candle.two {
-      left: 125px;
-      height: 35px;
-    }
-
-    /* =========================
-       POSTS
-    ========================== */
-
-    .posts-section {
-      max-width: 1180px;
-      margin: auto;
-
-      padding: 20px 24px 90px;
-
-      scroll-margin-top: 90px;
-    }
-
-    .section-header {
       display: flex;
-      align-items: end;
+
+      align-items: center;
+
       justify-content: space-between;
 
-      gap: 25px;
-
-      margin-bottom: 28px;
+      gap: 20px;
     }
 
-    .section-title {
-      font-size: 32px;
 
-      line-height: 1.15;
-      letter-spacing: -1px;
+    .brand {
+      display: flex;
 
-      font-weight: 800;
+      align-items: center;
+
+      gap: 11px;
+
+      min-width: max-content;
     }
 
-    .section-subtitle {
-      margin-top: 7px;
 
-      color: #777;
-      font-size: 14px;
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 14px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--peach)
+        );
+
+      color: white;
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      box-shadow:
+        0 8px 20px rgba(255,100,128,0.20);
     }
+
+
+    .brand-text h1 {
+      font-size: 20px;
+
+      line-height: 1.1;
+    }
+
+
+    .brand-text p {
+      font-size: 11px;
+
+      color: var(--muted);
+
+      margin-top: 3px;
+    }
+
 
     .search-box {
-      width: 300px;
+      flex: 1;
+
+      max-width: 430px;
+
       position: relative;
     }
 
+
     .search-box input {
       width: 100%;
-      height: 46px;
 
-      padding: 0 16px;
+      height: 44px;
 
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
+      border: 1px solid #e8e8e8;
 
-      background: white;
+      border-radius: 13px;
+
+      padding: 0 15px 0 42px;
 
       outline: none;
 
+      background: #fafafa;
+
       font-size: 14px;
 
-      transition: 0.2s ease;
+      transition: 0.2s;
     }
+
 
     .search-box input:focus {
-      border-color: #bbb;
+      border-color: #ff8799;
+
+      background: white;
 
       box-shadow:
-        0 0 0 4px rgba(0, 0, 0, 0.03);
+        0 0 0 4px rgba(255,100,128,0.08);
     }
+
+
+    .search-icon {
+      position: absolute;
+
+      left: 15px;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #999;
+
+      font-size: 17px;
+    }
+
+
+    .header-actions {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+
+    .admin-link {
+      padding: 10px 15px;
+
+      border: 1px solid #eeeeee;
+
+      border-radius: 12px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      color: #444;
+
+      background: white;
+
+      transition: 0.2s;
+    }
+
+
+    .admin-link:hover {
+      border-color: var(--pink);
+
+      color: var(--pink);
+    }
+
+
+    /* =========================================
+       MINI CATEGORIES
+    ========================================= */
+
+    .categories-section {
+      padding: 24px 0 8px;
+    }
+
+
+    .categories {
+      display: flex;
+
+      gap: 10px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+
+      padding-bottom: 5px;
+    }
+
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    .category {
+      min-width: 105px;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 15px;
+
+      padding: 11px 14px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      white-space: nowrap;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      color: #444;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+
+    .category:hover,
+    .category.active {
+      background: #fff0f3;
+
+      border-color: #ffc5cf;
+
+      color: var(--pink-dark);
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero-section {
+      padding: 22px 0 34px;
+    }
+
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.75fr)
+        minmax(240px, 0.85fr);
+
+      gap: 16px;
+
+      min-height: 390px;
+    }
+
+
+    .hero-main {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 25px;
+
+      min-height: 390px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffe1e6,
+          #fff0dc
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      padding: 50px;
+    }
+
+
+    .hero-main::before {
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.45);
+
+      right: -90px;
+
+      top: -80px;
+    }
+
+
+    .hero-content {
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 520px;
+    }
+
+
+    .hero-label {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      background: white;
+
+      color: var(--pink-dark);
+
+      padding: 8px 12px;
+
+      border-radius: 999px;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      margin-bottom: 18px;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+    }
+
+
+    .hero-content h2 {
+      font-size: clamp(34px, 5vw, 58px);
+
+      line-height: 1.02;
+
+      letter-spacing: -1.8px;
+
+      margin-bottom: 17px;
+    }
+
+
+    .hero-content h2 span {
+      color: var(--pink-dark);
+    }
+
+
+    .hero-content p {
+      color: #666;
+
+      font-size: 15px;
+
+      max-width: 440px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .hero-button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 13px 20px;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--peach)
+        );
+
+      color: white;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 10px 24px rgba(255,100,128,0.20);
+
+      transition: 0.2s;
+    }
+
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .hero-decoration {
+      position: absolute;
+
+      right: 35px;
+
+      bottom: 20px;
+
+      font-size: 145px;
+
+      opacity: 0.9;
+
+      transform: rotate(-8deg);
+    }
+
+
+    /* =========================================
+       SIDE BANNERS
+    ========================================= */
+
+    .hero-side {
+      display: grid;
+
+      grid-template-rows: 1fr 1fr;
+
+      gap: 16px;
+    }
+
+
+    .side-banner {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 22px;
+
+      padding: 25px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      min-height: 185px;
+
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+
+    .side-banner.offer {
+      background:
+        linear-gradient(
+          135deg,
+          #fff0f3,
+          #ffe4d7
+        );
+    }
+
+
+    .side-banner.new {
+      background:
+        linear-gradient(
+          135deg,
+          #fff6db,
+          #ffe9bd
+        );
+    }
+
+
+    .side-banner small {
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      font-weight: 800;
+
+      color: #777;
+
+      margin-bottom: 6px;
+    }
+
+
+    .side-banner h3 {
+      font-size: 24px;
+
+      line-height: 1.1;
+
+      margin-bottom: 9px;
+
+      max-width: 190px;
+    }
+
+
+    .side-banner a {
+      font-size: 12px;
+
+      font-weight: 800;
+
+      color: var(--pink-dark);
+    }
+
+
+    .side-emoji {
+      position: absolute;
+
+      right: 18px;
+
+      bottom: 8px;
+
+      font-size: 74px;
+
+      transform: rotate(-8deg);
+    }
+
+
+    /* =========================================
+       POSTS SECTION
+    ========================================= */
+
+    .posts-section {
+      padding: 10px 0 70px;
+    }
+
+
+    .section-heading {
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .section-heading h2 {
+      font-size: 27px;
+
+      letter-spacing: -0.6px;
+    }
+
+
+    .section-heading p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-top: 4px;
+    }
+
+
+    .post-count {
+      font-size: 12px;
+
+      color: #888;
+    }
+
 
     .posts-grid {
       display: grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(4, minmax(0, 1fr));
 
-      gap: 22px;
+      gap: 18px;
     }
+
 
     .post-card {
-      overflow: hidden;
-
       background: white;
 
-      border: 1px solid #eeeeee;
-      border-radius: 18px;
+      border: 1px solid var(--border);
 
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-    }
-
-    .post-card:hover {
-      transform: translateY(-5px);
-
-      box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.08);
-    }
-
-    .post-image-wrap {
-      width: 100%;
-      height: 220px;
+      border-radius: 19px;
 
       overflow: hidden;
 
-      background: #f1f1f1;
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.035);
+
+      transition: 0.25s;
+
+      display: flex;
+
+      flex-direction: column;
     }
+
+
+    .post-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 15px 35px rgba(0,0,0,0.08);
+    }
+
 
     .post-image {
       width: 100%;
-      height: 100%;
+
+      height: 210px;
 
       object-fit: cover;
 
-      transition: transform 0.35s ease;
+      background: #f7f7f7;
     }
 
-    .post-card:hover .post-image {
-      transform: scale(1.04);
-    }
 
     .post-content {
-      padding: 20px;
+      padding: 17px;
+
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
     }
 
-    .post-category {
-      display: inline-block;
 
-      padding: 5px 9px;
-      margin-bottom: 11px;
+    .post-content h3 {
+      font-size: 16px;
 
-      border-radius: 7px;
-
-      background: #f7f3f1;
-      color: #80695d;
-
-      font-size: 11px;
-      font-weight: 800;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.5px;
-    }
-
-    .post-title {
-      font-size: 19px;
-
-      line-height: 1.3;
-
-      font-weight: 800;
+      line-height: 1.35;
 
       margin-bottom: 8px;
     }
 
-    .post-description {
-      color: #6c6c6c;
 
-      font-size: 14px;
-      line-height: 1.65;
+    .post-content p {
+      color: #777;
+
+      font-size: 13px;
+
+      line-height: 1.6;
 
       display: -webkit-box;
 
       -webkit-line-clamp: 3;
+
       -webkit-box-orient: vertical;
 
       overflow: hidden;
+
+      margin-bottom: 14px;
     }
 
-    .post-date {
-      margin-top: 15px;
-      padding-top: 13px;
 
-      border-top: 1px solid #eeeeee;
+    .post-footer {
+      margin-top: auto;
 
-      color: #999;
+      display: flex;
 
-      font-size: 12px;
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
     }
 
-    /* =========================
-       STATUS
-    ========================== */
 
-    .status-box {
+    .post-tag {
+      background: #fff0f3;
+
+      color: var(--pink-dark);
+
+      padding: 5px 9px;
+
+      border-radius: 999px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+    }
+
+
+    .read-more {
+      color: #555;
+
+      font-size: 11px;
+
+      font-weight: 800;
+    }
+
+
+    /* =========================================
+       LOADING / EMPTY
+    ========================================= */
+
+    .loading {
       grid-column: 1 / -1;
-
-      padding: 55px 20px;
 
       text-align: center;
 
-      color: #777;
+      padding: 60px 20px;
+
+      color: #888;
 
       background: white;
-
-      border: 1px solid #eeeeee;
-      border-radius: 18px;
-    }
-
-    .status-title {
-      font-size: 18px;
-
-      color: #333;
-
-      font-weight: 700;
-
-      margin-bottom: 5px;
-    }
-
-    .status-text {
-      font-size: 14px;
-    }
-
-    /* =========================
-       DEVELOPER CONNECT
-    ========================== */
-
-    .developer-section {
-      max-width: 1180px;
-      margin: auto;
-
-      padding: 0 24px 70px;
-    }
-
-    .developer-box {
-      min-height: 130px;
-
-      padding: 28px 32px;
 
       border-radius: 20px;
 
-      background: #171717;
-      color: white;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
+      border: 1px solid var(--border);
     }
 
-    .developer-text h3 {
-      font-size: 18px;
 
-      margin-bottom: 4px;
+    .empty-state {
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      padding: 55px 20px;
+
+      background: white;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border);
     }
 
-    .developer-text p {
-      color: #aaa;
+
+    .empty-state-icon {
+      font-size: 45px;
+
+      margin-bottom: 12px;
+    }
+
+
+    .empty-state h3 {
+      margin-bottom: 6px;
+    }
+
+
+    .empty-state p {
+      color: #888;
 
       font-size: 13px;
     }
 
-    .developer-btn {
-      flex-shrink: 0;
 
+    /* =========================================
+       DEVELOPER CONNECT
+    ========================================= */
+
+    .developer-area {
+      padding: 0 0 22px;
+
+      text-align: center;
+    }
+
+
+    .developer-connect {
       display: inline-flex;
 
       align-items: center;
-      justify-content: center;
 
-      padding: 12px 18px;
+      gap: 8px;
 
-      border-radius: 10px;
+      padding: 9px 14px;
+
+      border-radius: 999px;
 
       background: white;
-      color: #171717;
 
-      font-size: 13px;
-      font-weight: 800;
+      border: 1px solid #e9e9e9;
 
-      transition: 0.2s ease;
+      color: #666;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      transition: 0.2s;
     }
 
-    .developer-btn:hover {
-      transform: translateY(-2px);
 
-      background: #f2f2f2;
+    .developer-connect:hover {
+      border-color: var(--pink);
+
+      color: var(--pink-dark);
     }
 
-    /* =========================
+
+    /* =========================================
        FOOTER
-    ========================== */
+    ========================================= */
 
-    .footer {
-      border-top: 1px solid #e9e9e9;
+    footer {
+      background: #1e1e1e;
 
-      background: white;
+      color: white;
+
+      padding: 34px 0 24px;
     }
+
 
     .footer-inner {
-      max-width: 1180px;
-      margin: auto;
-
-      padding: 30px 24px;
-
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 20px;
     }
 
-    .footer-brand {
-      font-weight: 800;
 
-      font-size: 15px;
+    .footer-brand {
+      font-size: 17px;
+
+      font-weight: 800;
     }
 
-    .footer-copy {
-      color: #999;
+
+    .footer-brand span {
+      color: #ff8197;
+    }
+
+
+    .footer-text {
+      color: #aaa;
 
       font-size: 12px;
+
+      margin-top: 4px;
     }
 
-    /* =========================
-       TABLET
-    ========================== */
 
-    @media (max-width: 900px) {
+    .footer-copy {
+      color: #888;
 
-      .hero {
-        padding-top: 55px;
-      }
+      font-size: 11px;
 
-      .hero-box {
-        padding: 50px 35px;
-      }
+      text-align: right;
+    }
 
-      .cake-decoration {
-        right: 25px;
 
-        opacity: 0.3;
-      }
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1050px) {
 
       .posts-grid {
         grid-template-columns:
-          repeat(2, 1fr);
+          repeat(3, minmax(0, 1fr));
       }
 
-      .section-header {
-        align-items: stretch;
-
-        flex-direction: column;
-      }
-
-      .search-box {
-        width: 100%;
-      }
     }
 
-    /* =========================
-       MOBILE
-    ========================== */
 
-    @media (max-width: 600px) {
+    @media (max-width: 850px) {
 
       .header-inner {
-        min-height: 64px;
+        flex-wrap: wrap;
 
-        padding: 0 16px;
+        padding: 13px 0;
       }
 
-      .brand {
-        font-size: 18px;
+
+      .search-box {
+        order: 3;
+
+        flex-basis: 100%;
+
+        max-width: none;
       }
 
-      .brand-icon {
-        width: 34px;
-        height: 34px;
 
-        border-radius: 10px;
-      }
-
-      .nav-link {
-        padding: 8px 10px;
-
-        font-size: 13px;
-      }
-
-      .hero {
-        padding: 25px 15px 50px;
-      }
-
-      .hero-box {
-        min-height: 460px;
-
-        padding: 42px 25px;
-
-        border-radius: 23px;
-      }
-
-      .hero h1 {
-        font-size: 46px;
-
-        letter-spacing: -2px;
-      }
-
-      .hero-description {
-        font-size: 15px;
-
-        line-height: 1.7;
-      }
-
-      .cake-decoration {
-        right: 50%;
-
-        transform:
-          translateX(50%);
-
-        bottom: 15px;
-
-        opacity: 0.18;
-      }
-
-      .posts-section {
-        padding: 10px 15px 60px;
-      }
-
-      .section-title {
-        font-size: 28px;
-      }
-
-      .posts-grid {
+      .hero-grid {
         grid-template-columns: 1fr;
       }
 
-      .post-image-wrap {
-        height: 230px;
+
+      .hero-main {
+        min-height: 350px;
       }
 
-      .developer-section {
-        padding: 0 15px 50px;
+
+      .hero-side {
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows: auto;
       }
 
-      .developer-box {
-        padding: 25px;
+    }
 
+
+    @media (max-width: 650px) {
+
+      .container {
+        width: min(100% - 22px, 1180px);
+      }
+
+
+      .offer-bar {
+        font-size: 11px;
+      }
+
+
+      .header-inner {
+        min-height: auto;
+      }
+
+
+      .brand-text h1 {
+        font-size: 18px;
+      }
+
+
+      .admin-link {
+        padding: 9px 11px;
+
+        font-size: 11px;
+      }
+
+
+      .hero-section {
+        padding-top: 15px;
+      }
+
+
+      .hero-main {
+        min-height: 400px;
+
+        padding: 30px 25px;
+      }
+
+
+      .hero-content h2 {
+        font-size: 39px;
+      }
+
+
+      .hero-decoration {
+        font-size: 105px;
+
+        right: 15px;
+      }
+
+
+      .hero-side {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+      }
+
+
+      .side-banner {
+        min-height: 160px;
+      }
+
+
+      .posts-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+      }
+
+
+      .post-image {
+        height: 165px;
+      }
+
+
+      .post-content {
+        padding: 13px;
+      }
+
+
+      .post-content h3 {
+        font-size: 14px;
+      }
+
+
+      .post-content p {
+        font-size: 12px;
+      }
+
+
+      .section-heading h2 {
+        font-size: 23px;
+      }
+
+
+      .footer-inner {
         flex-direction: column;
 
         align-items: flex-start;
       }
 
-      .developer-btn {
-        width: 100%;
+
+      .footer-copy {
+        text-align: left;
       }
 
-      .footer-inner {
-        padding: 25px 15px;
-
-        flex-direction: column;
-
-        text-align: center;
-      }
     }
+
+
+    @media (max-width: 420px) {
+
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .post-image {
+        height: 210px;
+      }
+
+
+      .hero-content h2 {
+        font-size: 35px;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
+
+  <!-- =========================================
+       SPECIAL OFFER
+  ========================================== -->
+
+  <div class="offer-bar">
+    🔥 <span>Special Offer — Discover something sweet today!</span>
+  </div>
+
+
+  <!-- =========================================
        HEADER
-  ========================== -->
+  ========================================== -->
 
-  <header class="header">
+  <header>
 
-    <div class="header-inner">
-
-      <a href="#" class="brand">
-
-        <span class="brand-icon">
-          CB
-        </span>
-
-        <span class="brand-text">
-          CakeBuddy
-        </span>
-
-      </a>
+    <div class="container header-inner">
 
 
       <a
-        href="#posts"
-        class="nav-link"
+        href="./index.html"
+        class="brand"
       >
-        Explore Posts
+
+        <div class="brand-logo">
+          C
+        </div>
+
+        <div class="brand-text">
+
+          <h1>CakeBuddy</h1>
+
+          <p>Sweet moments, shared.</p>
+
+        </div>
+
       </a>
+
+
+      <div class="search-box">
+
+        <span class="search-icon">
+          🔎
+        </span>
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search cakes, offers, recipes..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <div class="header-actions">
+
+        <a
+          href="./admin.html"
+          class="admin-link"
+        >
+          🔐 Admin
+        </a>
+
+      </div>
+
 
     </div>
 
   </header>
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
-
   <main>
 
-    <!-- HERO -->
 
-    <section class="hero">
+    <!-- =========================================
+         MINI CATEGORIES
+    ========================================== -->
 
-      <div class="hero-box">
+    <section class="categories-section">
 
-        <div class="hero-content">
+      <div class="container">
 
-          <div class="hero-label">
+        <div class="categories">
 
-            <span class="hero-label-dot"></span>
+          <button
+            class="category active"
+            data-category="all"
+          >
+            ✨ All
+          </button>
 
-            Welcome to CakeBuddy
+          <button
+            class="category"
+            data-category="cakes"
+          >
+            🎂 Cakes
+          </button>
 
-          </div>
+          <button
+            class="category"
+            data-category="cupcakes"
+          >
+            🧁 Cupcakes
+          </button>
 
+          <button
+            class="category"
+            data-category="desserts"
+          >
+            🍰 Desserts
+          </button>
 
-          <h1>
+          <button
+            class="category"
+            data-category="chocolate"
+          >
+            🍫 Chocolate
+          </button>
 
-            Discover
+          <button
+            class="category"
+            data-category="gift"
+          >
+            🎁 Gift
+          </button>
 
-            <span class="highlight">
-              something delicious.
-            </span>
+          <button
+            class="category"
+            data-category="offers"
+          >
+            🔥 Offers
+          </button>
 
-          </h1>
-
-
-          <p class="hero-description">
-
-            Explore the latest cakes, offers,
-            announcements, recipes and sweet
-            moments from CakeBuddy.
-
-          </p>
-
-
-          <div class="hero-actions">
-
-            <a
-              href="#posts"
-              class="primary-btn"
-            >
-              Explore Latest Posts →
-            </a>
-
-
-            <a
-              href="#posts"
-              class="secondary-btn"
-            >
-              View Collection
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <!-- Decorative Cake -->
-
-        <div class="cake-decoration">
-
-          <div class="cake-base"></div>
-
-          <div class="cake-cream"></div>
-
-          <div class="cake-top"></div>
-
-          <div class="cherry one"></div>
-
-          <div class="cherry two"></div>
-
-          <div class="candle one"></div>
-
-          <div class="candle two"></div>
+          <button
+            class="category"
+            data-category="announcements"
+          >
+            📢 Updates
+          </button>
 
         </div>
 
@@ -971,110 +1299,206 @@
     </section>
 
 
-    <!-- POSTS -->
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="hero-section">
+
+      <div class="container">
+
+        <div class="hero-grid">
+
+
+          <!-- MAIN HERO -->
+
+          <div class="hero-main">
+
+            <div class="hero-content">
+
+              <div class="hero-label">
+                ✨ Welcome to CakeBuddy
+              </div>
+
+              <h2>
+                Make every moment
+                <span>sweet.</span>
+              </h2>
+
+              <p>
+                Discover the latest cakes, special offers,
+                recipes, announcements and sweet moments
+                from CakeBuddy.
+              </p>
+
+              <a
+                href="#posts"
+                class="hero-button"
+              >
+                Explore Posts →
+              </a>
+
+            </div>
+
+
+            <div class="hero-decoration">
+              🎂
+            </div>
+
+          </div>
+
+
+          <!-- SIDE BANNERS -->
+
+          <div class="hero-side">
+
+
+            <div class="side-banner offer">
+
+              <small>
+                Special Offer
+              </small>
+
+              <h3>
+                Sweet deals for you
+              </h3>
+
+              <a href="#posts">
+                Explore offers →
+              </a>
+
+              <div class="side-emoji">
+                🍰
+              </div>
+
+            </div>
+
+
+            <div class="side-banner new">
+
+              <small>
+                Discover
+              </small>
+
+              <h3>
+                Something delicious
+              </h3>
+
+              <a href="#posts">
+                View latest →
+              </a>
+
+              <div class="side-emoji">
+                🧁
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         POSTS
+    ========================================== -->
 
     <section
       class="posts-section"
       id="posts"
     >
 
-      <div class="section-header">
-
-        <div>
-
-          <h2 class="section-title">
-            Latest Posts
-          </h2>
-
-          <p class="section-subtitle">
-            Fresh updates, cakes, offers and sweet moments.
-          </p>
-
-        </div>
+      <div class="container">
 
 
-        <div class="search-box">
+        <div class="section-heading">
 
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Search posts..."
-            autocomplete="off"
-          />
+          <div>
 
-        </div>
+            <h2>
+              Latest from CakeBuddy
+            </h2>
 
-      </div>
+            <p>
+              Cakes, offers, updates and sweet moments.
+            </p>
+
+          </div>
 
 
-      <div
-        id="postsGrid"
-        class="posts-grid"
-      >
-
-        <div class="status-box">
-
-          <div class="status-title">
+          <div
+            class="post-count"
+            id="postCount"
+          >
             Loading...
           </div>
 
-          <div class="status-text">
-            Please wait while we load the latest posts.
+        </div>
+
+
+        <div
+          class="posts-grid"
+          id="postsGrid"
+        >
+
+          <div class="loading">
+            Loading CakeBuddy posts...
           </div>
 
         </div>
 
-      </div>
-
-    </section>
-
-
-    <!-- DEVELOPER CONNECT -->
-
-    <section class="developer-section">
-
-      <div class="developer-box">
-
-        <div class="developer-text">
-
-          <h3>
-            Need a website like this?
-          </h3>
-
-          <p>
-            Connect with the developer for websites and digital solutions.
-          </p>
-
-        </div>
-
-
-        <a
-          href="https://websitesdeal.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="developer-btn"
-        >
-          Developer Connect →
-        </a>
 
       </div>
 
     </section>
+
+
+    <!-- =========================================
+         DEVELOPER CONNECT
+    ========================================== -->
+
+    <div class="developer-area">
+
+      <a
+        href="https://websitesdeal.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="developer-connect"
+      >
+        ⚡ Developer Connect
+      </a>
+
+    </div>
+
 
   </main>
 
 
-  <!-- =========================
+  <!-- =========================================
        FOOTER
-  ========================== -->
+  ========================================== -->
 
-  <footer class="footer">
+  <footer>
 
-    <div class="footer-inner">
+    <div class="container footer-inner">
 
-      <div class="footer-brand">
-        CakeBuddy
+      <div>
+
+        <div class="footer-brand">
+          Cake<span>Buddy</span>
+        </div>
+
+        <div class="footer-text">
+          Sweet moments, shared.
+        </div>
+
       </div>
+
 
       <div class="footer-copy">
         © 2026 CakeBuddy. All rights reserved.
@@ -1085,16 +1509,17 @@
   </footer>
 
 
-  <!-- =========================
+
+  <!-- =========================================
        FIREBASE
-  ========================== -->
+  ========================================== -->
 
   <script type="module">
 
     import {
       initializeApp
     } from
-      "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
     import {
@@ -1104,17 +1529,28 @@
       query,
       orderBy
     } from
-      "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-    /* =========================
-       FIREBASE CONFIG
-    ========================== */
+    /*
+      ==========================================
+      FIREBASE CONFIG
+      ==========================================
+
+      আপনার Firebase project-এর REAL config
+      এখানে বসান।
+
+      Project:
+      CakeBuddy
+
+      Project ID:
+      cakebuddymb
+    */
+
 
     const firebaseConfig = {
 
-      apiKey:
-        "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
+      apiKey: "YOUR_API_KEY",
 
       authDomain:
         "cakebuddymb.firebaseapp.com",
@@ -1126,58 +1562,59 @@
         "cakebuddymb.firebasestorage.app",
 
       messagingSenderId:
-        "31596118058",
+        "YOUR_MESSAGING_SENDER_ID",
 
       appId:
-        "1:31596118058:web:ecfe00171d91ee15c64353",
-
-      measurementId:
-        "G-D0ZV3FN1LQ"
+        "YOUR_APP_ID"
 
     };
 
 
-    /* =========================
-       INITIALIZE FIREBASE
-    ========================== */
+    /*
+      Initialize Firebase
+    */
 
     const app =
       initializeApp(firebaseConfig);
+
+
+    /*
+      Firestore
+    */
 
     const db =
       getFirestore(app);
 
 
-    /* =========================
-       ELEMENTS
-    ========================== */
+    /*
+      Elements
+    */
 
     const postsGrid =
-      document.getElementById(
-        "postsGrid"
-      );
-
+      document.getElementById("postsGrid");
 
     const searchInput =
-      document.getElementById(
-        "searchInput"
-      );
+      document.getElementById("searchInput");
 
+    const postCount =
+      document.getElementById("postCount");
+
+    const categoryButtons =
+      document.querySelectorAll(".category");
+
+
+    /*
+      Store posts
+    */
 
     let allPosts = [];
 
-
-    /* =========================
-       DEFAULT IMAGE
-    ========================== */
-
-    const defaultImage =
-      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80";
+    let currentCategory = "all";
 
 
-    /* =========================
-       ESCAPE HTML
-    ========================== */
+    /*
+      Escape HTML
+    */
 
     function escapeHTML(value) {
 
@@ -1186,51 +1623,47 @@
       }
 
       return String(value)
-
-        .replace(
-          /&/g,
-          "&amp;"
-        )
-
-        .replace(
-          /</g,
-          "&lt;"
-        )
-
-        .replace(
-          />/g,
-          "&gt;"
-        )
-
-        .replace(
-          /"/g,
-          "&quot;"
-        )
-
-        .replace(
-          /'/g,
-          "&#039;"
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
     }
 
 
-    /* =========================
-       FORMAT DATE
-    ========================== */
+    /*
+      Get Image URL
+    */
+
+    function getImageURL(post) {
+
+      return (
+        post.imageUrl ||
+        post.imageURL ||
+        post.image ||
+        "https://placehold.co/800x600/fff0f3/ff6480?text=CakeBuddy"
+      );
+
+    }
+
+
+    /*
+      Format date
+    */
 
     function formatDate(timestamp) {
 
       if (!timestamp) {
-        return "Recently";
+        return "";
       }
-
 
       try {
 
         const date =
-          timestamp.toDate();
-
+          timestamp.toDate
+            ? timestamp.toDate()
+            : new Date(timestamp);
 
         return date.toLocaleDateString(
           "en-US",
@@ -1241,118 +1674,244 @@
           }
         );
 
-      }
+      } catch {
 
-      catch (error) {
-
-        return "Recently";
+        return "";
 
       }
 
     }
 
 
-    /* =========================
-       LOAD POSTS
-    ========================== */
+    /*
+      Detect Category
+    */
 
-    async function loadPosts() {
+    function detectCategory(post) {
 
-      try {
-
-        const postsQuery =
-          query(
-            collection(
-              db,
-              "posts"
-            ),
-
-            orderBy(
-              "createdAt",
-              "desc"
-            )
-          );
+      const text =
+        (
+          (post.title || "") +
+          " " +
+          (post.description || "")
+        ).toLowerCase();
 
 
-        const snapshot =
-          await getDocs(
-            postsQuery
-          );
+      if (
+        text.includes("cupcake") ||
+        text.includes("cup cake")
+      ) {
+        return "cupcakes";
+      }
 
 
-        allPosts = [];
+      if (
+        text.includes("chocolate")
+      ) {
+        return "chocolate";
+      }
 
 
-        snapshot.forEach(
-          (doc) => {
+      if (
+        text.includes("dessert") ||
+        text.includes("pudding") ||
+        text.includes("sweet")
+      ) {
+        return "desserts";
+      }
 
-            allPosts.push({
 
-              id: doc.id,
+      if (
+        text.includes("gift")
+      ) {
+        return "gift";
+      }
 
-              ...doc.data()
 
-            });
+      if (
+        text.includes("offer") ||
+        text.includes("discount") ||
+        text.includes("sale")
+      ) {
+        return "offers";
+      }
+
+
+      if (
+        text.includes("announcement") ||
+        text.includes("update") ||
+        text.includes("news")
+      ) {
+        return "announcements";
+      }
+
+
+      if (
+        text.includes("cake") ||
+        text.includes("birthday") ||
+        text.includes("wedding")
+      ) {
+        return "cakes";
+      }
+
+
+      return "cakes";
+
+    }
+
+
+    /*
+      Create Post Card
+    */
+
+    function createPostCard(post) {
+
+      const title =
+        escapeHTML(
+          post.title || "CakeBuddy Post"
+        );
+
+
+      const description =
+        escapeHTML(
+          post.description || ""
+        );
+
+
+      const image =
+        getImageURL(post);
+
+
+      const category =
+        detectCategory(post);
+
+
+      const date =
+        formatDate(post.createdAt);
+
+
+      return `
+
+        <article class="post-card">
+
+          <img
+            class="post-image"
+            src="${escapeHTML(image)}"
+            alt="${title}"
+            loading="lazy"
+            onerror="
+              this.src='https://placehold.co/800x600/fff0f3/ff6480?text=CakeBuddy'
+            "
+          >
+
+          <div class="post-content">
+
+            <h3>
+              ${title}
+            </h3>
+
+            <p>
+              ${description}
+            </p>
+
+            <div class="post-footer">
+
+              <span class="post-tag">
+                ${category}
+              </span>
+
+              <span class="read-more">
+                ${date || "CakeBuddy"}
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }
+
+
+    /*
+      Render Posts
+    */
+
+    function renderPosts() {
+
+      const searchTerm =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+
+      let filteredPosts =
+        allPosts.filter(
+          (post) => {
+
+            const title =
+              (post.title || "")
+                .toLowerCase();
+
+
+            const description =
+              (post.description || "")
+                .toLowerCase();
+
+
+            const matchesSearch =
+              !searchTerm ||
+              title.includes(searchTerm) ||
+              description.includes(searchTerm);
+
+
+            const category =
+              detectCategory(post);
+
+
+            const matchesCategory =
+              currentCategory === "all" ||
+              category === currentCategory;
+
+
+            return (
+              matchesSearch &&
+              matchesCategory
+            );
 
           }
         );
 
 
-        renderPosts(
-          allPosts
-        );
+      postCount.textContent =
+        `${filteredPosts.length} post${
+          filteredPosts.length === 1
+            ? ""
+            : "s"
+        }`;
 
-      }
 
-      catch (error) {
-
-        console.error(
-          "Error loading posts:",
-          error
-        );
-
+      if (
+        filteredPosts.length === 0
+      ) {
 
         postsGrid.innerHTML = `
 
-          <div class="status-box">
+          <div class="empty-state">
 
-            <div class="status-title">
-              Unable to load posts
+            <div class="empty-state-icon">
+              🔎
             </div>
 
-            <div class="status-text">
-              Please check your Firebase connection
-              and Firestore settings.
-            </div>
-
-          </div>
-
-        `;
-
-      }
-
-    }
-
-
-    /* =========================
-       RENDER POSTS
-    ========================== */
-
-    function renderPosts(posts) {
-
-      if (!posts.length) {
-
-        postsGrid.innerHTML = `
-
-          <div class="status-box">
-
-            <div class="status-title">
+            <h3>
               No posts found
-            </div>
+            </h3>
 
-            <div class="status-text">
-              New CakeBuddy updates will appear here.
-            </div>
+            <p>
+              Try another search or category.
+            </p>
 
           </div>
 
@@ -1364,173 +1923,158 @@
 
 
       postsGrid.innerHTML =
-
-        posts.map(
-          (post) => {
-
-            const title =
-              escapeHTML(
-                post.title ||
-                "Untitled Post"
-              );
-
-
-            const category =
-              escapeHTML(
-                post.category ||
-                "General"
-              );
-
-
-            const description =
-              escapeHTML(
-                post.description ||
-                ""
-              );
-
-
-            const image =
-              post.image ||
-              defaultImage;
-
-
-            const date =
-              formatDate(
-                post.createdAt
-              );
-
-
-            return `
-
-              <article class="post-card">
-
-                <div class="post-image-wrap">
-
-                  <img
-                    class="post-image"
-                    src="${image}"
-                    alt="${title}"
-                    loading="lazy"
-                    onerror="this.src='${defaultImage}'"
-                  />
-
-                </div>
-
-
-                <div class="post-content">
-
-                  <span class="post-category">
-                    ${category}
-                  </span>
-
-
-                  <h3 class="post-title">
-                    ${title}
-                  </h3>
-
-
-                  <p class="post-description">
-                    ${description}
-                  </p>
-
-
-                  <div class="post-date">
-                    ${date}
-                  </div>
-
-                </div>
-
-              </article>
-
-            `;
-
-          }
-        ).join("");
+        filteredPosts
+          .map(createPostCard)
+          .join("");
 
     }
 
 
-    /* =========================
-       SEARCH
-    ========================== */
+    /*
+      Load Posts
+    */
 
-    searchInput.addEventListener(
-      "input",
-      function () {
+    async function loadPosts() {
 
-        const search =
-          this.value
-            .trim()
-            .toLowerCase();
+      try {
+
+        let snapshot;
 
 
-        if (!search) {
+        /*
+          First try ordered query
+        */
 
-          renderPosts(
-            allPosts
-          );
+        try {
 
-          return;
+          const postsQuery =
+            query(
+              collection(db, "posts"),
+              orderBy(
+                "createdAt",
+                "desc"
+              )
+            );
+
+          snapshot =
+            await getDocs(postsQuery);
+
+        } catch (orderError) {
+
+          /*
+            Fallback if old posts do not
+            have createdAt
+          */
+
+          snapshot =
+            await getDocs(
+              collection(db, "posts")
+            );
 
         }
 
 
-        const filtered =
-          allPosts.filter(
-            (post) => {
-
-              const title =
-                String(
-                  post.title ||
-                  ""
-                ).toLowerCase();
-
-
-              const category =
-                String(
-                  post.category ||
-                  ""
-                ).toLowerCase();
-
-
-              const description =
-                String(
-                  post.description ||
-                  ""
-                ).toLowerCase();
-
-
-              return (
-
-                title.includes(
-                  search
-                ) ||
-
-                category.includes(
-                  search
-                ) ||
-
-                description.includes(
-                  search
-                )
-
-              );
-
-            }
+        allPosts =
+          snapshot.docs.map(
+            (doc) => ({
+              id: doc.id,
+              ...doc.data()
+            })
           );
 
 
-        renderPosts(
-          filtered
+        renderPosts();
+
+
+      } catch (error) {
+
+        console.error(
+          "Error loading posts:",
+          error
+        );
+
+
+        postCount.textContent =
+          "Error";
+
+
+        postsGrid.innerHTML = `
+
+          <div class="empty-state">
+
+            <div class="empty-state-icon">
+              ⚠️
+            </div>
+
+            <h3>
+              Unable to load posts
+            </h3>
+
+            <p>
+              Please check your Firebase configuration
+              and Firestore rules.
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    /*
+      Search
+    */
+
+    searchInput.addEventListener(
+      "input",
+      renderPosts
+    );
+
+
+    /*
+      Categories
+    */
+
+    categoryButtons.forEach(
+      (button) => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            categoryButtons.forEach(
+              (item) => {
+                item.classList.remove(
+                  "active"
+                );
+              }
+            );
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            currentCategory =
+              button.dataset.category;
+
+
+            renderPosts();
+
+          }
         );
 
       }
     );
 
 
-    /* =========================
-       START
-    ========================== */
+    /*
+      Start
+    */
 
     loadPosts();
 
