@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>CakeBuddy — Cakes, Desserts & Sweet Moments</title>
+  <title>CakeBuddy — Discover Something Delicious</title>
 
   <meta
     name="description"
-    content="Discover cakes, cupcakes, desserts, offers, recipes and sweet moments from CakeBuddy."
+    content="CakeBuddy — Discover cakes, desserts, offers, recipes and sweet moments."
   />
 
   <style>
@@ -18,14 +18,29 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --primary: #111827;
+      --secondary: #6b7280;
+      --accent: #f97316;
+      --accent-dark: #ea580c;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
     }
 
     body {
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: #fafafa;
-      color: #171717;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+      background: var(--bg);
+      color: var(--primary);
       line-height: 1.6;
     }
 
@@ -45,17 +60,21 @@
     }
 
     /* =========================
-       TOP OFFER BAR
+       SPECIAL OFFER BAR
     ========================= */
 
     .offer-bar {
-      background: #171717;
-      color: #fff;
+      background: #111827;
+      color: white;
       text-align: center;
-      padding: 9px 15px;
-      font-size: 13px;
+      padding: 10px 16px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.2px;
+    }
+
+    .offer-bar span {
+      color: #fb923c;
     }
 
     /* =========================
@@ -66,20 +85,18 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid #eeeeee;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
     }
 
-    .header-inner {
-      max-width: 1240px;
+    .nav {
+      max-width: 1280px;
       margin: auto;
-      min-height: 74px;
-      padding: 0 20px;
-
+      padding: 16px 22px;
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 24px;
     }
 
     .logo {
@@ -92,78 +109,83 @@
     }
 
     .logo-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 13px;
-      background: #171717;
-      color: #fff;
-
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: #111827;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      font-weight: 800;
       font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.18);
     }
 
-    .search-box {
+    .search-wrap {
       flex: 1;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 620px;
+      margin: auto;
       position: relative;
     }
 
-    .search-box input {
+    .search-wrap input {
       width: 100%;
-      border: 1px solid #e4e4e4;
-      background: #f7f7f7;
-      border-radius: 14px;
-      padding: 13px 18px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      padding: 13px 18px 13px 45px;
+      border-radius: 999px;
       outline: none;
-      transition: 0.2s;
-      font-size: 14px;
+      transition: 0.25s ease;
     }
 
-    .search-box input:focus {
-      background: #fff;
-      border-color: #171717;
+    .search-wrap input:focus {
+      background: white;
+      border-color: #cbd5e1;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.08);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 17px;
     }
 
     .admin-link {
-      padding: 10px 15px;
-      border: 1px solid #dedede;
-      border-radius: 11px;
-      font-size: 13px;
+      background: #111827;
+      color: white;
+      padding: 11px 17px;
+      border-radius: 12px;
+      font-size: 14px;
       font-weight: 700;
+      transition: 0.25s ease;
       white-space: nowrap;
-      transition: 0.2s;
     }
 
     .admin-link:hover {
-      background: #171717;
-      color: #fff;
-      border-color: #171717;
+      transform: translateY(-2px);
+      background: #1f2937;
     }
 
     /* =========================
-       MINI CATEGORIES
+       CATEGORY BAR
     ========================= */
 
-    .category-wrapper {
-      border-bottom: 1px solid #eeeeee;
-      background: #fff;
+    .category-section {
+      max-width: 1280px;
+      margin: auto;
+      padding: 14px 22px 4px;
     }
 
     .categories {
-      max-width: 1240px;
-      margin: auto;
-      padding: 12px 20px;
-
       display: flex;
       gap: 9px;
       overflow-x: auto;
       scrollbar-width: none;
+      padding-bottom: 8px;
     }
 
     .categories::-webkit-scrollbar {
@@ -171,22 +193,27 @@
     }
 
     .category-btn {
-      flex-shrink: 0;
-      border: 1px solid #e6e6e6;
-      background: #fff;
-      padding: 8px 14px;
+      border: 1px solid var(--border);
+      background: white;
+      color: #475569;
+      padding: 9px 16px;
       border-radius: 999px;
       cursor: pointer;
+      white-space: nowrap;
       font-size: 13px;
       font-weight: 600;
-      transition: 0.2s;
+      transition: 0.25s ease;
     }
 
-    .category-btn:hover,
+    .category-btn:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
     .category-btn.active {
-      background: #171717;
-      color: #fff;
-      border-color: #171717;
+      background: #111827;
+      color: white;
+      border-color: #111827;
     }
 
     /* =========================
@@ -194,93 +221,98 @@
     ========================= */
 
     .hero-section {
-      max-width: 1240px;
-      margin: 28px auto 0;
-      padding: 0 20px;
+      max-width: 1280px;
+      margin: 24px auto 0;
+      padding: 0 22px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-      gap: 16px;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 18px;
     }
 
-    .main-hero {
-      min-height: 430px;
-      border-radius: 25px;
+    .hero-main {
+      min-height: 465px;
+      border-radius: 28px;
       overflow: hidden;
       position: relative;
-
       background-size: cover;
       background-position: center;
-
-      display: flex;
-      align-items: flex-end;
+      box-shadow: var(--shadow);
+      isolation: isolate;
     }
 
-    .main-hero::before {
+    .hero-main::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
         linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.78),
-          rgba(0, 0, 0, 0.05) 65%
+          90deg,
+          rgba(15, 23, 42, 0.84) 0%,
+          rgba(15, 23, 42, 0.52) 42%,
+          rgba(15, 23, 42, 0.12) 100%
         );
+      z-index: -1;
     }
 
     .hero-content {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      padding: 34px;
-      max-width: 600px;
+      min-height: 465px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: white;
     }
 
-    .hero-label {
-      display: inline-block;
-      padding: 7px 11px;
-      border-radius: 999px;
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(12px);
+      padding: 8px 13px;
+      border-radius: 999px;
       font-size: 12px;
-      margin-bottom: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
     }
 
     .hero-content h1 {
-      font-size: clamp(30px, 4vw, 52px);
+      font-size: clamp(34px, 5vw, 64px);
       line-height: 1.05;
-      margin-bottom: 14px;
-      letter-spacing: -1.5px;
+      max-width: 650px;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
     }
 
     .hero-content p {
-      font-size: 15px;
-      opacity: 0.9;
-      max-width: 500px;
-      margin-bottom: 22px;
+      max-width: 570px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 17px;
+      margin-bottom: 28px;
     }
 
     .hero-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-
-      background: #fff;
-      color: #171717;
-
-      padding: 12px 18px;
-      border-radius: 12px;
-
-      font-size: 13px;
+      gap: 9px;
+      background: white;
+      color: #111827;
+      padding: 14px 20px;
+      border-radius: 13px;
       font-weight: 800;
-
-      transition: 0.2s;
+      font-size: 14px;
+      transition: 0.25s ease;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
     }
 
     .hero-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
     }
 
     /* =========================
@@ -290,72 +322,88 @@
     .side-banners {
       display: grid;
       grid-template-rows: repeat(3, 1fr);
-      gap: 16px;
+      gap: 18px;
     }
 
     .side-banner {
-      min-height: 132px;
-      border-radius: 20px;
+      min-height: 143px;
+      border-radius: 22px;
       overflow: hidden;
       position: relative;
-
       background-size: cover;
       background-position: center;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+      transition: 0.3s ease;
+    }
 
-      display: flex;
-      align-items: flex-end;
+    .side-banner:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.13);
     }
 
     .side-banner::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.72),
-        rgba(0, 0, 0, 0.08)
-      );
+      background:
+        linear-gradient(
+          90deg,
+          rgba(15, 23, 42, 0.78),
+          rgba(15, 23, 42, 0.16)
+        );
+      z-index: -1;
     }
 
     .side-content {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      padding: 20px;
+      height: 100%;
+      padding: 21px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
     }
 
-    .side-content small {
-      display: block;
+    .side-small {
       font-size: 11px;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      opacity: 0.8;
-      margin-bottom: 3px;
-    }
-
-    .side-content h3 {
-      font-size: 19px;
-      line-height: 1.15;
+      letter-spacing: 1px;
+      opacity: 0.85;
       margin-bottom: 5px;
     }
 
-    .side-content span {
+    .side-content h3 {
+      font-size: 22px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .side-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(10px);
+      padding: 7px 11px;
+      border-radius: 9px;
       font-size: 12px;
-      opacity: 0.85;
+      font-weight: 700;
     }
 
     /* =========================
-       POSTS
+       POSTS SECTION
     ========================= */
 
     .posts-section {
-      max-width: 1240px;
-      margin: 70px auto 0;
-      padding: 0 20px;
-      scroll-margin-top: 120px;
+      max-width: 1280px;
+      margin: 65px auto 0;
+      padding: 0 22px;
     }
 
-    .section-heading {
+    .section-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -363,117 +411,137 @@
       margin-bottom: 24px;
     }
 
-    .section-heading h2 {
-      font-size: 30px;
-      letter-spacing: -0.8px;
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 6px;
     }
 
-    .section-heading p {
-      color: #777;
+    .section-head h2 {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+
+    .post-count {
+      color: var(--secondary);
       font-size: 14px;
     }
 
-    .post-grid {
+    .posts-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
 
     .post-card {
-      background: #fff;
-      border: 1px solid #ededed;
-      border-radius: 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
       overflow: hidden;
-      transition: 0.25s;
+      transition: 0.3s ease;
     }
 
     .post-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
     }
 
     .post-image {
-      width: 100%;
       height: 210px;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    .post-image img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      background: #f0f0f0;
+      transition: 0.4s ease;
+    }
+
+    .post-card:hover .post-image img {
+      transform: scale(1.05);
     }
 
     .post-content {
       padding: 18px;
     }
 
+    .post-category {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--accent);
+      background: #fff7ed;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 9px;
+    }
+
     .post-content h3 {
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.3;
       margin-bottom: 8px;
     }
 
-    .post-content p {
-      color: #777;
+    .post-description {
+      color: var(--secondary);
       font-size: 13px;
-      line-height: 1.6;
-
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    .post-meta {
-      margin-top: 13px;
-      font-size: 11px;
-      color: #999;
-    }
-
-    /* =========================
-       LOADING / EMPTY
-    ========================= */
-
-    .status-box {
-      padding: 45px 20px;
+    .empty-state {
+      background: white;
+      border: 1px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 50px 20px;
       text-align: center;
-      border: 1px dashed #ddd;
-      border-radius: 18px;
-      color: #777;
-      background: #fff;
+      color: var(--secondary);
+      grid-column: 1 / -1;
     }
 
-    .hidden {
-      display: none !important;
+    .loading {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--secondary);
+      grid-column: 1 / -1;
     }
 
     /* =========================
        DEVELOPER CONNECT
     ========================= */
 
-    .developer-connect {
-      max-width: 1240px;
+    .developer-area {
+      max-width: 1280px;
       margin: 55px auto 0;
-      padding: 0 20px;
-      text-align: right;
+      padding: 0 22px 25px;
+      text-align: center;
     }
 
     .developer-link {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-
-      padding: 8px 12px;
-      border-radius: 9px;
-
-      border: 1px solid #e7e7e7;
-      background: #fff;
-
-      font-size: 11px;
-      color: #777;
-
-      transition: 0.2s;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 700;
+      transition: 0.25s ease;
     }
 
     .developer-link:hover {
-      color: #171717;
-      border-color: #171717;
+      color: #111827;
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
     }
 
     /* =========================
@@ -481,16 +549,15 @@
     ========================= */
 
     footer {
-      margin-top: 18px;
-      border-top: 1px solid #eeeeee;
-      background: #fff;
+      margin-top: 0;
+      background: #111827;
+      color: white;
+      padding: 40px 22px;
     }
 
     .footer-inner {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: auto;
-      padding: 30px 20px;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -498,22 +565,22 @@
     }
 
     .footer-brand {
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 800;
     }
 
     .footer-text {
-      font-size: 12px;
-      color: #888;
+      color: #9ca3af;
+      font-size: 13px;
     }
 
     /* =========================
        RESPONSIVE
     ========================= */
 
-    @media (max-width: 1000px) {
-      .post-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    @media (max-width: 1050px) {
+      .posts-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
 
       .hero-grid {
@@ -522,40 +589,37 @@
 
       .side-banners {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
+        grid-template-rows: 1fr;
       }
 
       .side-banner {
-        min-height: 180px;
+        min-height: 170px;
       }
     }
 
-    @media (max-width: 760px) {
-      .header-inner {
-        min-height: 68px;
-        gap: 10px;
+    @media (max-width: 780px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 12px;
       }
 
-      .logo span {
-        display: none;
-      }
-
-      .logo-icon {
-        width: 38px;
-        height: 38px;
-      }
-
-      .search-box {
+      .search-wrap {
+        order: 3;
+        flex-basis: 100%;
         max-width: none;
       }
 
-      .admin-link {
-        font-size: 11px;
-        padding: 9px 10px;
+      .hero-main,
+      .hero-content {
+        min-height: 430px;
       }
 
-      .main-hero {
-        min-height: 400px;
+      .hero-content {
+        padding: 32px;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
       }
 
       .side-banners {
@@ -563,51 +627,82 @@
       }
 
       .side-banner {
-        min-height: 145px;
+        min-height: 150px;
       }
 
-      .post-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .post-image {
-        height: 180px;
-      }
-
-      .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
+      .posts-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 500px) {
-      .hero-section {
-        margin-top: 18px;
+    @media (max-width: 520px) {
+      .offer-bar {
+        font-size: 12px;
+      }
+
+      .nav {
+        padding: 12px 16px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .admin-link {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .category-section,
+      .hero-section,
+      .posts-section,
+      .developer-area {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero-main,
+      .hero-content {
+        min-height: 400px;
       }
 
       .hero-content {
-        padding: 24px;
+        padding: 26px;
       }
 
       .hero-content h1 {
-        font-size: 32px;
+        font-size: 35px;
+        letter-spacing: -1px;
       }
 
-      .post-grid {
+      .hero-content p {
+        font-size: 14px;
+      }
+
+      .posts-section {
+        margin-top: 45px;
+      }
+
+      .section-head h2 {
+        font-size: 27px;
+      }
+
+      .posts-grid {
         grid-template-columns: 1fr;
       }
 
       .post-image {
-        height: 220px;
+        height: 230px;
       }
 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .developer-connect {
-        text-align: left;
       }
     }
   </style>
@@ -616,32 +711,31 @@
 <body>
 
   <!-- =========================
-       SPECIAL OFFER BAR
-  ========================== -->
+       SPECIAL OFFER
+  ========================= -->
 
   <div class="offer-bar">
-    🔥 Special Offer — Discover something sweet today!
+    🔥 <span>Special Offer</span> — Discover something sweet today!
   </div>
-
 
   <!-- =========================
        HEADER
-  ========================== -->
+  ========================= -->
 
   <header>
-    <div class="header-inner">
+    <nav class="nav">
 
       <a href="./index.html" class="logo">
         <div class="logo-icon">C</div>
         <span>CakeBuddy</span>
       </a>
 
-      <div class="search-box">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
         <input
-          type="search"
+          type="text"
           id="searchInput"
           placeholder="Search cakes, desserts, offers..."
-          autocomplete="off"
         />
       </div>
 
@@ -649,238 +743,203 @@
         Admin
       </a>
 
-    </div>
+    </nav>
   </header>
 
-
   <!-- =========================
-       MINI CATEGORIES
-  ========================== -->
+       CATEGORIES
+  ========================= -->
 
-  <div class="category-wrapper">
-    <nav class="categories">
+  <section class="category-section">
 
-      <button class="category-btn active" data-category="all">
+    <div class="categories">
+
+      <button class="category-btn active" data-category="All">
         All
       </button>
 
-      <button class="category-btn" data-category="cakes">
+      <button class="category-btn" data-category="Cakes">
         Cakes
       </button>
 
-      <button class="category-btn" data-category="cupcakes">
+      <button class="category-btn" data-category="Cupcakes">
         Cupcakes
       </button>
 
-      <button class="category-btn" data-category="desserts">
+      <button class="category-btn" data-category="Desserts">
         Desserts
       </button>
 
-      <button class="category-btn" data-category="chocolate">
+      <button class="category-btn" data-category="Chocolate">
         Chocolate
       </button>
 
-      <button class="category-btn" data-category="gift">
+      <button class="category-btn" data-category="Gift">
         Gift
       </button>
 
-      <button class="category-btn" data-category="offers">
+      <button class="category-btn" data-category="Offers">
         Offers
       </button>
 
-      <button class="category-btn" data-category="updates">
+      <button class="category-btn" data-category="Updates">
         Updates
       </button>
 
-    </nav>
-  </div>
+    </div>
 
+  </section>
 
   <!-- =========================
        HERO
-  ========================== -->
+  ========================= -->
 
-  <main>
+  <section class="hero-section">
 
-    <section class="hero-section">
+    <div class="hero-grid">
 
-      <div class="hero-grid">
+      <!-- MAIN HERO -->
 
-        <!-- MAIN HERO -->
+      <div class="hero-main" id="mainHero">
 
-        <div
-          class="main-hero"
-          id="mainHero"
-        >
+        <div class="hero-content">
 
-          <div class="hero-content">
+          <div class="hero-badge" id="mainHeroBadge">
+            ✨ Welcome to CakeBuddy
+          </div>
 
-            <span class="hero-label" id="heroLabel">
-              CakeBuddy
+          <h1 id="mainHeroTitle">
+            Discover Something Delicious
+          </h1>
+
+          <p id="mainHeroDescription">
+            Explore the latest cakes, offers, announcements,
+            recipes and sweet moments from CakeBuddy.
+          </p>
+
+          <a href="#posts" class="hero-btn" id="mainHeroButton">
+            Explore Posts →
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- SIDE BANNERS -->
+
+      <div class="side-banners">
+
+        <!-- BANNER 1 -->
+
+        <a href="#posts" class="side-banner" id="offerBanner">
+
+          <div class="side-content">
+
+            <div class="side-small" id="offerSmall">
+              Special Offer
+            </div>
+
+            <h3 id="offerTitle">
+              Sweet Deals
+            </h3>
+
+            <span class="side-link" id="offerLink">
+              Explore →
             </span>
-
-            <h1 id="heroTitle">
-              Something sweet is waiting for you.
-            </h1>
-
-            <p id="heroDescription">
-              Discover cakes, offers, recipes, announcements and
-              sweet moments from CakeBuddy.
-            </p>
-
-            <a href="#posts" class="hero-btn">
-              Explore Posts
-              <span>→</span>
-            </a>
 
           </div>
 
-        </div>
+        </a>
 
+        <!-- BANNER 2 -->
 
-        <!-- THREE SIDE BANNERS -->
+        <a href="#posts" class="side-banner" id="chocolateBanner">
 
-        <div class="side-banners">
+          <div class="side-content">
 
-          <!-- SIDE BANNER 1 -->
-
-          <a
-            href="#posts"
-            class="side-banner"
-            id="sideBannerOffer"
-          >
-
-            <div class="side-content">
-
-              <small id="offerSmall">
-                Special Offer
-              </small>
-
-              <h3 id="offerTitle">
-                Sweet Deals
-              </h3>
-
-              <span id="offerLink">
-                Explore now →
-              </span>
-
+            <div class="side-small" id="chocolateSmall">
+              Chocolate
             </div>
 
-          </a>
+            <h3 id="chocolateTitle">
+              Chocolate Moments
+            </h3>
 
+            <span class="side-link" id="chocolateLink">
+              Discover →
+            </span>
 
-          <!-- SIDE BANNER 2 -->
+          </div>
 
-          <a
-            href="#posts"
-            class="side-banner"
-            id="sideBannerChocolate"
-          >
+        </a>
 
-            <div class="side-content">
+        <!-- BANNER 3 -->
 
-              <small id="chocolateSmall">
-                Chocolate
-              </small>
+        <a href="#posts" class="side-banner" id="sweetBanner">
 
-              <h3 id="chocolateTitle">
-                Chocolate Moments
-              </h3>
+          <div class="side-content">
 
-              <span id="chocolateLink">
-                Discover more →
-              </span>
-
+            <div class="side-small" id="sweetSmall">
+              Sweet Moments
             </div>
 
-          </a>
+            <h3 id="sweetTitle">
+              Made for Happy Moments
+            </h3>
 
+            <span class="side-link" id="sweetLink">
+              View More →
+            </span>
 
-          <!-- SIDE BANNER 3 -->
+          </div>
 
-          <a
-            href="#posts"
-            class="side-banner"
-            id="sideBannerSweet"
-          >
-
-            <div class="side-content">
-
-              <small id="sweetSmall">
-                Sweet Moments
-              </small>
-
-              <h3 id="sweetTitle">
-                Made for Every Moment
-              </h3>
-
-              <span id="sweetLink">
-                Explore →
-              </span>
-
-            </div>
-
-          </a>
-
-        </div>
+        </a>
 
       </div>
 
-    </section>
+    </div>
 
+  </section>
 
-    <!-- =========================
-         POSTS
-    ========================== -->
+  <!-- =========================
+       POSTS
+  ========================= -->
 
-    <section
-      class="posts-section"
-      id="posts"
-    >
+  <section class="posts-section" id="posts">
 
-      <div class="section-heading">
+    <div class="section-head">
 
-        <div>
-          <h2>Latest Posts</h2>
-          <p>
-            Discover the latest from CakeBuddy.
-          </p>
+      <div>
+        <div class="section-kicker">
+          CakeBuddy Collection
         </div>
 
+        <h2>
+          Latest Posts
+        </h2>
       </div>
 
+      <div class="post-count" id="postCount">
+        Loading...
+      </div>
 
-      <div
-        id="loadingBox"
-        class="status-box"
-      >
+    </div>
+
+    <div class="posts-grid" id="postsGrid">
+
+      <div class="loading">
         Loading CakeBuddy posts...
       </div>
 
+    </div>
 
-      <div
-        id="emptyBox"
-        class="status-box hidden"
-      >
-        No posts found.
-      </div>
-
-
-      <div
-        id="postGrid"
-        class="post-grid"
-      ></div>
-
-    </section>
-
-  </main>
-
+  </section>
 
   <!-- =========================
        DEVELOPER CONNECT
-  ========================== -->
+  ========================= -->
 
-  <div class="developer-connect">
+  <div class="developer-area">
 
     <a
       href="https://websitesdeal.com"
@@ -893,10 +952,9 @@
 
   </div>
 
-
   <!-- =========================
        FOOTER
-  ========================== -->
+  ========================= -->
 
   <footer>
 
@@ -907,7 +965,7 @@
       </div>
 
       <div class="footer-text">
-        © <span id="currentYear"></span> CakeBuddy. All rights reserved.
+        Discover something delicious.
       </div>
 
     </div>
@@ -917,7 +975,7 @@
 
   <!-- =========================
        FIREBASE
-  ========================== -->
+  ========================= -->
 
   <script type="module">
 
@@ -936,10 +994,9 @@
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-    /* =========================================
+    /* =========================
        FIREBASE CONFIG
-       Replace with YOUR real Firebase config
-    ========================================== */
+    ========================= */
 
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
@@ -951,19 +1008,13 @@
     };
 
 
-    /* =========================================
-       INITIALIZE FIREBASE
-    ========================================== */
-
     const app = initializeApp(firebaseConfig);
-
     const db = getFirestore(app);
 
 
-    /* =========================================
-       DEFAULT BANNER IMAGES
-       These work as FALLBACKS.
-    ========================================== */
+    /* =========================
+       DEFAULT BANNERS
+    ========================= */
 
     const BANNER_IMAGES = {
 
@@ -982,45 +1033,132 @@
     };
 
 
-    /* =========================================
-       DEFAULT BANNER TEXT
-       Also used as FALLBACK.
-    ========================================== */
-
     const BANNER_TEXT = {
-
-      mainHero: {
-        small: "CakeBuddy",
-        title: "Something sweet is waiting for you.",
-        description:
-          "Discover cakes, offers, recipes, announcements and sweet moments from CakeBuddy."
-      },
 
       offer: {
         small: "Special Offer",
         title: "Sweet Deals",
-        link: "Explore now →"
+        link: "Explore →"
       },
 
       chocolate: {
         small: "Chocolate",
         title: "Chocolate Moments",
-        link: "Discover more →"
+        link: "Discover →"
       },
 
       sweet: {
         small: "Sweet Moments",
-        title: "Made for Every Moment",
-        link: "Explore →"
+        title: "Made for Happy Moments",
+        link: "View More →"
       }
 
     };
 
 
-    /* =========================================
-       HTML ESCAPE
-       Helps safely display Firebase text.
-    ========================================== */
+    /* =========================
+       APPLY BANNER SETTINGS
+    ========================= */
+
+    function applyBannerSettings(data) {
+
+      const mainHero = document.getElementById("mainHero");
+
+      const offerBanner =
+        document.getElementById("offerBanner");
+
+      const chocolateBanner =
+        document.getElementById("chocolateBanner");
+
+      const sweetBanner =
+        document.getElementById("sweetBanner");
+
+
+      mainHero.style.backgroundImage =
+        `url("${data?.mainHero || BANNER_IMAGES.mainHero}")`;
+
+
+      offerBanner.style.backgroundImage =
+        `url("${data?.offer?.image || BANNER_IMAGES.offer}")`;
+
+      chocolateBanner.style.backgroundImage =
+        `url("${data?.chocolate?.image || BANNER_IMAGES.chocolate}")`;
+
+      sweetBanner.style.backgroundImage =
+        `url("${data?.sweet?.image || BANNER_IMAGES.sweet}")`;
+
+
+      document.getElementById("offerSmall").textContent =
+        data?.offer?.small || BANNER_TEXT.offer.small;
+
+      document.getElementById("offerTitle").textContent =
+        data?.offer?.title || BANNER_TEXT.offer.title;
+
+      document.getElementById("offerLink").textContent =
+        data?.offer?.link || BANNER_TEXT.offer.link;
+
+
+      document.getElementById("chocolateSmall").textContent =
+        data?.chocolate?.small || BANNER_TEXT.chocolate.small;
+
+      document.getElementById("chocolateTitle").textContent =
+        data?.chocolate?.title || BANNER_TEXT.chocolate.title;
+
+      document.getElementById("chocolateLink").textContent =
+        data?.chocolate?.link || BANNER_TEXT.chocolate.link;
+
+
+      document.getElementById("sweetSmall").textContent =
+        data?.sweet?.small || BANNER_TEXT.sweet.small;
+
+      document.getElementById("sweetTitle").textContent =
+        data?.sweet?.title || BANNER_TEXT.sweet.title;
+
+      document.getElementById("sweetLink").textContent =
+        data?.sweet?.link || BANNER_TEXT.sweet.link;
+
+    }
+
+
+    /* =========================
+       LOAD BANNER SETTINGS
+    ========================= */
+
+    async function loadBannerSettings() {
+
+      applyBannerSettings({});
+
+      try {
+
+        const bannerRef =
+          doc(db, "homepage", "banners");
+
+        const bannerSnapshot =
+          await getDoc(bannerRef);
+
+        if (bannerSnapshot.exists()) {
+
+          applyBannerSettings(
+            bannerSnapshot.data()
+          );
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Banner settings unavailable. Using default banners.",
+          error
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       ESCAPE HTML
+    ========================= */
 
     function escapeHTML(value) {
 
@@ -1034,272 +1172,39 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-    }
-
-
-    /* =========================================
-       APPLY BANNER SETTINGS
-    ========================================== */
-
-    function applyBannerSettings(data) {
-
-      /* ---------- Main Hero ---------- */
-
-      const mainHero =
-        document.getElementById("mainHero");
-
-      const heroLabel =
-        document.getElementById("heroLabel");
-
-      const heroTitle =
-        document.getElementById("heroTitle");
-
-      const heroDescription =
-        document.getElementById("heroDescription");
-
-
-      const mainHeroImage =
-        data?.mainHero ||
-        BANNER_IMAGES.mainHero;
-
-      mainHero.style.backgroundImage =
-        `url("${mainHeroImage}")`;
-
-
-      heroLabel.textContent =
-        data?.mainHeroText?.small ||
-        BANNER_TEXT.mainHero.small;
-
-
-      heroTitle.textContent =
-        data?.mainHeroText?.title ||
-        BANNER_TEXT.mainHero.title;
-
-
-      heroDescription.textContent =
-        data?.mainHeroText?.description ||
-        BANNER_TEXT.mainHero.description;
-
-
-      /* =====================================
-         SIDE BANNER 1
-      ====================================== */
-
-      const offer =
-        data?.offer || {};
-
-      const sideBannerOffer =
-        document.getElementById("sideBannerOffer");
-
-      sideBannerOffer.style.backgroundImage =
-        `url("${offer.image || BANNER_IMAGES.offer}")`;
-
-
-      document.getElementById("offerSmall").textContent =
-        offer.small ||
-        BANNER_TEXT.offer.small;
-
-
-      document.getElementById("offerTitle").textContent =
-        offer.title ||
-        BANNER_TEXT.offer.title;
-
-
-      document.getElementById("offerLink").textContent =
-        offer.link ||
-        BANNER_TEXT.offer.link;
-
-
-      if (offer.url) {
-        sideBannerOffer.href = offer.url;
-      } else {
-        sideBannerOffer.href = "#posts";
-      }
-
-
-      /* =====================================
-         SIDE BANNER 2
-      ====================================== */
-
-      const chocolate =
-        data?.chocolate || {};
-
-      const sideBannerChocolate =
-        document.getElementById("sideBannerChocolate");
-
-      sideBannerChocolate.style.backgroundImage =
-        `url("${chocolate.image || BANNER_IMAGES.chocolate}")`;
-
-
-      document.getElementById("chocolateSmall").textContent =
-        chocolate.small ||
-        BANNER_TEXT.chocolate.small;
-
-
-      document.getElementById("chocolateTitle").textContent =
-        chocolate.title ||
-        BANNER_TEXT.chocolate.title;
-
-
-      document.getElementById("chocolateLink").textContent =
-        chocolate.link ||
-        BANNER_TEXT.chocolate.link;
-
-
-      if (chocolate.url) {
-        sideBannerChocolate.href = chocolate.url;
-      } else {
-        sideBannerChocolate.href = "#posts";
-      }
-
-
-      /* =====================================
-         SIDE BANNER 3
-      ====================================== */
-
-      const sweet =
-        data?.sweet || {};
-
-      const sideBannerSweet =
-        document.getElementById("sideBannerSweet");
-
-      sideBannerSweet.style.backgroundImage =
-        `url("${sweet.image || BANNER_IMAGES.sweet}")`;
-
-
-      document.getElementById("sweetSmall").textContent =
-        sweet.small ||
-        BANNER_TEXT.sweet.small;
-
-
-      document.getElementById("sweetTitle").textContent =
-        sweet.title ||
-        BANNER_TEXT.sweet.title;
-
-
-      document.getElementById("sweetLink").textContent =
-        sweet.link ||
-        BANNER_TEXT.sweet.link;
-
-
-      if (sweet.url) {
-        sideBannerSweet.href = sweet.url;
-      } else {
-        sideBannerSweet.href = "#posts";
-      }
 
     }
 
 
-    /* =========================================
-       LOAD BANNERS FROM FIRESTORE
-    ========================================== */
-
-    async function loadBannerSettings() {
-
-      try {
-
-        /*
-          Firestore path:
-
-          homepage
-             └── banners
-        */
-
-        const bannerRef =
-          doc(db, "homepage", "banners");
-
-
-        const bannerSnapshot =
-          await getDoc(bannerRef);
-
-
-        if (bannerSnapshot.exists()) {
-
-          const bannerData =
-            bannerSnapshot.data();
-
-          console.log(
-            "Firebase banner settings loaded:",
-            bannerData
-          );
-
-          applyBannerSettings(bannerData);
-
-        } else {
-
-          console.log(
-            "No Firebase banner settings found. Using defaults."
-          );
-
-          applyBannerSettings({});
-
-        }
-
-      } catch (error) {
-
-        console.error(
-          "Banner settings error:",
-          error
-        );
-
-        /*
-          IMPORTANT:
-
-          If Firebase fails,
-          homepage will still work
-          using default banners.
-        */
-
-        applyBannerSettings({});
-
-      }
-
-    }
-
-
-    /* =========================================
-       POSTS
-    ========================================== */
-
-    const postGrid =
-      document.getElementById("postGrid");
-
-    const loadingBox =
-      document.getElementById("loadingBox");
-
-    const emptyBox =
-      document.getElementById("emptyBox");
-
-    const searchInput =
-      document.getElementById("searchInput");
+    /* =========================
+       POSTS DATA
+    ========================= */
 
     let allPosts = [];
 
-    let selectedCategory = "all";
+    let activeCategory = "All";
+
+    let searchText = "";
 
 
-    /* =========================================
+    /* =========================
        LOAD POSTS
-    ========================================== */
+    ========================= */
 
     async function loadPosts() {
 
-      loadingBox.classList.remove("hidden");
+      const postsGrid =
+        document.getElementById("postsGrid");
 
-      emptyBox.classList.add("hidden");
-
-      postGrid.innerHTML = "";
-
+      const postCount =
+        document.getElementById("postCount");
 
       try {
 
         const postsRef =
           collection(db, "posts");
 
-
         let snapshot;
-
 
         try {
 
@@ -1312,11 +1217,10 @@
           snapshot =
             await getDocs(postsQuery);
 
-        } catch (orderError) {
+        } catch (error) {
 
-          console.warn(
-            "createdAt ordering failed. Loading without ordering.",
-            orderError
+          console.log(
+            "Ordered query failed. Loading posts without ordering."
           );
 
           snapshot =
@@ -1325,297 +1229,204 @@
         }
 
 
-        allPosts =
-          snapshot.docs.map(
-            document => ({
+        allPosts = [];
 
-              id: document.id,
+        snapshot.forEach((docSnap) => {
 
-              ...document.data()
+          allPosts.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
 
-            })
-          );
+        });
 
-
-        loadingBox.classList.add("hidden");
 
         renderPosts();
 
       } catch (error) {
 
-        console.error(
-          "Posts loading error:",
-          error
-        );
+        console.error(error);
 
-        loadingBox.classList.add("hidden");
+        postsGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>Unable to load posts</h3>
+            <p>Please check your Firebase configuration and Firestore rules.</p>
+          </div>
+        `;
 
-        postGrid.innerHTML = "";
-
-        emptyBox.classList.remove("hidden");
-
-        emptyBox.textContent =
-          "Unable to load posts right now.";
+        postCount.textContent = "0 Posts";
 
       }
 
     }
 
 
-    /* =========================================
-       GET POST IMAGE
-    ========================================== */
-
-    function getPostImage(post) {
-
-      return (
-        post.imageUrl ||
-        post.imageURL ||
-        post.image ||
-        "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
-      );
-
-    }
-
-
-    /* =========================================
-       FORMAT DATE
-    ========================================== */
-
-    function formatDate(timestamp) {
-
-      if (!timestamp) {
-        return "";
-      }
-
-      try {
-
-        const date =
-          timestamp.toDate
-            ? timestamp.toDate()
-            : new Date(timestamp);
-
-        return date.toLocaleDateString(
-          "en-US",
-          {
-            year: "numeric",
-            month: "short",
-            day: "numeric"
-          }
-        );
-
-      } catch (error) {
-
-        return "";
-
-      }
-
-    }
-
-
-    /* =========================================
-       FILTER + RENDER POSTS
-    ========================================== */
+    /* =========================
+       RENDER POSTS
+    ========================= */
 
     function renderPosts() {
 
-      const searchTerm =
-        searchInput.value
-          .trim()
-          .toLowerCase();
+      const postsGrid =
+        document.getElementById("postsGrid");
+
+      const postCount =
+        document.getElementById("postCount");
 
 
-      const filteredPosts =
-        allPosts.filter(post => {
+      let filteredPosts =
+        allPosts.filter((post) => {
 
           const title =
-            String(post.title || "")
-              .toLowerCase();
+            String(post.title || "").toLowerCase();
 
           const description =
-            String(post.description || "")
-              .toLowerCase();
+            String(post.description || "").toLowerCase();
 
           const category =
-            String(
-              post.category ||
-              post.type ||
-              ""
-            ).toLowerCase();
+            String(post.category || "").toLowerCase();
 
 
           const matchesSearch =
-            !searchTerm ||
-            title.includes(searchTerm) ||
-            description.includes(searchTerm) ||
-            category.includes(searchTerm);
+            !searchText ||
+            title.includes(searchText) ||
+            description.includes(searchText) ||
+            category.includes(searchText);
 
 
           const matchesCategory =
-            selectedCategory === "all" ||
-            category.includes(selectedCategory);
+            activeCategory === "All" ||
+            category === activeCategory.toLowerCase();
 
 
-          return (
-            matchesSearch &&
-            matchesCategory
-          );
+          return matchesSearch && matchesCategory;
 
         });
 
 
-      postGrid.innerHTML = "";
+      postCount.textContent =
+        `${filteredPosts.length} Post${filteredPosts.length !== 1 ? "s" : ""}`;
 
 
-      if (filteredPosts.length === 0) {
+      if (!filteredPosts.length) {
 
-        emptyBox.classList.remove("hidden");
-
-        emptyBox.textContent =
-          "No posts found.";
+        postsGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>No posts found</h3>
+            <p>Try another search or category.</p>
+          </div>
+        `;
 
         return;
 
       }
 
 
-      emptyBox.classList.add("hidden");
+      postsGrid.innerHTML =
+        filteredPosts.map((post) => {
+
+          const image =
+            post.imageUrl ||
+            post.imageURL ||
+            post.image ||
+            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80";
 
 
-      filteredPosts.forEach(post => {
-
-        const card =
-          document.createElement("article");
-
-        card.className =
-          "post-card";
+          const category =
+            post.category ||
+            "CakeBuddy";
 
 
-        const title =
-          escapeHTML(
-            post.title ||
-            "Untitled Post"
-          );
+          return `
 
+            <article class="post-card">
 
-        const description =
-          escapeHTML(
-            post.description ||
-            "Discover more from CakeBuddy."
-          );
+              <div class="post-image">
 
+                <img
+                  src="${escapeHTML(image)}"
+                  alt="${escapeHTML(post.title || "CakeBuddy Post")}"
+                  loading="lazy"
+                  onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80';"
+                />
 
-        const image =
-          getPostImage(post);
+              </div>
 
+              <div class="post-content">
 
-        const date =
-          formatDate(post.createdAt);
+                <span class="post-category">
+                  ${escapeHTML(category)}
+                </span>
 
+                <h3>
+                  ${escapeHTML(post.title || "Untitled Post")}
+                </h3>
 
-        card.innerHTML = `
+                <p class="post-description">
+                  ${escapeHTML(post.description || "Discover something delicious from CakeBuddy.")}
+                </p>
 
-          <img
-            class="post-image"
-            src="${image}"
-            alt="${title}"
-            loading="lazy"
-            onerror="
-              this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80'
-            "
-          />
+              </div>
 
-          <div class="post-content">
+            </article>
 
-            <h3>
-              ${title}
-            </h3>
+          `;
 
-            <p>
-              ${description}
-            </p>
-
-            ${
-              date
-                ? `<div class="post-meta">${date}</div>`
-                : ""
-            }
-
-          </div>
-
-        `;
-
-
-        postGrid.appendChild(card);
-
-      });
+        }).join("");
 
     }
 
 
-    /* =========================================
+    /* =========================
        SEARCH
-    ========================================== */
-
-    searchInput.addEventListener(
-      "input",
-      renderPosts
-    );
-
-
-    /* =========================================
-       CATEGORY FILTER
-    ========================================== */
+    ========================= */
 
     document
-      .querySelectorAll(".category-btn")
-      .forEach(button => {
+      .getElementById("searchInput")
+      .addEventListener("input", function () {
 
-        button.addEventListener(
-          "click",
-          () => {
+        searchText =
+          this.value.trim().toLowerCase();
 
-            document
-              .querySelectorAll(".category-btn")
-              .forEach(btn => {
-
-                btn.classList.remove(
-                  "active"
-                );
-
-              });
-
-
-            button.classList.add(
-              "active"
-            );
-
-
-            selectedCategory =
-              button.dataset.category;
-
-
-            renderPosts();
-
-          }
-        );
+        renderPosts();
 
       });
 
 
-    /* =========================================
-       YEAR
-    ========================================== */
+    /* =========================
+       CATEGORY FILTER
+    ========================= */
 
-    document.getElementById(
-      "currentYear"
-    ).textContent =
-      new Date().getFullYear();
+    document
+      .querySelectorAll(".category-btn")
+      .forEach((button) => {
+
+        button.addEventListener("click", function () {
+
+          document
+            .querySelectorAll(".category-btn")
+            .forEach((btn) => {
+
+              btn.classList.remove("active");
+
+            });
 
 
-    /* =========================================
-       START WEBSITE
-    ========================================== */
+          this.classList.add("active");
+
+          activeCategory =
+            this.dataset.category;
+
+          renderPosts();
+
+        });
+
+      });
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
 
     loadBannerSettings();
 
