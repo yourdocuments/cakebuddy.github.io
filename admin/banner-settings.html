@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Banner Settings — CakeBuddy Admin</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f6f6;
+      color: #171717;
+    }
+
+    .topbar {
+      background: #111;
+      color: #fff;
+      padding: 18px 25px;
+    }
+
+    .topbar-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .back-btn {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #555;
+      padding: 9px 13px;
+      border-radius: 9px;
+      font-size: 13px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .page-heading {
+      margin-bottom: 25px;
+    }
+
+    .page-heading h1 {
+      font-size: 32px;
+      margin-bottom: 7px;
+    }
+
+    .page-heading p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .card-description {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 13px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #111;
+    }
+
+    .preview {
+      width: 100%;
+      height: 210px;
+      border-radius: 14px;
+      background: #eee center/cover no-repeat;
+      margin-top: 12px;
+      border: 1px solid #eee;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .save-area {
+      position: sticky;
+      bottom: 15px;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .status {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .save-btn {
+      border: none;
+      background: #111;
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .save-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      padding: 13px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .message.success {
+      display: block;
+      background: #eaf8ef;
+      color: #16703a;
+    }
+
+    .message.error {
+      display: block;
+      background: #fff0f0;
+      color: #a40000;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .page-heading h1 {
+        font-size: 27px;
+      }
+
+      .save-area {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .save-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+
+      <div class="brand">
+        CakeBuddy Admin
+      </div>
+
+      <a href="./dashboard.html" class="back-btn">
+        ← Dashboard
+      </a>
+
+    </div>
+  </div>
+
+
+  <main class="container">
+
+    <div class="page-heading">
+
+      <h1>Banner Settings</h1>
+
+      <p>
+        এখান থেকে CakeBuddy Homepage-এর ৪টি banner control করতে পারবেন।
+      </p>
+
+    </div>
+
+
+    <div id="message" class="message"></div>
+
+
+    <!-- MAIN HERO -->
+
+    <div class="card">
+
+      <h2>🖼️ Main Hero Banner</h2>
+
+      <p class="card-description">
+        Homepage-এর বড় main banner।
+      </p>
+
+      <div class="field">
+
+        <label for="mainHero">
+          Main Hero Image URL
+        </label>
+
+        <input
+          type="url"
+          id="mainHero"
+          placeholder="https://example.com/main-banner.jpg"
+        >
+
+        <div
+          class="preview"
+          id="mainHeroPreview"
+        ></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SIDE BANNERS -->
+
+    <div class="card">
+
+      <h2>🎯 Side Banners</h2>
+
+      <p class="card-description">
+        Homepage-এর ৩টি ছোট banner।
+      </p>
+
+
+      <div class="grid">
+
+        <!-- SIDE 1 -->
+
+        <div>
+
+          <div class="field">
+
+            <label>
+              Side Banner 1 — Image URL
+            </label>
+
+            <input
+              type="url"
+              id="offer"
+              placeholder="https://example.com/offer.jpg"
+            >
+
+            <div
+              class="preview"
+              id="offerPreview"
+            ></div>
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Small Text
+            </label>
+
+            <input
+              type="text"
+              id="offerSmall"
+              placeholder="CakeBuddy"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Title
+            </label>
+
+            <input
+              type="text"
+              id="offerTitle"
+              placeholder="Special Offer"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Link Text
+            </label>
+
+            <input
+              type="text"
+              id="offerLink"
+              placeholder="Explore →"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- SIDE 2 -->
+
+        <div>
+
+          <div class="field">
+
+            <label>
+              Side Banner 2 — Image URL
+            </label>
+
+            <input
+              type="url"
+              id="chocolate"
+              placeholder="https://example.com/chocolate.jpg"
+            >
+
+            <div
+              class="preview"
+              id="chocolatePreview"
+            ></div>
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Small Text
+            </label>
+
+            <input
+              type="text"
+              id="chocolateSmall"
+              placeholder="Chocolate"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Title
+            </label>
+
+            <input
+              type="text"
+              id="chocolateTitle"
+              placeholder="Chocolate Moments"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Link Text
+            </label>
+
+            <input
+              type="text"
+              id="chocolateLink"
+              placeholder="Discover →"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- SIDE 3 -->
+
+        <div>
+
+          <div class="field">
+
+            <label>
+              Side Banner 3 — Image URL
+            </label>
+
+            <input
+              type="url"
+              id="sweet"
+              placeholder="https://example.com/sweet.jpg"
+            >
+
+            <div
+              class="preview"
+              id="sweetPreview"
+            ></div>
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Small Text
+            </label>
+
+            <input
+              type="text"
+              id="sweetSmall"
+              placeholder="CakeBuddy"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Title
+            </label>
+
+            <input
+              type="text"
+              id="sweetTitle"
+              placeholder="Sweet Moments"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Link Text
+            </label>
+
+            <input
+              type="text"
+              id="sweetLink"
+              placeholder="View More →"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SAVE -->
+
+    <div class="save-area">
+
+      <div class="status" id="status">
+        Ready
+      </div>
+
+      <button
+        class="save-btn"
+        id="saveBtn"
+      >
+        Save Banner Settings
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+    /* =========================
+       FIREBASE CONFIG
+    ========================== */
+
+    const firebaseConfig = {
+
+      apiKey: "YOUR_API_KEY",
+
+      authDomain: "cakebuddymb.firebaseapp.com",
+
+      projectId: "cakebuddymb",
+
+      storageBucket: "cakebuddymb.firebasestorage.app",
+
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+
+      appId: "YOUR_APP_ID"
+
+    };
+
+
+    const app =
+      initializeApp(firebaseConfig);
+
+    const db =
+      getFirestore(app);
+
+    const auth =
+      getAuth(app);
+
+
+    /* =========================
+       ELEMENTS
+    ========================== */
+
+    const message =
+      document.getElementById("message");
+
+    const status =
+      document.getElementById("status");
+
+    const saveBtn =
+      document.getElementById("saveBtn");
+
+
+    /* =========================
+       SHOW MESSAGE
+    ========================== */
+
+    function showMessage(text, type) {
+
+      message.textContent = text;
+
+      message.className =
+        "message " + type;
+
+    }
+
+
+    /* =========================
+       PREVIEW
+    ========================== */
+
+    function updatePreview(inputId, previewId) {
+
+      const input =
+        document.getElementById(inputId);
+
+      const preview =
+        document.getElementById(previewId);
+
+
+      function render() {
+
+        const url =
+          input.value.trim();
+
+        if (url) {
+
+          preview.style.backgroundImage =
+            `url("${url}")`;
+
+        } else {
+
+          preview.style.backgroundImage =
+            "none";
+
+        }
+
+      }
+
+
+      input.addEventListener(
+        "input",
+        render
+      );
+
+      render();
+
+    }
+
+
+    updatePreview(
+      "mainHero",
+      "mainHeroPreview"
+    );
+
+    updatePreview(
+      "offer",
+      "offerPreview"
+    );
+
+    updatePreview(
+      "chocolate",
+      "chocolatePreview"
+    );
+
+    updatePreview(
+      "sweet",
+      "sweetPreview"
+    );
+
+
+    /* =========================
+       LOAD SETTINGS
+    ========================== */
+
+    async function loadSettings() {
+
+      try {
+
+        status.textContent =
+          "Loading settings...";
+
+        const ref =
+          doc(
+            db,
+            "homepage",
+            "banners"
+          );
+
+        const snapshot =
+          await getDoc(ref);
+
+
+        if (snapshot.exists()) {
+
+          const data =
+            snapshot.data();
+
+
+          document.getElementById(
+            "mainHero"
+          ).value =
+            data.mainHero || "";
+
+
+          document.getElementById(
+            "offer"
+          ).value =
+            data.offer?.image || "";
+
+
+          document.getElementById(
+            "offerSmall"
+          ).value =
+            data.offer?.small || "CakeBuddy";
+
+
+          document.getElementById(
+            "offerTitle"
+          ).value =
+            data.offer?.title || "Special Offer";
+
+
+          document.getElementById(
+            "offerLink"
+          ).value =
+            data.offer?.link || "Explore →";
+
+
+          document.getElementById(
+            "chocolate"
+          ).value =
+            data.chocolate?.image || "";
+
+
+          document.getElementById(
+            "chocolateSmall"
+          ).value =
+            data.chocolate?.small || "Chocolate";
+
+
+          document.getElementById(
+            "chocolateTitle"
+          ).value =
+            data.chocolate?.title ||
+            "Chocolate Moments";
+
+
+          document.getElementById(
+            "chocolateLink"
+          ).value =
+            data.chocolate?.link ||
+            "Discover →";
+
+
+          document.getElementById(
+            "sweet"
+          ).value =
+            data.sweet?.image || "";
+
+
+          document.getElementById(
+            "sweetSmall"
+          ).value =
+            data.sweet?.small || "CakeBuddy";
+
+
+          document.getElementById(
+            "sweetTitle"
+          ).value =
+            data.sweet?.title ||
+            "Sweet Moments";
+
+
+          document.getElementById(
+            "sweetLink"
+          ).value =
+            data.sweet?.link ||
+            "View More →";
+
+        }
+
+
+        /* Refresh previews */
+
+        document
+          .getElementById("mainHero")
+          .dispatchEvent(
+            new Event("input")
+          );
+
+        document
+          .getElementById("offer")
+          .dispatchEvent(
+            new Event("input")
+          );
+
+        document
+          .getElementById("chocolate")
+          .dispatchEvent(
+            new Event("input")
+          );
+
+        document
+          .getElementById("sweet")
+          .dispatchEvent(
+            new Event("input")
+          );
+
+
+        status.textContent =
+          "Settings loaded";
+
+      } catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+          "Unable to load settings";
+
+        showMessage(
+          "Settings load করতে সমস্যা হয়েছে। Firebase config এবং Firestore check করুন।",
+          "error"
+        );
+
+      }
+
+    }
+
+
+    /* =========================
+       SAVE SETTINGS
+    ========================== */
+
+    async function saveSettings() {
+
+      saveBtn.disabled = true;
+
+      status.textContent =
+        "Saving...";
+
+
+      try {
+
+        const bannerData = {
+
+          mainHero:
+            document
+              .getElementById("mainHero")
+              .value
+              .trim(),
+
+
+          offer: {
+
+            image:
+              document
+                .getElementById("offer")
+                .value
+                .trim(),
+
+            small:
+              document
+                .getElementById("offerSmall")
+                .value
+                .trim(),
+
+            title:
+              document
+                .getElementById("offerTitle")
+                .value
+                .trim(),
+
+            link:
+              document
+                .getElementById("offerLink")
+                .value
+                .trim()
+
+          },
+
+
+          chocolate: {
+
+            image:
+              document
+                .getElementById("chocolate")
+                .value
+                .trim(),
+
+            small:
+              document
+                .getElementById("chocolateSmall")
+                .value
+                .trim(),
+
+            title:
+              document
+                .getElementById("chocolateTitle")
+                .value
+                .trim(),
+
+            link:
+              document
+                .getElementById("chocolateLink")
+                .value
+                .trim()
+
+          },
+
+
+          sweet: {
+
+            image:
+              document
+                .getElementById("sweet")
+                .value
+                .trim(),
+
+            small:
+              document
+                .getElementById("sweetSmall")
+                .value
+                .trim(),
+
+            title:
+              document
+                .getElementById("sweetTitle")
+                .value
+                .trim(),
+
+            link:
+              document
+                .getElementById("sweetLink")
+                .value
+                .trim()
+
+          },
+
+
+          updatedAt:
+            serverTimestamp(),
+
+          updatedBy:
+            auth.currentUser?.email || ""
+
+        };
+
+
+        const ref =
+          doc(
+            db,
+            "homepage",
+            "banners"
+          );
+
+
+        await setDoc(
+          ref,
+          bannerData
+        );
+
+
+        status.textContent =
+          "Saved successfully";
+
+        showMessage(
+          "✅ Banner settings successfully saved!",
+          "success"
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        status.textContent =
+          "Save failed";
+
+        showMessage(
+          "❌ Save করতে সমস্যা হয়েছে: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+
+      saveBtn.disabled = false;
+
+    }
+
+
+    saveBtn.addEventListener(
+      "click",
+      saveSettings
+    );
+
+
+    /* =========================
+       AUTH CHECK
+    ========================== */
+
+    onAuthStateChanged(
+      auth,
+      user => {
+
+        if (!user) {
+
+          window.location.href =
+            "../admin.html";
+
+          return;
+
+        }
+
+
+        loadSettings();
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
