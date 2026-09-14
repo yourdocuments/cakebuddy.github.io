@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CakeBuddy — Admin Dashboard</title>
+  <title>Dashboard | CakeBuddy</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-      background: #f6f6f7;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+      background: #f6f7f9;
       color: #202223;
     }
 
@@ -25,602 +25,618 @@
       font: inherit;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* =========================
-       LAYOUT
-    ========================== */
-
-    .admin-layout {
-      display: flex;
-      min-height: 100vh;
-    }
-
     /* =========================
        SIDEBAR
-    ========================== */
+    ========================= */
 
     .sidebar {
-      width: 250px;
-      background: #ffffff;
-      border-right: 1px solid #e1e3e5;
       position: fixed;
       left: 0;
       top: 0;
       bottom: 0;
+      width: 245px;
+      background: #ffffff;
+      border-right: 1px solid #e1e3e5;
+      padding: 22px 15px;
       z-index: 100;
       display: flex;
       flex-direction: column;
     }
 
     .brand {
-      height: 72px;
-      padding: 0 22px;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #e1e3e5;
+      gap: 11px;
+      padding: 4px 10px 27px;
+      font-size: 20px;
+      font-weight: 750;
     }
 
     .brand-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: #111827;
-      color: white;
+      width: 39px;
+      height: 39px;
+      border-radius: 11px;
+      background: #111111;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      margin-right: 11px;
+      font-size: 19px;
     }
 
-    .brand-text h2 {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-
-    .brand-text span {
-      display: block;
-      font-size: 11px;
-      color: #6d7175;
-      margin-top: 2px;
-    }
-
-    .menu {
-      padding: 20px 12px;
-      flex: 1;
-    }
-
-    .menu-title {
-      font-size: 11px;
-      font-weight: 700;
-      color: #8c9196;
-      text-transform: uppercase;
-      padding: 0 12px;
+    .menu-label {
+      padding: 0 11px;
       margin-bottom: 8px;
-      letter-spacing: .7px;
+      font-size: 10px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a8f93;
     }
 
-    .menu-item {
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #505458;
+      padding: 11px 12px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 11px 13px;
-      margin-bottom: 4px;
-      border-radius: 8px;
+      gap: 11px;
       font-size: 14px;
-      color: #42474c;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .menu-item:hover {
-      background: #f1f2f3;
-    }
-
-    .menu-item.active {
-      background: #f1f2f3;
-      color: #111827;
       font-weight: 600;
+      transition: 0.2s;
     }
 
-    .menu-icon {
+    .nav a:hover {
+      background: #f1f2f3;
+      color: #111111;
+    }
+
+    .nav a.active {
+      background: #f1f2f3;
+      color: #111111;
+    }
+
+    .nav-icon {
       width: 20px;
       text-align: center;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .sidebar-bottom {
-      padding: 14px;
-      border-top: 1px solid #e1e3e5;
+      margin-top: auto;
     }
 
-    .admin-mini {
+    .admin-profile {
+      border-top: 1px solid #e1e3e5;
+      padding: 17px 10px 8px;
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 9px;
-      border-radius: 8px;
-      margin-bottom: 8px;
     }
 
     .avatar {
-      width: 34px;
-      height: 34px;
+      width: 37px;
+      height: 37px;
       border-radius: 50%;
-      background: #111827;
-      color: #fff;
+      background: #111111;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 14px;
       font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .profile-text {
+      min-width: 0;
+    }
+
+    .profile-name {
       font-size: 13px;
+      font-weight: 700;
     }
 
-    .admin-info {
-      overflow: hidden;
-    }
-
-    .admin-info strong {
-      display: block;
-      font-size: 12px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .admin-info span {
-      display: block;
+    .profile-role {
       font-size: 11px;
-      color: #8c9196;
+      color: #8a8f93;
       margin-top: 2px;
     }
 
     .logout-btn {
       width: 100%;
+      margin-top: 10px;
       border: 1px solid #e1e3e5;
-      background: #fff;
-      border-radius: 7px;
+      background: #ffffff;
+      color: #505458;
+      border-radius: 8px;
       padding: 9px;
       cursor: pointer;
       font-size: 13px;
-      color: #42474c;
-      transition: .2s;
+      font-weight: 600;
     }
 
     .logout-btn:hover {
-      background: #f6f6f7;
+      background: #fff2f2;
+      color: #c62828;
+      border-color: #ffd5d5;
+    }
+
+    /* =========================
+       MOBILE TOPBAR
+    ========================= */
+
+    .mobile-topbar {
+      display: none;
+      height: 62px;
+      background: #ffffff;
+      border-bottom: 1px solid #e1e3e5;
+      padding: 0 16px;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 750;
+      font-size: 18px;
+    }
+
+    .mobile-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: #111111;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* =========================
        MAIN
-    ========================== */
+    ========================= */
 
     .main {
-      margin-left: 250px;
-      width: calc(100% - 250px);
+      margin-left: 245px;
       min-height: 100vh;
     }
 
-    /* =========================
-       TOPBAR
-    ========================== */
+    .content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 34px 34px 60px;
+    }
 
-    .topbar {
-      height: 72px;
-      background: #ffffff;
-      border-bottom: 1px solid #e1e3e5;
+    .top-heading {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0 30px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 28px;
     }
 
-    .page-title h1 {
-      font-size: 20px;
-      font-weight: 650;
-      letter-spacing: -0.4px;
+    .heading h1 {
+      font-size: 30px;
+      letter-spacing: -0.7px;
+      margin-bottom: 6px;
     }
 
-    .page-title p {
-      font-size: 12px;
+    .heading p {
       color: #6d7175;
-      margin-top: 3px;
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 14px;
     }
 
     .view-site {
-      border: 1px solid #d2d5d8;
-      background: white;
-      padding: 9px 14px;
-      border-radius: 7px;
+      text-decoration: none;
+      border: 1px solid #c9cdd1;
+      background: #ffffff;
+      color: #303236;
+      padding: 10px 15px;
+      border-radius: 8px;
       font-size: 13px;
-      cursor: pointer;
-      transition: .2s;
+      font-weight: 650;
+      white-space: nowrap;
     }
 
     .view-site:hover {
       background: #f6f6f7;
     }
 
-    .add-btn {
-      border: none;
-      background: #111827;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 7px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .add-btn:hover {
-      background: #000;
-      transform: translateY(-1px);
-    }
-
-    /* =========================
-       CONTENT
-    ========================== */
-
-    .content {
-      padding: 30px;
-      max-width: 1400px;
-      margin: auto;
-    }
-
     /* =========================
        STATS
-    ========================== */
+    ========================= */
 
-    .stats-grid {
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 26px;
+      gap: 16px;
+      margin-bottom: 25px;
     }
 
     .stat-card {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid #e1e3e5;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 20px;
-    }
-
-    .stat-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .stat-label {
-      font-size: 13px;
+      font-size: 12px;
       color: #6d7175;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 27px;
+      font-weight: 750;
+      letter-spacing: -0.5px;
     }
 
     .stat-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
       background: #f1f2f3;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 19px;
     }
 
-    .stat-number {
-      font-size: 29px;
-      font-weight: 700;
-      margin-top: 13px;
-      letter-spacing: -1px;
+    .online {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 22px;
+      font-weight: 750;
     }
 
-    .stat-description {
-      font-size: 11px;
-      color: #8c9196;
-      margin-top: 5px;
+    .green-dot {
+      width: 9px;
+      height: 9px;
+      background: #2e7d32;
+      border-radius: 50%;
     }
 
     /* =========================
-       POSTS SECTION
-    ========================== */
+       POSTS CARD
+    ========================= */
 
-    .posts-panel {
-      background: #fff;
+    .posts-card {
+      background: #ffffff;
       border: 1px solid #e1e3e5;
-      border-radius: 10px;
+      border-radius: 13px;
       overflow: hidden;
     }
 
-    .panel-header {
-      padding: 18px 20px;
+    .posts-header {
+      padding: 20px 22px;
       border-bottom: 1px solid #e1e3e5;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 15px;
     }
 
-    .panel-title h2 {
-      font-size: 15px;
+    .posts-title h2 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .posts-title p {
+      font-size: 12px;
+      color: #8a8f93;
+    }
+
+    .add-btn {
+      text-decoration: none;
+      background: #111111;
+      color: #ffffff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 13px;
       font-weight: 650;
+      white-space: nowrap;
     }
 
-    .panel-title p {
-      font-size: 11px;
-      color: #8c9196;
-      margin-top: 3px;
+    .add-btn:hover {
+      background: #2a2a2a;
     }
 
-    .search-box {
-      width: 250px;
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .toolbar {
+      padding: 15px 22px;
+      border-bottom: 1px solid #e1e3e5;
+    }
+
+    .search {
+      width: 100%;
+      max-width: 400px;
       position: relative;
     }
 
-    .search-box input {
+    .search input {
       width: 100%;
-      border: 1px solid #d2d5d8;
-      border-radius: 7px;
-      padding: 9px 12px 9px 35px;
+      border: 1px solid #c9cdd1;
+      border-radius: 8px;
+      padding: 10px 13px 10px 37px;
       outline: none;
-      font-size: 12px;
-      background: #fff;
+      font-size: 13px;
+      color: #202223;
     }
 
-    .search-box input:focus {
-      border-color: #8c9196;
+    .search input:focus {
+      border-color: #111111;
+      box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.07);
     }
 
     .search-icon {
       position: absolute;
-      left: 12px;
-      top: 9px;
-      font-size: 13px;
-      color: #8c9196;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8a8f93;
+      font-size: 14px;
     }
 
     /* =========================
        TABLE
-    ========================== */
+    ========================= */
 
-    .table-wrapper {
+    .table-wrap {
       overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 750px;
+      min-width: 760px;
     }
 
     th {
-      background: #fafbfb;
       text-align: left;
-      padding: 12px 18px;
-      font-size: 11px;
+      background: #fafbfb;
       color: #6d7175;
-      font-weight: 650;
-      border-bottom: 1px solid #e1e3e5;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .3px;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-bottom: 1px solid #e1e3e5;
     }
 
     td {
-      padding: 13px 18px;
-      border-bottom: 1px solid #e1e3e5;
+      padding: 14px 18px;
+      border-bottom: 1px solid #eeeeee;
       font-size: 13px;
       vertical-align: middle;
     }
 
-    tr:last-child td {
-      border-bottom: none;
+    tbody tr:hover {
+      background: #fafbfb;
     }
 
-    tr:hover td {
-      background: #fafbfb;
+    tbody tr:last-child td {
+      border-bottom: 0;
     }
 
     .post-info {
       display: flex;
       align-items: center;
       gap: 12px;
-      min-width: 250px;
     }
 
     .post-image {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 42px;
       border-radius: 7px;
       object-fit: cover;
-      background: #f1f2f3;
-      border: 1px solid #e1e3e5;
+      background: #f0f1f2;
+      flex-shrink: 0;
     }
 
-    .post-title {
-      font-weight: 600;
-      color: #202223;
-      max-width: 240px;
-      white-space: nowrap;
+    .post-name {
+      font-weight: 650;
+      max-width: 320px;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    .post-description {
-      font-size: 11px;
-      color: #8c9196;
-      margin-top: 3px;
-      max-width: 240px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .category {
-      display: inline-flex;
-      padding: 5px 9px;
+      display: inline-block;
       background: #f1f2f3;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #42474c;
+      color: #505458;
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
 
     .date {
       color: #6d7175;
-      font-size: 12px;
       white-space: nowrap;
     }
 
     .actions {
       display: flex;
-      gap: 6px;
+      gap: 7px;
     }
 
     .action-btn {
-      border: 1px solid #d2d5d8;
-      background: #fff;
+      text-decoration: none;
+      border: 1px solid #dfe3e6;
+      background: #ffffff;
+      color: #505458;
       border-radius: 6px;
-      padding: 6px 9px;
-      font-size: 11px;
+      padding: 7px 10px;
       cursor: pointer;
-      transition: .2s;
+      font-size: 11px;
+      font-weight: 650;
     }
 
     .action-btn:hover {
-      background: #f1f2f3;
+      background: #f5f5f5;
+      color: #111111;
     }
 
     .delete-btn:hover {
-      background: #fff4f4;
+      color: #c62828;
+      background: #fff5f5;
+      border-color: #ffd4d4;
     }
 
     /* =========================
-       EMPTY / LOADING
-    ========================== */
+       STATES
+    ========================= */
 
-    .state-box {
+    .loading {
       text-align: center;
       padding: 60px 20px;
       color: #6d7175;
     }
 
-    .state-icon {
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 3px solid #e1e3e5;
+      border-top-color: #111111;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 13px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .empty {
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .empty-icon {
       font-size: 35px;
       margin-bottom: 12px;
     }
 
-    .state-box h3 {
-      color: #202223;
-      font-size: 15px;
-      margin-bottom: 5px;
+    .empty h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
     }
 
-    .state-box p {
-      font-size: 12px;
+    .empty p {
+      color: #8a8f93;
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .empty-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #111111;
+      color: #ffffff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .error {
+      margin: 18px 22px;
+      padding: 13px 15px;
+      background: #fff1f1;
+      color: #b42318;
+      border: 1px solid #ffd3d3;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
     }
 
     /* =========================
        MOBILE
-    ========================== */
-
-    .mobile-menu {
-      display: none;
-      border: none;
-      background: transparent;
-      font-size: 22px;
-      cursor: pointer;
-      margin-right: 12px;
-    }
+    ========================= */
 
     @media (max-width: 900px) {
-
       .sidebar {
-        transform: translateX(-100%);
-        transition: .25s;
+        display: none;
       }
 
-      .sidebar.open {
-        transform: translateX(0);
+      .mobile-topbar {
+        display: flex;
       }
 
       .main {
         margin-left: 0;
-        width: 100%;
       }
 
-      .mobile-menu {
-        display: inline-block;
+      .content {
+        padding: 25px 17px 50px;
       }
 
-      .stats-grid {
+      .stats {
         grid-template-columns: 1fr;
       }
 
-      .topbar {
-        padding: 0 18px;
-      }
-
-      .content {
-        padding: 20px 15px;
-      }
-
-      .view-site {
-        display: none;
-      }
-
-      .search-box {
-        width: 100%;
-      }
-
-      .panel-header {
+      .top-heading {
         align-items: flex-start;
-        flex-direction: column;
       }
     }
 
-    @media (max-width: 500px) {
-
-      .topbar {
-        height: 65px;
+    @media (max-width: 600px) {
+      .top-heading {
+        flex-direction: column;
       }
 
-      .page-title h1 {
-        font-size: 17px;
+      .heading h1 {
+        font-size: 26px;
       }
 
-      .page-title p {
-        font-size: 10px;
+      .view-site {
+        width: 100%;
+        text-align: center;
+      }
+
+      .posts-header {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .add-btn {
-        padding: 9px 11px;
-        font-size: 11px;
+        width: 100%;
+        text-align: center;
       }
 
-      .content {
-        padding: 15px 10px;
+      .toolbar {
+        padding: 13px 15px;
       }
 
-      .stat-card {
-        padding: 16px;
-      }
-
-      .stat-number {
-        font-size: 25px;
+      .search {
+        max-width: none;
       }
     }
   </style>
@@ -628,59 +644,66 @@
 
 <body>
 
-<div class="admin-layout">
-
   <!-- =========================
-       SIDEBAR
-  ========================== -->
+       DESKTOP SIDEBAR
+  ========================= -->
 
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar">
 
     <div class="brand">
       <div class="brand-icon">🎂</div>
-
-      <div class="brand-text">
-        <h2>CakeBuddy</h2>
-        <span>Admin Panel</span>
-      </div>
+      <span>CakeBuddy</span>
     </div>
 
-    <div class="menu">
+    <div class="menu-label">Management</div>
 
-      <div class="menu-title">Management</div>
+    <nav class="nav">
 
-      <div class="menu-item active">
-        <div class="menu-icon">▦</div>
-        <span>Dashboard</span>
-      </div>
-
-      <a href="add-post.html" class="menu-item">
-        <div class="menu-icon">＋</div>
-        <span>Add New Post</span>
+      <a href="dashboard.html" class="active">
+        <span class="nav-icon">▦</span>
+        Dashboard
       </a>
 
-      <a href="index.html" class="menu-item" target="_blank">
-        <div class="menu-icon">↗</div>
-        <span>View Website</span>
+      <a href="add-post.html">
+        <span class="nav-icon">＋</span>
+        Add New Post
       </a>
 
-    </div>
+      <a
+        href="index.html"
+        target="_blank"
+      >
+        <span class="nav-icon">↗</span>
+        View Website
+      </a>
+
+    </nav>
 
     <div class="sidebar-bottom">
 
-      <div class="admin-mini">
+      <div class="admin-profile">
 
         <div class="avatar">SN</div>
 
-        <div class="admin-info">
-          <strong>Administrator</strong>
-          <span>CakeBuddy Admin</span>
+        <div class="profile-text">
+
+          <div class="profile-name">
+            Admin
+          </div>
+
+          <div class="profile-role">
+            CakeBuddy Manager
+          </div>
+
         </div>
 
       </div>
 
-      <button class="logout-btn" id="logoutBtn">
-        ⇥ &nbsp; Logout
+      <button
+        id="logoutBtn"
+        class="logout-btn"
+      >
+        Logout
       </button>
 
     </div>
@@ -689,71 +712,88 @@
 
 
   <!-- =========================
-       MAIN CONTENT
-  ========================== -->
+       MOBILE TOPBAR
+  ========================= -->
+
+  <div class="mobile-topbar">
+
+    <div class="mobile-brand">
+
+      <div class="mobile-icon">
+        🎂
+      </div>
+
+      CakeBuddy
+
+    </div>
+
+    <button
+      id="mobileLogout"
+      class="logout-btn"
+      style="width:auto;margin:0;padding:7px 11px;"
+    >
+      Logout
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
 
   <main class="main">
 
-    <!-- TOPBAR -->
+    <div class="content">
 
-    <header class="topbar">
+      <!-- HEADING -->
 
-      <div style="display:flex; align-items:center;">
+      <div class="top-heading">
 
-        <button class="mobile-menu" id="mobileMenu">
-          ☰
-        </button>
+        <div class="heading">
 
-        <div class="page-title">
           <h1>Dashboard</h1>
-          <p>Manage your CakeBuddy content</p>
+
+          <p>
+            Manage your CakeBuddy content from one place.
+          </p>
+
         </div>
 
-      </div>
-
-      <div class="top-actions">
-
-        <a href="index.html" target="_blank" class="view-site">
-          View Store ↗
-        </a>
-
-        <a href="add-post.html" class="add-btn">
-          ＋ Add New
+        <a
+          href="index.html"
+          target="_blank"
+          class="view-site"
+        >
+          ↗ View Website
         </a>
 
       </div>
 
-    </header>
-
-
-    <!-- CONTENT -->
-
-    <section class="content">
 
       <!-- STATS -->
 
-      <div class="stats-grid">
+      <section class="stats">
 
         <div class="stat-card">
 
-          <div class="stat-top">
+          <div>
 
-            <span class="stat-label">
+            <div class="stat-label">
               Total Posts
-            </span>
+            </div>
 
-            <div class="stat-icon">
-              📝
+            <div
+              class="stat-value"
+              id="totalPosts"
+            >
+              0
             </div>
 
           </div>
 
-          <div class="stat-number" id="totalPosts">
-            0
-          </div>
-
-          <div class="stat-description">
-            Published content
+          <div class="stat-icon">
+            📝
           </div>
 
         </div>
@@ -761,24 +801,24 @@
 
         <div class="stat-card">
 
-          <div class="stat-top">
+          <div>
 
-            <span class="stat-label">
-              Status
-            </span>
+            <div class="stat-label">
+              Website Status
+            </div>
 
-            <div class="stat-icon">
-              ●
+            <div class="online">
+
+              <span class="green-dot"></span>
+
+              <span>Live</span>
+
             </div>
 
           </div>
 
-          <div class="stat-number" style="font-size:22px;">
-            Active
-          </div>
-
-          <div class="stat-description">
-            Firebase connection
+          <div class="stat-icon">
+            🌐
           </div>
 
         </div>
@@ -786,55 +826,68 @@
 
         <div class="stat-card">
 
-          <div class="stat-top">
+          <div>
 
-            <span class="stat-label">
-              Store
-            </span>
+            <div class="stat-label">
+              Store Status
+            </div>
 
-            <div class="stat-icon">
-              🛍️
+            <div class="stat-value">
+              Active
             </div>
 
           </div>
 
-          <div class="stat-number" style="font-size:22px;">
-            Online
-          </div>
-
-          <div class="stat-description">
-            CakeBuddy storefront
+          <div class="stat-icon">
+            ✓
           </div>
 
         </div>
 
-      </div>
+      </section>
 
 
       <!-- POSTS -->
 
-      <div class="posts-panel">
+      <section class="posts-card">
 
-        <div class="panel-header">
+        <div class="posts-header">
 
-          <div class="panel-title">
+          <div class="posts-title">
 
             <h2>All Posts</h2>
 
             <p>
-              Create, edit and manage your website posts
+              Create, edit and manage your published content.
             </p>
 
           </div>
 
-          <div class="search-box">
+          <a
+            href="add-post.html"
+            class="add-btn"
+          >
+            ＋ Add New Post
+          </a>
 
-            <span class="search-icon">⌕</span>
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="toolbar">
+
+          <div class="search">
+
+            <span class="search-icon">
+              🔍
+            </span>
 
             <input
               type="text"
               id="searchInput"
               placeholder="Search posts..."
+              autocomplete="off"
             >
 
           </div>
@@ -842,43 +895,50 @@
         </div>
 
 
+        <div
+          id="errorBox"
+          class="error"
+        ></div>
+
+
         <!-- TABLE -->
 
-        <div class="table-wrapper">
+        <div class="table-wrap">
 
           <table>
 
             <thead>
 
               <tr>
+
                 <th>Post</th>
+
                 <th>Category</th>
+
                 <th>Date</th>
+
                 <th>Actions</th>
+
               </tr>
 
             </thead>
 
-            <tbody id="postsTableBody">
+            <tbody id="postsTable">
 
               <tr>
+
                 <td colspan="4">
 
-                  <div class="state-box">
+                  <div class="loading">
 
-                    <div class="state-icon">
-                      ⏳
-                    </div>
+                    <div class="spinner"></div>
 
-                    <h3>Loading posts...</h3>
-
-                    <p>
-                      Please wait while we load your content.
-                    </p>
+                    Loading posts...
 
                   </div>
 
                 </td>
+
               </tr>
 
             </tbody>
@@ -887,354 +947,218 @@
 
         </div>
 
-      </div>
+      </section>
 
-    </section>
+    </div>
 
   </main>
 
-</div>
+
+  <!-- =========================
+       FIREBASE
+  ========================= -->
+
+  <script type="module">
+
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
-<!-- =========================
-     FIREBASE
-========================== -->
-
-<script type="module">
-
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-  import {
-    getFirestore,
-    collection,
-    getDocs,
-    query,
-    orderBy,
-    deleteDoc,
-    doc
-  }
-  from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-  import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
-  }
-  from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      query,
+      orderBy,
+      deleteDoc,
+      doc
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-  /* =========================
-     FIREBASE CONFIG
-  ========================== */
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
-    authDomain: "cakebuddymb.firebaseapp.com",
-    projectId: "cakebuddymb",
-    storageBucket: "cakebuddymb.firebasestorage.app",
-    messagingSenderId: "31596118058",
-    appId: "1:31596118058:web:ecfe00171d91ee15c64353",
-    measurementId: "G-D0ZV3FN1LQ"
-  };
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-  /* =========================
-     INITIALIZE
-  ========================== */
+    /* =========================
+       FIREBASE CONFIG
+    ========================= */
 
-  const app = initializeApp(firebaseConfig);
+    const firebaseConfig = {
 
-  const db = getFirestore(app);
+      apiKey:
+        "AIzaSyDlqm0Du94pfQ_LwUJTTi8LjhzK90dN0TQ",
 
-  const auth = getAuth(app);
+      authDomain:
+        "cakebuddymb.firebaseapp.com",
 
+      projectId:
+        "cakebuddymb",
 
-  /* =========================
-     ADMIN EMAIL
-  ========================== */
+      storageBucket:
+        "cakebuddymb.firebasestorage.app",
 
-  const ADMIN_EMAIL =
-    "ishahneilkhanbd@gmail.com";
+      messagingSenderId:
+        "31596118058",
 
+      appId:
+        "1:31596118058:web:ecfe00171d91ee15c64353",
 
-  /* =========================
-     ELEMENTS
-  ========================== */
+      measurementId:
+        "G-D0ZV3FN1LQ"
 
-  const postsTableBody =
-    document.getElementById("postsTableBody");
-
-  const totalPosts =
-    document.getElementById("totalPosts");
-
-  const searchInput =
-    document.getElementById("searchInput");
-
-  const logoutBtn =
-    document.getElementById("logoutBtn");
-
-  const mobileMenu =
-    document.getElementById("mobileMenu");
-
-  const sidebar =
-    document.getElementById("sidebar");
+    };
 
 
-  let allPosts = [];
+    const app =
+      initializeApp(firebaseConfig);
 
 
-  /* =========================
-     AUTH CHECK
-  ========================== */
-
-  onAuthStateChanged(auth, (user) => {
-
-    if (!user) {
-
-      window.location.href = "admin.html";
-
-      return;
-    }
-
-    if (user.email !== ADMIN_EMAIL) {
-
-      alert("You are not authorized.");
-
-      signOut(auth);
-
-      return;
-    }
-
-    loadPosts();
-
-  });
+    const db =
+      getFirestore(app);
 
 
-  /* =========================
-     LOAD POSTS
-  ========================== */
+    const auth =
+      getAuth(app);
 
-  async function loadPosts() {
 
-    try {
+    /* =========================
+       ADMIN
+    ========================= */
 
-      const postsQuery = query(
-        collection(db, "posts"),
-        orderBy("createdAt", "desc")
-      );
+    const ADMIN_EMAIL =
+      "ishahneilkhanbd@gmail.com";
 
-      const snapshot =
-        await getDocs(postsQuery);
 
-      allPosts = [];
+    /* =========================
+       ELEMENTS
+    ========================= */
 
-      snapshot.forEach((post) => {
+    const postsTable =
+      document.getElementById("postsTable");
 
-        allPosts.push({
-          id: post.id,
-          ...post.data()
+    const totalPosts =
+      document.getElementById("totalPosts");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const errorBox =
+      document.getElementById("errorBox");
+
+    const logoutBtn =
+      document.getElementById("logoutBtn");
+
+    const mobileLogout =
+      document.getElementById("mobileLogout");
+
+
+    let allPosts = [];
+
+
+    /* =========================
+       AUTH CHECK
+    ========================= */
+
+    onAuthStateChanged(auth, async (user) => {
+
+      if (!user) {
+
+        window.location.href =
+          "admin.html";
+
+        return;
+      }
+
+
+      if (user.email !== ADMIN_EMAIL) {
+
+        await signOut(auth);
+
+        window.location.href =
+          "admin.html";
+
+        return;
+      }
+
+
+      loadPosts();
+
+    });
+
+
+    /* =========================
+       LOAD POSTS
+    ========================= */
+
+    async function loadPosts() {
+
+      try {
+
+        hideError();
+
+
+        const postsQuery =
+          query(
+            collection(db, "posts"),
+            orderBy("createdAt", "desc")
+          );
+
+
+        const snapshot =
+          await getDocs(postsQuery);
+
+
+        allPosts = [];
+
+
+        snapshot.forEach((item) => {
+
+          allPosts.push({
+
+            id: item.id,
+
+            ...item.data()
+
+          });
+
         });
 
-      });
 
-      totalPosts.textContent =
-        allPosts.length;
-
-      renderPosts(allPosts);
-
-    } catch (error) {
-
-      console.error(error);
-
-      postsTableBody.innerHTML = `
-
-        <tr>
-
-          <td colspan="4">
-
-            <div class="state-box">
-
-              <div class="state-icon">
-                ⚠️
-              </div>
-
-              <h3>
-                Could not load posts
-              </h3>
-
-              <p>
-                ${escapeHtml(error.message)}
-              </p>
-
-            </div>
-
-          </td>
-
-        </tr>
-
-      `;
-
-    }
-
-  }
+        totalPosts.textContent =
+          allPosts.length;
 
 
-  /* =========================
-     RENDER POSTS
-  ========================== */
-
-  function renderPosts(posts) {
-
-    if (posts.length === 0) {
-
-      postsTableBody.innerHTML = `
-
-        <tr>
-
-          <td colspan="4">
-
-            <div class="state-box">
-
-              <div class="state-icon">
-                📦
-              </div>
-
-              <h3>
-                No posts yet
-              </h3>
-
-              <p>
-                Create your first CakeBuddy post.
-              </p>
-
-            </div>
-
-          </td>
-
-        </tr>
-
-      `;
-
-      return;
-    }
+        renderPosts(allPosts);
 
 
-    postsTableBody.innerHTML =
-      posts.map(post => {
+      } catch (error) {
 
-        const title =
-          post.title || "Untitled";
+        console.error(error);
 
-        const category =
-          post.category || "General";
-
-        const description =
-          post.description || "";
-
-        const image =
-          post.image ||
-          "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80";
+        showError(
+          "Could not load posts. Please check your Firebase connection or Firestore rules."
+        );
 
 
-        let dateText = "—";
-
-
-        if (post.createdAt) {
-
-          try {
-
-            const date =
-              post.createdAt.toDate
-                ? post.createdAt.toDate()
-                : new Date(post.createdAt);
-
-            dateText =
-              date.toLocaleDateString(
-                "en-US",
-                {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric"
-                }
-              );
-
-          } catch (e) {
-
-            dateText = "—";
-
-          }
-
-        }
-
-
-        return `
+        postsTable.innerHTML = `
 
           <tr>
 
-            <td>
+            <td colspan="4">
 
-              <div class="post-info">
+              <div class="empty">
 
-                <img
-                  class="post-image"
-                  src="${escapeAttribute(image)}"
-                  alt=""
-                  onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80'"
-                >
+                <div class="empty-icon">⚠️</div>
 
-                <div>
+                <h3>Unable to load posts</h3>
 
-                  <div class="post-title">
-                    ${escapeHtml(title)}
-                  </div>
-
-                  <div class="post-description">
-                    ${escapeHtml(description)}
-                  </div>
-
-                </div>
-
-              </div>
-
-            </td>
-
-
-            <td>
-
-              <span class="category">
-                ${escapeHtml(category)}
-              </span>
-
-            </td>
-
-
-            <td>
-
-              <span class="date">
-                ${dateText}
-              </span>
-
-            </td>
-
-
-            <td>
-
-              <div class="actions">
-
-                <button
-                  class="action-btn"
-                  onclick="editPost('${post.id}')"
-                >
-                  Edit
-                </button>
-
-                <button
-                  class="action-btn delete-btn"
-                  onclick="deletePost('${post.id}')"
-                >
-                  Delete
-                </button>
+                <p>
+                  Please refresh the page and try again.
+                </p>
 
               </div>
 
@@ -1244,136 +1168,279 @@
 
         `;
 
-      }).join("");
+      }
 
-  }
-
-
-  /* =========================
-     SEARCH
-  ========================== */
-
-  searchInput.addEventListener(
-    "input",
-    () => {
-
-      const search =
-        searchInput.value
-          .toLowerCase()
-          .trim();
+    }
 
 
-      if (!search) {
+    /* =========================
+       RENDER POSTS
+    ========================= */
 
-        renderPosts(allPosts);
+    function renderPosts(posts) {
+
+      if (!posts.length) {
+
+        postsTable.innerHTML = `
+
+          <tr>
+
+            <td colspan="4">
+
+              <div class="empty">
+
+                <div class="empty-icon">
+                  📝
+                </div>
+
+                <h3>
+                  No posts yet
+                </h3>
+
+                <p>
+                  Create your first CakeBuddy post.
+                </p>
+
+                <a
+                  href="add-post.html"
+                  class="empty-btn"
+                >
+                  ＋ Add New Post
+                </a>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+      }
+
+
+      postsTable.innerHTML =
+        posts.map((post) => {
+
+          const image =
+            post.image ||
+            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80";
+
+
+          const date =
+            formatDate(post.createdAt);
+
+
+          return `
+
+            <tr>
+
+              <td>
+
+                <div class="post-info">
+
+                  <img
+                    src="${escapeHtml(image)}"
+                    class="post-image"
+                    alt="Post image"
+                    onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80'"
+                  >
+
+                  <div class="post-name">
+                    ${escapeHtml(post.title || "Untitled Post")}
+                  </div>
+
+                </div>
+
+              </td>
+
+
+              <td>
+
+                <span class="category">
+                  ${escapeHtml(post.category || "General")}
+                </span>
+
+              </td>
+
+
+              <td>
+
+                <span class="date">
+                  ${date}
+                </span>
+
+              </td>
+
+
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    class="action-btn"
+                    onclick="editPost('${post.id}')"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    class="action-btn delete-btn"
+                    onclick="deletePost('${post.id}', '${escapeHtml(post.title || "this post").replace(/'/g, "\\'")}')"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }).join("");
+
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    searchInput.addEventListener(
+      "input",
+      () => {
+
+        const term =
+          searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+        if (!term) {
+
+          renderPosts(allPosts);
+
+          return;
+
+        }
+
+
+        const filtered =
+          allPosts.filter((post) => {
+
+            const title =
+              (post.title || "")
+                .toLowerCase();
+
+            const category =
+              (post.category || "")
+                .toLowerCase();
+
+            const description =
+              (post.description || "")
+                .toLowerCase();
+
+
+            return (
+
+              title.includes(term) ||
+
+              category.includes(term) ||
+
+              description.includes(term)
+
+            );
+
+          });
+
+
+        renderPosts(filtered);
+
+      }
+    );
+
+
+    /* =========================
+       EDIT POST
+    ========================= */
+
+    window.editPost = function (id) {
+
+      window.location.href =
+        "edit-post.html?id=" +
+        encodeURIComponent(id);
+
+    };
+
+
+    /* =========================
+       DELETE POST
+    ========================= */
+
+    window.deletePost = async function (
+      id,
+      title
+    ) {
+
+      const confirmed =
+        confirm(
+          `Delete "${title}"?\n\nThis action cannot be undone.`
+        );
+
+
+      if (!confirmed) {
 
         return;
 
       }
 
 
-      const filtered =
-        allPosts.filter(post => {
+      try {
 
-          const title =
-            (post.title || "")
-              .toLowerCase();
-
-          const category =
-            (post.category || "")
-              .toLowerCase();
-
-          const description =
-            (post.description || "")
-              .toLowerCase();
+        await deleteDoc(
+          doc(db, "posts", id)
+        );
 
 
-          return (
-            title.includes(search) ||
-            category.includes(search) ||
-            description.includes(search)
+        allPosts =
+          allPosts.filter(
+            (post) => post.id !== id
           );
 
-        });
+
+        totalPosts.textContent =
+          allPosts.length;
 
 
-      renderPosts(filtered);
-
-    }
-  );
+        renderPosts(allPosts);
 
 
-  /* =========================
-     EDIT POST
-  ========================== */
-
-  window.editPost = function(id) {
-
-    window.location.href =
-      `edit-post.html?id=${encodeURIComponent(id)}`;
-
-  };
+        alert(
+          "Post deleted successfully."
+        );
 
 
-  /* =========================
-     DELETE POST
-  ========================== */
+      } catch (error) {
 
-  window.deletePost = async function(id) {
+        console.error(error);
 
-    const post =
-      allPosts.find(item => item.id === id);
+        showError(
+          "Delete failed. Please try again."
+        );
 
+      }
 
-    if (!post) return;
-
-
-    const confirmed =
-      confirm(
-        `Delete "${post.title || "this post"}"?\n\nThis action cannot be undone.`
-      );
+    };
 
 
-    if (!confirmed) return;
+    /* =========================
+       LOGOUT
+    ========================= */
 
-
-    try {
-
-      await deleteDoc(
-        doc(db, "posts", id)
-      );
-
-      alert("Post deleted successfully.");
-
-      loadPosts();
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(
-        "Delete failed: " +
-        error.message
-      );
-
-    }
-
-  };
-
-
-  /* =========================
-     LOGOUT
-  ========================== */
-
-  logoutBtn.addEventListener(
-    "click",
-    async () => {
-
-      const confirmed =
-        confirm("Are you sure you want to logout?");
-
-      if (!confirmed) return;
-
+    async function logout() {
 
       try {
 
@@ -1384,58 +1451,112 @@
 
       } catch (error) {
 
-        alert(
-          "Logout failed: " +
-          error.message
+        console.error(error);
+
+        showError(
+          "Logout failed. Please try again."
         );
 
       }
 
     }
-  );
 
 
-  /* =========================
-     MOBILE MENU
-  ========================== */
+    logoutBtn.addEventListener(
+      "click",
+      logout
+    );
 
-  mobileMenu.addEventListener(
-    "click",
-    () => {
 
-      sidebar.classList.toggle("open");
+    mobileLogout.addEventListener(
+      "click",
+      logout
+    );
+
+
+    /* =========================
+       DATE
+    ========================= */
+
+    function formatDate(timestamp) {
+
+      if (!timestamp) {
+
+        return "—";
+
+      }
+
+
+      try {
+
+        const date =
+          timestamp.toDate
+            ? timestamp.toDate()
+            : new Date(timestamp);
+
+
+        return date.toLocaleDateString(
+          "en-US",
+          {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+          }
+        );
+
+      } catch {
+
+        return "—";
+
+      }
 
     }
-  );
 
 
-  /* =========================
-     ESCAPE HTML
-  ========================== */
+    /* =========================
+       ESCAPE HTML
+    ========================= */
 
-  function escapeHtml(value) {
+    function escapeHtml(value) {
 
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      return String(value)
 
-  }
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+    }
 
 
-  function escapeAttribute(value) {
+    /* =========================
+       ERROR
+    ========================= */
 
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
+    function showError(message) {
 
-  }
+      errorBox.textContent =
+        message;
 
-</script>
+      errorBox.style.display =
+        "block";
+
+    }
+
+
+    function hideError() {
+
+      errorBox.style.display =
+        "none";
+
+    }
+
+  </script>
 
 </body>
 </html>
