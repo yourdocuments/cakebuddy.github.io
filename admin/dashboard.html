@@ -1,59 +1,22 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard | CakeBuddy Admin</title>
-
-  <meta
-    name="description"
-    content="CakeBuddy Admin Dashboard"
-  />
+  <title>CakeBuddy Admin Dashboard</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    :root {
-      --bg: #f7f7f8;
-      --card: #ffffff;
-      --text: #18181b;
-      --muted: #71717a;
-      --border: #e4e4e7;
-      --black: #18181b;
-      --soft: #f4f4f5;
-      --danger: #dc2626;
-      --success: #16a34a;
-      --shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
-      --radius: 18px;
+      box-sizing: border-box;
     }
 
     body {
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: #f6f6f6;
+      color: #171717;
     }
 
     a {
@@ -61,401 +24,397 @@
       color: inherit;
     }
 
+    button,
+    input {
+      font: inherit;
+    }
+
     /* =========================
-       TOP BAR
+       HEADER
     ========================= */
 
     .topbar {
-      height: 72px;
-      background: rgba(255, 255, 255, 0.94);
-      border-bottom: 1px solid var(--border);
+      background: #171717;
+      color: #fff;
+      min-height: 70px;
+      padding: 0 25px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 32px;
+
       position: sticky;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(15px);
+      z-index: 1000;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
     }
 
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: var(--black);
-      color: white;
-      display: grid;
-      place-items: center;
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #fff;
+      color: #171717;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       font-weight: 800;
-      font-size: 18px;
+      font-size: 19px;
     }
 
-    .brand-text h1 {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
     }
 
-    .brand-text p {
-      color: var(--muted);
-      font-size: 12px;
+    .brand-text span {
+      display: block;
+      font-size: 11px;
+      color: #aaa;
       margin-top: 2px;
     }
 
     .top-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .top-btn {
-      border: 1px solid var(--border);
-      background: white;
-      color: var(--text);
-      height: 40px;
-      padding: 0 15px;
-      border-radius: 11px;
-      font-size: 13px;
-      font-weight: 650;
-      transition: 0.2s ease;
+      border: 1px solid #444;
+      background: #242424;
+      color: #fff;
+      padding: 9px 13px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
     }
 
     .top-btn:hover {
-      background: var(--soft);
-      transform: translateY(-1px);
+      background: #fff;
+      color: #171717;
     }
 
-    .logout-btn {
-      color: var(--danger);
+    .logout-btn:hover {
+      background: #d93025;
+      border-color: #d93025;
+      color: #fff;
     }
 
     /* =========================
        PAGE
     ========================= */
 
-    .page {
-      width: min(1400px, calc(100% - 48px));
-      margin: 0 auto;
-      padding: 35px 0 60px;
+    .container {
+      max-width: 1240px;
+      margin: auto;
+      padding: 30px 20px 60px;
     }
 
     .welcome {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 20px;
-      margin-bottom: 28px;
+      margin-bottom: 25px;
     }
 
-    .welcome h2 {
-      font-size: clamp(27px, 4vw, 38px);
-      letter-spacing: -1.5px;
-      font-weight: 850;
+    .welcome h1 {
+      font-size: 30px;
+      letter-spacing: -0.7px;
+      margin-bottom: 5px;
     }
 
     .welcome p {
-      color: var(--muted);
-      margin-top: 7px;
+      color: #777;
       font-size: 14px;
     }
 
-    .add-btn {
-      background: var(--black);
-      color: white;
-      border: 0;
-      border-radius: 13px;
-      padding: 13px 19px;
-      font-weight: 700;
-      font-size: 13px;
-      transition: 0.2s ease;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    /* =========================
+       QUICK ACTIONS
+    ========================= */
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
     }
 
-    .add-btn:hover {
+    .action-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 18px;
+      padding: 21px;
+
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      transition: .2s;
+    }
+
+    .action-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+    }
+
+    .action-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #f2f2f2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 21px;
+      flex-shrink: 0;
+    }
+
+    .action-card strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .action-card span {
+      font-size: 11px;
+      color: #888;
     }
 
     /* =========================
-       STAT CARDS
+       STATS
     ========================= */
 
-    .stats {
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 15px;
+      margin-bottom: 25px;
     }
 
     .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 18px;
       padding: 22px;
-      box-shadow: var(--shadow);
     }
 
     .stat-label {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 8px;
     }
 
     .stat-number {
       font-size: 31px;
-      font-weight: 850;
-      letter-spacing: -1px;
-      margin-top: 10px;
-    }
-
-    .stat-small {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 5px;
-    }
-
-    /* =========================
-       CONTENT CARD
-    ========================= */
-
-    .content-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .content-header {
-      padding: 22px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .content-header h3 {
-      font-size: 18px;
       font-weight: 800;
     }
 
-    .content-header p {
-      color: var(--muted);
+    /* =========================
+       POSTS AREA
+    ========================= */
+
+    .posts-container {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .posts-header {
+      padding: 20px;
+      border-bottom: 1px solid #eeeeee;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .posts-title h2 {
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    .posts-title p {
       font-size: 12px;
-      margin-top: 4px;
+      color: #888;
     }
 
     .search-box {
-      width: min(300px, 100%);
-      position: relative;
+      width: 300px;
     }
 
     .search-box input {
       width: 100%;
-      height: 42px;
-      border: 1px solid var(--border);
-      background: var(--soft);
-      border-radius: 11px;
-      padding: 0 14px;
+      padding: 11px 14px;
+      border: 1px solid #dedede;
+      border-radius: 10px;
       outline: none;
+      background: #fafafa;
       font-size: 13px;
     }
 
     .search-box input:focus {
-      border-color: #a1a1aa;
-      background: white;
+      border-color: #171717;
+      background: #fff;
     }
 
     /* =========================
-       POSTS
+       TABLE
     ========================= */
 
-    .posts-container {
-      padding: 4px 22px 22px;
+    .table-wrap {
+      overflow-x: auto;
     }
 
-    .post-row {
-      display: grid;
-      grid-template-columns: 85px 1fr auto;
-      gap: 17px;
-      align-items: center;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .post-row:last-child {
-      border-bottom: 0;
-    }
-
-    .post-image {
-      width: 85px;
-      height: 65px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--soft);
-      border: 1px solid var(--border);
-    }
-
-    .post-image img {
+    table {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th {
+      background: #fafafa;
+      color: #777;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      text-align: left;
+      padding: 13px 18px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    td {
+      padding: 15px 18px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+      font-size: 13px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
     }
 
     .post-info {
-      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .post-title {
-      font-size: 15px;
-      font-weight: 750;
+    .post-thumb {
+      width: 55px;
+      height: 55px;
+      border-radius: 11px;
+      object-fit: cover;
+      background: #eee;
+      flex-shrink: 0;
+    }
+
+    .post-name {
+      font-weight: 700;
+      max-width: 260px;
+      line-height: 1.35;
+    }
+
+    .post-description {
+      color: #888;
+      font-size: 11px;
+      margin-top: 3px;
+
+      max-width: 260px;
+
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .post-description {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 5px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      line-height: 1.45;
-    }
-
-    .post-date {
+    .date-text {
+      color: #777;
       font-size: 11px;
-      color: var(--muted);
-      margin-top: 7px;
     }
 
-    .post-actions {
+    /* =========================
+       ACTION BUTTONS
+    ========================= */
+
+    .actions {
       display: flex;
       gap: 7px;
     }
 
     .action-btn {
-      height: 36px;
-      min-width: 36px;
-      padding: 0 11px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      background: white;
-      font-size: 12px;
+      border: 1px solid #dedede;
+      background: #fff;
+      padding: 7px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 11px;
       font-weight: 700;
-      transition: 0.2s ease;
+      transition: .2s;
     }
 
     .action-btn:hover {
-      background: var(--soft);
-    }
-
-    .edit-btn {
-      color: var(--text);
-    }
-
-    .delete-btn {
-      color: var(--danger);
+      background: #171717;
+      color: #fff;
+      border-color: #171717;
     }
 
     .delete-btn:hover {
-      background: #fef2f2;
-      border-color: #fecaca;
+      background: #d93025;
+      border-color: #d93025;
+      color: #fff;
     }
 
     /* =========================
        EMPTY / LOADING
     ========================= */
 
-    .message {
+    .message-box {
       text-align: center;
-      padding: 60px 20px;
-      color: var(--muted);
-      font-size: 14px;
+      padding: 55px 20px;
+      color: #888;
+      font-size: 13px;
     }
 
-    .loading-spinner {
-      width: 28px;
-      height: 28px;
-      border: 3px solid #e4e4e7;
-      border-top-color: #18181b;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 14px;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+    .hidden {
+      display: none !important;
     }
 
     /* =========================
-       TOAST
+       FOOTER
     ========================= */
 
-    .toast {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      background: #18181b;
-      color: white;
-      padding: 13px 17px;
-      border-radius: 11px;
-      font-size: 13px;
-      font-weight: 650;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-      transform: translateY(20px);
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s ease;
-      z-index: 999;
-    }
-
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .toast.error {
-      background: var(--danger);
+    .footer {
+      text-align: center;
+      padding: 30px 20px 0;
+      color: #999;
+      font-size: 11px;
     }
 
     /* =========================
        RESPONSIVE
     ========================= */
 
-    @media (max-width: 850px) {
-      .topbar {
-        padding: 0 18px;
-      }
+    @media (max-width: 900px) {
 
-      .page {
-        width: min(100% - 28px, 1400px);
-        padding-top: 25px;
-      }
-
-      .stats {
+      .quick-actions {
         grid-template-columns: 1fr;
       }
 
-      .welcome {
-        align-items: flex-start;
-        flex-direction: column;
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
 
-      .content-header {
+      .posts-header {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -463,56 +422,40 @@
       .search-box {
         width: 100%;
       }
-
-      .post-row {
-        grid-template-columns: 65px 1fr;
-      }
-
-      .post-image {
-        width: 65px;
-        height: 58px;
-      }
-
-      .post-actions {
-        grid-column: 2;
-      }
-
-      .top-btn span {
-        display: none;
-      }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 650px) {
+
       .topbar {
-        height: 64px;
+        padding: 12px 15px;
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
       }
 
-      .brand-text p {
-        display: none;
-      }
-
-      .brand-text h1 {
-        font-size: 15px;
+      .top-actions {
+        width: 100%;
+        overflow-x: auto;
       }
 
       .top-btn {
-        padding: 0 11px;
+        white-space: nowrap;
       }
 
-      .page {
-        width: calc(100% - 20px);
+      .container {
+        padding: 25px 14px 50px;
       }
 
-      .stat-card {
-        padding: 18px;
+      .welcome h1 {
+        font-size: 25px;
       }
 
-      .post-row {
-        gap: 11px;
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
 
-      .post-title {
-        font-size: 14px;
+      .action-card {
+        padding: 17px;
       }
     }
   </style>
@@ -522,39 +465,55 @@
 
   <!-- =========================
        TOP BAR
-  ========================= -->
+  ========================== -->
 
   <header class="topbar">
 
-    <a class="brand" href="../index.html">
+    <div class="brand">
 
-      <div class="brand-logo">
-        CB
+      <div class="brand-icon">
+        C
       </div>
 
       <div class="brand-text">
-        <h1>CakeBuddy</h1>
-        <p>Admin Dashboard</p>
+        <strong>CakeBuddy</strong>
+        <span>Admin Dashboard</span>
       </div>
 
-    </a>
+    </div>
+
 
     <div class="top-actions">
 
       <a
         href="../index.html"
         class="top-btn"
-        title="Open Homepage"
       >
-        🏠 <span>Homepage</span>
+        🏠 Homepage
       </a>
+
+
+      <a
+        href="./banner-settings.html"
+        class="top-btn"
+      >
+        🖼️ Banner Settings
+      </a>
+
+
+      <a
+        href="./add-post.html"
+        class="top-btn"
+      >
+        ➕ Add Post
+      </a>
+
 
       <button
         id="logoutBtn"
         class="top-btn logout-btn"
-        type="button"
       >
-        ↪ <span>Logout</span>
+        Logout
       </button>
 
     </div>
@@ -564,35 +523,119 @@
 
   <!-- =========================
        MAIN
-  ========================= -->
+  ========================== -->
 
-  <main class="page">
+  <main class="container">
 
-    <!-- Welcome -->
+
+    <!-- WELCOME -->
 
     <section class="welcome">
 
-      <div>
-        <h2>Good morning 👋</h2>
+      <h1>
+        Dashboard
+      </h1>
 
-        <p>
-          Manage your CakeBuddy posts from one place.
-        </p>
-      </div>
+      <p id="welcomeText">
+        Manage your CakeBuddy website.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================== -->
+
+    <section class="quick-actions">
+
+
+      <!-- BANNER SETTINGS -->
 
       <a
-        href="add-post.html"
-        class="add-btn"
+        href="./banner-settings.html"
+        class="action-card"
       >
-        + Add New Post
+
+        <div class="action-icon">
+          🖼️
+        </div>
+
+        <div>
+
+          <strong>
+            Banner Settings
+          </strong>
+
+          <span>
+            Change homepage banners
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- ADD POST -->
+
+      <a
+        href="./add-post.html"
+        class="action-card"
+      >
+
+        <div class="action-icon">
+          ➕
+        </div>
+
+        <div>
+
+          <strong>
+            Add New Post
+          </strong>
+
+          <span>
+            Publish a new CakeBuddy post
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <!-- HOMEPAGE -->
+
+      <a
+        href="../index.html"
+        class="action-card"
+      >
+
+        <div class="action-icon">
+          🌐
+        </div>
+
+        <div>
+
+          <strong>
+            View Homepage
+          </strong>
+
+          <span>
+            Open the public website
+          </span>
+
+        </div>
+
       </a>
 
     </section>
 
 
-    <!-- Stats -->
+    <!-- =========================
+         STATS
+    ========================== -->
 
-    <section class="stats">
+    <section class="stats-grid">
+
 
       <div class="stat-card">
 
@@ -601,14 +644,26 @@
         </div>
 
         <div
-          id="totalPosts"
           class="stat-number"
+          id="totalPosts"
         >
           0
         </div>
 
-        <div class="stat-small">
-          All published posts
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-label">
+          Visible Posts
+        </div>
+
+        <div
+          class="stat-number"
+          id="visiblePosts"
+        >
+          0
         </div>
 
       </div>
@@ -621,35 +676,11 @@
         </div>
 
         <div
-          id="adminStatus"
           class="stat-number"
-          style="font-size:24px;"
+          style="font-size:20px;"
+          id="adminStatus"
         >
           Checking...
-        </div>
-
-        <div class="stat-small">
-          Firebase Authentication
-        </div>
-
-      </div>
-
-
-      <div class="stat-card">
-
-        <div class="stat-label">
-          Platform
-        </div>
-
-        <div
-          class="stat-number"
-          style="font-size:24px;"
-        >
-          CakeBuddy
-        </div>
-
-        <div class="stat-small">
-          Powered by Firebase
         </div>
 
       </div>
@@ -657,27 +688,33 @@
     </section>
 
 
-    <!-- Posts -->
+    <!-- =========================
+         POSTS
+    ========================== -->
 
-    <section class="content-card">
+    <section class="posts-container">
 
-      <div class="content-header">
 
-        <div>
+      <div class="posts-header">
 
-          <h3>All Posts</h3>
+        <div class="posts-title">
+
+          <h2>
+            All Posts
+          </h2>
 
           <p>
-            Create, edit or delete CakeBuddy content.
+            Edit or delete your CakeBuddy content.
           </p>
 
         </div>
 
+
         <div class="search-box">
 
           <input
-            id="searchInput"
             type="search"
+            id="searchInput"
             placeholder="Search posts..."
             autocomplete="off"
           />
@@ -687,300 +724,476 @@
       </div>
 
 
+      <!-- LOADING -->
+
       <div
-        id="postsContainer"
-        class="posts-container"
+        id="loadingBox"
+        class="message-box"
+      >
+        Loading posts...
+      </div>
+
+
+      <!-- EMPTY -->
+
+      <div
+        id="emptyBox"
+        class="message-box hidden"
+      >
+        No posts found.
+      </div>
+
+
+      <!-- TABLE -->
+
+      <div
+        id="tableContainer"
+        class="table-wrap hidden"
       >
 
-        <div class="message">
+        <table>
 
-          <div class="loading-spinner"></div>
+          <thead>
 
-          Loading posts...
+            <tr>
 
-        </div>
+              <th>
+                Post
+              </th>
+
+              <th>
+                Category
+              </th>
+
+              <th>
+                Date
+              </th>
+
+              <th>
+                Actions
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="postsTableBody">
+          </tbody>
+
+        </table>
 
       </div>
 
     </section>
 
+
+    <div class="footer">
+      CakeBuddy Admin Panel
+    </div>
+
   </main>
-
-
-  <!-- Toast -->
-
-  <div
-    id="toast"
-    class="toast"
-  ></div>
 
 
   <!-- =========================
        FIREBASE
-  ========================= -->
+  ========================== -->
 
   <script type="module">
 
     import {
       initializeApp
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    } from
+      "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 
     import {
       getAuth,
       onAuthStateChanged,
       signOut
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    } from
+      "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 
     import {
       getFirestore,
       collection,
       getDocs,
-      deleteDoc,
-      doc,
       query,
-      orderBy
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      orderBy,
+      deleteDoc,
+      doc
+    } from
+      "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
     /* =========================================
        FIREBASE CONFIG
-
-       IMPORTANT:
-       Replace the values below with the SAME
-       Firebase Web App config you used before.
-    ========================================= */
+    ========================================== */
 
     const firebaseConfig = {
 
-      apiKey: "YOUR_API_KEY",
+      apiKey:
+        "YOUR_API_KEY",
 
-      authDomain: "cakebuddymb.firebaseapp.com",
+      authDomain:
+        "cakebuddymb.firebaseapp.com",
 
-      projectId: "cakebuddymb",
+      projectId:
+        "cakebuddymb",
 
-      storageBucket: "cakebuddymb.firebasestorage.app",
+      storageBucket:
+        "cakebuddymb.firebasestorage.app",
 
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      messagingSenderId:
+        "YOUR_MESSAGING_SENDER_ID",
 
-      appId: "YOUR_APP_ID"
+      appId:
+        "YOUR_APP_ID"
 
     };
 
 
     /* =========================================
-       INITIALIZE FIREBASE
-    ========================================= */
+       INITIALIZE
+    ========================================== */
 
-    const app = initializeApp(firebaseConfig);
+    const app =
+      initializeApp(firebaseConfig);
 
-    const auth = getAuth(app);
 
-    const db = getFirestore(app);
+    const auth =
+      getAuth(app);
+
+
+    const db =
+      getFirestore(app);
 
 
     /* =========================================
        ELEMENTS
-    ========================================= */
+    ========================================== */
 
-    const postsContainer =
-      document.getElementById("postsContainer");
+    const loadingBox =
+      document.getElementById(
+        "loadingBox"
+      );
 
-    const totalPosts =
-      document.getElementById("totalPosts");
 
-    const adminStatus =
-      document.getElementById("adminStatus");
+    const emptyBox =
+      document.getElementById(
+        "emptyBox"
+      );
+
+
+    const tableContainer =
+      document.getElementById(
+        "tableContainer"
+      );
+
+
+    const postsTableBody =
+      document.getElementById(
+        "postsTableBody"
+      );
+
 
     const searchInput =
-      document.getElementById("searchInput");
+      document.getElementById(
+        "searchInput"
+      );
+
+
+    const totalPosts =
+      document.getElementById(
+        "totalPosts"
+      );
+
+
+    const visiblePosts =
+      document.getElementById(
+        "visiblePosts"
+      );
+
+
+    const adminStatus =
+      document.getElementById(
+        "adminStatus"
+      );
+
+
+    const welcomeText =
+      document.getElementById(
+        "welcomeText"
+      );
+
 
     const logoutBtn =
-      document.getElementById("logoutBtn");
+      document.getElementById(
+        "logoutBtn"
+      );
 
-    const toast =
-      document.getElementById("toast");
-
-
-    /* =========================================
-       DATA
-    ========================================= */
 
     let allPosts = [];
 
 
     /* =========================================
-       TOAST
-    ========================================= */
-
-    function showToast(message, isError = false) {
-
-      toast.textContent = message;
-
-      toast.classList.toggle("error", isError);
-
-      toast.classList.add("show");
-
-      setTimeout(() => {
-
-        toast.classList.remove("show");
-
-      }, 2800);
-
-    }
-
-
-    /* =========================================
        AUTH CHECK
-    ========================================= */
+    ========================================== */
 
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(
+      auth,
+      async (user) => {
 
-      if (!user) {
+        if (!user) {
 
-        window.location.href =
-          "../admin.html";
+          window.location.href =
+            "../admin.html";
 
-        return;
+          return;
+
+        }
+
+
+        /* Admin logged in */
+
+        adminStatus.textContent =
+          "Active";
+
+
+        welcomeText.textContent =
+          `Welcome back, ${user.email}`;
+
+
+        await loadPosts();
 
       }
-
-
-      adminStatus.textContent = "Active";
-
-      loadPosts();
-
-    });
+    );
 
 
     /* =========================================
        LOAD POSTS
-    ========================================= */
+    ========================================== */
 
     async function loadPosts() {
 
+      loadingBox.classList.remove(
+        "hidden"
+      );
+
+      emptyBox.classList.add(
+        "hidden"
+      );
+
+      tableContainer.classList.add(
+        "hidden"
+      );
+
+
       try {
 
-        postsContainer.innerHTML = `
-
-          <div class="message">
-
-            <div class="loading-spinner"></div>
-
-            Loading posts...
-
-          </div>
-
-        `;
+        const postsRef =
+          collection(
+            db,
+            "posts"
+          );
 
 
-        const postsQuery = query(
-          collection(db, "posts"),
-          orderBy("createdAt", "desc")
-        );
+        let snapshot;
 
 
-        const snapshot =
-          await getDocs(postsQuery);
+        try {
+
+          const postsQuery =
+            query(
+              postsRef,
+              orderBy(
+                "createdAt",
+                "desc"
+              )
+            );
 
 
-        allPosts = [];
+          snapshot =
+            await getDocs(
+              postsQuery
+            );
+
+        } catch (orderError) {
+
+          console.warn(
+            "createdAt ordering failed. Loading without ordering.",
+            orderError
+          );
 
 
-        snapshot.forEach((documentSnapshot) => {
+          snapshot =
+            await getDocs(
+              postsRef
+            );
 
-          allPosts.push({
+        }
 
-            id: documentSnapshot.id,
 
-            ...documentSnapshot.data()
+        allPosts =
+          snapshot.docs.map(
+            document => ({
 
-          });
+              id:
+                document.id,
 
-        });
+              ...document.data()
+
+            })
+          );
 
 
         totalPosts.textContent =
           allPosts.length;
 
 
-        renderPosts(allPosts);
+        visiblePosts.textContent =
+          allPosts.length;
 
+
+        loadingBox.classList.add(
+          "hidden"
+        );
+
+
+        renderPosts();
 
       } catch (error) {
 
         console.error(
-          "Error loading posts:",
+          "Post loading error:",
           error
         );
 
 
-        /*
-          Fallback:
-          If createdAt does not exist on old posts,
-          try loading without orderBy.
-        */
-
-        try {
-
-          const snapshot =
-            await getDocs(
-              collection(db, "posts")
-            );
+        loadingBox.classList.add(
+          "hidden"
+        );
 
 
-          allPosts = [];
+        tableContainer.classList.add(
+          "hidden"
+        );
 
 
-          snapshot.forEach(
-            (documentSnapshot) => {
-
-              allPosts.push({
-
-                id: documentSnapshot.id,
-
-                ...documentSnapshot.data()
-
-              });
-
-            }
-          );
+        emptyBox.classList.remove(
+          "hidden"
+        );
 
 
-          totalPosts.textContent =
-            allPosts.length;
+        emptyBox.textContent =
+          "Unable to load posts. Please check Firebase configuration and Firestore rules.";
+
+      }
+
+    }
 
 
-          renderPosts(allPosts);
+    /* =========================================
+       IMAGE
+    ========================================== */
+
+    function getImage(post) {
+
+      return (
+
+        post.imageUrl ||
+
+        post.imageURL ||
+
+        post.image ||
+
+        "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+
+      );
+
+    }
 
 
-        } catch (fallbackError) {
+    /* =========================================
+       ESCAPE HTML
+    ========================================== */
 
-          console.error(
-            fallbackError
-          );
+    function escapeHTML(value) {
+
+      if (
+        value === null ||
+        value === undefined
+      ) {
+
+        return "";
+
+      }
 
 
-          postsContainer.innerHTML = `
+      return String(value)
 
-            <div class="message">
+        .replace(
+          /&/g,
+          "&amp;"
+        )
 
-              Unable to load posts.
+        .replace(
+          /</g,
+          "&lt;"
+        )
 
-              <br><br>
+        .replace(
+          />/g,
+          "&gt;"
+        )
 
-              Please check your Firestore
-              collection and rules.
+        .replace(
+          /"/g,
+          "&quot;"
+        )
 
-            </div>
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
-          `;
+    }
 
-          showToast(
-            "Could not load posts.",
-            true
-          );
 
-        }
+    /* =========================================
+       FORMAT DATE
+    ========================================== */
+
+    function formatDate(timestamp) {
+
+      if (!timestamp) {
+
+        return "—";
+
+      }
+
+
+      try {
+
+        const date =
+          timestamp.toDate
+            ? timestamp.toDate()
+            : new Date(timestamp);
+
+
+        return date.toLocaleDateString(
+          "en-US",
+          {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+          }
+        );
+
+      } catch (error) {
+
+        return "—";
 
       }
 
@@ -989,172 +1202,19 @@
 
     /* =========================================
        RENDER POSTS
-    ========================================= */
+    ========================================== */
 
-    function renderPosts(posts) {
+    function renderPosts() {
 
-      if (!posts.length) {
-
-        postsContainer.innerHTML = `
-
-          <div class="message">
-
-            <div style="font-size:32px;margin-bottom:10px;">
-              🍰
-            </div>
-
-            No posts found.
-
-            <br><br>
-
-            <a
-              href="add-post.html"
-              style="
-                display:inline-block;
-                background:#18181b;
-                color:white;
-                padding:10px 15px;
-                border-radius:9px;
-                font-size:12px;
-                font-weight:700;
-              "
-            >
-              + Create Your First Post
-            </a>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
+      const searchTerm =
+        searchInput.value
+          .trim()
+          .toLowerCase();
 
 
-      postsContainer.innerHTML =
-        posts.map(post => {
-
-          const title =
-            escapeHTML(
-              post.title || "Untitled Post"
-            );
-
-
-          const description =
-            escapeHTML(
-              post.description || ""
-            );
-
-
-          const image =
-            post.imageUrl ||
-            post.imageURL ||
-            post.image ||
-            "https://placehold.co/500x350?text=CakeBuddy";
-
-
-          const date =
-            formatDate(
-              post.createdAt
-            );
-
-
-          return `
-
-            <article
-              class="post-row"
-              data-id="${post.id}"
-            >
-
-              <div class="post-image">
-
-                <img
-                  src="${escapeAttribute(image)}"
-                  alt="${title}"
-                  loading="lazy"
-                  onerror="
-                    this.src='https://placehold.co/500x350?text=CakeBuddy'
-                  "
-                >
-
-              </div>
-
-
-              <div class="post-info">
-
-                <div class="post-title">
-                  ${title}
-                </div>
-
-                <div class="post-description">
-                  ${description || "No description available."}
-                </div>
-
-                <div class="post-date">
-                  ${date}
-                </div>
-
-              </div>
-
-
-              <div class="post-actions">
-
-                <button
-                  class="action-btn edit-btn"
-                  type="button"
-                  data-action="edit"
-                  data-id="${post.id}"
-                >
-                  Edit
-                </button>
-
-
-                <button
-                  class="action-btn delete-btn"
-                  type="button"
-                  data-action="delete"
-                  data-id="${post.id}"
-                >
-                  Delete
-                </button>
-
-              </div>
-
-            </article>
-
-          `;
-
-        }).join("");
-
-
-    }
-
-
-    /* =========================================
-       SEARCH
-    ========================================= */
-
-    searchInput.addEventListener(
-      "input",
-      () => {
-
-        const keyword =
-          searchInput.value
-            .trim()
-            .toLowerCase();
-
-
-        if (!keyword) {
-
-          renderPosts(allPosts);
-
-          return;
-
-        }
-
-
-        const filtered =
-          allPosts.filter(post => {
+      const filteredPosts =
+        allPosts.filter(
+          post => {
 
             const title =
               String(
@@ -1168,115 +1228,311 @@
               ).toLowerCase();
 
 
+            const category =
+              String(
+                post.category ||
+                post.type ||
+                ""
+              ).toLowerCase();
+
+
             return (
-              title.includes(keyword) ||
-              description.includes(keyword)
+
+              title.includes(
+                searchTerm
+              )
+
+              ||
+
+              description.includes(
+                searchTerm
+              )
+
+              ||
+
+              category.includes(
+                searchTerm
+              )
+
             );
 
-          });
+          }
+        );
 
 
-        renderPosts(filtered);
+      postsTableBody.innerHTML =
+        "";
+
+
+      visiblePosts.textContent =
+        filteredPosts.length;
+
+
+      if (
+        filteredPosts.length === 0
+      ) {
+
+        tableContainer.classList.add(
+          "hidden"
+        );
+
+
+        emptyBox.classList.remove(
+          "hidden"
+        );
+
+
+        emptyBox.textContent =
+          searchTerm
+            ? "No matching posts found."
+            : "No posts available.";
+
+
+        return;
 
       }
-    );
 
 
-    /* =========================================
-       EDIT / DELETE
-    ========================================= */
+      emptyBox.classList.add(
+        "hidden"
+      );
 
-    postsContainer.addEventListener(
-      "click",
-      async (event) => {
 
-        const button =
-          event.target.closest(
-            "button[data-action]"
+      tableContainer.classList.remove(
+        "hidden"
+      );
+
+
+      filteredPosts.forEach(
+        post => {
+
+          const row =
+            document.createElement(
+              "tr"
+            );
+
+
+          const title =
+            escapeHTML(
+              post.title ||
+              "Untitled Post"
+            );
+
+
+          const description =
+            escapeHTML(
+              post.description ||
+              ""
+            );
+
+
+          const category =
+            escapeHTML(
+              post.category ||
+              post.type ||
+              "General"
+            );
+
+
+          const image =
+            getImage(post);
+
+
+          const date =
+            formatDate(
+              post.createdAt
+            );
+
+
+          row.innerHTML = `
+
+            <td>
+
+              <div class="post-info">
+
+                <img
+                  class="post-thumb"
+                  src="${image}"
+                  alt="${title}"
+                  onerror="
+                    this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80'
+                  "
+                >
+
+                <div>
+
+                  <div class="post-name">
+                    ${title}
+                  </div>
+
+                  <div class="post-description">
+                    ${description}
+                  </div>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              ${category}
+            </td>
+
+
+            <td>
+              <span class="date-text">
+                ${date}
+              </span>
+            </td>
+
+
+            <td>
+
+              <div class="actions">
+
+                <button
+                  class="action-btn edit-btn"
+                  data-id="${post.id}"
+                >
+                  Edit
+                </button>
+
+
+                <button
+                  class="action-btn delete-btn"
+                  data-id="${post.id}"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </td>
+
+          `;
+
+
+          postsTableBody.appendChild(
+            row
           );
 
-
-        if (!button) return;
-
-
-        const action =
-          button.dataset.action;
-
-
-        const postId =
-          button.dataset.id;
-
-
-        if (action === "edit") {
-
-          window.location.href =
-            `edit-post.html?id=${encodeURIComponent(postId)}`;
-
-          return;
-
         }
+      );
 
 
-        if (action === "delete") {
+      /* =====================================
+         EDIT BUTTONS
+      ====================================== */
 
-          await deletePost(postId);
+      document
+        .querySelectorAll(
+          ".edit-btn"
+        )
+        .forEach(
+          button => {
 
-        }
+            button.addEventListener(
+              "click",
+              () => {
 
-      }
-    );
+                const postId =
+                  button.dataset.id;
+
+
+                window.location.href =
+                  `./edit-post.html?id=${encodeURIComponent(postId)}`;
+
+              }
+            );
+
+          }
+        );
+
+
+      /* =====================================
+         DELETE BUTTONS
+      ====================================== */
+
+      document
+        .querySelectorAll(
+          ".delete-btn"
+        )
+        .forEach(
+          button => {
+
+            button.addEventListener(
+              "click",
+              async () => {
+
+                const postId =
+                  button.dataset.id;
+
+
+                const post =
+                  allPosts.find(
+                    item =>
+                      item.id === postId
+                  );
+
+
+                const postTitle =
+                  post?.title ||
+                  "this post";
+
+
+                const confirmed =
+                  confirm(
+                    `Are you sure you want to delete "${postTitle}"?`
+                  );
+
+
+                if (!confirmed) {
+
+                  return;
+
+                }
+
+
+                await deletePost(
+                  postId
+                );
+
+              }
+            );
+
+          }
+        );
+
+    }
 
 
     /* =========================================
        DELETE POST
-    ========================================= */
+    ========================================== */
 
-    async function deletePost(postId) {
-
-      const post =
-        allPosts.find(
-          item => item.id === postId
-        );
-
-
-      const title =
-        post?.title ||
-        "this post";
-
-
-      const confirmed =
-        confirm(
-          `Are you sure you want to delete "${title}"?`
-        );
-
-
-      if (!confirmed) return;
-
+    async function deletePost(
+      postId
+    ) {
 
       try {
 
         await deleteDoc(
-          doc(db, "posts", postId)
+          doc(
+            db,
+            "posts",
+            postId
+          )
         );
 
 
-        allPosts =
-          allPosts.filter(
-            item => item.id !== postId
-          );
-
-
-        totalPosts.textContent =
-          allPosts.length;
-
-
-        renderPosts(allPosts);
-
-
-        showToast(
+        alert(
           "Post deleted successfully."
         );
 
+
+        await loadPosts();
 
       } catch (error) {
 
@@ -1286,9 +1542,8 @@
         );
 
 
-        showToast(
-          "Failed to delete post.",
-          true
+        alert(
+          "Unable to delete the post. Please try again."
         );
 
       }
@@ -1297,8 +1552,18 @@
 
 
     /* =========================================
+       SEARCH
+    ========================================== */
+
+    searchInput.addEventListener(
+      "input",
+      renderPosts
+    );
+
+
+    /* =========================================
        LOGOUT
-    ========================================= */
+    ========================================== */
 
     logoutBtn.addEventListener(
       "click",
@@ -1306,21 +1571,26 @@
 
         const confirmed =
           confirm(
-            "Do you want to logout?"
+            "Are you sure you want to logout?"
           );
 
 
-        if (!confirmed) return;
+        if (!confirmed) {
+
+          return;
+
+        }
 
 
         try {
 
-          await signOut(auth);
+          await signOut(
+            auth
+          );
 
 
           window.location.href =
             "../admin.html";
-
 
         } catch (error) {
 
@@ -1330,9 +1600,8 @@
           );
 
 
-          showToast(
-            "Logout failed.",
-            true
+          alert(
+            "Logout failed. Please try again."
           );
 
         }
@@ -1340,94 +1609,7 @@
       }
     );
 
-
-    /* =========================================
-       DATE FORMAT
-    ========================================= */
-
-    function formatDate(value) {
-
-      if (!value) {
-        return "Date not available";
-      }
-
-
-      try {
-
-        let date;
-
-
-        if (
-          typeof value === "object" &&
-          value.seconds
-        ) {
-
-          date =
-            new Date(
-              value.seconds * 1000
-            );
-
-        } else {
-
-          date =
-            new Date(value);
-
-        }
-
-
-        if (isNaN(date.getTime())) {
-
-          return "Date not available";
-
-        }
-
-
-        return date.toLocaleDateString(
-          "en-US",
-          {
-            year: "numeric",
-            month: "short",
-            day: "numeric"
-          }
-        );
-
-      } catch {
-
-        return "Date not available";
-
-      }
-
-    }
-
-
-    /* =========================================
-       SECURITY HELPERS
-    ========================================= */
-
-    function escapeHTML(value) {
-
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    }
-
-
-    function escapeAttribute(value) {
-
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
-
-    }
-
   </script>
 
 </body>
 </html>
-```
