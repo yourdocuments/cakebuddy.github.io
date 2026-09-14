@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>CakeBuddy — Cakes, Desserts & Sweet Moments</title>
+
   <meta
     name="description"
     content="Discover cakes, desserts, offers and sweet moments from CakeBuddy."
@@ -26,7 +26,7 @@
       --border: #eeeeee;
       --soft: #faf7ff;
       --white: #ffffff;
-      --success: #16a34a;
+      --green: #16a34a;
       --shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
       --radius: 20px;
     }
@@ -43,8 +43,8 @@
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     button,
@@ -58,12 +58,11 @@
 
     .offer-bar {
       background: #171717;
-      color: white;
+      color: #ffffff;
       text-align: center;
       padding: 10px 15px;
       font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
+      font-weight: 700;
     }
 
     /* =========================
@@ -75,14 +74,14 @@
       top: 0;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
       max-width: 1250px;
-      margin: auto;
       min-height: 76px;
+      margin: auto;
       padding: 12px 20px;
       display: flex;
       align-items: center;
@@ -109,7 +108,7 @@
       height: 42px;
       border-radius: 13px;
       background: var(--primary);
-      color: white;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -129,9 +128,22 @@
       margin-left: auto;
     }
 
+    .search-container {
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      opacity: 0.55;
+    }
+
     .search-box {
       width: 100%;
-      height: 44px;
+      height: 45px;
       border: 1px solid #e5e5e5;
       border-radius: 13px;
       padding: 0 17px 0 43px;
@@ -143,21 +155,8 @@
 
     .search-box:focus {
       border-color: var(--primary);
-      background: white;
+      background: #ffffff;
       box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.08);
-    }
-
-    .search-container {
-      position: relative;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 17px;
-      opacity: 0.6;
     }
 
     /* =========================
@@ -184,21 +183,21 @@
 
     .category-btn {
       border: 1px solid #e8e8e8;
-      background: white;
+      background: #ffffff;
       padding: 9px 16px;
       border-radius: 999px;
       white-space: nowrap;
       cursor: pointer;
       font-size: 13px;
-      font-weight: 600;
-      color: #555;
+      font-weight: 700;
+      color: #555555;
       transition: 0.2s ease;
     }
 
     .category-btn:hover,
     .category-btn.active {
       background: var(--primary);
-      color: white;
+      color: #ffffff;
       border-color: var(--primary);
     }
 
@@ -223,11 +222,11 @@
       min-height: 440px;
       border-radius: 25px;
       overflow: hidden;
-      background: #eee;
+      background: #eeeeee;
       box-shadow: var(--shadow);
     }
 
-    .hero-main img {
+    .hero-main-image {
       width: 100%;
       height: 100%;
       min-height: 440px;
@@ -244,32 +243,32 @@
       background:
         linear-gradient(
           to top,
-          rgba(0, 0, 0, 0.72),
-          rgba(0, 0, 0, 0.1) 65%,
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0.12) 65%,
           rgba(0, 0, 0, 0)
         );
     }
 
     .hero-content {
-      color: white;
-      max-width: 560px;
+      color: #ffffff;
+      max-width: 600px;
     }
 
     .hero-badge {
       display: inline-block;
       background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(8px);
       padding: 7px 12px;
       border-radius: 999px;
       font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-weight: 800;
+      margin-bottom: 13px;
     }
 
     .hero-content h1 {
-      font-size: clamp(32px, 4vw, 56px);
-      line-height: 1.05;
+      font-size: clamp(34px, 4vw, 57px);
+      line-height: 1.03;
       letter-spacing: -2px;
       margin-bottom: 12px;
     }
@@ -277,25 +276,43 @@
     .hero-content p {
       color: rgba(255, 255, 255, 0.88);
       font-size: 15px;
-      max-width: 480px;
+      max-width: 500px;
       margin-bottom: 22px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .hero-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      background: white;
+      background: #ffffff;
       color: #171717;
-      padding: 12px 18px;
+      padding: 12px 19px;
       border-radius: 12px;
       font-size: 14px;
       font-weight: 800;
+      cursor: pointer;
+      border: none;
       transition: 0.2s ease;
     }
 
     .hero-btn:hover {
       transform: translateY(-2px);
+    }
+
+    .hero-order-btn {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    .hero-order-btn:hover {
+      background: #15803d;
     }
 
     /* =========================
@@ -313,7 +330,7 @@
       min-height: 136px;
       border-radius: 20px;
       overflow: hidden;
-      background: #eee;
+      background: #eeeeee;
       box-shadow: var(--shadow);
     }
 
@@ -337,12 +354,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      color: white;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.68),
-        rgba(0, 0, 0, 0.05)
-      );
+      color: #ffffff;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.7),
+          rgba(0, 0, 0, 0.05)
+        );
     }
 
     .side-small {
@@ -363,7 +381,6 @@
     .side-link {
       font-size: 12px;
       font-weight: 700;
-      opacity: 0.95;
     }
 
     /* =========================
@@ -396,7 +413,7 @@
     }
 
     /* =========================
-       POSTS
+       POSTS GRID
     ========================= */
 
     .posts-grid {
@@ -406,7 +423,7 @@
     }
 
     .post-card {
-      background: white;
+      background: #ffffff;
       border: 1px solid #eeeeee;
       border-radius: 18px;
       overflow: hidden;
@@ -443,7 +460,7 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       padding: 5px 9px;
       border-radius: 999px;
       font-size: 10px;
@@ -476,14 +493,18 @@
       margin-bottom: 15px;
     }
 
+    /* =========================
+       ORDER BUTTON
+    ========================= */
+
     .order-btn {
-      margin-top: auto;
       width: 100%;
-      border: 0;
+      margin-top: auto;
+      border: none;
       background: #171717;
-      color: white;
+      color: #ffffff;
       border-radius: 11px;
-      padding: 11px 14px;
+      padding: 12px 14px;
       cursor: pointer;
       font-weight: 800;
       font-size: 13px;
@@ -495,20 +516,29 @@
       transform: translateY(-1px);
     }
 
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 20px;
-      border: 1px dashed #ddd;
-      border-radius: 18px;
-      color: var(--muted);
-    }
+    /* =========================
+       EMPTY / LOADING
+    ========================= */
 
     .loading {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 50px;
+      padding: 55px 20px;
       color: var(--muted);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      border: 1px dashed #dddddd;
+      border-radius: 18px;
+      color: var(--muted);
+    }
+
+    .empty-state h3 {
+      color: #333333;
+      margin-bottom: 5px;
     }
 
     /* =========================
@@ -526,7 +556,7 @@
       justify-content: center;
       padding: 8px 13px;
       border-radius: 999px;
-      color: #888;
+      color: #888888;
       font-size: 11px;
       font-weight: 600;
       transition: 0.2s ease;
@@ -562,7 +592,7 @@
     }
 
     .footer-text {
-      color: #888;
+      color: #888888;
       font-size: 12px;
       margin-top: 5px;
     }
@@ -572,6 +602,7 @@
     ========================= */
 
     @media (max-width: 1000px) {
+
       .posts-grid {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -587,6 +618,7 @@
     }
 
     @media (max-width: 760px) {
+
       .header-inner {
         flex-wrap: wrap;
         gap: 12px;
@@ -599,7 +631,7 @@
       }
 
       .hero-main,
-      .hero-main img {
+      .hero-main-image {
         min-height: 390px;
       }
 
@@ -626,6 +658,7 @@
     }
 
     @media (max-width: 520px) {
+
       .offer-bar {
         font-size: 11px;
       }
@@ -635,8 +668,8 @@
       }
 
       .hero-main,
-      .hero-main img {
-        min-height: 370px;
+      .hero-main-image {
+        min-height: 380px;
       }
 
       .hero-content h1 {
@@ -645,6 +678,15 @@
 
       .hero-content p {
         font-size: 13px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-btn {
+        width: 100%;
       }
 
       .posts-grid {
@@ -669,21 +711,32 @@
 
 <body>
 
-  <!-- =========================
-       SPECIAL OFFER
-  ========================== -->
+  <!-- =====================================
+       SPECIAL OFFER BAR
+  ====================================== -->
+
   <div class="offer-bar">
     🔥 Special Offer — Discover something sweet today!
   </div>
 
-  <!-- =========================
+
+  <!-- =====================================
        HEADER
-  ========================== -->
+       Customer homepage has NO Admin button
+  ====================================== -->
+
   <header class="header">
+
     <div class="header-inner">
 
       <a href="./index.html" class="brand">
-        <div id="brandFallback" class="brand-fallback">C</div>
+
+        <div
+          id="brandFallback"
+          class="brand-fallback"
+        >
+          C
+        </div>
 
         <img
           id="brandLogo"
@@ -692,14 +745,23 @@
           alt="CakeBuddy Logo"
         />
 
-        <span id="brandName" class="brand-name">
+        <span
+          id="brandName"
+          class="brand-name"
+        >
           CakeBuddy
         </span>
+
       </a>
 
+
       <div class="search-wrap">
+
         <div class="search-container">
-          <span class="search-icon">⌕</span>
+
+          <span class="search-icon">
+            ⌕
+          </span>
 
           <input
             id="searchInput"
@@ -708,100 +770,165 @@
             placeholder="Search cakes, desserts, offers..."
             autocomplete="off"
           />
+
         </div>
+
       </div>
 
     </div>
+
   </header>
 
-  <!-- =========================
+
+  <!-- =====================================
        CATEGORIES
-  ========================== -->
+  ====================================== -->
+
   <section class="category-section">
+
     <div class="categories">
 
-      <button class="category-btn active" data-category="All">
+      <button
+        class="category-btn active"
+        data-category="All"
+      >
         All
       </button>
 
-      <button class="category-btn" data-category="Cakes">
+      <button
+        class="category-btn"
+        data-category="Cakes"
+      >
         Cakes
       </button>
 
-      <button class="category-btn" data-category="Cupcakes">
+      <button
+        class="category-btn"
+        data-category="Cupcakes"
+      >
         Cupcakes
       </button>
 
-      <button class="category-btn" data-category="Desserts">
+      <button
+        class="category-btn"
+        data-category="Desserts"
+      >
         Desserts
       </button>
 
-      <button class="category-btn" data-category="Chocolate">
+      <button
+        class="category-btn"
+        data-category="Chocolate"
+      >
         Chocolate
       </button>
 
-      <button class="category-btn" data-category="Gift">
+      <button
+        class="category-btn"
+        data-category="Gift"
+      >
         Gift
       </button>
 
-      <button class="category-btn" data-category="Offers">
+      <button
+        class="category-btn"
+        data-category="Offers"
+      >
         Offers
       </button>
 
-      <button class="category-btn" data-category="Updates">
+      <button
+        class="category-btn"
+        data-category="Updates"
+      >
         Updates
       </button>
 
     </div>
+
   </section>
 
-  <!-- =========================
+
+  <!-- =====================================
        HERO
-  ========================== -->
+  ====================================== -->
+
   <section class="hero-section">
 
     <div class="hero-grid">
 
       <!-- MAIN HERO -->
+
       <div class="hero-main">
 
         <img
           id="mainHeroImage"
+          class="hero-main-image"
           src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=85"
           alt="CakeBuddy"
         />
+
 
         <div class="hero-overlay">
 
           <div class="hero-content">
 
-            <span id="mainHeroBadge" class="hero-badge">
+            <span
+              id="mainHeroBadge"
+              class="hero-badge"
+            >
               Freshly Made
             </span>
+
 
             <h1 id="mainHeroTitle">
               Sweet moments start here.
             </h1>
 
+
             <p id="mainHeroDescription">
-              Discover cakes, desserts, special offers and delicious
-              moments from CakeBuddy.
+              Discover cakes, desserts, special offers
+              and delicious moments from CakeBuddy.
             </p>
 
-            <a href="#posts" class="hero-btn">
-              Explore Posts →
-            </a>
+
+            <div class="hero-buttons">
+
+              <a
+                href="#posts"
+                class="hero-btn"
+              >
+                Explore Posts →
+              </a>
+
+
+              <button
+                type="button"
+                class="hero-btn hero-order-btn"
+                id="heroOrderButton"
+              >
+                Order Now 🍰
+              </button>
+
+            </div>
 
           </div>
 
         </div>
+
       </div>
 
+
       <!-- SIDE BANNERS -->
+
       <div class="side-banners">
 
-        <!-- SIDE 1 -->
-        <a href="#posts" class="side-banner">
+        <!-- SIDE BANNER 1 -->
+
+        <a
+          href="#posts"
+          class="side-banner"
+        >
 
           <img
             id="offerImage"
@@ -811,23 +938,38 @@
 
           <div class="side-overlay">
 
-            <span id="offerSmall" class="side-small">
+            <span
+              id="offerSmall"
+              class="side-small"
+            >
               Limited Time
             </span>
 
-            <span id="offerTitle" class="side-title">
+            <span
+              id="offerTitle"
+              class="side-title"
+            >
               Special Offer
             </span>
 
-            <span id="offerLink" class="side-link">
+            <span
+              id="offerLink"
+              class="side-link"
+            >
               Order Now →
             </span>
 
           </div>
+
         </a>
 
-        <!-- SIDE 2 -->
-        <a href="#posts" class="side-banner">
+
+        <!-- SIDE BANNER 2 -->
+
+        <a
+          href="#posts"
+          class="side-banner"
+        >
 
           <img
             id="chocolateImage"
@@ -837,23 +979,38 @@
 
           <div class="side-overlay">
 
-            <span id="chocolateSmall" class="side-small">
+            <span
+              id="chocolateSmall"
+              class="side-small"
+            >
               Delicious
             </span>
 
-            <span id="chocolateTitle" class="side-title">
+            <span
+              id="chocolateTitle"
+              class="side-title"
+            >
               Chocolate
             </span>
 
-            <span id="chocolateLink" class="side-link">
+            <span
+              id="chocolateLink"
+              class="side-link"
+            >
               Explore →
             </span>
 
           </div>
+
         </a>
 
-        <!-- SIDE 3 -->
-        <a href="#posts" class="side-banner">
+
+        <!-- SIDE BANNER 3 -->
+
+        <a
+          href="#posts"
+          class="side-banner"
+        >
 
           <img
             id="sweetImage"
@@ -863,44 +1020,68 @@
 
           <div class="side-overlay">
 
-            <span id="sweetSmall" class="side-small">
+            <span
+              id="sweetSmall"
+              class="side-small"
+            >
               Made With Love
             </span>
 
-            <span id="sweetTitle" class="side-title">
+            <span
+              id="sweetTitle"
+              class="side-title"
+            >
               Sweet Moments
             </span>
 
-            <span id="sweetLink" class="side-link">
+            <span
+              id="sweetLink"
+              class="side-link"
+            >
               Discover →
             </span>
 
           </div>
+
         </a>
 
       </div>
 
     </div>
+
   </section>
 
-  <!-- =========================
+
+  <!-- =====================================
        POSTS
-  ========================== -->
-  <section id="posts" class="section">
+  ====================================== -->
+
+  <section
+    id="posts"
+    class="section"
+  >
 
     <div class="section-heading">
 
       <div>
-        <h2>Latest Posts</h2>
+
+        <h2>
+          Latest Posts
+        </h2>
 
         <p>
           Discover our latest cakes, offers and sweet moments.
         </p>
+
       </div>
 
     </div>
 
-    <div id="postsGrid" class="posts-grid">
+
+    <div
+      id="postsGrid"
+      class="posts-grid"
+    >
 
       <div class="loading">
         Loading CakeBuddy...
@@ -910,9 +1091,11 @@
 
   </section>
 
-  <!-- =========================
+
+  <!-- =====================================
        DEVELOPER CONNECT
-  ========================== -->
+  ====================================== -->
+
   <div class="developer-area">
 
     <a
@@ -926,39 +1109,54 @@
 
   </div>
 
-  <!-- =========================
+
+  <!-- =====================================
        FOOTER
-  ========================== -->
+  ====================================== -->
+
   <footer>
 
     <div class="footer-inner">
 
       <div>
-        <div id="footerBrandName" class="footer-brand">
+
+        <div
+          id="footerBrandName"
+          class="footer-brand"
+        >
           CakeBuddy
         </div>
 
         <div class="footer-text">
           Cakes, desserts & sweet moments.
         </div>
+
       </div>
 
+
       <div class="footer-text">
-        © <span id="year"></span> CakeBuddy. All rights reserved.
+
+        ©
+        <span id="year"></span>
+        CakeBuddy. All rights reserved.
+
       </div>
 
     </div>
 
   </footer>
 
-  <!-- =========================
+
+  <!-- =====================================
        FIREBASE
-  ========================== -->
+  ====================================== -->
+
   <script type="module">
 
     import {
       initializeApp
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 
     import {
       getFirestore,
@@ -971,52 +1169,65 @@
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-    /* =========================================
+    /* =====================================
        FIREBASE CONFIG
-       ========================================= */
+    ====================================== */
 
     const firebaseConfig = {
 
       apiKey: "YOUR_API_KEY",
 
-      authDomain: "cakebuddymb.firebaseapp.com",
+      authDomain:
+        "cakebuddymb.firebaseapp.com",
 
-      projectId: "cakebuddymb",
+      projectId:
+        "cakebuddymb",
 
-      storageBucket: "cakebuddymb.firebasestorage.app",
+      storageBucket:
+        "cakebuddymb.firebasestorage.app",
 
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      messagingSenderId:
+        "YOUR_MESSAGING_SENDER_ID",
 
-      appId: "YOUR_APP_ID"
+      appId:
+        "YOUR_APP_ID"
 
     };
 
 
-    const app = initializeApp(firebaseConfig);
+    const app =
+      initializeApp(firebaseConfig);
 
-    const db = getFirestore(app);
+
+    const db =
+      getFirestore(app);
 
 
-    /* =========================================
-       WHATSAPP NUMBER
-       =========================================
-
+    /* =====================================
+       WHATSAPP ORDER NUMBER
+       
        IMPORTANT:
-       Change this number to CakeBuddy's
+       Replace this with CakeBuddy's
        WhatsApp number.
 
-       Bangladesh example:
+       Bangladesh format:
+
        8801XXXXXXXXX
 
-       Do NOT use + or spaces.
-    ========================================= */
+       Example:
+       8801712345678
 
-    const WHATSAPP_NUMBER = "8801XXXXXXXXX";
+       Do NOT use:
+       +8801712345678
+    ===================================== */
+
+    const WHATSAPP_NUMBER =
+      "8801XXXXXXXXX";
 
 
-    /* =========================================
+    /* =====================================
        DEFAULT BANNER IMAGES
-    ========================================= */
+    ===================================== */
 
     const BANNER_IMAGES = {
 
@@ -1035,128 +1246,191 @@
     };
 
 
-    /* =========================================
+    /* =====================================
        DEFAULT BANNER TEXT
-    ========================================= */
+    ===================================== */
 
     const BANNER_TEXT = {
 
       mainHero: {
 
-        badge: "Freshly Made",
+        badge:
+          "Freshly Made",
 
-        title: "Sweet moments start here.",
+        title:
+          "Sweet moments start here.",
 
         description:
           "Discover cakes, desserts, special offers and delicious moments from CakeBuddy."
 
       },
 
+
       offer: {
 
-        small: "Limited Time",
+        small:
+          "Limited Time",
 
-        title: "Special Offer",
+        title:
+          "Special Offer",
 
-        link: "Order Now →"
+        link:
+          "Order Now →"
 
       },
+
 
       chocolate: {
 
-        small: "Delicious",
+        small:
+          "Delicious",
 
-        title: "Chocolate",
+        title:
+          "Chocolate",
 
-        link: "Explore →"
+        link:
+          "Explore →"
 
       },
 
+
       sweet: {
 
-        small: "Made With Love",
+        small:
+          "Made With Love",
 
-        title: "Sweet Moments",
+        title:
+          "Sweet Moments",
 
-        link: "Discover →"
+        link:
+          "Discover →"
 
       }
 
     };
 
 
-    /* =========================================
+    /* =====================================
        SAFE HTML
-    ========================================= */
+    ===================================== */
 
     function escapeHTML(value) {
 
-      if (value === undefined || value === null) {
+      if (
+        value === undefined ||
+        value === null
+      ) {
+
         return "";
+
       }
 
+
       return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+
+        .replace(
+          /</g,
+          "&lt;"
+        )
+
+        .replace(
+          />/g,
+          "&gt;"
+        )
+
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
 
-    /* =========================================
+    /* =====================================
        LOGO SETTINGS
-    ========================================= */
+    ===================================== */
 
     async function loadLogoSettings() {
 
       const brandNameElement =
-        document.getElementById("brandName");
+        document.getElementById(
+          "brandName"
+        );
+
 
       const footerBrandName =
-        document.getElementById("footerBrandName");
+        document.getElementById(
+          "footerBrandName"
+        );
+
 
       const brandLogo =
-        document.getElementById("brandLogo");
+        document.getElementById(
+          "brandLogo"
+        );
+
 
       const brandFallback =
-        document.getElementById("brandFallback");
+        document.getElementById(
+          "brandFallback"
+        );
 
 
       try {
 
         const logoRef =
-          doc(db, "homepage", "logo");
+          doc(
+            db,
+            "homepage",
+            "logo"
+          );
+
 
         const snapshot =
           await getDoc(logoRef);
 
 
-        if (!snapshot.exists()) {
+        if (
+          !snapshot.exists()
+        ) {
 
           return;
 
         }
 
 
-        const data = snapshot.data();
+        const data =
+          snapshot.data();
 
 
         const name =
-          data.name || "CakeBuddy";
+          data.name ||
+          "CakeBuddy";
 
 
         const image =
-          data.image || "";
+          data.image ||
+          "";
 
 
         const size =
-          Number(data.size) || 42;
+          Number(data.size) ||
+          42;
 
 
         brandNameElement.textContent =
           name;
+
 
         footerBrandName.textContent =
           name;
@@ -1165,6 +1439,7 @@
         brandLogo.style.width =
           size + "px";
 
+
         brandLogo.style.height =
           size + "px";
 
@@ -1172,30 +1447,36 @@
         brandFallback.style.width =
           size + "px";
 
+
         brandFallback.style.height =
           size + "px";
 
 
         if (image) {
 
-          brandLogo.src = image;
+          brandLogo.src =
+            image;
+
 
           brandLogo.style.display =
             "block";
+
 
           brandFallback.style.display =
             "none";
 
 
-          brandLogo.onerror = function () {
+          brandLogo.onerror =
+            function () {
 
-            brandLogo.style.display =
-              "none";
+              brandLogo.style.display =
+                "none";
 
-            brandFallback.style.display =
-              "flex";
 
-          };
+              brandFallback.style.display =
+                "flex";
+
+            };
 
         }
 
@@ -1211,62 +1492,106 @@
     }
 
 
-    /* =========================================
+    /* =====================================
        BANNER SETTINGS
-    ========================================= */
+    ===================================== */
 
     function applyBannerSettings(data) {
 
       const mainHeroImage =
-        document.getElementById("mainHeroImage");
+        document.getElementById(
+          "mainHeroImage"
+        );
+
 
       const mainHeroBadge =
-        document.getElementById("mainHeroBadge");
+        document.getElementById(
+          "mainHeroBadge"
+        );
+
 
       const mainHeroTitle =
-        document.getElementById("mainHeroTitle");
+        document.getElementById(
+          "mainHeroTitle"
+        );
+
 
       const mainHeroDescription =
-        document.getElementById("mainHeroDescription");
+        document.getElementById(
+          "mainHeroDescription"
+        );
 
 
       const offerImage =
-        document.getElementById("offerImage");
+        document.getElementById(
+          "offerImage"
+        );
+
 
       const offerSmall =
-        document.getElementById("offerSmall");
+        document.getElementById(
+          "offerSmall"
+        );
+
 
       const offerTitle =
-        document.getElementById("offerTitle");
+        document.getElementById(
+          "offerTitle"
+        );
+
 
       const offerLink =
-        document.getElementById("offerLink");
+        document.getElementById(
+          "offerLink"
+        );
 
 
       const chocolateImage =
-        document.getElementById("chocolateImage");
+        document.getElementById(
+          "chocolateImage"
+        );
+
 
       const chocolateSmall =
-        document.getElementById("chocolateSmall");
+        document.getElementById(
+          "chocolateSmall"
+        );
+
 
       const chocolateTitle =
-        document.getElementById("chocolateTitle");
+        document.getElementById(
+          "chocolateTitle"
+        );
+
 
       const chocolateLink =
-        document.getElementById("chocolateLink");
+        document.getElementById(
+          "chocolateLink"
+        );
 
 
       const sweetImage =
-        document.getElementById("sweetImage");
+        document.getElementById(
+          "sweetImage"
+        );
+
 
       const sweetSmall =
-        document.getElementById("sweetSmall");
+        document.getElementById(
+          "sweetSmall"
+        );
+
 
       const sweetTitle =
-        document.getElementById("sweetTitle");
+        document.getElementById(
+          "sweetTitle"
+        );
+
 
       const sweetLink =
-        document.getElementById("sweetLink");
+        document.getElementById(
+          "sweetLink"
+        );
 
 
       /* MAIN HERO */
@@ -1376,13 +1701,20 @@
       try {
 
         const bannerRef =
-          doc(db, "homepage", "banners");
+          doc(
+            db,
+            "homepage",
+            "banners"
+          );
+
 
         const snapshot =
           await getDoc(bannerRef);
 
 
-        if (snapshot.exists()) {
+        if (
+          snapshot.exists()
+        ) {
 
           applyBannerSettings(
             snapshot.data()
@@ -1402,19 +1734,22 @@
     }
 
 
-    /* =========================================
+    /* =====================================
        POSTS
-    ========================================= */
+    ===================================== */
 
     let allPosts = [];
 
-    let selectedCategory = "All";
+    let selectedCategory =
+      "All";
 
 
     async function loadPosts() {
 
       const postsGrid =
-        document.getElementById("postsGrid");
+        document.getElementById(
+          "postsGrid"
+        );
 
 
       postsGrid.innerHTML = `
@@ -1427,7 +1762,10 @@
       try {
 
         const postsRef =
-          collection(db, "posts");
+          collection(
+            db,
+            "posts"
+          );
 
 
         let snapshot;
@@ -1438,16 +1776,24 @@
           const postsQuery =
             query(
               postsRef,
-              orderBy("createdAt", "desc")
+              orderBy(
+                "createdAt",
+                "desc"
+              )
             );
 
+
           snapshot =
-            await getDocs(postsQuery);
+            await getDocs(
+              postsQuery
+            );
 
         } catch (error) {
 
           snapshot =
-            await getDocs(postsRef);
+            await getDocs(
+              postsRef
+            );
 
         }
 
@@ -1455,17 +1801,19 @@
         allPosts = [];
 
 
-        snapshot.forEach((item) => {
+        snapshot.forEach(
+          (item) => {
 
-          allPosts.push({
+            allPosts.push({
 
-            id: item.id,
+              id: item.id,
 
-            ...item.data()
+              ...item.data()
 
-          });
+            });
 
-        });
+          }
+        );
 
 
         renderPosts();
@@ -1479,13 +1827,20 @@
 
 
         postsGrid.innerHTML = `
+
           <div class="empty-state">
-            <h3>Unable to load posts</h3>
+
+            <h3>
+              Unable to load posts
+            </h3>
+
             <p>
-              Please check your Firebase configuration
-              and Firestore settings.
+              Please check your Firebase
+              configuration and Firestore settings.
             </p>
+
           </div>
+
         `;
 
       }
@@ -1493,27 +1848,32 @@
     }
 
 
-    /* =========================================
+    /* =====================================
        ORDER NOW
-    ========================================= */
+    ===================================== */
 
-    function orderNow(title) {
+    function orderNow(productTitle) {
 
-      const cleanTitle =
-        title || "CakeBuddy Product";
+      const title =
+        productTitle ||
+        "CakeBuddy Product";
 
 
       const message =
-        "Hello CakeBuddy! 🍰%0A%0AI want to order:%0A" +
-        encodeURIComponent(cleanTitle) +
-        "%0A%0APlease share the details.";
+        "Hello CakeBuddy! 🍰\n\n" +
+        "I want to order:\n" +
+        title +
+        "\n\n" +
+        "Please share the details.";
 
 
       const whatsappURL =
         "https://wa.me/" +
         WHATSAPP_NUMBER +
         "?text=" +
-        message;
+        encodeURIComponent(
+          message
+        );
 
 
       window.open(
@@ -1525,75 +1885,119 @@
     }
 
 
-    /* =========================================
+    /* =====================================
+       HERO ORDER BUTTON
+    ===================================== */
+
+    document
+      .getElementById(
+        "heroOrderButton"
+      )
+      .addEventListener(
+        "click",
+        function () {
+
+          orderNow(
+            "CakeBuddy Cake / Product"
+          );
+
+        }
+      );
+
+
+    /* =====================================
        RENDER POSTS
-    ========================================= */
+    ===================================== */
 
     function renderPosts() {
 
       const postsGrid =
-        document.getElementById("postsGrid");
+        document.getElementById(
+          "postsGrid"
+        );
 
 
       const searchValue =
         document
-          .getElementById("searchInput")
+          .getElementById(
+            "searchInput"
+          )
           .value
           .trim()
           .toLowerCase();
 
 
       const filtered =
-        allPosts.filter((post) => {
+        allPosts.filter(
+          (post) => {
 
-          const title =
-            String(post.title || "")
-              .toLowerCase();
-
-
-          const description =
-            String(post.description || "")
-              .toLowerCase();
+            const title =
+              String(
+                post.title || ""
+              ).toLowerCase();
 
 
-          const category =
-            String(
-              post.category ||
-              post.type ||
-              ""
-            ).toLowerCase();
+            const description =
+              String(
+                post.description || ""
+              ).toLowerCase();
 
 
-          const matchesSearch =
-            !searchValue ||
-            title.includes(searchValue) ||
-            description.includes(searchValue) ||
-            category.includes(searchValue);
+            const category =
+              String(
+                post.category ||
+                post.type ||
+                ""
+              ).toLowerCase();
 
 
-          const matchesCategory =
-            selectedCategory === "All" ||
-            category ===
-              selectedCategory.toLowerCase();
+            const matchesSearch =
+              !searchValue ||
+              title.includes(
+                searchValue
+              ) ||
+              description.includes(
+                searchValue
+              ) ||
+              category.includes(
+                searchValue
+              );
 
 
-          return (
-            matchesSearch &&
-            matchesCategory
-          );
+            const matchesCategory =
+              selectedCategory ===
+                "All" ||
+              category ===
+                selectedCategory.toLowerCase();
 
-        });
+
+            return (
+              matchesSearch &&
+              matchesCategory
+            );
+
+          }
+        );
 
 
-      if (!filtered.length) {
+      if (
+        !filtered.length
+      ) {
 
         postsGrid.innerHTML = `
+
           <div class="empty-state">
-            <h3>No posts found</h3>
+
+            <h3>
+              No posts found
+            </h3>
+
             <p>
               Try another search or category.
             </p>
+
           </div>
+
         `;
 
         return;
@@ -1602,112 +2006,125 @@
 
 
       postsGrid.innerHTML =
-        filtered.map((post) => {
+        filtered
+          .map(
+            (post) => {
 
-          const title =
-            escapeHTML(
-              post.title || "CakeBuddy"
-            );
-
-
-          const description =
-            escapeHTML(
-              post.description ||
-              "Discover something delicious from CakeBuddy."
-            );
+              const title =
+                escapeHTML(
+                  post.title ||
+                  "CakeBuddy"
+                );
 
 
-          const category =
-            escapeHTML(
-              post.category ||
-              post.type ||
-              "Cake"
-            );
+              const description =
+                escapeHTML(
+                  post.description ||
+                  "Discover something delicious from CakeBuddy."
+                );
 
 
-          const image =
-            post.imageUrl ||
-            post.imageURL ||
-            post.image ||
-            BANNER_IMAGES.mainHero;
+              const category =
+                escapeHTML(
+                  post.category ||
+                  post.type ||
+                  "Cake"
+                );
 
 
-          return `
-
-            <article class="post-card">
-
-              <div class="post-image-wrap">
-
-                <img
-                  class="post-image"
-                  src="${escapeHTML(image)}"
-                  alt="${title}"
-                  loading="lazy"
-                  onerror="this.src='${BANNER_IMAGES.mainHero}'"
-                />
-
-                <span class="post-category">
-                  ${category}
-                </span>
-
-              </div>
+              const image =
+                post.imageUrl ||
+                post.imageURL ||
+                post.image ||
+                BANNER_IMAGES.mainHero;
 
 
-              <div class="post-body">
+              return `
 
-                <h3 class="post-title">
-                  ${title}
-                </h3>
+                <article class="post-card">
 
+                  <div class="post-image-wrap">
 
-                <p class="post-description">
-                  ${description}
-                </p>
+                    <img
+                      class="post-image"
+                      src="${escapeHTML(image)}"
+                      alt="${title}"
+                      loading="lazy"
+                      onerror="this.src='${BANNER_IMAGES.mainHero}'"
+                    />
 
+                    <span class="post-category">
+                      ${category}
+                    </span>
 
-                <button
-                  class="order-btn"
-                  type="button"
-                  data-order-title="${title}"
-                >
-                  Order Now →
-                </button>
-
-              </div>
-
-            </article>
-
-          `;
-
-        }).join("");
+                  </div>
 
 
-      document
-        .querySelectorAll(".order-btn")
-        .forEach((button) => {
+                  <div class="post-body">
 
-          button.addEventListener(
-            "click",
-            function () {
+                    <h3 class="post-title">
+                      ${title}
+                    </h3>
 
-              orderNow(
-                this.dataset.orderTitle
-              );
+
+                    <p class="post-description">
+                      ${description}
+                    </p>
+
+
+                    <button
+                      class="order-btn"
+                      type="button"
+                      data-order-title="${title}"
+                    >
+                      Order Now →
+                    </button>
+
+                  </div>
+
+                </article>
+
+              `;
 
             }
-          );
+          )
+          .join("");
 
-        });
+
+      /* ORDER BUTTON EVENTS */
+
+      document
+        .querySelectorAll(
+          ".order-btn"
+        )
+        .forEach(
+          (button) => {
+
+            button.addEventListener(
+              "click",
+              function () {
+
+                orderNow(
+                  this.dataset.orderTitle
+                );
+
+              }
+            );
+
+          }
+        );
 
     }
 
 
-    /* =========================================
+    /* =====================================
        SEARCH
-    ========================================= */
+    ===================================== */
 
     document
-      .getElementById("searchInput")
+      .getElementById(
+        "searchInput"
+      )
       .addEventListener(
         "input",
         function () {
@@ -1718,66 +2135,78 @@
       );
 
 
-    /* =========================================
+    /* =====================================
        CATEGORY FILTER
-    ========================================= */
+    ===================================== */
 
     document
-      .querySelectorAll(".category-btn")
-      .forEach((button) => {
+      .querySelectorAll(
+        ".category-btn"
+      )
+      .forEach(
+        (button) => {
 
-        button.addEventListener(
-          "click",
-          function () {
+          button.addEventListener(
+            "click",
+            function () {
 
-            document
-              .querySelectorAll(".category-btn")
-              .forEach((btn) => {
+              document
+                .querySelectorAll(
+                  ".category-btn"
+                )
+                .forEach(
+                  (btn) => {
 
-                btn.classList.remove(
-                  "active"
+                    btn.classList.remove(
+                      "active"
+                    );
+
+                  }
                 );
 
-              });
+
+              this.classList.add(
+                "active"
+              );
 
 
-            this.classList.add(
-              "active"
-            );
+              selectedCategory =
+                this.dataset.category;
 
 
-            selectedCategory =
-              this.dataset.category;
+              renderPosts();
 
 
-            renderPosts();
+              document
+                .getElementById(
+                  "posts"
+                )
+                .scrollIntoView({
+                  behavior: "smooth"
+                });
+
+            }
+          );
+
+        }
+      );
 
 
-            document
-              .getElementById("posts")
-              .scrollIntoView({
-                behavior: "smooth"
-              });
-
-          }
-        );
-
-      });
-
-
-    /* =========================================
+    /* =====================================
        YEAR
-    ========================================= */
+    ===================================== */
 
     document
-      .getElementById("year")
+      .getElementById(
+        "year"
+      )
       .textContent =
       new Date().getFullYear();
 
 
-    /* =========================================
-       START
-    ========================================= */
+    /* =====================================
+       START WEBSITE
+    ===================================== */
 
     await loadLogoSettings();
 
